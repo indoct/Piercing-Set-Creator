@@ -6,13 +6,14 @@ export default function PiercingSetBlock({ ...props }) {
       ? ""
       : props.set.map((prc) => {
           return (
-            <Col key={prc.prc_nodeid} lg={2} className="prc-col">
+            <Col key={prc.prc_nodeid} xl={2} className="prc-col">
               <div className="prc-container">
-                <div className="img-dummy"></div>
+                <div className="img-dummy">
+                  <span className="color-tag">{prc.prc_color}</span>
+                </div>
                 <ul className="prc-stats">
                   <li>{prc.prc_name}</li>
-                  <li>{prc.prc_location}</li>
-                  <li>{prc.prc_color}</li>
+                  <li className="location">{prc.prc_location}</li>
                 </ul>
               </div>
             </Col>
