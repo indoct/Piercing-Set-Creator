@@ -1,40 +1,33 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import data from './piercings/data'
-import Box from '@mui/material/Box';
-import './App.css'
+import { useState } from "react";
+import data from "./piercings/data";
+import ThemeProvider from "react-bootstrap/ThemeProvider";
+import "./App.css";
+import PiercingSetBlock from "./components/PiercingSetBlock";
 
 function App() {
-  const [count, setCount] = useState(0)
-  const [piercings, setPiercings] = useState(data)
+  const [piercings, setPiercings] = useState(data);
 
-  console.log(piercings[0])
+  const prcSet = data.map((card) => {
+    return (
+      <Card
+        img={card.coverImg}
+        rating={card.stats.rating}
+        reviewCount={card.stats.reviewCount}
+        location={card.location}
+        title={card.title}
+        price={card.price}
+      />
+    );
+  });
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <ThemeProvider
+      breakpoints={["xxxl", "xxl", "xl", "lg", "md", "sm", "xs", "xxs"]}
+      minBreakpoint="xxs"
+    >
+      <PiercingSetBlock piercingName={piercings[0].prc_name} />
+    </ThemeProvider>
+  );
 }
 
-export default App
+export default App;
