@@ -4,10 +4,33 @@
   padding: 2rem;
 }
 
-ul {
-  padding-left: 0;
+.prc-col {
+  margin-bottom: 10px;
 }
 
-ul li {
+.prc-stats {
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+.prc-stats li {
   list-style-type: none;
+}
+
+h4 {
+  padding-bottom: 0.7rem;
+  padding-top: 1rem;
+}
+
+.prc-container {
+  border: 1px solid #394047;
+  padding: 0.8rem 1rem 0.5rem 1rem;
+  border-radius: 8px;
+}
+
+.img-dummy {
+  background-color: silver;
+  height: 100px;
+  width: 100px;
+  margin-bottom: 10px;
 }
