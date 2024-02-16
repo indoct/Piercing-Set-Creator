@@ -20,7 +20,20 @@ p,
 span,
 ul,
 li {
+  font-size: 1.1rem;
+}
+
+.prc-name {
   font-weight: 600;
+}
+
+.warning-txt {
+  font-size: 1.25rem;
+}
+
+.settings-box {
+  padding: 1.4em;
+  border: 1px solid #394047;
 }
 
 .location {

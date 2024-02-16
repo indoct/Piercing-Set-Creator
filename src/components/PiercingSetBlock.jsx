@@ -21,7 +21,7 @@ export default function PiercingSetBlock({ ...props }) {
                   <span className="color-tag">{prc.prc_color}</span>
                 </div>
                 <ul className="prc-stats">
-                  <li>{prc.prc_name}</li>
+                  <li className="prc-name">{prc.prc_name}</li>
                   <li className="location">{prc.prc_location}</li>
                 </ul>
               </div>

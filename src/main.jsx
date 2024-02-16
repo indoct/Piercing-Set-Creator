@@ -14,9 +14,9 @@ function App() {
           #VanLife
         </Link>
         <nav>
-          <Link to="/allpiercings">All Piercings</Link>
-          <Link to="/vanilla">Vanilla Piercings</Link>
-          <Link to="/modded">Mod Piercings</Link>
+          <Link to="/allpiercings">Show All Piercings</Link>
+          <Link to="/vanilla">Only Vanilla Piercings</Link>
+          <Link to="/modded">Only Mod Piercings</Link>
         </nav>
       </header>
       <Routes>
