@@ -12,15 +12,23 @@ h4,
 p,
 span,
 ul,
-li {
+li,
+form,
+label {
   font-family: "IBM Plex Sans", sans-serif;
 }
 
 p,
 span,
 ul,
-li {
+li,
+form,
+label {
   font-size: 1.1rem;
+}
+
+.settings-box h4 {
+  padding-top: 0;
 }
 
 .prc-name {
@@ -32,8 +40,12 @@ li {
 }
 
 .settings-box {
-  padding: 1.4em;
+  padding: 2em;
   border: 1px solid #394047;
+}
+
+.settings-box label {
+  padding: 1rem;
 }
 
 .location {
