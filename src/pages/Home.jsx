@@ -7,9 +7,24 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function Home() {
   const [settings, setSettings] = useState({
-    recolor: false,
-    displayPrcs: [],
+    prc_color: "",
+    display: "",
   });
+
+  console.log(settings);
+
+  function handleChange(event) {
+    console.log(event.target);
+    const { name, value, type, checked } = event.target;
+    console.log(name);
+    setSettings((prevSettings) => {
+      return {
+        ...prevSettings,
+        [name]: type === "checkbox" ? checked : value,
+      };
+    });
+  }
+
   return (
     <Container>
       <Row className="justify-content-md-center">
@@ -31,31 +46,48 @@ export default function Home() {
             <form>
               <fieldset>
                 <legend>Piercing Color:</legend>
-                <input
-                  type="radio"
-                  id="silver"
-                  name="prc_color"
-                  value="Silver"
-                />
-                <label htmlFor="silver"> Silver</label>
-                <br />
-                <input type="radio" id="gold" name="prc_color" value="Gold" />
-                <label htmlFor="gold"> Gold</label>
-                <br />
-                <input
-                  type="radio"
-                  id="other"
-                  name="prc_color"
-                  value="other_color"
-                />
-                <label htmlFor="other">
-                  Other Color (I've installed Ghoul's Vanilla Piercing Recolors
-                  mod)
-                </label>
+                <section className="options">
+                  <label className="color-option" htmlFor="silver">
+                    <div className="silver-gr color"></div>
+                    <input
+                      type="radio"
+                      id="silver"
+                      name="prc_color"
+                      value="silver"
+                      checked={settings.color === "silver"}
+                      onChange={handleChange}
+                    />
+                    Silver
+                  </label>
+                  <div className="color-option">
+                    <div className="gold-gr color"></div>
+                    <input
+                      type="radio"
+                      id="gold"
+                      name="prc_color"
+                      value="gold"
+                      checked={settings.color === "gold"}
+                      onChange={handleChange}
+                    />
+                    <label htmlFor="gold"> Gold</label>
+                  </div>
+                  <div className="color-option">
+                    <div className="other-gr color">?</div>
+                    <input
+                      type="radio"
+                      id="other"
+                      name="prc_color"
+                      value="other"
+                      checked={settings.color === "other"}
+                      onChange={handleChange}
+                    />
+                    <label htmlFor="other">Other Color</label>
+                  </div>
+                </section>
                 <p className="warning">
-                  The piercing images in the app AND your piercings in-game will
-                  be Silver until you have downloaded and added the correct
-                  Recolor pak from here!
+                  WARNING: The piercing images in the app AND your piercings
+                  in-game will be Silver until you have downloaded and added the
+                  correct Recolor pak from here!
                 </p>
               </fieldset>
               <fieldset>
