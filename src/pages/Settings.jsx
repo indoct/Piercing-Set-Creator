@@ -5,7 +5,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-export default function Home() {
+export default function Settings() {
   const [settings, setSettings] = useState({
     prc_color: "silver",
     prc_display: "allpiercings",

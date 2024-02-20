@@ -7,7 +7,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-export default function AllPiercings() {
+export default function Home() {
   const [piercings, setPiercings] = useState(data);
   const [vanillaSetA, setVanillaSetA] = useState({});
   const [barbBear, setBarbBear] = useState({});

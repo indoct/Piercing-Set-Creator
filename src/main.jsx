@@ -1,29 +1,32 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import Home from "./pages/Settings";
-import Vanilla from "./pages/Vanilla";
-import Modded from "./pages/Modded";
-import AllPiercings from "./pages/Home";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import About from "./pages/About";
+import Home from "./pages/Home";
 
 function App() {
   return (
     <BrowserRouter>
-      <header>
-        <Link className="site-logo" to="/">
-          #VanLife
-        </Link>
-        <nav>
-          <Link to="/allpiercings">Show All Piercings</Link>
-          <Link to="/vanilla">Only Vanilla Piercings</Link>
-          <Link to="/modded">Only Mod Piercings</Link>
-        </nav>
-      </header>
+      <Container>
+        <header>
+          <Row>
+            <Col>
+              <Link className="site-logo" to="/">
+                Indoct's BG3 Piercing Set Creator
+              </Link>
+            </Col>
+            <Col>
+              <Link to="/about">About</Link>
+            </Col>
+          </Row>
+        </header>
+      </Container>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/vanilla" element={<Vanilla />} />
-        <Route path="/modded" element={<Modded />} />
-        <Route path="/allpiercings" element={<AllPiercings />} />
+        <Route path="/about" element={<About />} />
       </Routes>
     </BrowserRouter>
   );

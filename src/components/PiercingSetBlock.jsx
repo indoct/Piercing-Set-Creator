@@ -8,8 +8,6 @@ export default function PiercingSetBlock({ ...props }) {
       ? props.set[0].pt_displayname
       : "Vanilla Sets";
 
-  console.log(blockTitle);
-
   const prcBlock =
     props.set.length === undefined
       ? ""
@@ -31,7 +29,7 @@ export default function PiercingSetBlock({ ...props }) {
 
   return (
     <>
-      <h4>{blockTitle}</h4>
+      <h4 className="block-title">{blockTitle}</h4>
       {prcBlock}
     </>
   );

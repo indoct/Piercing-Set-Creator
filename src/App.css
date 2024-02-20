@@ -27,6 +27,12 @@ label {
   font-size: 1.1rem;
 }
 
+header a {
+  font-size: 1.2rem;
+  text-decoration: none;
+  font-weight: 600;
+}
+
 .settings-box h4 {
   padding-top: 0;
 }
@@ -189,12 +195,13 @@ label.selected {
 .prc-stats li {
   list-style-type: none;
   line-height: 1.3;
+  font-size: 0.92rem;
 }
 
-h4 {
-  padding-bottom: 0.7rem;
+.block-title {
+  padding-bottom: 0.3rem;
   padding-top: 1rem;
-  font-weight: 600;
+  font-size: 1.2rem;
 }
 
 .prc-container {
