@@ -1,10 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import Home from "./pages/Home";
+import Home from "./pages/Settings";
 import Vanilla from "./pages/Vanilla";
 import Modded from "./pages/Modded";
-import AllPiercings from "./pages/AllPiercings";
+import AllPiercings from "./pages/Home";
 
 function App() {
   return (
