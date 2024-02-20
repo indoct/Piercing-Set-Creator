@@ -300,7 +300,7 @@ export default [
     prc_matcat: "barb-wolf",
     pt_displayname: "Barbarian - Wolf",
     prc_color: "silver",
-    prc_name: "Wolf Skull & Teeth Ring",
+    prc_name: "Wolf Skull/Teeth Ring",
     prc_location: "Septum",
     location_code: "piercing_septum_a_m",
     prc_nodeid: "4d1ffd7d-e712-4f72-b058-5fb7b692e1f0",

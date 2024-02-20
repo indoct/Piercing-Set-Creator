@@ -8,8 +8,6 @@ export default function PiercingSetBlock({ ...props }) {
       ? props.set[0].pt_displayname
       : "Vanilla Sets";
 
-  console.log(props.set);
-
   const prcBlock =
     props.set.length === undefined
       ? ""

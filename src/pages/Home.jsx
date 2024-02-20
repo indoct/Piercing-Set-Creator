@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link, useSearchParams } from "react-router-dom";
 import data from "../data";
 import ThemeProvider from "react-bootstrap/ThemeProvider";
 import "../App.css";
@@ -8,10 +9,13 @@ import Row from "react-bootstrap/Row";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function Home() {
+  const [searchParams, setSearchParams] = useSearchParams();
   const [piercings, setPiercings] = useState(data);
   const [vanillaAll, setVanillaAll] = useState({});
   const [ispGold, setIspGold] = useState({});
   const [ispSilver, setIspSilver] = useState({});
+
+  console.log(searchParams.get("type"));
 
   useEffect(() => {
     const vanillaPrcs = piercings.filter((prc) => prc.prc_type === "vanilla");
@@ -34,6 +38,7 @@ export default function Home() {
       minBreakpoint="xxs"
     >
       <Container fluid>
+        <Row></Row>
         <Row>
           <PiercingSetBlock set={vanillaAll} />
         </Row>
