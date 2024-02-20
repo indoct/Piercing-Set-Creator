@@ -60,16 +60,24 @@ header a {
   font-size: 0.94em;
 }
 
-.filter-btns .vanilla button {
+.vanilla.selected {
   background-color: #10b160;
 }
 
-.filter-btns .mod button {
+.mod-btn.selected {
   background-color: #f7762c;
 }
 
-.filter-btns .all-piercings button {
+.all-piercings.selected {
   background-color: #9475c4;
+}
+
+.gold-btn.selected {
+  background-color: #d5ac4e;
+}
+
+.silver-btn.selected {
+  background-color: silver;
 }
 
 .filter-btns button,

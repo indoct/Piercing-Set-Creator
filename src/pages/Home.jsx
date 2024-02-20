@@ -84,6 +84,17 @@ export default function Home() {
     );
   });
 
+  function handleFilterChange(key, value) {
+    setSearchParams((prevParams) => {
+      if (value === null) {
+        prevParams.delete(key);
+      } else {
+        prevParams.set(key, value);
+      }
+      return prevParams;
+    });
+  }
+
   return (
     <ThemeProvider
       breakpoints={["xxxl", "xxl", "xl", "lg", "md", "sm", "xs", "xxs"]}
@@ -94,27 +105,46 @@ export default function Home() {
           <Col className="d-flex filters">
             <div className="filter-btns">
               <span>Type Filters:</span>
-              <Link to="/" className="all-piercings">
-                <button>All Piercings</button>
-              </Link>
-              <Link to="?type=mod" className="mod">
-                {" "}
-                <button>Mod Only</button>
-              </Link>
-              <Link to="?type=vanilla" className="vanilla">
-                {" "}
-                <button>Vanilla Only</button>
-              </Link>
+              <button
+                onClick={() => handleFilterChange("type", null)}
+                className={`all-piercings ${!typeFilter ? "selected" : ""}`}
+              >
+                All Piercings
+              </button>
+              <button
+                onClick={() => handleFilterChange("type", "mod")}
+                className={`mod-btn ${typeFilter === "mod" ? "selected" : ""}`}
+              >
+                Mod Only
+              </button>
+              <button
+                onClick={() => handleFilterChange("type", "vanilla")}
+                className={`vanilla ${
+                  typeFilter === "vanilla" ? "selected" : ""
+                }`}
+              >
+                Vanilla Only
+              </button>
             </div>
             {typeFilter === "mod" && (
               <div className="filter-btns">
                 <span>Piercing Metal Color:</span>
-                <Link to="?type=mod">
-                  <button>Silver</button>
-                </Link>
-                <Link to="?type=mod&color=gold">
-                  <button>Gold</button>
-                </Link>
+                <button
+                  onClick={() => handleFilterChange("color", null)}
+                  className={`silver-btn ${
+                    colorFilter === null ? "selected" : ""
+                  }`}
+                >
+                  Silver
+                </button>
+                <button
+                  onClick={() => handleFilterChange("color", "gold")}
+                  className={`gold-btn ${
+                    colorFilter === "gold" ? "selected" : ""
+                  }`}
+                >
+                  Gold
+                </button>
               </div>
             )}
           </Col>
