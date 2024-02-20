@@ -4,17 +4,27 @@ export default function PiercingSetBlock({ ...props }) {
   const blockTitle =
     props.set.length === undefined
       ? ""
-      : props.set[0].site_category !== "vanilla-ab"
+      : props.set[0].prc_type !== "vanilla"
       ? props.set[0].pt_displayname
       : "Vanilla Sets";
+
+  console.log(props.set);
 
   const prcBlock =
     props.set.length === undefined
       ? ""
       : props.set.map((prc) => {
+          const contClass =
+            prc.site_category === "vanilla-ab"
+              ? "vanilla-ab prc-container"
+              : prc.site_category === "barbarian"
+              ? "barbarian prc-container"
+              : prc.site_category === "ortheus"
+              ? "ortheus prc-container"
+              : "mod prc-container";
           return (
             <Col key={prc.prc_nodeid} xl={2} className="prc-col">
-              <div className="prc-container">
+              <div className={contClass}>
                 <div className="img-dummy">
                   <span className="color-tag">{prc.prc_color}</span>
                 </div>

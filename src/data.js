@@ -1,7 +1,7 @@
 export default [
   {
     index: 1,
-    site_category: "barb-bear",
+    site_category: "barbarian",
     prc_type: "vanilla",
     prc_matcat: "barb-bear",
     pt_displayname: "Barbarian - Bear",
@@ -15,7 +15,7 @@ export default [
   },
   {
     index: 2,
-    site_category: "barb-bear",
+    site_category: "barbarian",
     prc_type: "vanilla",
     prc_matcat: "barb-bear",
     pt_displayname: "Barbarian - Bear",
@@ -29,7 +29,7 @@ export default [
   },
   {
     index: 3,
-    site_category: "barb-bear",
+    site_category: "barbarian",
     prc_type: "vanilla",
     prc_matcat: "barb-bear",
     pt_displayname: "Barbarian - Bear",
@@ -43,7 +43,7 @@ export default [
   },
   {
     index: 4,
-    site_category: "barb-bear",
+    site_category: "barbarian",
     prc_type: "vanilla",
     prc_matcat: "barb-bear",
     pt_displayname: "Barbarian - Bear",
@@ -57,7 +57,7 @@ export default [
   },
   {
     index: 5,
-    site_category: "barb-bear",
+    site_category: "barbarian",
     prc_type: "vanilla",
     prc_matcat: "barb-bear",
     pt_displayname: "Barbarian - Bear",
@@ -71,7 +71,7 @@ export default [
   },
   {
     index: 6,
-    site_category: "barb-bear",
+    site_category: "barbarian",
     prc_type: "vanilla",
     prc_matcat: "barb-bear",
     pt_displayname: "Barbarian - Bear",
@@ -85,7 +85,7 @@ export default [
   },
   {
     index: 7,
-    site_category: "barb-bear",
+    site_category: "barbarian",
     prc_type: "vanilla",
     prc_matcat: "barb-bear",
     pt_displayname: "Barbarian - Bear",
@@ -99,7 +99,7 @@ export default [
   },
   {
     index: 8,
-    site_category: "barb-bear",
+    site_category: "barbarian",
     prc_type: "vanilla",
     prc_matcat: "barb-bear",
     pt_displayname: "Barbarian - Bear",
@@ -113,7 +113,7 @@ export default [
   },
   {
     index: 9,
-    site_category: "barb-bear",
+    site_category: "barbarian",
     prc_type: "vanilla",
     prc_matcat: "barb-bear",
     pt_displayname: "Barbarian - Bear",
@@ -127,7 +127,7 @@ export default [
   },
   {
     index: 10,
-    site_category: "barb-bear",
+    site_category: "barbarian",
     prc_type: "vanilla",
     prc_matcat: "barb-bear",
     pt_displayname: "Barbarian - Bear",
@@ -141,7 +141,7 @@ export default [
   },
   {
     index: 11,
-    site_category: "barb-bear",
+    site_category: "barbarian",
     prc_type: "vanilla",
     prc_matcat: "barb-bear",
     pt_displayname: "Barbarian - Bear",
@@ -155,7 +155,7 @@ export default [
   },
   {
     index: 12,
-    site_category: "barb-bear",
+    site_category: "barbarian",
     prc_type: "vanilla",
     prc_matcat: "barb-bear",
     pt_displayname: "Barbarian - Bear",
@@ -169,7 +169,7 @@ export default [
   },
   {
     index: 13,
-    site_category: "barb-bear",
+    site_category: "barbarian",
     prc_type: "vanilla",
     prc_matcat: "barb-bear",
     pt_displayname: "Barbarian - Bear",
@@ -183,7 +183,7 @@ export default [
   },
   {
     index: 14,
-    site_category: "barb-eagle",
+    site_category: "barbarian",
     prc_type: "vanilla",
     prc_matcat: "barb-eagle",
     pt_displayname: "Barbarian - Eagle",
@@ -197,7 +197,7 @@ export default [
   },
   {
     index: 15,
-    site_category: "barb-eagle",
+    site_category: "barbarian",
     prc_type: "vanilla",
     prc_matcat: "barb-eagle",
     pt_displayname: "Barbarian - Eagle",
@@ -211,7 +211,7 @@ export default [
   },
   {
     index: 16,
-    site_category: "barb-eagle",
+    site_category: "barbarian",
     prc_type: "vanilla",
     prc_matcat: "barb-eagle",
     pt_displayname: "Barbarian - Eagle",
@@ -225,7 +225,7 @@ export default [
   },
   {
     index: 17,
-    site_category: "barb-eagle",
+    site_category: "barbarian",
     prc_type: "vanilla",
     prc_matcat: "barb-eagle",
     pt_displayname: "Barbarian - Eagle",
@@ -239,7 +239,7 @@ export default [
   },
   {
     index: 18,
-    site_category: "barb-eagle",
+    site_category: "barbarian",
     prc_type: "vanilla",
     prc_matcat: "barb-eagle",
     pt_displayname: "Barbarian - Eagle",
@@ -253,7 +253,7 @@ export default [
   },
   {
     index: 19,
-    site_category: "barb-eagle",
+    site_category: "barbarian",
     prc_type: "vanilla",
     prc_matcat: "barb-eagle",
     pt_displayname: "Barbarian - Eagle",
@@ -267,7 +267,7 @@ export default [
   },
   {
     index: 20,
-    site_category: "barb-eagle",
+    site_category: "barbarian",
     prc_type: "vanilla",
     prc_matcat: "barb-eagle",
     pt_displayname: "Barbarian - Eagle",
@@ -281,7 +281,7 @@ export default [
   },
   {
     index: 21,
-    site_category: "barb-eagle",
+    site_category: "barbarian",
     prc_type: "vanilla",
     prc_matcat: "barb-eagle",
     pt_displayname: "Barbarian - Eagle",
@@ -295,7 +295,7 @@ export default [
   },
   {
     index: 22,
-    site_category: "barb-wolf",
+    site_category: "barbarian",
     prc_type: "vanilla",
     prc_matcat: "barb-wolf",
     pt_displayname: "Barbarian - Wolf",
@@ -309,7 +309,7 @@ export default [
   },
   {
     index: 23,
-    site_category: "barb-wolf",
+    site_category: "barbarian",
     prc_type: "vanilla",
     prc_matcat: "barb-wolf",
     pt_displayname: "Barbarian - Wolf",
@@ -323,7 +323,7 @@ export default [
   },
   {
     index: 24,
-    site_category: "barb-wolf",
+    site_category: "barbarian",
     prc_type: "vanilla",
     prc_matcat: "barb-wolf",
     pt_displayname: "Barbarian - Wolf",
@@ -337,7 +337,7 @@ export default [
   },
   {
     index: 25,
-    site_category: "barb-wolf",
+    site_category: "barbarian",
     prc_type: "vanilla",
     prc_matcat: "barb-wolf",
     pt_displayname: "Barbarian - Wolf",
@@ -351,7 +351,7 @@ export default [
   },
   {
     index: 26,
-    site_category: "barb-wolf",
+    site_category: "barbarian",
     prc_type: "vanilla",
     prc_matcat: "barb-wolf",
     pt_displayname: "Barbarian - Wolf",
@@ -365,7 +365,7 @@ export default [
   },
   {
     index: 27,
-    site_category: "barb-wolf",
+    site_category: "barbarian",
     prc_type: "vanilla",
     prc_matcat: "barb-wolf",
     pt_displayname: "Barbarian - Wolf",
@@ -379,7 +379,7 @@ export default [
   },
   {
     index: 28,
-    site_category: "barb-wolf",
+    site_category: "barbarian",
     prc_type: "vanilla",
     prc_matcat: "barb-wolf",
     pt_displayname: "Barbarian - Wolf",
@@ -393,7 +393,7 @@ export default [
   },
   {
     index: 29,
-    site_category: "barb-wolf",
+    site_category: "barbarian",
     prc_type: "vanilla",
     prc_matcat: "barb-wolf",
     pt_displayname: "Barbarian - Wolf",
@@ -407,7 +407,7 @@ export default [
   },
   {
     index: 30,
-    site_category: "barb-wolf",
+    site_category: "barbarian",
     prc_type: "vanilla",
     prc_matcat: "barb-wolf",
     pt_displayname: "Barbarian - Wolf",
@@ -421,7 +421,7 @@ export default [
   },
   {
     index: 31,
-    site_category: "barb-wolf",
+    site_category: "barbarian",
     prc_type: "vanilla",
     prc_matcat: "barb-wolf",
     pt_displayname: "Barbarian - Wolf",
@@ -435,7 +435,7 @@ export default [
   },
   {
     index: 32,
-    site_category: "barb-wolf",
+    site_category: "barbarian",
     prc_type: "vanilla",
     prc_matcat: "barb-wolf",
     pt_displayname: "Barbarian - Wolf",
@@ -449,7 +449,7 @@ export default [
   },
   {
     index: 33,
-    site_category: "barb-tiger",
+    site_category: "barbarian",
     prc_type: "vanilla",
     prc_matcat: "barb-tiger",
     pt_displayname: "Barbarian - Tiger",
@@ -463,7 +463,7 @@ export default [
   },
   {
     index: 34,
-    site_category: "barb-tiger",
+    site_category: "barbarian",
     prc_type: "vanilla",
     prc_matcat: "barb-tiger",
     pt_displayname: "Barbarian - Tiger",
@@ -477,7 +477,7 @@ export default [
   },
   {
     index: 35,
-    site_category: "barb-tiger",
+    site_category: "barbarian",
     prc_type: "vanilla",
     prc_matcat: "barb-tiger",
     pt_displayname: "Barbarian - Tiger",
@@ -491,7 +491,7 @@ export default [
   },
   {
     index: 36,
-    site_category: "barb-tiger",
+    site_category: "barbarian",
     prc_type: "vanilla",
     prc_matcat: "barb-tiger",
     pt_displayname: "Barbarian - Tiger",
@@ -505,7 +505,7 @@ export default [
   },
   {
     index: 37,
-    site_category: "barb-tiger",
+    site_category: "barbarian",
     prc_type: "vanilla",
     prc_matcat: "barb-tiger",
     pt_displayname: "Barbarian - Tiger",
@@ -519,7 +519,7 @@ export default [
   },
   {
     index: 38,
-    site_category: "barb-tiger",
+    site_category: "barbarian",
     prc_type: "vanilla",
     prc_matcat: "barb-tiger",
     pt_displayname: "Barbarian - Tiger",
@@ -533,7 +533,7 @@ export default [
   },
   {
     index: 39,
-    site_category: "barb-tiger",
+    site_category: "barbarian",
     prc_type: "vanilla",
     prc_matcat: "barb-tiger",
     pt_displayname: "Barbarian - Tiger",
@@ -547,7 +547,7 @@ export default [
   },
   {
     index: 40,
-    site_category: "barb-tiger",
+    site_category: "barbarian",
     prc_type: "vanilla",
     prc_matcat: "barb-tiger",
     pt_displayname: "Barbarian - Tiger",
@@ -561,7 +561,7 @@ export default [
   },
   {
     index: 41,
-    site_category: "barb-elk",
+    site_category: "barbarian",
     prc_type: "vanilla",
     prc_matcat: "barb-elk",
     pt_displayname: "Barbarian - Elk",
@@ -575,7 +575,7 @@ export default [
   },
   {
     index: 42,
-    site_category: "barb-elk",
+    site_category: "barbarian",
     prc_type: "vanilla",
     prc_matcat: "barb-elk",
     pt_displayname: "Barbarian - Elk",
@@ -589,7 +589,7 @@ export default [
   },
   {
     index: 43,
-    site_category: "barb-elk",
+    site_category: "barbarian",
     prc_type: "vanilla",
     prc_matcat: "barb-elk",
     pt_displayname: "Barbarian - Elk",
@@ -603,7 +603,7 @@ export default [
   },
   {
     index: 44,
-    site_category: "barb-elk",
+    site_category: "barbarian",
     prc_type: "vanilla",
     prc_matcat: "barb-elk",
     pt_displayname: "Barbarian - Elk",
@@ -617,7 +617,7 @@ export default [
   },
   {
     index: 45,
-    site_category: "barb-elk",
+    site_category: "barbarian",
     prc_type: "vanilla",
     prc_matcat: "barb-elk",
     pt_displayname: "Barbarian - Elk",
@@ -631,7 +631,7 @@ export default [
   },
   {
     index: 46,
-    site_category: "barb-elk",
+    site_category: "barbarian",
     prc_type: "vanilla",
     prc_matcat: "barb-elk",
     pt_displayname: "Barbarian - Elk",
@@ -645,7 +645,7 @@ export default [
   },
   {
     index: 47,
-    site_category: "barb-elk",
+    site_category: "barbarian",
     prc_type: "vanilla",
     prc_matcat: "barb-elk",
     pt_displayname: "Barbarian - Elk",
@@ -659,7 +659,7 @@ export default [
   },
   {
     index: 48,
-    site_category: "barb-elk",
+    site_category: "barbarian",
     prc_type: "vanilla",
     prc_matcat: "barb-elk",
     pt_displayname: "Barbarian - Elk",
@@ -673,7 +673,7 @@ export default [
   },
   {
     index: 49,
-    site_category: "barb-elk",
+    site_category: "barbarian",
     prc_type: "vanilla",
     prc_matcat: "barb-elk",
     pt_displayname: "Barbarian - Elk",

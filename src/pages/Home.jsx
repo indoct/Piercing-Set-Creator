@@ -9,42 +9,19 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function Home() {
   const [piercings, setPiercings] = useState(data);
-  const [vanillaSetA, setVanillaSetA] = useState({});
-  const [barbBear, setBarbBear] = useState({});
-  const [barbEagle, setBarbEagle] = useState({});
-  const [barbWolf, setBarbWolf] = useState({});
-  const [barbElk, setBarbElk] = useState({});
-  const [barbTiger, setBarbTiger] = useState({});
+  const [vanillaAll, setVanillaAll] = useState({});
   const [ispGold, setIspGold] = useState({});
   const [ispSilver, setIspSilver] = useState({});
 
   useEffect(() => {
-    const setAPrcs = piercings.filter(
-      (prc) => prc.site_category === "vanilla-ab"
-    );
-    setVanillaSetA(setAPrcs);
-    const bearPrcs = piercings.filter(
-      (prc) => prc.site_category === "barb-bear"
-    );
-    setBarbBear(bearPrcs);
-    const eaglePrcs = piercings.filter(
-      (prc) => prc.site_category === "barb-eagle"
-    );
-    setBarbEagle(eaglePrcs);
-    const wolfPrcs = piercings.filter(
-      (prc) => prc.site_category === "barb-wolf"
-    );
-    setBarbWolf(wolfPrcs);
-    const tigerPrcs = piercings.filter(
-      (prc) => prc.site_category === "barb-tiger"
-    );
-    setBarbTiger(tigerPrcs);
-    const elkPrcs = piercings.filter((prc) => prc.site_category === "barb-elk");
-    setBarbElk(elkPrcs);
+    const vanillaPrcs = piercings.filter((prc) => prc.prc_type === "vanilla");
+    setVanillaAll(vanillaPrcs);
+
     const ispGoldPrcs = piercings.filter(
       (prc) => prc.site_category === "isp_gold"
     );
     setIspGold(ispGoldPrcs);
+
     const ispSilverPrcs = piercings.filter(
       (prc) => prc.site_category === "isp_silver"
     );
@@ -58,22 +35,7 @@ export default function Home() {
     >
       <Container fluid>
         <Row>
-          <PiercingSetBlock set={vanillaSetA} />
-        </Row>
-        <Row>
-          <PiercingSetBlock set={barbBear} />
-        </Row>
-        <Row>
-          <PiercingSetBlock set={barbEagle} />
-        </Row>
-        <Row>
-          <PiercingSetBlock set={barbWolf} />
-        </Row>
-        <Row>
-          <PiercingSetBlock set={barbTiger} />
-        </Row>
-        <Row>
-          <PiercingSetBlock set={barbElk} />
+          <PiercingSetBlock set={vanillaAll} />
         </Row>
         <Row>
           <PiercingSetBlock set={ispGold} />

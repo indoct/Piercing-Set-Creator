@@ -205,9 +205,24 @@ label.selected {
 }
 
 .prc-container {
-  border: 1px solid #394047;
   padding: 0.8rem 1rem 0.5rem 1rem;
   border-radius: 8px;
+}
+
+.barbarian {
+  border: 1px solid #50fa7b;
+}
+
+.vanilla-ab {
+  border: 1px solid #bd93f9;
+}
+
+.ortheus {
+  border: 1px solid #394047;
+}
+
+.mod {
+  border: 1px solid #f1fa8c;
 }
 
 .img-dummy {
