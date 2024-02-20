@@ -1,7 +1,12 @@
+body {
+  background-color: #181617 !important;
+}
 #root {
   max-width: 1340px;
   margin: 0 auto;
   padding: 2rem;
+  background-color: #181617;
+  color: #f7f4f3;
 }
 
 html,
@@ -14,7 +19,8 @@ span,
 ul,
 li,
 form,
-label {
+label,
+button {
   font-family: "IBM Plex Sans", sans-serif;
 }
 
@@ -27,10 +33,48 @@ label {
   font-size: 1.1rem;
 }
 
+header {
+  padding-bottom: 1em;
+}
+
 header a {
   font-size: 1.2rem;
   text-decoration: none;
   font-weight: 600;
+}
+
+.filters {
+  gap: 20px;
+}
+
+.filter-btns {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.filter-btns button {
+  border: 0;
+  padding: 5px 12px;
+  border-radius: 16px;
+  font-size: 0.94em;
+}
+
+.filter-btns .vanilla button {
+  background-color: #10b160;
+}
+
+.filter-btns .mod button {
+  background-color: #f7762c;
+}
+
+.filter-btns .all-piercings button {
+  background-color: #9475c4;
+}
+
+.filter-btns button,
+.filter-btns span {
+  align-self: center;
 }
 
 .settings-box h4 {
@@ -184,7 +228,7 @@ label.selected {
 }
 
 .prc-col {
-  margin-bottom: 10px;
+  margin-bottom: 14px;
 }
 
 .prc-stats {
@@ -241,21 +285,21 @@ label.selected {
   background-color: #d3c36d;
 }
 
-/* .barbarian {
-  border: 1px solid #50fa7b;
+.barbarian {
+  border-bottom: 2px solid #10b160;
 }
 
 .vanilla-ab {
-  border: 1px solid #bd93f9;
+  border-bottom: 2px solid #9475c4;
 }
 
 .ortheus {
-  border: 1px solid #394047;
+  border-bottom: 2px solid #13addb;
 }
 
 .mod {
-  border: 1px solid #f1fa8c;
-} */
+  border-bottom: 2px solid #f7762c;
+}
 
 .img-dummy {
   display: block;

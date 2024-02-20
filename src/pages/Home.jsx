@@ -40,14 +40,8 @@ export default function Home() {
     piercing_tragus_a_r: "",
   });
 
-  console.log(prcsConfig);
-  // const [vanillaAll, setVanillaAll] = useState({});
-  // const [ispGold, setIspGold] = useState({});
-  // const [ispSilver, setIspSilver] = useState({});
-
   const typeFilter = searchParams.get("type");
   const colorFilter = searchParams.get("color");
-  console.log(colorFilter);
 
   const displayedPiercings =
     typeFilter && colorFilter
@@ -57,23 +51,6 @@ export default function Home() {
       : typeFilter && !colorFilter
       ? piercings.filter((prc) => prc.prc_type === typeFilter.toLowerCase())
       : piercings;
-
-  console.log(displayedPiercings);
-
-  // useEffect(() => {
-  //   const vanillaPrcs = piercings.filter((prc) => prc.prc_type === "vanilla");
-  //   setVanillaAll(vanillaPrcs);
-
-  //   const ispGoldPrcs = piercings.filter(
-  //     (prc) => prc.site_category === "isp_gold"
-  //   );
-  //   setIspGold(ispGoldPrcs);
-
-  //   const ispSilverPrcs = piercings.filter(
-  //     (prc) => prc.site_category === "isp_silver"
-  //   );
-  //   setIspSilver(ispSilverPrcs);
-  // }, [piercings]);
 
   const prcElements = displayedPiercings.map((prc) => {
     const contClass =
@@ -114,23 +91,33 @@ export default function Home() {
     >
       <Container fluid>
         <Row className="justify-content-md-center">
-          <Col>
-            <span>Type Filters:</span>
+          <Col className="d-flex filters">
             <div className="filter-btns">
-              <Link to="/">All Piercings</Link>
-              <Link to="?type=mod">Mod Only</Link>
-              <Link to="?type=vanilla">Vanilla Only</Link>
+              <span>Type Filters:</span>
+              <Link to="/" className="all-piercings">
+                <button>All Piercings</button>
+              </Link>
+              <Link to="?type=mod" className="mod">
+                {" "}
+                <button>Mod Only</button>
+              </Link>
+              <Link to="?type=vanilla" className="vanilla">
+                {" "}
+                <button>Vanilla Only</button>
+              </Link>
             </div>
-          </Col>
-          {typeFilter === "mod" && (
-            <Col>
-              <span>Sub-Filters: Color</span>
+            {typeFilter === "mod" && (
               <div className="filter-btns">
-                <Link to="?type=mod">Silver</Link>
-                <Link to="?type=mod&color=gold">Gold</Link>
+                <span>Piercing Metal Color:</span>
+                <Link to="?type=mod">
+                  <button>Silver</button>
+                </Link>
+                <Link to="?type=mod&color=gold">
+                  <button>Gold</button>
+                </Link>
               </div>
-            </Col>
-          )}
+            )}
+          </Col>
         </Row>
         <Row className="mt-4">
           <h5>
