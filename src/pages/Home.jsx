@@ -54,67 +54,122 @@ export default function Home() {
   const colorFilter = searchParams.get("color");
   const locaFilter = searchParams.get("location");
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    const genLoca = piercings.map((prc) => {
+      if (
+        prc.location_code === "piercing_nostril_a_l" ||
+        prc.location_code === "piercing_nostril_a_r" ||
+        prc.location_code === "piercing_septum_a_m" ||
+        prc.location_code === "piercing_bridge_a_l" ||
+        prc.location_code === "piercing_bridge_a_r"
+      ) {
+        return {
+          ...prc,
+          gen_location: "nose",
+        };
+      } else if (
+        prc.location_code === "beard_upper_lip_m" ||
+        prc.location_code === "beard_upper_lip1_l" ||
+        prc.location_code === "beard_upper_lip1_r" ||
+        prc.location_code === "lowerlip_04" ||
+        prc.location_code === "lowerlip_06" ||
+        prc.location_code === "lowerlip_08"
+      ) {
+        return {
+          ...prc,
+          gen_location: "lips",
+        };
+      } else if (
+        prc.location_code === "piercing_brow_a_l" ||
+        prc.location_code === "piercing_brow_a_r" ||
+        prc.location_code === "piercing_brow_b_l" ||
+        prc.location_code === "piercing_brow_b_l"
+      ) {
+        return {
+          ...prc,
+          gen_location: "brows",
+        };
+      } else {
+        return {
+          ...prc,
+          gen_location: "ears",
+        };
+      }
+    });
+    setPiercings(genLoca);
+  }, []);
 
-  function filterLocations(loca) {
-    const filtered =
-      loca === "nose"
-        ? piercings.filter(
-            (prc) =>
-              prc.location_code === "piercing_nostril_a_l" ||
-              prc.location_code === "piercing_nostril_a_r" ||
-              prc.location_code === "piercing_septum_a_m" ||
-              prc.location_code === "piercing_bridge_a_l" ||
-              prc.location_code === "piercing_bridge_a_r"
-          )
-        : loca === "lips"
-        ? piercings.filter(
-            (prc) =>
-              prc.location_code === "beard_upper_lip_m" ||
-              prc.location_code === "beard_upper_lip1_l" ||
-              prc.location_code === "beard_upper_lip1_r" ||
-              prc.location_code === "lowerlip_04" ||
-              prc.location_code === "lowerlip_06" ||
-              prc.location_code === "lowerlip_08"
-          )
-        : loca === "brows"
-        ? piercings.filter(
-            (prc) =>
-              prc.location_code === "piercing_brow_a_l" ||
-              prc.location_code === "piercing_brow_a_r" ||
-              prc.location_code === "piercing_brow_b_l" ||
-              prc.location_code === "piercing_brow_b_l"
-          )
-        : piercings.filter(
-            (prc) =>
-              prc.location_code === "piercing_helix_a_l" ||
-              prc.location_code === "piercing_helix_a_r" ||
-              prc.location_code === "piercing_helix_b_l" ||
-              prc.location_code === "piercing_helix_b_r" ||
-              prc.location_code === "piercing_lobe_a_l" ||
-              prc.location_code === "piercing_lobe_a_r" ||
-              prc.location_code === "piercing_lobe_b_l" ||
-              prc.location_code === "piercing_lobe_b_r" ||
-              prc.location_code === "piercing_tragus_a_l" ||
-              prc.location_code === "piercing_tragus_a_r"
-          );
-    const typeFiltered = piercings.filter((prc) => prc.prc_type === typeFilter);
-    return filtered.concat(typeFiltered);
-  }
+  // function filterLocations(loca) {
+  //   const filtered =
+  //     loca === "nose"
+  //       ? piercings.filter(
+  //           (prc) =>
+  //             prc.location_code === "piercing_nostril_a_l" ||
+  //             prc.location_code === "piercing_nostril_a_r" ||
+  //             prc.location_code === "piercing_septum_a_m" ||
+  //             prc.location_code === "piercing_bridge_a_l" ||
+  //             prc.location_code === "piercing_bridge_a_r"
+  //         )
+  //       : loca === "lips"
+  //       ? piercings.filter(
+  //           (prc) =>
+  //             prc.location_code === "beard_upper_lip_m" ||
+  //             prc.location_code === "beard_upper_lip1_l" ||
+  //             prc.location_code === "beard_upper_lip1_r" ||
+  //             prc.location_code === "lowerlip_04" ||
+  //             prc.location_code === "lowerlip_06" ||
+  //             prc.location_code === "lowerlip_08"
+  //         )
+  //       : loca === "brows"
+  //       ? piercings.filter(
+  //           (prc) =>
+  //             prc.location_code === "piercing_brow_a_l" ||
+  //             prc.location_code === "piercing_brow_a_r" ||
+  //             prc.location_code === "piercing_brow_b_l" ||
+  //             prc.location_code === "piercing_brow_b_l"
+  //         )
+  //       : piercings.filter(
+  //           (prc) =>
+  //             prc.location_code === "piercing_helix_a_l" ||
+  //             prc.location_code === "piercing_helix_a_r" ||
+  //             prc.location_code === "piercing_helix_b_l" ||
+  //             prc.location_code === "piercing_helix_b_r" ||
+  //             prc.location_code === "piercing_lobe_a_l" ||
+  //             prc.location_code === "piercing_lobe_a_r" ||
+  //             prc.location_code === "piercing_lobe_b_l" ||
+  //             prc.location_code === "piercing_lobe_b_r" ||
+  //             prc.location_code === "piercing_tragus_a_l" ||
+  //             prc.location_code === "piercing_tragus_a_r"
+  //         );
+  //   const typeFiltered = piercings.filter((prc) => prc.prc_type === typeFilter);
+  //   return filtered.concat(typeFiltered);
+  // }
 
   console.log(locaFilter);
+  console.log(colorFilter);
+  console.log(typeFilter);
 
   const displayedPiercings =
     typeFilter && colorFilter
       ? piercings.filter(
           (prc) => prc.prc_type === typeFilter && prc.prc_color === colorFilter
         )
-      : (typeFilter && locaFilter) ||
-        (typeFilter && locaFilter && colorFilter) ||
-        locaFilter
-      ? filterLocations(locaFilter)
+      : typeFilter && locaFilter && colorFilter
+      ? piercings.filter(
+          (prc) =>
+            prc.prc_type === typeFilter &&
+            prc.gen_location === locaFilter &&
+            prc.prc_color === colorFilter
+        )
+      : typeFilter && locaFilter && !colorFilter
+      ? piercings.filter(
+          (prc) =>
+            prc.prc_type === typeFilter && prc.gen_location === locaFilter
+        )
+      : locaFilter && !typeFilter
+      ? piercings.filter((prc) => prc.gen_location === locaFilter)
       : typeFilter && !colorFilter
-      ? piercings.filter((prc) => prc.prc_type === typeFilter.toLowerCase())
+      ? piercings.filter((prc) => prc.prc_type === typeFilter)
       : piercings;
 
   const prcElements = displayedPiercings.map((prc) => {
