@@ -3,17 +3,19 @@ import { Link, useSearchParams } from "react-router-dom";
 import data from "../data";
 import ThemeProvider from "react-bootstrap/ThemeProvider";
 import "../App.css";
-import PiercingSetBlock from "../components/PiercingSetBlock";
+import SetModal from "../components/SetModal";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function Home() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [piercings, setPiercings] = useState(data);
   const [prcsConfig, setPrcsConfig] = useState({
-    lowerlip_04: "",
+    lowerlip_04: "testing",
     lowerlip_06: "",
     lowerlip_08: "",
     beard_upper_lip_m: "",
@@ -39,15 +41,76 @@ export default function Home() {
     piercing_tragus_a_l: "",
     piercing_tragus_a_r: "",
   });
+  const [show, setShow] = useState(false);
+  // const [nose, setNose] = useState({});
+  // const [lips, setLips] = useState({});
+  // const [ears, setEars] = useState({});
+  // const [brows, setBrows] = useState({});
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const typeFilter = searchParams.get("type");
   const colorFilter = searchParams.get("color");
+  const locaFilter = searchParams.get("location");
+
+  function filterLocations(loca) {
+    const filtered =
+      loca === "nose"
+        ? piercings.filter(
+            (prc) =>
+              prc.location_code === "piercing_nostril_a_l" ||
+              prc.location_code === "piercing_nostril_a_r" ||
+              prc.location_code === "piercing_septum_a_m" ||
+              prc.location_code === "piercing_bridge_a_l" ||
+              prc.location_code === "piercing_bridge_a_r"
+          )
+        : loca === "lips"
+        ? piercings.filter(
+            (prc) =>
+              prc.location_code === "beard_upper_lip_m" ||
+              prc.location_code === "beard_upper_lip1_l" ||
+              prc.location_code === "beard_upper_lip1_r" ||
+              prc.location_code === "lowerlip_04" ||
+              prc.location_code === "lowerlip_06" ||
+              prc.location_code === "lowerlip_08"
+          )
+        : loca === "brows"
+        ? piercings.filter(
+            (prc) =>
+              prc.location_code === "piercing_brow_a_l" ||
+              prc.location_code === "piercing_brow_a_r" ||
+              prc.location_code === "piercing_brow_b_l" ||
+              prc.location_code === "piercing_brow_b_l"
+          )
+        : piercings.filter(
+            (prc) =>
+              prc.location_code === "piercing_helix_a_l" ||
+              prc.location_code === "piercing_helix_a_r" ||
+              prc.location_code === "piercing_helix_b_l" ||
+              prc.location_code === "piercing_helix_b_r" ||
+              prc.location_code === "piercing_lobe_a_l" ||
+              prc.location_code === "piercing_lobe_a_r" ||
+              prc.location_code === "piercing_lobe_b_l" ||
+              prc.location_code === "piercing_lobe_b_r" ||
+              prc.location_code === "piercing_tragus_a_l" ||
+              prc.location_code === "piercing_tragus_a_r"
+          );
+    const typeFiltered = piercings.filter((prc) => prc.prc_type === typeFilter);
+    return filtered.concat(typeFiltered);
+  }
+
+  console.log(locaFilter);
 
   const displayedPiercings =
     typeFilter && colorFilter
       ? piercings.filter(
           (prc) => prc.prc_type === typeFilter && prc.prc_color === colorFilter
         )
+      : (typeFilter && locaFilter) ||
+        (typeFilter && locaFilter && colorFilter) ||
+        locaFilter
+      ? filterLocations(locaFilter)
       : typeFilter && !colorFilter
       ? piercings.filter((prc) => prc.prc_type === typeFilter.toLowerCase())
       : piercings;
@@ -106,10 +169,13 @@ export default function Home() {
             <div className="filter-btns">
               <span>Type Filters:</span>
               <button
-                onClick={() => handleFilterChange("type", null)}
+                onClick={() => {
+                  handleFilterChange("type", null);
+                  handleFilterChange("color", null);
+                }}
                 className={`all-piercings ${!typeFilter ? "selected" : ""}`}
               >
-                All Piercings
+                Everything
               </button>
               <button
                 onClick={() => handleFilterChange("type", "mod")}
@@ -118,7 +184,10 @@ export default function Home() {
                 Mod Only
               </button>
               <button
-                onClick={() => handleFilterChange("type", "vanilla")}
+                onClick={() => {
+                  handleFilterChange("type", "vanilla");
+                  handleFilterChange("color", null);
+                }}
                 className={`vanilla ${
                   typeFilter === "vanilla" ? "selected" : ""
                 }`}
@@ -147,6 +216,26 @@ export default function Home() {
                 </button>
               </div>
             )}
+          </Col>
+          <Col>
+            <Button variant="primary" onClick={handleShow}>
+              Launch demo modal
+            </Button>
+
+            <Modal show={show} onHide={handleClose}>
+              <Modal.Header closeButton>
+                <Modal.Title>Modal heading</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>{prcsConfig.lowerlip_04}</Modal.Body>
+              <Modal.Footer>
+                <Button variant="secondary" onClick={handleClose}>
+                  Close
+                </Button>
+                <Button variant="primary" onClick={handleClose}>
+                  Save Changes
+                </Button>
+              </Modal.Footer>
+            </Modal>
           </Col>
         </Row>
         <Row className="mt-4">

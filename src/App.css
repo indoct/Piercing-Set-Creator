@@ -38,9 +38,10 @@ header {
 }
 
 header a {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   text-decoration: none;
   font-weight: 600;
+  color: #edddd4;
 }
 
 .filters {
@@ -51,25 +52,40 @@ header a {
   display: flex;
   flex-direction: row;
   gap: 10px;
+  padding: 8px 16px;
+  background-color: #403b3e;
+  border-radius: 8px;
+}
+
+.filters span {
+  font-size: 1rem;
 }
 
 .filter-btns button {
-  border: 0;
+  background: transparent;
+  border: 1px solid #837c80;
   padding: 5px 12px;
   border-radius: 16px;
-  font-size: 0.94em;
+  font-size: 0.92em;
 }
 
+.filter-btns .selected {
+  font-weight: 600;
+  color: #000;
+}
 .vanilla.selected {
   background-color: #10b160;
+  border: 1px solid #10b160;
 }
 
 .mod-btn.selected {
   background-color: #f7762c;
+  border: 1px solid #f7762c;
 }
 
 .all-piercings.selected {
   background-color: #9475c4;
+  border: 1px solid #9475c4;
 }
 
 .gold-btn.selected {
