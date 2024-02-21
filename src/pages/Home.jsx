@@ -54,6 +54,8 @@ export default function Home() {
   const colorFilter = searchParams.get("color");
   const locaFilter = searchParams.get("location");
 
+  useEffect(() => {}, []);
+
   function filterLocations(loca) {
     const filtered =
       loca === "nose"
