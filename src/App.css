@@ -1,6 +1,12 @@
+html {
+  scrollbar-gutter: stable;
+}
+
 body {
   background-color: #181617 !important;
+  padding-right: 0 !important;
 }
+
 #root {
   max-width: 1340px;
   margin: 0 auto;
@@ -14,13 +20,17 @@ h1,
 h2,
 h3,
 h4,
+h5,
 p,
 span,
 ul,
 li,
 form,
 label,
-button {
+button.btn,
+.filter-btns button,
+a,
+.modal-content {
   font-family: "IBM Plex Sans", sans-serif;
 }
 
@@ -42,6 +52,10 @@ header a {
   text-decoration: none;
   font-weight: 600;
   color: #edddd4;
+}
+
+#set-config .modal-content {
+  background-color: #181617;
 }
 
 .filters {
@@ -67,6 +81,11 @@ header a {
   padding: 5px 12px;
   border-radius: 16px;
   font-size: 0.92em;
+}
+
+.filter.selected {
+  background-color: #13addb;
+  border: 1px solid #13addb;
 }
 
 .filter-btns .selected {
@@ -99,6 +118,14 @@ header a {
 .filter-btns button,
 .filter-btns span {
   align-self: center;
+}
+
+.filter-btns button.clear-btn {
+  border-radius: 5px;
+  background-color: hsl(330 4% 70% / 1);
+  color: #181617;
+  font-weight: 600;
+  margin-left: 10px;
 }
 
 .settings-box h4 {
@@ -138,7 +165,7 @@ legend {
   flex: 1;
   text-align: center;
   padding: 0.6em 0.6em 0.3em;
-  border: 1px solid #394047;
+  border: 1px solid #3a3638;
   border-radius: 10px;
   line-height: 1.2;
   font-size: 1rem;
@@ -146,7 +173,7 @@ legend {
 
 .display-option {
   padding: 0.6em;
-  border: 1px solid #394047;
+  border: 1px solid #3a3638;
   border-radius: 10px;
   margin-bottom: 10px;
   font-weight: 600;
@@ -163,7 +190,7 @@ legend {
 .color-option:hover,
 .display-option:hover {
   cursor: pointer;
-  background-color: #394047;
+  background-color: #3a3638;
 }
 
 .settings-box input[type="radio"] {
@@ -172,7 +199,7 @@ legend {
 
 .settings-box input[type="radio"]:checked + label,
 .settings-box input[type="checkbox"]:checked + label {
-  background-color: #394047 !important;
+  background-color: #3a3638 !important;
 }
 
 /* .settings-box input[type="radio"] {
@@ -235,8 +262,8 @@ label.selected {
   margin-top: 12px;
   display: block;
   background-color: #50fa7b;
-  color: #394047;
-  border: 1px solid #394047;
+  color: #3a3638;
+  border: 1px solid #3a3638;
   padding: 1em 1.2em;
   max-width: 300px;
   text-decoration: none;
@@ -275,13 +302,12 @@ label.selected {
 .prc-container {
   padding: 0.8rem 1rem 0.5rem 1rem;
   border-radius: 8px;
-  border: 1px solid #394047;
+  border: 1px solid #3a3638;
 }
 
 .prc-container:hover {
   cursor: pointer;
-  background-color: #30353b;
-  border: 1px solid #6c7680;
+  background-color: #3a3638;
 }
 
 .color-tag {

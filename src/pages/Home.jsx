@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import data from "../data";
 import ThemeProvider from "react-bootstrap/ThemeProvider";
 import "../App.css";
-import SetModal from "../components/SetModal";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import { Tooltip } from "react-tooltip";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function Home() {
@@ -42,16 +42,11 @@ export default function Home() {
     piercing_tragus_a_r: "",
   });
   const [show, setShow] = useState(false);
-  // const [nose, setNose] = useState({});
-  // const [lips, setLips] = useState({});
-  // const [ears, setEars] = useState({});
-  // const [brows, setBrows] = useState({});
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   const typeFilter = searchParams.get("type");
-  const colorFilter = searchParams.get("color");
   const locaFilter = searchParams.get("location");
 
   useEffect(() => {
@@ -83,7 +78,7 @@ export default function Home() {
         prc.location_code === "piercing_brow_a_l" ||
         prc.location_code === "piercing_brow_a_r" ||
         prc.location_code === "piercing_brow_b_l" ||
-        prc.location_code === "piercing_brow_b_l"
+        prc.location_code === "piercing_brow_b_r"
       ) {
         return {
           ...prc,
@@ -99,77 +94,19 @@ export default function Home() {
     setPiercings(genLoca);
   }, []);
 
-  // function filterLocations(loca) {
-  //   const filtered =
-  //     loca === "nose"
-  //       ? piercings.filter(
-  //           (prc) =>
-  //             prc.location_code === "piercing_nostril_a_l" ||
-  //             prc.location_code === "piercing_nostril_a_r" ||
-  //             prc.location_code === "piercing_septum_a_m" ||
-  //             prc.location_code === "piercing_bridge_a_l" ||
-  //             prc.location_code === "piercing_bridge_a_r"
-  //         )
-  //       : loca === "lips"
-  //       ? piercings.filter(
-  //           (prc) =>
-  //             prc.location_code === "beard_upper_lip_m" ||
-  //             prc.location_code === "beard_upper_lip1_l" ||
-  //             prc.location_code === "beard_upper_lip1_r" ||
-  //             prc.location_code === "lowerlip_04" ||
-  //             prc.location_code === "lowerlip_06" ||
-  //             prc.location_code === "lowerlip_08"
-  //         )
-  //       : loca === "brows"
-  //       ? piercings.filter(
-  //           (prc) =>
-  //             prc.location_code === "piercing_brow_a_l" ||
-  //             prc.location_code === "piercing_brow_a_r" ||
-  //             prc.location_code === "piercing_brow_b_l" ||
-  //             prc.location_code === "piercing_brow_b_l"
-  //         )
-  //       : piercings.filter(
-  //           (prc) =>
-  //             prc.location_code === "piercing_helix_a_l" ||
-  //             prc.location_code === "piercing_helix_a_r" ||
-  //             prc.location_code === "piercing_helix_b_l" ||
-  //             prc.location_code === "piercing_helix_b_r" ||
-  //             prc.location_code === "piercing_lobe_a_l" ||
-  //             prc.location_code === "piercing_lobe_a_r" ||
-  //             prc.location_code === "piercing_lobe_b_l" ||
-  //             prc.location_code === "piercing_lobe_b_r" ||
-  //             prc.location_code === "piercing_tragus_a_l" ||
-  //             prc.location_code === "piercing_tragus_a_r"
-  //         );
-  //   const typeFiltered = piercings.filter((prc) => prc.prc_type === typeFilter);
-  //   return filtered.concat(typeFiltered);
-  // }
-
   console.log(locaFilter);
-  console.log(colorFilter);
   console.log(typeFilter);
 
   const displayedPiercings =
-    typeFilter && colorFilter
-      ? piercings.filter(
-          (prc) => prc.prc_type === typeFilter && prc.prc_color === colorFilter
-        )
-      : typeFilter && locaFilter && colorFilter
-      ? piercings.filter(
-          (prc) =>
-            prc.prc_type === typeFilter &&
-            prc.gen_location === locaFilter &&
-            prc.prc_color === colorFilter
-        )
-      : typeFilter && locaFilter && !colorFilter
+    typeFilter && !locaFilter
+      ? piercings.filter((prc) => prc.prc_type === typeFilter)
+      : typeFilter && locaFilter
       ? piercings.filter(
           (prc) =>
             prc.prc_type === typeFilter && prc.gen_location === locaFilter
         )
       : locaFilter && !typeFilter
       ? piercings.filter((prc) => prc.gen_location === locaFilter)
-      : typeFilter && !colorFilter
-      ? piercings.filter((prc) => prc.prc_type === typeFilter)
       : piercings;
 
   const prcElements = displayedPiercings.map((prc) => {
@@ -182,7 +119,7 @@ export default function Home() {
         ? "ortheus prc-container"
         : "mod prc-container";
     return (
-      <Col key={prc.prc_nodeid} xl={2} className="prc-col">
+      <Col key={prc.prc_nodeid} lg={2} className="prc-col">
         <div className={contClass}>
           <div className="img-dummy">
             <span
@@ -220,19 +157,18 @@ export default function Home() {
       breakpoints={["xxxl", "xxl", "xl", "lg", "md", "sm", "xs", "xxs"]}
       minBreakpoint="xxs"
     >
-      <Container fluid>
-        <Row className="justify-content-md-center">
-          <Col className="d-flex filters">
+      <Container>
+        <Row>
+          <Col lg={4}>
             <div className="filter-btns">
-              <span>Type Filters:</span>
+              <span>Type:</span>
               <button
                 onClick={() => {
                   handleFilterChange("type", null);
-                  handleFilterChange("color", null);
                 }}
                 className={`all-piercings ${!typeFilter ? "selected" : ""}`}
               >
-                Everything
+                Show All
               </button>
               <button
                 onClick={() => handleFilterChange("type", "mod")}
@@ -243,45 +179,75 @@ export default function Home() {
               <button
                 onClick={() => {
                   handleFilterChange("type", "vanilla");
-                  handleFilterChange("color", null);
                 }}
                 className={`vanilla ${
                   typeFilter === "vanilla" ? "selected" : ""
                 }`}
+                disabled={locaFilter === "lips"}
+                data-tooltip-id="my-tooltip"
+                data-tooltip-content="There are no vanilla piercings in the lip slot, change/clear the location filter to enable this filter"
+                data-tooltip-place="bottom"
               >
                 Vanilla Only
               </button>
             </div>
-            {typeFilter === "mod" && (
-              <div className="filter-btns">
-                <span>Piercing Metal Color:</span>
-                <button
-                  onClick={() => handleFilterChange("color", null)}
-                  className={`silver-btn ${
-                    colorFilter === null ? "selected" : ""
-                  }`}
-                >
-                  Silver
-                </button>
-                <button
-                  onClick={() => handleFilterChange("color", "gold")}
-                  className={`gold-btn ${
-                    colorFilter === "gold" ? "selected" : ""
-                  }`}
-                >
-                  Gold
-                </button>
-              </div>
-            )}
           </Col>
-          <Col>
+          <Col lg={5}>
+            <div className="filter-btns">
+              <span>Location:</span>
+              <button
+                onClick={() => {
+                  handleFilterChange("location", "ears");
+                }}
+                className={`filter ${locaFilter === "ears" ? "selected" : ""}`}
+              >
+                Ears
+              </button>
+              <button
+                onClick={() => handleFilterChange("location", "nose")}
+                className={`filter ${locaFilter === "nose" ? "selected" : ""}`}
+              >
+                Nose
+              </button>
+              <button
+                onClick={() => {
+                  handleFilterChange("location", "brows");
+                }}
+                className={`filter ${locaFilter === "brows" ? "selected" : ""}`}
+              >
+                Brows
+              </button>
+              <button
+                onClick={() => {
+                  handleFilterChange("location", "lips");
+                  if (typeFilter === "vanilla")
+                    handleFilterChange("type", null);
+                }}
+                className={`filter ${locaFilter === "lips" ? "selected" : ""}`}
+              >
+                Lips
+              </button>
+              {locaFilter && (
+                <button
+                  onClick={() => {
+                    handleFilterChange("location", null);
+                  }}
+                  className="clear-btn"
+                >
+                  Clear Filter
+                </button>
+              )}
+            </div>
+            {locaFilter === "lips" && <Tooltip id="my-tooltip" />}
+          </Col>
+          <Col lg={3} className="d-flex justify-content-md-end">
             <Button variant="primary" onClick={handleShow}>
-              Launch demo modal
+              My Current Set Config
             </Button>
 
-            <Modal show={show} onHide={handleClose}>
+            <Modal show={show} onHide={handleClose} id="set-config">
               <Modal.Header closeButton>
-                <Modal.Title>Modal heading</Modal.Title>
+                <Modal.Title>Current Set Config</Modal.Title>
               </Modal.Header>
               <Modal.Body>{prcsConfig.lowerlip_04}</Modal.Body>
               <Modal.Footer>
@@ -305,15 +271,6 @@ export default function Home() {
           </h5>
         </Row>
         <Row className="mt-2">{prcElements}</Row>
-        {/* <Row>
-          <PiercingSetBlock set={vanillaAll} />
-        </Row>
-        <Row>
-          <PiercingSetBlock set={ispGold} />
-        </Row>
-        <Row>
-          <PiercingSetBlock set={ispSilver} />
-        </Row> */}
       </Container>
     </ThemeProvider>
   );
