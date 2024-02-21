@@ -310,6 +310,11 @@ label.selected {
   background-color: #3a3638;
 }
 
+.prc-container.selected {
+  background-color: #3a3638;
+  border: 2px solid #fff;
+}
+
 .color-tag {
   letter-spacing: 0.4px;
   display: inline-block;

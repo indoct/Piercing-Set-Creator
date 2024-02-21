@@ -10,7 +10,7 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { Tooltip } from "react-tooltip";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { display } from "@mui/system";
+import { nanoid } from "nanoid";
 
 export default function Home() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -42,6 +42,35 @@ export default function Home() {
     piercing_tragus_a_l: "",
     piercing_tragus_a_r: "",
   });
+  // const [prcsConfig, setPrcsConfig] = useState({
+  //   "Labret (R)": "Double Ball Studs",
+  //   lowerlip_06: "",
+  //   lowerlip_08: "",
+  //   beard_upper_lip_m: "",
+  //   beard_upper_lip1_l: "",
+  //   beard_upper_lip1_r: "",
+  //   piercing_bridge_a_l: "",
+  //   piercing_bridge_a_r: "",
+  //   piercing_brow_a_l: "",
+  //   piercing_brow_a_r: "",
+  //   piercing_brow_b_l: "",
+  //   piercing_brow_b_r: "",
+  //   piercing_helix_a_l: "",
+  //   piercing_helix_a_r: "",
+  //   piercing_helix_b_l: "",
+  //   piercing_helix_b_r: "",
+  //   piercing_lobe_a_l: "",
+  //   piercing_lobe_a_r: "",
+  //   piercing_lobe_b_l: "",
+  //   piercing_lobe_b_r: "",
+  //   piercing_nostril_a_l: "",
+  //   piercing_nostril_a_r: "",
+  //   piercing_septum_a_m: "",
+  //   piercing_tragus_a_l: "",
+  //   piercing_tragus_a_r: "",
+  // });
+  const [userSet, setUserSet] = useState([]);
+
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -61,6 +90,7 @@ export default function Home() {
       ) {
         return {
           ...prc,
+          selected: false,
           gen_location: "nose",
         };
       } else if (
@@ -73,6 +103,7 @@ export default function Home() {
       ) {
         return {
           ...prc,
+          selected: false,
           gen_location: "lips",
         };
       } else if (
@@ -84,11 +115,13 @@ export default function Home() {
         return {
           ...prc,
           gen_location: "brows",
+          selected: false,
         };
       } else {
         return {
           ...prc,
           gen_location: "ears",
+          selected: false,
         };
       }
     });
@@ -116,9 +149,14 @@ export default function Home() {
         : prc.site_category === "ortheus"
         ? "ortheus prc-container"
         : "mod prc-container";
+    const nodeId = prc.prc_nodeid;
+    const nodeLoca = prc.location_code;
     return (
       <Col key={prc.prc_nodeid} lg={2} className="prc-col">
-        <div className={contClass}>
+        <div
+          className={`${contClass} ${prc.selected ? "selected" : ""}`}
+          onClick={(e) => selectPiercing(e, nodeId, nodeLoca)}
+        >
           <div className="img-dummy">
             <span
               className={
@@ -139,6 +177,42 @@ export default function Home() {
     );
   });
 
+  function selectPiercing(e, nodeId, nodeLoca) {
+    setPiercings((prevPrcs) =>
+      prevPrcs.map((prc) => {
+        return nodeId === prc.prc_nodeid
+          ? {
+              ...prc,
+              selected: !prc.selected,
+            }
+          : prc;
+      })
+    );
+    // console.log(nodeLoca);
+    // e.currentTarget.classList.toggle("selected");
+    // setPrcsConfig((prevPrcs) => {
+    //   return {
+    //     ...prevPrcs,
+    //     [nodeLoca]: nodeId,
+    //   };
+    // });
+    // Object.entries(prcsConfig).forEach((prcArr) => {
+    //   if (prcArr[0] === nodeLoca) console.log(prcArr);
+    // });
+    // console.log(nodeId);
+    // console.log(nodeLoca);
+    // const userSelected = piercings.filter((prc) => prc.prc_nodeid === nodeId);
+    // setUserSet((prevPrcs) => {
+    //   return [...prevPrcs, userSelected];
+    // });
+  }
+
+  // useEffect(() => {
+  //   setPrcsConfig((prevConfig) => {
+  //     prevConfig.map((location) => {});
+  //   });
+  // }, [piercings]);
+
   function handleFilterChange(key, value) {
     setSearchParams((prevParams) => {
       if (value === null) {
@@ -151,11 +225,17 @@ export default function Home() {
   }
 
   function displayConfig() {
-    const userPrcs = Object.keys(prcsConfig);
-    console.log(userPrcs);
+    const userPrcs = Object.entries(prcsConfig);
+    return userPrcs.map((prc) => {
+      if (prc[1].length > 0) {
+        return (
+          <p key={nanoid}>
+            {prc[0]}: {prc[1]}
+          </p>
+        );
+      }
+    });
   }
-
-  displayConfig();
 
   return (
     <ThemeProvider
@@ -254,7 +334,7 @@ export default function Home() {
               <Modal.Header closeButton>
                 <Modal.Title>Current Set Config</Modal.Title>
               </Modal.Header>
-              <Modal.Body>{prcsConfig.lowerlip_04}</Modal.Body>
+              <Modal.Body>{displayConfig()}</Modal.Body>
               <Modal.Footer>
                 <Button variant="secondary" onClick={handleClose}>
                   Close
