@@ -10,12 +10,13 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { Tooltip } from "react-tooltip";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { display } from "@mui/system";
 
 export default function Home() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [piercings, setPiercings] = useState(data);
   const [prcsConfig, setPrcsConfig] = useState({
-    lowerlip_04: "testing",
+    lowerlip_04: ["Labret (R)", "testing"],
     lowerlip_06: "",
     lowerlip_08: "",
     beard_upper_lip_m: "",
@@ -94,9 +95,6 @@ export default function Home() {
     setPiercings(genLoca);
   }, []);
 
-  console.log(locaFilter);
-  console.log(typeFilter);
-
   const displayedPiercings =
     typeFilter && !locaFilter
       ? piercings.filter((prc) => prc.prc_type === typeFilter)
@@ -151,6 +149,13 @@ export default function Home() {
       return prevParams;
     });
   }
+
+  function displayConfig() {
+    const userPrcs = Object.keys(prcsConfig);
+    console.log(userPrcs);
+  }
+
+  displayConfig();
 
   return (
     <ThemeProvider
