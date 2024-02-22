@@ -42,34 +42,6 @@ export default function Home() {
     piercing_tragus_a_l: "",
     piercing_tragus_a_r: "",
   });
-  // const [prcsConfig, setPrcsConfig] = useState({
-  //   "Labret (R)": "Double Ball Studs",
-  //   lowerlip_06: "",
-  //   lowerlip_08: "",
-  //   beard_upper_lip_m: "",
-  //   beard_upper_lip1_l: "",
-  //   beard_upper_lip1_r: "",
-  //   piercing_bridge_a_l: "",
-  //   piercing_bridge_a_r: "",
-  //   piercing_brow_a_l: "",
-  //   piercing_brow_a_r: "",
-  //   piercing_brow_b_l: "",
-  //   piercing_brow_b_r: "",
-  //   piercing_helix_a_l: "",
-  //   piercing_helix_a_r: "",
-  //   piercing_helix_b_l: "",
-  //   piercing_helix_b_r: "",
-  //   piercing_lobe_a_l: "",
-  //   piercing_lobe_a_r: "",
-  //   piercing_lobe_b_l: "",
-  //   piercing_lobe_b_r: "",
-  //   piercing_nostril_a_l: "",
-  //   piercing_nostril_a_r: "",
-  //   piercing_septum_a_m: "",
-  //   piercing_tragus_a_l: "",
-  //   piercing_tragus_a_r: "",
-  // });
-  const [userSet, setUserSet] = useState([]);
 
   const [show, setShow] = useState(false);
 
@@ -144,20 +116,7 @@ export default function Home() {
       ? piercings.filter((prc) => prc.gen_location === locaFilter)
       : piercings;
 
-  // function disableNotSelected(piercing, prcLoca) {
-  //   console.log(piercing, prcLoca);
-  //   const nonSelected = piercings.filter(
-  //     (prc) => !prc.selected && prcLoca === prc.location_code
-  //   );
-  //   console.log(nonSelected);
-  // }
-
   const prcElements = displayedPiercings.map((prc) => {
-    // if (prc.selected) {
-    //   console.log(prc.prc_nodeid, prc.location_code);
-    // }
-    // const disabledBtn = !prc.selected &&
-    // if (prc.selected) disableNotSelected(prc, prc.location_code);
     const contClass =
       prc.site_category === "vanilla-ab"
         ? "vanilla-ab prc-container"
@@ -197,9 +156,15 @@ export default function Home() {
     );
   });
 
-  // useEffect(() => {
-  //   setPrcsConfig((prevPrcs) => prevPrcs.map((prc) => {}));
-  // }, [piercings]);
+  const displayConfig = piercings.map((prc) => {
+    if (prc.selected)
+      return (
+        <li>
+          <span className="config-loca">{prc.prc_location}</span>{" "}
+          <span>{prc.prc_name}</span>
+        </li>
+      );
+  });
 
   function selectDisableBtns(e, nodeId, nodeLoca) {
     setPiercings((prevPrcs) =>
@@ -222,13 +187,14 @@ export default function Home() {
 
   function addPrcToConfig(nodeId, nodeLoca) {
     setPrcsConfig((prevPrcs) => {
-      // nothing in the config's piercing location OR clicked prc's node ID doesn't match the ID at the config's location key
+      // nothing in the config's piercing location OR clicked prc's node ID doesn't match the ID at the config's location key: ADD ID
       if (prevPrcs[nodeLoca].length === 0 || prevPrcs[nodeLoca] !== nodeId) {
         return {
           ...prevPrcs,
           [nodeLoca]: nodeId,
         };
       } else if (
+        // something is in the piercing location AND the ID is the same as clicked prc: REMOVE ID from config obj
         prevPrcs[nodeLoca].length > 0 &&
         prevPrcs[nodeLoca] === nodeId
       ) {
@@ -236,16 +202,12 @@ export default function Home() {
           ...prevPrcs,
           [nodeLoca]: "",
         };
+        // no match for ID or location: return object as is
       } else {
         return { ...prevPrcs };
       }
     });
   }
-  // piercings.forEach((prc) => {
-  //   if (prc.disabled) console.log(prc);
-  // });
-
-  console.log(prcsConfig);
 
   function handleFilterChange(key, value) {
     setSearchParams((prevParams) => {
@@ -258,18 +220,18 @@ export default function Home() {
     });
   }
 
-  function displayConfig() {
-    const userPrcs = Object.entries(prcsConfig);
-    return userPrcs.map((prc) => {
-      if (prc[1].length > 0) {
-        return (
-          <p key={nanoid}>
-            {prc[0]}: {prc[1]}
-          </p>
-        );
-      }
-    });
-  }
+  // function displayConfig() {
+  //   const userPrcs = Object.entries(prcsConfig);
+  //   return userPrcs.map((prc) => {
+  //     if (prc[1].length > 0) {
+  //       return (
+  //         <p key={nanoid}>
+  //           {prc[0]}: {prc[1]}
+  //         </p>
+  //       );
+  //     }
+  //   });
+  // }
 
   return (
     <ThemeProvider
@@ -368,7 +330,7 @@ export default function Home() {
               <Modal.Header closeButton>
                 <Modal.Title>Current Set Config</Modal.Title>
               </Modal.Header>
-              <Modal.Body>{displayConfig()}</Modal.Body>
+              <Modal.Body>{displayConfig}</Modal.Body>
               <Modal.Footer>
                 <Button variant="secondary" onClick={handleClose}>
                   Close
