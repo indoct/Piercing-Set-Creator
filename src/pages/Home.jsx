@@ -166,19 +166,18 @@ export default function Home() {
 
   const displayConfig = piercings.map((prc) => {
     const setClasses =
-      prc.prc_type === "mod" ? "config-mod config-set" : "config-set";
+      prc.prc_type === "mod"
+        ? "config-mod config-set"
+        : "config-set config-vanilla";
     const setName =
       prc.prc_type === "vanilla"
-        ? `Vanilla, ${prc.pt_displayname}`
+        ? `Vanilla : ${prc.pt_displayname}`
         : `MOD : ${prc.pt_displayname}`;
     if (prc.selected)
       return (
         <div key={prc.index} className={`config-cont  ${prc.gen_location}`}>
           <div className="config-row">
-            <span className="gen-loca">
-              {prc.gen_location.charAt(0).toUpperCase() +
-                prc.gen_location.slice(1)}
-            </span>
+            <span className="gen-loca">{prc.gen_location}</span>
           </div>
           <div className="config-row">
             <span className="config-loca">{prc.prc_location} </span>:
@@ -281,11 +280,11 @@ export default function Home() {
                 data-tooltip-content="There are no vanilla piercings in the lip slot, change/clear the location filter to enable this filter"
                 data-tooltip-place="bottom"
               >
-                Vanilla Only
+                Vanilla
               </button>
             </div>
           </Col>
-          <Col lg={5}>
+          <Col lg={6}>
             <div className="filter-btns">
               <span>Location:</span>
               <button
@@ -333,14 +332,14 @@ export default function Home() {
             </div>
             {locaFilter === "lips" && <Tooltip id="my-tooltip" />}
           </Col>
-          <Col lg={3} className="d-flex justify-content-md-end">
+          <Col lg={2} className="d-flex justify-content-md-end">
             <Button variant="primary" onClick={handleShow} disabled={emptySet}>
-              My Current Set Config
+              Current Set Config
             </Button>
 
             <Modal show={show} onHide={handleClose} id="set-config">
               <Modal.Header closeButton>
-                <Modal.Title>Current Set Config</Modal.Title>
+                <Modal.Title>Current Piercing Set Config</Modal.Title>
               </Modal.Header>
               <Modal.Body>{displayConfig}</Modal.Body>
               <Modal.Footer>
@@ -348,25 +347,28 @@ export default function Home() {
                   Close
                 </Button>
                 <Button variant="primary" onClick={handleClose}>
-                  Save Changes
+                  Generate Piercing Nodes Code
                 </Button>
               </Modal.Footer>
             </Modal>
           </Col>
         </Row>
-        <Row className="mt-4">
-          <h5>
-            {typeFilter === "vanilla"
-              ? "Vanilla Sets"
-              : typeFilter === "mod"
-              ? "Mod Piercings"
-              : "All Piercings"}
-          </h5>
-          <span>
-            Notes: You can only have ONE piercing per location. If some
-            piercings are greyed out, deselect the piercing at that location to
-            access them again.
-          </span>
+        <Row className="mt-4 title-row">
+          <Col lg={3}>
+            <h5>
+              {typeFilter === "vanilla"
+                ? "Vanilla Sets"
+                : typeFilter === "mod"
+                ? "Mod Piercings"
+                : "All Piercings"}
+            </h5>
+          </Col>
+          <Col lg={9}>
+            <p>
+              Notes: You can only have ONE piercing per location. Deselect the
+              current piercing to access others in the same location.
+            </p>
+          </Col>
         </Row>
         <Row className="mt-2">{prcElements}</Row>
       </Container>
