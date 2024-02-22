@@ -174,7 +174,7 @@ export default function Home() {
           type="button"
           id={prc.index}
           className={`${contClass} ${prc.selected ? "selected" : ""}`}
-          onClick={(e) => addPrcToConfig(e, nodeId, nodeLoca)}
+          onClick={(e) => selectDisableBtns(e, nodeId, nodeLoca)}
           disabled={prc.disabled}
         >
           <div className="img-dummy">
@@ -197,8 +197,11 @@ export default function Home() {
     );
   });
 
-  function addPrcToConfig(e, nodeId, nodeLoca) {
-    // const location = nodeLoca;
+  // useEffect(() => {
+  //   setPrcsConfig((prevPrcs) => prevPrcs.map((prc) => {}));
+  // }, [piercings]);
+
+  function selectDisableBtns(e, nodeId, nodeLoca) {
     setPiercings((prevPrcs) =>
       prevPrcs.map((prc) => {
         return nodeId === prc.prc_nodeid
@@ -214,34 +217,36 @@ export default function Home() {
           : prc;
       })
     );
-    // setPrcsConfig((prevPrcs) => {
-    //   // nothing in the config's piercing location OR clicked prc's node ID doesn't match the ID at the config's location key
-    //   if (prevPrcs[nodeLoca].length === 0 || prevPrcs[nodeLoca] !== nodeId) {
-    //     return {
-    //       ...prevPrcs,
-    //       [nodeLoca]: nodeId,
-    //     };
-    //   } else if (
-    //     prevPrcs[nodeLoca].length > 0 &&
-    //     prevPrcs[nodeLoca] === nodeId
-    //   ) {
-    //     return {
-    //       ...prevPrcs,
-    //       [nodeLoca]: "",
-    //     };
-    //   } else {
-    //     return { ...prevPrcs };
-    //   }
-    // });
+    addPrcToConfig(nodeId, nodeLoca);
   }
 
-  function selectPiercing(nodeid, nodeloca) {}
+  function addPrcToConfig(nodeId, nodeLoca) {
+    setPrcsConfig((prevPrcs) => {
+      // nothing in the config's piercing location OR clicked prc's node ID doesn't match the ID at the config's location key
+      if (prevPrcs[nodeLoca].length === 0 || prevPrcs[nodeLoca] !== nodeId) {
+        return {
+          ...prevPrcs,
+          [nodeLoca]: nodeId,
+        };
+      } else if (
+        prevPrcs[nodeLoca].length > 0 &&
+        prevPrcs[nodeLoca] === nodeId
+      ) {
+        return {
+          ...prevPrcs,
+          [nodeLoca]: "",
+        };
+      } else {
+        return { ...prevPrcs };
+      }
+    });
+  }
+  // piercings.forEach((prc) => {
+  //   if (prc.disabled) console.log(prc);
+  // });
 
-  piercings.forEach((prc) => {
-    if (prc.disabled) console.log(prc);
-  });
+  console.log(prcsConfig);
 
-  // console.log(prcsConfig);
   function handleFilterChange(key, value) {
     setSearchParams((prevParams) => {
       if (value === null) {
