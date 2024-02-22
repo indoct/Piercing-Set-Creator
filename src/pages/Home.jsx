@@ -165,25 +165,27 @@ export default function Home() {
   });
 
   const displayConfig = piercings.map((prc) => {
+    const setClasses =
+      prc.prc_type === "mod" ? "config-mod config-set" : "config-set";
     const setName =
       prc.prc_type === "vanilla"
         ? `Vanilla, ${prc.pt_displayname}`
-        : prc.pt_displayname;
+        : `MOD : ${prc.pt_displayname}`;
     if (prc.selected)
       return (
-        <div key={prc.index} className={`config-cont ${prc.gen_location}`}>
+        <div key={prc.index} className={`config-cont  ${prc.gen_location}`}>
           <div className="config-row">
-            <span>
-              [
+            <span className="gen-loca">
               {prc.gen_location.charAt(0).toUpperCase() +
                 prc.gen_location.slice(1)}
-              ]{" "}
             </span>
-            <span className="config-loca">{prc.prc_location} </span>:
-            <span className="config-set"> {prc.prc_name}</span>
           </div>
           <div className="config-row">
-            <span>{setName}</span>
+            <span className="config-loca">{prc.prc_location} </span>:
+            <span className="config-name"> {prc.prc_name}</span>
+          </div>
+          <div className="config-row">
+            <span className={setClasses}>{setName}</span>
           </div>
         </div>
       );

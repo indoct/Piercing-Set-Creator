@@ -307,6 +307,48 @@ label.selected {
 /* Config Modal */
 .config-cont {
   border-bottom: 1px solid #3a3638;
+  padding: 5px 0;
+}
+
+.config-cont:last-child {
+  border-bottom: none;
+}
+
+.gen-loca {
+  display: block;
+  font-size: 0.8rem;
+  padding-bottom: 5px;
+  text-transform: uppercase;
+  font-family: monospace;
+  letter-spacing: 0.6pxit;
+}
+
+.config-cont.ears {
+  border-left: 2px solid #9475c4;
+  padding-left: 15px;
+}
+
+.config-cont.nose {
+  border-left: 2px solid #10b160;
+  padding-left: 15px;
+}
+
+.config-cont.brows {
+  border-left: 2px solid #13addb;
+  padding-left: 15px;
+}
+
+.config-cont.lips {
+  border-left: 2px solid #ff5555;
+  padding-left: 15px;
+}
+
+.config-set {
+  font-size: 0.95rem;
+}
+
+.config-mod {
+  color: #f1fa8c;
 }
 
 .prc-container {
