@@ -11,6 +11,7 @@ import Modal from "react-bootstrap/Modal";
 import { Tooltip } from "react-tooltip";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { nanoid } from "nanoid";
+import { experimentalStyled } from "@mui/material";
 
 export default function Home() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -42,6 +43,7 @@ export default function Home() {
     piercing_tragus_a_l: "",
     piercing_tragus_a_r: "",
   });
+  const [emptySet, setEmptySet] = useState(true);
 
   const [show, setShow] = useState(false);
 
@@ -104,6 +106,12 @@ export default function Home() {
     setPiercings(genLoca);
   }, []);
 
+  useEffect(() => {
+    setEmptySet(() => {
+      return piercings.filter((prc) => prc.selected).length === 0;
+    });
+  }, [piercings]);
+
   const displayedPiercings =
     typeFilter && !locaFilter
       ? piercings.filter((prc) => prc.prc_type === typeFilter)
@@ -157,12 +165,27 @@ export default function Home() {
   });
 
   const displayConfig = piercings.map((prc) => {
+    const setName =
+      prc.prc_type === "vanilla"
+        ? `Vanilla, ${prc.pt_displayname}`
+        : prc.pt_displayname;
     if (prc.selected)
       return (
-        <li>
-          <span className="config-loca">{prc.prc_location}</span>{" "}
-          <span>{prc.prc_name}</span>
-        </li>
+        <div key={prc.index} className={`config-cont ${prc.gen_location}`}>
+          <div className="config-row">
+            <span>
+              [
+              {prc.gen_location.charAt(0).toUpperCase() +
+                prc.gen_location.slice(1)}
+              ]{" "}
+            </span>
+            <span className="config-loca">{prc.prc_location} </span>:
+            <span className="config-set"> {prc.prc_name}</span>
+          </div>
+          <div className="config-row">
+            <span>{setName}</span>
+          </div>
+        </div>
       );
   });
 
@@ -219,19 +242,6 @@ export default function Home() {
       return prevParams;
     });
   }
-
-  // function displayConfig() {
-  //   const userPrcs = Object.entries(prcsConfig);
-  //   return userPrcs.map((prc) => {
-  //     if (prc[1].length > 0) {
-  //       return (
-  //         <p key={nanoid}>
-  //           {prc[0]}: {prc[1]}
-  //         </p>
-  //       );
-  //     }
-  //   });
-  // }
 
   return (
     <ThemeProvider
@@ -322,7 +332,7 @@ export default function Home() {
             {locaFilter === "lips" && <Tooltip id="my-tooltip" />}
           </Col>
           <Col lg={3} className="d-flex justify-content-md-end">
-            <Button variant="primary" onClick={handleShow}>
+            <Button variant="primary" onClick={handleShow} disabled={emptySet}>
               My Current Set Config
             </Button>
 

@@ -304,6 +304,11 @@ label.selected {
   font-size: 1.2rem;
 }
 
+/* Config Modal */
+.config-cont {
+  border-bottom: 1px solid #3a3638;
+}
+
 .prc-container {
   padding: 0.8rem 1rem 0.5rem 1rem;
   border-radius: 8px;
