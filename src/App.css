@@ -282,6 +282,11 @@ label.selected {
   margin-bottom: 14px;
 }
 
+.prc-col button {
+  width: 100%;
+  background: transparent;
+}
+
 .prc-stats {
   padding-left: 0;
   margin-bottom: 0;
@@ -305,9 +310,13 @@ label.selected {
   border: 1px solid #3a3638;
 }
 
-.prc-container:hover {
+.prc-container:hover:not([disabled]) {
   cursor: pointer;
   background-color: #3a3638;
+}
+
+.prc-container:disabled {
+  opacity: 30%;
 }
 
 .prc-container.selected {

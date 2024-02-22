@@ -16,7 +16,7 @@ export default function Home() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [piercings, setPiercings] = useState(data);
   const [prcsConfig, setPrcsConfig] = useState({
-    lowerlip_04: ["Labret (R)", "testing"],
+    lowerlip_04: "",
     lowerlip_06: "",
     lowerlip_08: "",
     beard_upper_lip_m: "",
@@ -91,6 +91,7 @@ export default function Home() {
         return {
           ...prc,
           selected: false,
+          disabled: false,
           gen_location: "nose",
         };
       } else if (
@@ -104,6 +105,7 @@ export default function Home() {
         return {
           ...prc,
           selected: false,
+          disabled: false,
           gen_location: "lips",
         };
       } else if (
@@ -115,12 +117,14 @@ export default function Home() {
         return {
           ...prc,
           gen_location: "brows",
+          disabled: false,
           selected: false,
         };
       } else {
         return {
           ...prc,
           gen_location: "ears",
+          disabled: false,
           selected: false,
         };
       }
@@ -140,7 +144,20 @@ export default function Home() {
       ? piercings.filter((prc) => prc.gen_location === locaFilter)
       : piercings;
 
+  // function disableNotSelected(piercing, prcLoca) {
+  //   console.log(piercing, prcLoca);
+  //   const nonSelected = piercings.filter(
+  //     (prc) => !prc.selected && prcLoca === prc.location_code
+  //   );
+  //   console.log(nonSelected);
+  // }
+
   const prcElements = displayedPiercings.map((prc) => {
+    // if (prc.selected) {
+    //   console.log(prc.prc_nodeid, prc.location_code);
+    // }
+    // const disabledBtn = !prc.selected &&
+    // if (prc.selected) disableNotSelected(prc, prc.location_code);
     const contClass =
       prc.site_category === "vanilla-ab"
         ? "vanilla-ab prc-container"
@@ -153,9 +170,12 @@ export default function Home() {
     const nodeLoca = prc.location_code;
     return (
       <Col key={prc.prc_nodeid} lg={2} className="prc-col">
-        <div
+        <button
+          type="button"
+          id={prc.index}
           className={`${contClass} ${prc.selected ? "selected" : ""}`}
-          onClick={(e) => selectPiercing(e, nodeId, nodeLoca)}
+          onClick={(e) => addPrcToConfig(e, nodeId, nodeLoca)}
+          disabled={prc.disabled}
         >
           <div className="img-dummy">
             <span
@@ -172,12 +192,13 @@ export default function Home() {
             <li className="prc-name">{prc.prc_name}</li>
             <li className="location">{prc.prc_location}</li>
           </ul>
-        </div>
+        </button>
       </Col>
     );
   });
 
-  function selectPiercing(e, nodeId, nodeLoca) {
+  function addPrcToConfig(e, nodeId, nodeLoca) {
+    // const location = nodeLoca;
     setPiercings((prevPrcs) =>
       prevPrcs.map((prc) => {
         return nodeId === prc.prc_nodeid
@@ -185,34 +206,42 @@ export default function Home() {
               ...prc,
               selected: !prc.selected,
             }
+          : nodeId !== prc.prc_nodeid && nodeLoca === prc.location_code
+          ? {
+              ...prc,
+              disabled: !prc.disabled,
+            }
           : prc;
       })
     );
-    // console.log(nodeLoca);
-    // e.currentTarget.classList.toggle("selected");
     // setPrcsConfig((prevPrcs) => {
-    //   return {
-    //     ...prevPrcs,
-    //     [nodeLoca]: nodeId,
-    //   };
-    // });
-    // Object.entries(prcsConfig).forEach((prcArr) => {
-    //   if (prcArr[0] === nodeLoca) console.log(prcArr);
-    // });
-    // console.log(nodeId);
-    // console.log(nodeLoca);
-    // const userSelected = piercings.filter((prc) => prc.prc_nodeid === nodeId);
-    // setUserSet((prevPrcs) => {
-    //   return [...prevPrcs, userSelected];
+    //   // nothing in the config's piercing location OR clicked prc's node ID doesn't match the ID at the config's location key
+    //   if (prevPrcs[nodeLoca].length === 0 || prevPrcs[nodeLoca] !== nodeId) {
+    //     return {
+    //       ...prevPrcs,
+    //       [nodeLoca]: nodeId,
+    //     };
+    //   } else if (
+    //     prevPrcs[nodeLoca].length > 0 &&
+    //     prevPrcs[nodeLoca] === nodeId
+    //   ) {
+    //     return {
+    //       ...prevPrcs,
+    //       [nodeLoca]: "",
+    //     };
+    //   } else {
+    //     return { ...prevPrcs };
+    //   }
     // });
   }
 
-  // useEffect(() => {
-  //   setPrcsConfig((prevConfig) => {
-  //     prevConfig.map((location) => {});
-  //   });
-  // }, [piercings]);
+  function selectPiercing(nodeid, nodeloca) {}
 
+  piercings.forEach((prc) => {
+    if (prc.disabled) console.log(prc);
+  });
+
+  // console.log(prcsConfig);
   function handleFilterChange(key, value) {
     setSearchParams((prevParams) => {
       if (value === null) {
@@ -354,6 +383,11 @@ export default function Home() {
               ? "Mod Piercings"
               : "All Piercings"}
           </h5>
+          <span>
+            Notes: You can only have ONE piercing per location. If some
+            piercings are greyed out, deselect the piercing at that location to
+            access them again.
+          </span>
         </Row>
         <Row className="mt-2">{prcElements}</Row>
       </Container>
