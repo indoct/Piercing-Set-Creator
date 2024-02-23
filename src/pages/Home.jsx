@@ -4,31 +4,16 @@ import { data, config } from "../data";
 import ThemeProvider from "react-bootstrap/ThemeProvider";
 import "../App.css";
 import Container from "react-bootstrap/Container";
-import Col from "react-bootstrap/Col";
-import Filters from "../components/Filters";
 import PiercingsBlock from "../components/PiercingsBlock";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Button from "react-bootstrap/Button";
-import SetModal from "../components/SetModal";
+import Header from "../components/Header";
 
 export default function Home() {
   const [piercings, setPiercings] = useState(data);
   const [prcsConfig, setPrcsConfig] = useState(config);
-  const [emptySet, setEmptySet] = useState(true);
-
   const [searchParams, setSearchParams] = useSearchParams();
   const typeFilter = searchParams.get("type");
   const locaFilter = searchParams.get("location");
-
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
-  useEffect(() => {
-    setEmptySet(() => {
-      return piercings.filter((prc) => prc.selected).length === 0;
-    });
-  }, [piercings]);
 
   function selectDisableBtns(e, nodeId, nodeLoca) {
     setPiercings((prevPrcs) =>
@@ -81,27 +66,33 @@ export default function Home() {
     });
   }
 
+  function confirmDelete() {
+    let result = confirm(
+      "Are you sure you want to delete your set? \n \nPressing OK will clear your configuration."
+    );
+    if (result) {
+      setPiercings(data);
+      setPrcsConfig(config);
+    }
+  }
+
   return (
     <ThemeProvider
       breakpoints={["xxxl", "xxl", "xl", "lg", "md", "sm", "xs", "xxs"]}
       minBreakpoint="xxs"
     >
       <Container>
-        <Filters
-          typeFilter={typeFilter}
-          locaFilter={locaFilter}
-          handleFilterChange={handleFilterChange}
-        />
-        <Col lg={2} className="d-flex justify-content-md-end">
-          <Button variant="primary" onClick={handleShow} disabled={emptySet}>
-            Current Set Config
-          </Button>
-          <SetModal show={show} onClose={handleClose} piercings={piercings} />
-        </Col>
-        <PiercingsBlock
+        <Header
           type={typeFilter}
           location={locaFilter}
           piercings={piercings}
+          handleFilterChange={handleFilterChange}
+          confirmDelete={confirmDelete}
+        />
+        <PiercingsBlock
+          piercings={piercings}
+          type={typeFilter}
+          location={locaFilter}
           handleBtns={selectDisableBtns}
         />
       </Container>

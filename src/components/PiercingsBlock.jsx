@@ -1,5 +1,6 @@
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import { Tooltip } from "react-tooltip";
 
 export default function Piercing(props) {
   const { piercings, type, location, handleBtns } = props;
@@ -26,6 +27,14 @@ export default function Piercing(props) {
         : "mod prc-container";
     const nodeId = prc.nodeid;
     const nodeLoca = prc.bone;
+    const locaInd =
+      prc.location === "ears"
+        ? "indicator ears-ind"
+        : prc.location === "nose"
+        ? "indicator nose-ind"
+        : prc.location === "brows"
+        ? "indicator brows-ind"
+        : "indicator lips-ind";
 
     return (
       <Col key={prc.nodeid} lg={2} className="prc-col">
@@ -41,9 +50,14 @@ export default function Piercing(props) {
               className={
                 prc.color === "silver" ? "silver color-tag" : "gold color-tag"
               }
-            >
-              {prc.color}
-            </span>
+            ></span>
+            <span
+              className={locaInd}
+              data-tooltip-id="indicator"
+              data-tooltip-content={prc.location}
+              data-tooltip-place="bottom"
+            ></span>
+            <Tooltip id="indicator" />
           </div>
           <ul className="prc-stats">
             <li className="prc-name">{prc.name}</li>

@@ -45,7 +45,7 @@ label {
 }
 
 header {
-  padding-bottom: 1em;
+  padding-bottom: 0.7em;
 }
 
 header a {
@@ -53,6 +53,10 @@ header a {
   text-decoration: none;
   font-weight: 600;
   color: #edddd4;
+}
+
+header button:first-child {
+  margin-right: 10px;
 }
 
 .title-row p {
@@ -85,12 +89,58 @@ header a {
   border: 1px solid #837c80;
   padding: 5px 12px;
   border-radius: 16px;
-  font-size: 0.92em;
 }
 
-.filter.selected {
+.filter {
+  font-weight: 600;
+}
+
+.ears.selected {
+  background-color: #9475c4;
+  border: 1px solid #9475c4;
+}
+
+.filter-btns .ears:hover {
+  color: #181617;
+  background-color: #9475c4;
+  border: 1px solid #9475c4;
+  transition: all 0.3s;
+}
+
+.nose.selected {
+  background-color: #10b160;
+  border: 1px solid #10b160;
+}
+
+.filter-btns .nose:hover {
+  color: #181617;
+  background-color: #10b160;
+  border: 1px solid #10b160;
+  transition: all 0.3s;
+}
+
+.brows.selected {
   background-color: #13addb;
   border: 1px solid #13addb;
+}
+
+.filter-btns .brows:hover {
+  color: #181617;
+  background-color: #13addb;
+  border: 1px solid #13addb;
+  transition: all 0.3s;
+}
+
+.lips.selected {
+  background-color: #ff5555;
+  border: 1px solid #ff5555;
+}
+
+.filter-btns .lips:hover {
+  color: #181617;
+  background-color: #ff5555;
+  border: 1px solid #ff5555;
+  transition: all 0.3s;
 }
 
 .filter-btns .selected {
@@ -98,18 +148,18 @@ header a {
   color: #000;
 }
 .vanilla.selected {
-  background-color: #10b160;
-  border: 1px solid #10b160;
+  background-color: #edddd4;
+  border: 1px solid #edddd4;
 }
 
 .mod-btn.selected {
-  background-color: #f7762c;
-  border: 1px solid #f7762c;
+  background-color: #edddd4;
+  border: 1px solid #edddd4;
 }
 
 .all-piercings.selected {
-  background-color: #9475c4;
-  border: 1px solid #9475c4;
+  background-color: #edddd4;
+  border: 1px solid #edddd4;
 }
 
 .gold-btn.selected {
@@ -447,7 +497,32 @@ label.selected {
   background-color: #d3c36d;
 }
 
-.barbarian {
+.indicator {
+  display: block;
+  position: relative;
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  right: -98%;
+  top: -25%;
+}
+.ears-ind {
+  background-color: #9475c4;
+}
+
+.nose-ind {
+  background-color: #10b160;
+}
+
+.brows-ind {
+  background-color: #13addb;
+}
+
+.lips-ind {
+  background-color: #ff5555;
+}
+
+/* .barbarian {
   border-bottom: 2px solid #10b160;
 }
 
@@ -461,7 +536,7 @@ label.selected {
 
 .mod {
   border-bottom: 2px solid #f7762c;
-}
+} */
 
 .img-dummy {
   display: block;
