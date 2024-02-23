@@ -11,7 +11,6 @@ import Modal from "react-bootstrap/Modal";
 import { Tooltip } from "react-tooltip";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { nanoid } from "nanoid";
-import { experimentalStyled } from "@mui/material";
 
 export default function Home() {
   const [searchParams, setSearchParams] = useSearchParams();
