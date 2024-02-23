@@ -1,109 +1,29 @@
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import data from "../data";
+import dataConfig from "../dataConfig";
 import ThemeProvider from "react-bootstrap/ThemeProvider";
 import "../App.css";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
 import { Tooltip } from "react-tooltip";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { nanoid } from "nanoid";
+import SetModal from "../components/SetModal";
 
 export default function Home() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [piercings, setPiercings] = useState(data);
-  const [prcsConfig, setPrcsConfig] = useState({
-    lowerlip_04: "",
-    lowerlip_06: "",
-    lowerlip_08: "",
-    beard_upper_lip_m: "",
-    beard_upper_lip1_l: "",
-    beard_upper_lip1_r: "",
-    piercing_bridge_a_l: "",
-    piercing_bridge_a_r: "",
-    piercing_brow_a_l: "",
-    piercing_brow_a_r: "",
-    piercing_brow_b_l: "",
-    piercing_brow_b_r: "",
-    piercing_helix_a_l: "",
-    piercing_helix_a_r: "",
-    piercing_helix_b_l: "",
-    piercing_helix_b_r: "",
-    piercing_lobe_a_l: "",
-    piercing_lobe_a_r: "",
-    piercing_lobe_b_l: "",
-    piercing_lobe_b_r: "",
-    piercing_nostril_a_l: "",
-    piercing_nostril_a_r: "",
-    piercing_septum_a_m: "",
-    piercing_tragus_a_l: "",
-    piercing_tragus_a_r: "",
-  });
+  const [prcsConfig, setPrcsConfig] = useState(dataConfig);
   const [emptySet, setEmptySet] = useState(true);
 
   const [show, setShow] = useState(false);
-
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   const typeFilter = searchParams.get("type");
   const locaFilter = searchParams.get("location");
-
-  useEffect(() => {
-    const genLoca = piercings.map((prc) => {
-      if (
-        prc.location_code === "piercing_nostril_a_l" ||
-        prc.location_code === "piercing_nostril_a_r" ||
-        prc.location_code === "piercing_septum_a_m" ||
-        prc.location_code === "piercing_bridge_a_l" ||
-        prc.location_code === "piercing_bridge_a_r"
-      ) {
-        return {
-          ...prc,
-          selected: false,
-          disabled: false,
-          gen_location: "nose",
-        };
-      } else if (
-        prc.location_code === "beard_upper_lip_m" ||
-        prc.location_code === "beard_upper_lip1_l" ||
-        prc.location_code === "beard_upper_lip1_r" ||
-        prc.location_code === "lowerlip_04" ||
-        prc.location_code === "lowerlip_06" ||
-        prc.location_code === "lowerlip_08"
-      ) {
-        return {
-          ...prc,
-          selected: false,
-          disabled: false,
-          gen_location: "lips",
-        };
-      } else if (
-        prc.location_code === "piercing_brow_a_l" ||
-        prc.location_code === "piercing_brow_a_r" ||
-        prc.location_code === "piercing_brow_b_l" ||
-        prc.location_code === "piercing_brow_b_r"
-      ) {
-        return {
-          ...prc,
-          gen_location: "brows",
-          disabled: false,
-          selected: false,
-        };
-      } else {
-        return {
-          ...prc,
-          gen_location: "ears",
-          disabled: false,
-          selected: false,
-        };
-      }
-    });
-    setPiercings(genLoca);
-  }, []);
 
   useEffect(() => {
     setEmptySet(() => {
@@ -113,29 +33,28 @@ export default function Home() {
 
   const displayedPiercings =
     typeFilter && !locaFilter
-      ? piercings.filter((prc) => prc.prc_type === typeFilter)
+      ? piercings.filter((prc) => prc.type === typeFilter)
       : typeFilter && locaFilter
       ? piercings.filter(
-          (prc) =>
-            prc.prc_type === typeFilter && prc.gen_location === locaFilter
+          (prc) => prc.type === typeFilter && prc.location === locaFilter
         )
       : locaFilter && !typeFilter
-      ? piercings.filter((prc) => prc.gen_location === locaFilter)
+      ? piercings.filter((prc) => prc.location === locaFilter)
       : piercings;
 
   const prcElements = displayedPiercings.map((prc) => {
     const contClass =
-      prc.site_category === "vanilla-ab"
+      prc.site_cat === "vanilla-ab"
         ? "vanilla-ab prc-container"
-        : prc.site_category === "barbarian"
+        : prc.site_cat === "barbarian"
         ? "barbarian prc-container"
-        : prc.site_category === "ortheus"
+        : prc.site_cat === "ortheus"
         ? "ortheus prc-container"
         : "mod prc-container";
-    const nodeId = prc.prc_nodeid;
-    const nodeLoca = prc.location_code;
+    const nodeId = prc.nodeid;
+    const nodeLoca = prc.bone;
     return (
-      <Col key={prc.prc_nodeid} lg={2} className="prc-col">
+      <Col key={prc.nodeid} lg={2} className="prc-col">
         <button
           type="button"
           id={prc.index}
@@ -146,58 +65,30 @@ export default function Home() {
           <div className="img-dummy">
             <span
               className={
-                prc.prc_color === "silver"
-                  ? "silver color-tag"
-                  : "gold color-tag"
+                prc.color === "silver" ? "silver color-tag" : "gold color-tag"
               }
             >
-              {prc.prc_color}
+              {prc.color}
             </span>
           </div>
           <ul className="prc-stats">
-            <li className="prc-name">{prc.prc_name}</li>
-            <li className="location">{prc.prc_location}</li>
+            <li className="prc-name">{prc.name}</li>
+            <li className="location">{prc.pt_bone}</li>
           </ul>
         </button>
       </Col>
     );
   });
 
-  const displayConfig = piercings.map((prc) => {
-    const setClasses =
-      prc.prc_type === "mod"
-        ? "config-mod config-set"
-        : "config-set config-vanilla";
-    const setName =
-      prc.prc_type === "vanilla"
-        ? `Vanilla : ${prc.pt_displayname}`
-        : `MOD : ${prc.pt_displayname}`;
-    if (prc.selected)
-      return (
-        <div key={prc.index} className={`config-cont  ${prc.gen_location}`}>
-          <div className="config-row">
-            <span className="gen-loca">{prc.gen_location}</span>
-          </div>
-          <div className="config-row">
-            <span className="config-loca">{prc.prc_location} </span>:
-            <span className="config-name"> {prc.prc_name}</span>
-          </div>
-          <div className="config-row">
-            <span className={setClasses}>{setName}</span>
-          </div>
-        </div>
-      );
-  });
-
   function selectDisableBtns(e, nodeId, nodeLoca) {
     setPiercings((prevPrcs) =>
       prevPrcs.map((prc) => {
-        return nodeId === prc.prc_nodeid
+        return nodeId === prc.nodeid
           ? {
               ...prc,
               selected: !prc.selected,
             }
-          : nodeId !== prc.prc_nodeid && nodeLoca === prc.location_code
+          : nodeId !== prc.nodeid && nodeLoca === prc.bone
           ? {
               ...prc,
               disabled: !prc.disabled,
@@ -335,21 +226,7 @@ export default function Home() {
             <Button variant="primary" onClick={handleShow} disabled={emptySet}>
               Current Set Config
             </Button>
-
-            <Modal show={show} onHide={handleClose} id="set-config">
-              <Modal.Header closeButton>
-                <Modal.Title>Current Piercing Set Config</Modal.Title>
-              </Modal.Header>
-              <Modal.Body>{displayConfig}</Modal.Body>
-              <Modal.Footer>
-                <Button variant="secondary" onClick={handleClose}>
-                  Close
-                </Button>
-                <Button variant="primary" onClick={handleClose}>
-                  Generate Piercing Nodes Code
-                </Button>
-              </Modal.Footer>
-            </Modal>
+            <SetModal show={show} onClose={handleClose} piercings={piercings} />
           </Col>
         </Row>
         <Row className="mt-4 title-row">
