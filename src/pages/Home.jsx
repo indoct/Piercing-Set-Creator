@@ -4,7 +4,6 @@ import { data, config } from "../data";
 import ThemeProvider from "react-bootstrap/ThemeProvider";
 import "../App.css";
 import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Filters from "../components/Filters";
 import PiercingsBlock from "../components/PiercingsBlock";
@@ -52,14 +51,12 @@ export default function Home() {
 
   function addPrcToConfig(nodeId, nodeLoca) {
     setPrcsConfig((prevPrcs) => {
-      // nothing in the config's piercing location OR clicked prc's node ID doesn't match the ID at the config's location key: ADD ID
       if (prevPrcs[nodeLoca].length === 0 || prevPrcs[nodeLoca] !== nodeId) {
         return {
           ...prevPrcs,
           [nodeLoca]: nodeId,
         };
       } else if (
-        // something is in the piercing location AND the ID is the same as clicked prc: REMOVE ID from config obj
         prevPrcs[nodeLoca].length > 0 &&
         prevPrcs[nodeLoca] === nodeId
       ) {
@@ -67,7 +64,6 @@ export default function Home() {
           ...prevPrcs,
           [nodeLoca]: "",
         };
-        // no match for ID or location: return object as is
       } else {
         return { ...prevPrcs };
       }
@@ -102,31 +98,12 @@ export default function Home() {
           </Button>
           <SetModal show={show} onClose={handleClose} piercings={piercings} />
         </Col>
-        <Row className="mt-4 title-row">
-          <Col lg={3}>
-            <h5>
-              {typeFilter === "vanilla"
-                ? "Vanilla Sets"
-                : typeFilter === "mod"
-                ? "Mod Piercings"
-                : "All Piercings"}
-            </h5>
-          </Col>
-          <Col lg={9}>
-            <p>
-              Notes: You can only have ONE piercing per location. Deselect the
-              current piercing to access others in the same location.
-            </p>
-          </Col>
-        </Row>
-        <Row className="mt-2">
-          <PiercingsBlock
-            type={typeFilter}
-            location={locaFilter}
-            piercings={piercings}
-            selectDisableBtns={selectDisableBtns}
-          />
-        </Row>
+        <PiercingsBlock
+          type={typeFilter}
+          location={locaFilter}
+          piercings={piercings}
+          handleBtns={selectDisableBtns}
+        />
       </Container>
     </ThemeProvider>
   );

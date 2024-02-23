@@ -2,7 +2,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
 export default function Piercing(props) {
-  const { piercings, type, location, selectDisableBtns } = props;
+  const { piercings, type, location, handleBtns } = props;
 
   const displayedPiercings =
     type && !location
@@ -33,7 +33,7 @@ export default function Piercing(props) {
           type="button"
           id={prc.index}
           className={`${contClass} ${prc.selected ? "selected" : ""}`}
-          onClick={(e) => selectDisableBtns(e, nodeId, nodeLoca)}
+          onClick={(e) => handleBtns(e, nodeId, nodeLoca)}
           disabled={prc.disabled}
         >
           <div className="img-dummy">
@@ -54,5 +54,26 @@ export default function Piercing(props) {
     );
   });
 
-  return <>{prcElements}</>;
+  return (
+    <>
+      <Row className="mt-4 title-row">
+        <Col lg={3}>
+          <h5>
+            {type === "vanilla"
+              ? "Vanilla Sets"
+              : type === "mod"
+              ? "Mod Piercings"
+              : "All Piercings"}
+          </h5>
+        </Col>
+        <Col lg={9}>
+          <p>
+            Notes: You can only have ONE piercing per location. Deselect the
+            current piercing to access others in the same location.
+          </p>
+        </Col>
+      </Row>
+      <Row className="mt-2">{prcElements}</Row>
+    </>
+  );
 }
