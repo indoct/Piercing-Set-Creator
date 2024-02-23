@@ -1,6 +1,5 @@
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { Tooltip } from "react-tooltip";
 
 export default function Piercing(props) {
   const { piercings, type, location, handleBtns } = props;
@@ -38,6 +37,7 @@ export default function Piercing(props) {
 
     return (
       <Col key={prc.nodeid} lg={2} className="prc-col">
+        {prc.type === "mod" && <span className="set-name">{prc.set_name}</span>}
         <button
           type="button"
           id={prc.index}
@@ -46,22 +46,19 @@ export default function Piercing(props) {
           disabled={prc.disabled}
         >
           <div className="img-dummy">
-            <span
+            {/* <span
               className={
                 prc.color === "silver" ? "silver color-tag" : "gold color-tag"
               }
-            ></span>
-            <span
-              className={locaInd}
-              data-tooltip-id="indicator"
-              data-tooltip-content={prc.location}
-              data-tooltip-place="bottom"
-            ></span>
-            <Tooltip id="indicator" />
+            >
+              {prc.color.charAt(0)}
+            </span> */}
+            <span className={locaInd}></span>
           </div>
           <ul className="prc-stats">
             <li className="prc-name">{prc.name}</li>
             <li className="location">{prc.pt_bone}</li>
+            {/* {prc.type === "mod" && <li className="set-name">{prc.set_name}</li>} */}
           </ul>
         </button>
       </Col>
@@ -71,7 +68,7 @@ export default function Piercing(props) {
   return (
     <>
       <Row className="mt-4 title-row">
-        <Col lg={3}>
+        <Col>
           <h5>
             {type === "vanilla"
               ? "Vanilla Sets"
@@ -79,12 +76,6 @@ export default function Piercing(props) {
               ? "Mod Piercings"
               : "All Piercings"}
           </h5>
-        </Col>
-        <Col lg={9}>
-          <p>
-            Notes: You can only have ONE piercing per location. Deselect the
-            current piercing to access others in the same location.
-          </p>
         </Col>
       </Row>
       <Row className="mt-2">{prcElements}</Row>
