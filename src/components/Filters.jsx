@@ -1,44 +1,90 @@
+import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import { Tooltip } from "react-tooltip";
 
-export default function PiercingSetBlock({ ...props }) {
-  const blockTitle =
-    props.set.length === undefined
-      ? ""
-      : props.set[0].prc_type !== "vanilla"
-      ? props.set[0].pt_displayname
-      : "Vanilla Sets";
-
-  const prcBlock =
-    props.set.length === undefined
-      ? ""
-      : props.set.map((prc) => {
-          const contClass =
-            prc.site_category === "vanilla-ab"
-              ? "vanilla-ab prc-container"
-              : prc.site_category === "barbarian"
-              ? "barbarian prc-container"
-              : prc.site_category === "ortheus"
-              ? "ortheus prc-container"
-              : "mod prc-container";
-          return (
-            <Col key={prc.prc_nodeid} xl={2} className="prc-col">
-              <div className={contClass}>
-                <div className="img-dummy">
-                  <span className="color-tag">{prc.prc_color}</span>
-                </div>
-                <ul className="prc-stats">
-                  <li className="prc-name">{prc.prc_name}</li>
-                  <li className="location">{prc.prc_location}</li>
-                </ul>
-              </div>
-            </Col>
-          );
-        });
+export default function Filters(props) {
+  const { typeFilter, locaFilter, handleFilterChange } = props;
 
   return (
-    <>
-      <h4 className="block-title">{blockTitle}</h4>
-      {prcBlock}
-    </>
+    <Row>
+      <Col lg={4}>
+        <div className="filter-btns">
+          <span>Type:</span>
+          <button
+            onClick={() => {
+              handleFilterChange("type", null);
+            }}
+            className={`all-piercings ${!typeFilter ? "selected" : ""}`}
+          >
+            Show All
+          </button>
+          <button
+            onClick={() => handleFilterChange("type", "mod")}
+            className={`mod-btn ${typeFilter === "mod" ? "selected" : ""}`}
+          >
+            Mod Only
+          </button>
+          <button
+            onClick={() => {
+              handleFilterChange("type", "vanilla");
+            }}
+            className={`vanilla ${typeFilter === "vanilla" ? "selected" : ""}`}
+            disabled={locaFilter === "lips"}
+            data-tooltip-id="my-tooltip"
+            data-tooltip-content="There are no vanilla piercings in the lip slot, change/clear the location filter to enable this filter"
+            data-tooltip-place="bottom"
+          >
+            Vanilla
+          </button>
+        </div>
+      </Col>
+      <Col lg={6}>
+        <div className="filter-btns">
+          <span>Location:</span>
+          <button
+            onClick={() => {
+              handleFilterChange("location", "ears");
+            }}
+            className={`filter ${locaFilter === "ears" ? "selected" : ""}`}
+          >
+            Ears
+          </button>
+          <button
+            onClick={() => handleFilterChange("location", "nose")}
+            className={`filter ${locaFilter === "nose" ? "selected" : ""}`}
+          >
+            Nose
+          </button>
+          <button
+            onClick={() => {
+              handleFilterChange("location", "brows");
+            }}
+            className={`filter ${locaFilter === "brows" ? "selected" : ""}`}
+          >
+            Brows
+          </button>
+          <button
+            onClick={() => {
+              handleFilterChange("location", "lips");
+              if (typeFilter === "vanilla") handleFilterChange("type", null);
+            }}
+            className={`filter ${locaFilter === "lips" ? "selected" : ""}`}
+          >
+            Lips
+          </button>
+          {locaFilter && (
+            <button
+              onClick={() => {
+                handleFilterChange("location", null);
+              }}
+              className="clear-btn"
+            >
+              Clear Filter
+            </button>
+          )}
+        </div>
+        {locaFilter === "lips" && <Tooltip id="my-tooltip" />}
+      </Col>
+    </Row>
   );
 }

@@ -1,4 +1,4 @@
-export default [
+export const data = [
   {
     index: 1,
     site_cat: "barbarian",
@@ -2533,3 +2533,31 @@ export default [
     matid: "4ecf0e10-d34a-42dd-ba88-85627ec8655c",
   },
 ];
+
+export const config = {
+  lowerlip_04: "",
+  lowerlip_06: "",
+  lowerlip_08: "",
+  beard_upper_lip_m: "",
+  beard_upper_lip1_l: "",
+  beard_upper_lip1_r: "",
+  piercing_bridge_a_l: "",
+  piercing_bridge_a_r: "",
+  piercing_brow_a_l: "",
+  piercing_brow_a_r: "",
+  piercing_brow_b_l: "",
+  piercing_brow_b_r: "",
+  piercing_helix_a_l: "",
+  piercing_helix_a_r: "",
+  piercing_helix_b_l: "",
+  piercing_helix_b_r: "",
+  piercing_lobe_a_l: "",
+  piercing_lobe_a_r: "",
+  piercing_lobe_b_l: "",
+  piercing_lobe_b_r: "",
+  piercing_nostril_a_l: "",
+  piercing_nostril_a_r: "",
+  piercing_septum_a_m: "",
+  piercing_tragus_a_l: "",
+  piercing_tragus_a_r: "",
+};
