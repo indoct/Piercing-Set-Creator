@@ -1,12 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { data, config } from "../data";
+import { data, config } from "./data";
 import ThemeProvider from "react-bootstrap/ThemeProvider";
-import "../App.css";
+import "./App.css";
 import Container from "react-bootstrap/Container";
-import PiercingsBlock from "../components/PiercingsBlock";
+import PiercingsBlock from "./components/PiercingsBlock";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Header from "../components/Header";
+import Header from "./components/Header";
 
 export default function Home() {
   const [piercings, setPiercings] = useState(data);
@@ -41,10 +41,7 @@ export default function Home() {
           ...prevPrcs,
           [nodeLoca]: nodeId,
         };
-      } else if (
-        prevPrcs[nodeLoca].length > 0 &&
-        prevPrcs[nodeLoca] === nodeId
-      ) {
+      } else if (prevPrcs[nodeLoca].length > 0 && prevPrcs[nodeLoca] === nodeId) {
         return {
           ...prevPrcs,
           [nodeLoca]: "",
@@ -67,9 +64,7 @@ export default function Home() {
   }
 
   function confirmDelete() {
-    let result = confirm(
-      "Are you sure you want to delete your set? \n \nPressing OK will clear your configuration."
-    );
+    let result = confirm("Are you sure you want to delete your set? \n \nPressing OK will clear your configuration.");
     if (result) {
       setPiercings(data);
       setPrcsConfig(config);
@@ -77,24 +72,10 @@ export default function Home() {
   }
 
   return (
-    <ThemeProvider
-      breakpoints={["xxxl", "xxl", "xl", "lg", "md", "sm", "xs", "xxs"]}
-      minBreakpoint="xxs"
-    >
+    <ThemeProvider breakpoints={["xxxl", "xxl", "xl", "lg", "md", "sm", "xs", "xxs"]} minBreakpoint="xxs">
       <Container>
-        <Header
-          type={typeFilter}
-          location={locaFilter}
-          piercings={piercings}
-          handleFilterChange={handleFilterChange}
-          confirmDelete={confirmDelete}
-        />
-        <PiercingsBlock
-          piercings={piercings}
-          type={typeFilter}
-          location={locaFilter}
-          handleBtns={selectDisableBtns}
-        />
+        <Header type={typeFilter} location={locaFilter} piercings={piercings} handleFilterChange={handleFilterChange} confirmDelete={confirmDelete} />
+        <PiercingsBlock piercings={piercings} type={typeFilter} location={locaFilter} handleBtns={selectDisableBtns} />
       </Container>
     </ThemeProvider>
   );

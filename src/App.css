@@ -292,25 +292,11 @@ label.selected {
 }
 
 .gold-gr {
-  background: linear-gradient(
-    to right,
-    #bf953f,
-    #fcf6ba,
-    #b38728,
-    #fbf5b7,
-    #aa771c
-  );
+  background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
 }
 
 .silver-gr {
-  background: linear-gradient(
-    to right,
-    #a8a9ad,
-    #dfdfdf,
-    #949494,
-    #dfdfdf,
-    #999999
-  );
+  background: linear-gradient(to right, #a8a9ad, #dfdfdf, #949494, #dfdfdf, #999999);
 }
 
 .warning {
@@ -357,6 +343,7 @@ label.selected {
 }
 
 .prc-stats li {
+  text-align: left;
   list-style-type: none;
   line-height: 1.3;
   font-size: 0.92rem;
@@ -519,8 +506,8 @@ label.selected {
   border-radius: 50%;
   width: 10px;
   height: 10px;
-  right: -98%;
-  top: 0;
+  right: -95%;
+  top: -20px;
 }
 .ears-ind {
   background-color: #9475c4;
@@ -557,9 +544,15 @@ label.selected {
 .img-dummy {
   display: block;
   width: 100%;
-  background-color: black;
-  height: 100px;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
   text-align: right;
-  padding-right: 5px;
+}
+
+.img-dummy img {
+  max-width: 100%;
+}
+
+.flipped {
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
 }

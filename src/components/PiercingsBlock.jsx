@@ -8,9 +8,7 @@ export default function Piercing(props) {
     type && !location
       ? piercings.filter((prc) => prc.type === type)
       : type && location
-      ? piercings.filter(
-          (prc) => prc.type === type && prc.location === location
-        )
+      ? piercings.filter((prc) => prc.type === type && prc.location === location)
       : location && !type
       ? piercings.filter((prc) => prc.location === location)
       : piercings;
@@ -46,6 +44,7 @@ export default function Piercing(props) {
           disabled={prc.disabled}
         >
           <div className="img-dummy">
+            <img src={prc.imgurl} className={(prc.bone === "piercing_lobe_a_l" || prc.bone === "piercing_brow_a_l") && "flipped"} />
             {/* <span
               className={
                 prc.color === "silver" ? "silver color-tag" : "gold color-tag"
@@ -53,11 +52,11 @@ export default function Piercing(props) {
             >
               {prc.color.charAt(0)}
             </span> */}
-            <span className={locaInd}></span>
           </div>
-          <ul className="prc-stats">
+          <ul className={`prc-stats config-cont ${prc.location}`}>
             <li className="prc-name">{prc.name}</li>
             <li className="location">{prc.pt_bone}</li>
+            {/* <div className={locaInd}></div> */}
             {/* {prc.type === "mod" && <li className="set-name">{prc.set_name}</li>} */}
           </ul>
         </button>
@@ -69,13 +68,7 @@ export default function Piercing(props) {
     <>
       <Row className="mt-4 title-row">
         <Col>
-          <h5>
-            {type === "vanilla"
-              ? "Vanilla Sets"
-              : type === "mod"
-              ? "Mod Piercings"
-              : "All Piercings"}
-          </h5>
+          <h5>{type === "vanilla" ? "Vanilla Sets" : type === "mod" ? "Mod Piercings" : "All Piercings"}</h5>
         </Col>
       </Row>
       <Row className="mt-2">{prcElements}</Row>
