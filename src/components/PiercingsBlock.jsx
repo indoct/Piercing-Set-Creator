@@ -44,7 +44,10 @@ export default function Piercing(props) {
           disabled={prc.disabled}
         >
           <div className="img-dummy">
-            <img src={prc.imgurl} className={(prc.bone === "piercing_lobe_a_l" || prc.bone === "piercing_brow_a_l") && "flipped"} />
+            <img
+              src={prc.imgurl}
+              className={(prc.bone === "piercing_lobe_a_l" || prc.bone === "piercing_brow_a_l" || prc.bone === "piercing_lobe_b_l") && "flipped"}
+            />
             {/* <span
               className={
                 prc.color === "silver" ? "silver color-tag" : "gold color-tag"
