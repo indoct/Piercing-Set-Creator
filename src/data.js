@@ -724,7 +724,7 @@ export const data = [
     bone: "piercing_nostril_a_l",
     location: "nose",
     nodeid: "e6f20c91-cfe6-40b0-a5c9-6ee8805580e3",
-    imgurl: "assets/images/barb-elk-stud.jpg",
+    imgurl: "assets/images/barb-elk-stud-l.jpg",
     selected: false,
     disabled: false,
     matcat: "barbarian",
