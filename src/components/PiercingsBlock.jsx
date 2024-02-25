@@ -51,7 +51,8 @@ export default function Piercing(props) {
                   prc.bone === "piercing_brow_a_l" ||
                   prc.bone === "piercing_lobe_b_l" ||
                   prc.bone === "piercing_tragus_a_l" ||
-                  prc.bone === "beard_upper_lip1_l") &&
+                  prc.bone === "beard_upper_lip1_l" ||
+                  prc.bone === "piercing_brow_b_l") &&
                 "flipped"
               }
             />
