@@ -2245,6 +2245,11 @@ react-bootstrap@^2.10.1:
     uncontrollable "^7.2.1"
     warning "^4.0.3"
 
+react-copy-code@^2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/react-copy-code/-/react-copy-code-2.1.2.tgz#fe4aca64dc28f65078bfb74589954992efe93651"
+  integrity sha512-soeQmbEIBYnfbn5NJLoG5smuNA1azh5Mwwpls4Ay+Sc4ipi4DXKDCMNiuqr/Ecf/+7HHcYh7V1wvPDzmXPeRTg==
+
 react-dom@^18.2.0:
   version "18.2.0"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-18.2.0.tgz#22aaf38708db2674ed9ada224ca4aa708d821e3d"

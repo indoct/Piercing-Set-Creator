@@ -16,8 +16,6 @@ export default function Home() {
   const locaFilter = searchParams.get("location");
   const [sessionOver, setSessionOver] = useState(false);
 
-  // console.log(JSON.stringify(config) === JSON.stringify(prcsConfig));
-
   function selectDisableBtns(e, nodeId, nodeLoca) {
     setPiercings((prevPrcs) =>
       prevPrcs.map((prc) => {
@@ -76,6 +74,7 @@ export default function Home() {
     if (result) {
       setPiercings(data);
       setPrcsConfig(config);
+      setSessionOver((prevState) => !prevState);
     }
   }
 
@@ -106,6 +105,7 @@ export default function Home() {
           location={locaFilter}
           handleBtns={selectDisableBtns}
           sessionOver={sessionOver}
+          confirmDelete={confirmDelete}
         />
       </Container>
     </ThemeProvider>
