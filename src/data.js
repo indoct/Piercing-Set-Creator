@@ -13,7 +13,7 @@ export const data = [
     imgurl: "assets/images/barb-bear-fang.jpg",
     selected: false,
     disabled: false,
-    matcat: "barbarian",
+    matcat: "barb-bear",
     matid: "95004272-96ad-9967-9bb3-6b556d3bcbed",
   },
   {
@@ -30,7 +30,7 @@ export const data = [
     imgurl: "assets/images/barb-bear-claw.jpg",
     selected: false,
     disabled: false,
-    matcat: "barbarian",
+    matcat: "barb-bear",
     matid: "95004272-96ad-9967-9bb3-6b556d3bcbed",
   },
   {
@@ -47,7 +47,7 @@ export const data = [
     imgurl: "assets/images/barb-bear-fang.jpg",
     selected: false,
     disabled: false,
-    matcat: "barbarian",
+    matcat: "barb-bear",
     matid: "95004272-96ad-9967-9bb3-6b556d3bcbed",
   },
   {
@@ -64,7 +64,7 @@ export const data = [
     imgurl: "assets/images/barb-bear-claw.jpg",
     selected: false,
     disabled: false,
-    matcat: "barbarian",
+    matcat: "barb-bear",
     matid: "95004272-96ad-9967-9bb3-6b556d3bcbed",
   },
   {
@@ -81,7 +81,7 @@ export const data = [
     imgurl: "assets/images/barb-bear-scales.jpg",
     selected: false,
     disabled: false,
-    matcat: "barbarian",
+    matcat: "barb-bear",
     matid: "95004272-96ad-9967-9bb3-6b556d3bcbed",
   },
   {
@@ -98,7 +98,7 @@ export const data = [
     imgurl: "assets/images/barb-bear-scales.jpg",
     selected: false,
     disabled: false,
-    matcat: "barbarian",
+    matcat: "barb-bear",
     matid: "95004272-96ad-9967-9bb3-6b556d3bcbed",
   },
   {
@@ -115,7 +115,7 @@ export const data = [
     imgurl: "assets/images/barb-bear-skull-ring.jpg",
     selected: false,
     disabled: false,
-    matcat: "barbarian",
+    matcat: "barb-bear",
     matid: "95004272-96ad-9967-9bb3-6b556d3bcbed",
   },
   {
@@ -132,7 +132,7 @@ export const data = [
     imgurl: "assets/images/barb-bear-stubs-r.jpg",
     selected: false,
     disabled: false,
-    matcat: "barbarian",
+    matcat: "barb-bear",
     matid: "95004272-96ad-9967-9bb3-6b556d3bcbed",
   },
   {
@@ -149,7 +149,7 @@ export const data = [
     imgurl: "assets/images/barb-bear-stubs-l.jpg",
     selected: false,
     disabled: false,
-    matcat: "barbarian",
+    matcat: "barb-bear",
     matid: "95004272-96ad-9967-9bb3-6b556d3bcbed",
   },
   {
@@ -166,7 +166,7 @@ export const data = [
     imgurl: "assets/images/barb-bear-ring.jpg",
     selected: false,
     disabled: false,
-    matcat: "barbarian",
+    matcat: "barb-bear",
     matid: "95004272-96ad-9967-9bb3-6b556d3bcbed",
   },
   {
@@ -183,7 +183,7 @@ export const data = [
     imgurl: "assets/images/barb-bear-ring.jpg",
     selected: false,
     disabled: false,
-    matcat: "barbarian",
+    matcat: "barb-bear",
     matid: "95004272-96ad-9967-9bb3-6b556d3bcbed",
   },
   {
@@ -200,7 +200,7 @@ export const data = [
     imgurl: "assets/images/barb-bear-bridge-r.jpg",
     selected: false,
     disabled: false,
-    matcat: "barbarian",
+    matcat: "barb-bear",
     matid: "95004272-96ad-9967-9bb3-6b556d3bcbed",
   },
   {
@@ -217,7 +217,7 @@ export const data = [
     imgurl: "assets/images/barb-bear-bridge-l.jpg",
     selected: false,
     disabled: false,
-    matcat: "barbarian",
+    matcat: "barb-bear",
     matid: "95004272-96ad-9967-9bb3-6b556d3bcbed",
   },
   {
@@ -234,7 +234,7 @@ export const data = [
     imgurl: "assets/images/barb-eagle-feathers.jpg",
     selected: false,
     disabled: false,
-    matcat: "barbarian",
+    matcat: "barb-eagle",
     matid: "bd069145-fbc8-3fbc-befc-a3de9ea32205",
   },
   {
@@ -251,7 +251,7 @@ export const data = [
     imgurl: "assets/images/barb-eagle-feathers.jpg",
     selected: false,
     disabled: false,
-    matcat: "barbarian",
+    matcat: "barb-eagle",
     matid: "bd069145-fbc8-3fbc-befc-a3de9ea32206",
   },
   {
@@ -268,7 +268,7 @@ export const data = [
     imgurl: "assets/images/barb-eagle-ring.jpg",
     selected: false,
     disabled: false,
-    matcat: "barbarian",
+    matcat: "barb-eagle",
     matid: "bd069145-fbc8-3fbc-befc-a3de9ea32207",
   },
   {
@@ -285,7 +285,7 @@ export const data = [
     imgurl: "assets/images/barb-eagle-talon.jpg",
     selected: false,
     disabled: false,
-    matcat: "barbarian",
+    matcat: "barb-eagle",
     matid: "bd069145-fbc8-3fbc-befc-a3de9ea32208",
   },
   {
@@ -302,7 +302,7 @@ export const data = [
     imgurl: "assets/images/barb-eagle-talon.jpg",
     selected: false,
     disabled: false,
-    matcat: "barbarian",
+    matcat: "barb-eagle",
     matid: "bd069145-fbc8-3fbc-befc-a3de9ea32209",
   },
   {
@@ -319,7 +319,7 @@ export const data = [
     imgurl: "assets/images/barb-eagle-wing-stud.jpg",
     selected: false,
     disabled: false,
-    matcat: "barbarian",
+    matcat: "barb-eagle",
     matid: "bd069145-fbc8-3fbc-befc-a3de9ea32210",
   },
   {
@@ -336,7 +336,7 @@ export const data = [
     imgurl: "assets/images/barb-eagle-wing-stud.jpg",
     selected: false,
     disabled: false,
-    matcat: "barbarian",
+    matcat: "barb-eagle",
     matid: "bd069145-fbc8-3fbc-befc-a3de9ea32211",
   },
   {
@@ -353,7 +353,7 @@ export const data = [
     imgurl: "assets/images/barb-eagle-crest-ring.jpg",
     selected: false,
     disabled: false,
-    matcat: "barbarian",
+    matcat: "barb-eagle",
     matid: "bd069145-fbc8-3fbc-befc-a3de9ea32212",
   },
   {
@@ -370,7 +370,7 @@ export const data = [
     imgurl: "assets/images/barb-wolf-skull-ring.jpg",
     selected: false,
     disabled: false,
-    matcat: "barbarian",
+    matcat: "barb-wolf",
     matid: "e6818c29-219c-9d87-f927-d19c4ae18624",
   },
   {
@@ -387,7 +387,7 @@ export const data = [
     imgurl: "assets/images/barb-wolf-claw-sm-hl.jpg",
     selected: false,
     disabled: false,
-    matcat: "barbarian",
+    matcat: "barb-wolf",
     matid: "e6818c29-219c-9d87-f927-d19c4ae18628",
   },
   {
@@ -404,7 +404,7 @@ export const data = [
     imgurl: "assets/images/barb-wolf-claw-sm-hu.jpg",
     selected: false,
     disabled: false,
-    matcat: "barbarian",
+    matcat: "barb-wolf",
     matid: "e6818c29-219c-9d87-f927-d19c4ae18625",
   },
   {
@@ -421,8 +421,8 @@ export const data = [
     imgurl: "assets/images/barb-wolf-claw-sm-hl.jpg",
     selected: false,
     disabled: false,
-    matcat: "barbarian",
-    matid: "e6818c29-219c-9d87-f927-d19c4ae18628",
+    matcat: "barb-wolf",
+    matid: "e6818c29-219c-9d87-f927-d19c4ae18626",
   },
   {
     index: 26,
@@ -438,7 +438,7 @@ export const data = [
     imgurl: "assets/images/barb-wolf-claw-sm-hu.jpg",
     selected: false,
     disabled: false,
-    matcat: "barbarian",
+    matcat: "barb-wolf",
     matid: "e6818c29-219c-9d87-f927-d19c4ae18627",
   },
   {
@@ -455,7 +455,7 @@ export const data = [
     imgurl: "assets/images/barb-wolf-claw-l.jpg",
     selected: false,
     disabled: false,
-    matcat: "barbarian",
+    matcat: "barb-wolf",
     matid: "e6818c29-219c-9d87-f927-d19c4ae18629",
   },
   {
@@ -472,7 +472,7 @@ export const data = [
     imgurl: "assets/images/barb-wolf-claw-l.jpg",
     selected: false,
     disabled: false,
-    matcat: "barbarian",
+    matcat: "barb-wolf",
     matid: "e6818c29-219c-9d87-f927-d19c4ae18630",
   },
   {
@@ -489,7 +489,7 @@ export const data = [
     imgurl: "assets/images/barb-wolf-branch.jpg",
     selected: false,
     disabled: false,
-    matcat: "barbarian",
+    matcat: "barb-wolf",
     matid: "e6818c29-219c-9d87-f927-d19c4ae18631",
   },
   {
@@ -506,7 +506,7 @@ export const data = [
     imgurl: "assets/images/barb-wolf-branch.jpg",
     selected: false,
     disabled: false,
-    matcat: "barbarian",
+    matcat: "barb-wolf",
     matid: "e6818c29-219c-9d87-f927-d19c4ae18632",
   },
   {
@@ -523,7 +523,7 @@ export const data = [
     imgurl: "assets/images/barb-wolf-sphere.jpg",
     selected: false,
     disabled: false,
-    matcat: "barbarian",
+    matcat: "barb-wolf",
     matid: "e6818c29-219c-9d87-f927-d19c4ae18633",
   },
   {
@@ -540,7 +540,7 @@ export const data = [
     imgurl: "assets/images/barb-wolf-sphere.jpg",
     selected: false,
     disabled: false,
-    matcat: "barbarian",
+    matcat: "barb-wolf",
     matid: "e6818c29-219c-9d87-f927-d19c4ae18634",
   },
   {
@@ -557,7 +557,7 @@ export const data = [
     imgurl: "assets/images/barb-tiger-gem.jpg",
     selected: false,
     disabled: false,
-    matcat: "barbarian",
+    matcat: "barb-tiger",
     matid: "b2ebb4dd-dd10-479c-0692-1aa21568fd84",
   },
   {
@@ -574,7 +574,7 @@ export const data = [
     imgurl: "assets/images/barb-tiger-gem.jpg",
     selected: false,
     disabled: false,
-    matcat: "barbarian",
+    matcat: "barb-tiger",
     matid: "b2ebb4dd-dd10-479c-0692-1aa21568fd85",
   },
   {
@@ -591,7 +591,7 @@ export const data = [
     imgurl: "assets/images/barb-tiger-claw.jpg",
     selected: false,
     disabled: false,
-    matcat: "barbarian",
+    matcat: "barb-tiger",
     matid: "b2ebb4dd-dd10-479c-0692-1aa21568fd86",
   },
   {
@@ -608,7 +608,7 @@ export const data = [
     imgurl: "assets/images/barb-tiger-claw.jpg",
     selected: false,
     disabled: false,
-    matcat: "barbarian",
+    matcat: "barb-tiger",
     matid: "b2ebb4dd-dd10-479c-0692-1aa21568fd87",
   },
   {
@@ -625,7 +625,7 @@ export const data = [
     imgurl: "assets/images/barb-tiger-spike-br-l.jpg",
     selected: false,
     disabled: false,
-    matcat: "barbarian",
+    matcat: "barb-tiger",
     matid: "b2ebb4dd-dd10-479c-0692-1aa21568fd88",
   },
   {
@@ -642,7 +642,7 @@ export const data = [
     imgurl: "assets/images/barb-tiger-spike-br-r.jpg",
     selected: false,
     disabled: false,
-    matcat: "barbarian",
+    matcat: "barb-tiger",
     matid: "b2ebb4dd-dd10-479c-0692-1aa21568fd89",
   },
   {
@@ -659,7 +659,7 @@ export const data = [
     imgurl: "assets/images/barb-tiger-spike-no-l.jpg",
     selected: false,
     disabled: false,
-    matcat: "barbarian",
+    matcat: "barb-tiger",
     matid: "b2ebb4dd-dd10-479c-0692-1aa21568fd90",
   },
   {
@@ -676,7 +676,7 @@ export const data = [
     imgurl: "assets/images/barb-tiger-spike-no-r.jpg",
     selected: false,
     disabled: false,
-    matcat: "barbarian",
+    matcat: "barb-tiger",
     matid: "b2ebb4dd-dd10-479c-0692-1aa21568fd91",
   },
   {
@@ -685,15 +685,15 @@ export const data = [
     type: "vanilla",
     set_name: "Barbarian - Elk",
     color: "silver",
-    name: "Elk Antler Ring",
+    name: "Elk Antler",
     pt_bone: "Brow Lower (L)",
     bone: "piercing_brow_b_l",
-    location: "nose",
+    location: "brows",
     nodeid: "24a99cc2-6845-41ea-a7e7-5e0c2ece1dc8",
     imgurl: "assets/images/barb-elk-antler.jpg",
     selected: false,
     disabled: false,
-    matcat: "barbarian",
+    matcat: "barb-elk",
     matid: "bd069145-fbc8-3fbc-befc-a3de9ea32205",
   },
   {
@@ -702,15 +702,15 @@ export const data = [
     type: "vanilla",
     set_name: "Barbarian - Elk",
     color: "silver",
-    name: "Elk Antler Ring",
+    name: "Elk Antler",
     pt_bone: "Brow Lower (R)",
     bone: "piercing_brow_b_r",
-    location: "nose",
+    location: "brows",
     nodeid: "8fdbf362-c8ef-44ea-b476-eac96e4b0d88",
     imgurl: "assets/images/barb-elk-antler.jpg",
     selected: false,
     disabled: false,
-    matcat: "barbarian",
+    matcat: "barb-elk",
     matid: "bd069145-fbc8-3fbc-befc-a3de9ea32206",
   },
   {
@@ -724,10 +724,10 @@ export const data = [
     bone: "piercing_nostril_a_l",
     location: "nose",
     nodeid: "e6f20c91-cfe6-40b0-a5c9-6ee8805580e3",
-    imgurl: "assets/images/barb-elk-stud-l.jpg",
+    imgurl: "assets/images/barb-elk-stud.jpg",
     selected: false,
     disabled: false,
-    matcat: "barbarian",
+    matcat: "barb-elk",
     matid: "bd069145-fbc8-3fbc-befc-a3de9ea32207",
   },
   {
@@ -744,7 +744,7 @@ export const data = [
     imgurl: "assets/images/barb-elk-stud.jpg",
     selected: false,
     disabled: false,
-    matcat: "barbarian",
+    matcat: "barb-elk",
     matid: "bd069145-fbc8-3fbc-befc-a3de9ea32208",
   },
   {
@@ -761,7 +761,7 @@ export const data = [
     imgurl: "assets/images/barb-elk-wood-ring.jpg",
     selected: false,
     disabled: false,
-    matcat: "barbarian",
+    matcat: "barb-elk",
     matid: "bd069145-fbc8-3fbc-befc-a3de9ea32209",
   },
   {
@@ -778,7 +778,7 @@ export const data = [
     imgurl: "assets/images/barb-elk-wood-ring.jpg",
     selected: false,
     disabled: false,
-    matcat: "barbarian",
+    matcat: "barb-elk",
     matid: "bd069145-fbc8-3fbc-befc-a3de9ea32210",
   },
   {
@@ -795,7 +795,7 @@ export const data = [
     imgurl: "assets/images/barb-elk-skull.jpg",
     selected: false,
     disabled: false,
-    matcat: "barbarian",
+    matcat: "barb-elk",
     matid: "bd069145-fbc8-3fbc-befc-a3de9ea32211",
   },
   {
@@ -804,7 +804,7 @@ export const data = [
     type: "vanilla",
     set_name: "Barbarian - Elk",
     color: "silver",
-    name: "Elk Sphere Stud",
+    name: "Elk Sphere",
     pt_bone: "Brow Upper (L)",
     bone: "piercing_brow_a_l",
     location: "brows",
@@ -812,7 +812,7 @@ export const data = [
     imgurl: "assets/images/barb-elk-sphere.jpg",
     selected: false,
     disabled: false,
-    matcat: "barbarian",
+    matcat: "barb-elk",
     matid: "bd069145-fbc8-3fbc-befc-a3de9ea32212",
   },
   {
@@ -821,7 +821,7 @@ export const data = [
     type: "vanilla",
     set_name: "Barbarian - Elk",
     color: "silver",
-    name: "Elk Sphere Stud",
+    name: "Elk Sphere",
     pt_bone: "Brow Upper (R)",
     bone: "piercing_brow_a_r",
     location: "brows",
@@ -829,11 +829,11 @@ export const data = [
     imgurl: "assets/images/barb-elk-sphere.jpg",
     selected: false,
     disabled: false,
-    matcat: "barbarian",
+    matcat: "barb-elk",
     matid: "bd069145-fbc8-3fbc-befc-a3de9ea32213",
   },
   {
-    index: 53,
+    index: 50,
     site_cat: "vanilla-ab",
     type: "vanilla",
     set_name: "Fastened Stars",
@@ -850,7 +850,7 @@ export const data = [
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
   },
   {
-    index: 54,
+    index: 51,
     site_cat: "vanilla-ab",
     type: "vanilla",
     set_name: "Fastened Stars",
@@ -867,7 +867,7 @@ export const data = [
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
   },
   {
-    index: 55,
+    index: 52,
     site_cat: "vanilla-ab",
     type: "vanilla",
     set_name: "Fastened Stars",
@@ -884,7 +884,7 @@ export const data = [
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
   },
   {
-    index: 56,
+    index: 53,
     site_cat: "vanilla-ab",
     type: "vanilla",
     set_name: "Fastened Stars",
@@ -901,7 +901,7 @@ export const data = [
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
   },
   {
-    index: 57,
+    index: 54,
     site_cat: "vanilla-ab",
     type: "vanilla",
     set_name: "Lapis Studmuffin",
@@ -918,7 +918,7 @@ export const data = [
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
   },
   {
-    index: 58,
+    index: 55,
     site_cat: "vanilla-ab",
     type: "vanilla",
     set_name: "Lapis Studmuffin",
@@ -935,7 +935,7 @@ export const data = [
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
   },
   {
-    index: 59,
+    index: 56,
     site_cat: "vanilla-ab",
     type: "vanilla",
     set_name: "Lapis Studmuffin",
@@ -952,7 +952,7 @@ export const data = [
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
   },
   {
-    index: 60,
+    index: 57,
     site_cat: "vanilla-ab",
     type: "vanilla",
     set_name: "Subduer Loops",
@@ -969,7 +969,7 @@ export const data = [
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
   },
   {
-    index: 61,
+    index: 58,
     site_cat: "vanilla-ab",
     type: "vanilla",
     set_name: "Subduer Loops",
@@ -986,7 +986,7 @@ export const data = [
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
   },
   {
-    index: 62,
+    index: 59,
     site_cat: "vanilla-ab",
     type: "vanilla",
     set_name: "Subduer Loops",
@@ -1003,7 +1003,7 @@ export const data = [
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
   },
   {
-    index: 63,
+    index: 60,
     site_cat: "vanilla-ab",
     type: "vanilla",
     set_name: "Subduer Loops",
@@ -1020,7 +1020,7 @@ export const data = [
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
   },
   {
-    index: 64,
+    index: 61,
     site_cat: "vanilla-ab",
     type: "vanilla",
     set_name: "Subduer Loops",
@@ -1030,14 +1030,14 @@ export const data = [
     bone: "piercing_helix_a_l",
     location: "ears",
     nodeid: "ba42b168-d64c-4101-bc5d-3ae77bb93eb3",
-    imgurl: "assets/images/van-dblspike-bb-lu.jpg",
+    imgurl: "assets/images/van-dblspike-bb.jpg",
     selected: false,
     disabled: false,
     matcat: "set-a",
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
   },
   {
-    index: 65,
+    index: 62,
     site_cat: "vanilla-ab",
     type: "vanilla",
     set_name: "Subduer Loops",
@@ -1047,14 +1047,14 @@ export const data = [
     bone: "piercing_helix_b_l",
     location: "ears",
     nodeid: "045a5fc3-1b43-403d-afe4-efc8faaa082a",
-    imgurl: "assets/images/van-dblspike-bb-ll.jpg",
+    imgurl: "assets/images/van-dblspike-bb-lu.jpg",
     selected: false,
     disabled: false,
     matcat: "set-a",
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
   },
   {
-    index: 66,
+    index: 63,
     site_cat: "vanilla-ab",
     type: "vanilla",
     set_name: "Subduer Loops",
@@ -1071,7 +1071,7 @@ export const data = [
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
   },
   {
-    index: 67,
+    index: 64,
     site_cat: "vanilla-ab",
     type: "vanilla",
     set_name: "Subduer Loops",
@@ -1081,14 +1081,14 @@ export const data = [
     bone: "piercing_helix_b_r",
     location: "ears",
     nodeid: "35b7f0c1-1ed0-4303-b90a-a1f4066b4523",
-    imgurl: "assets/images/van-dblspike-bb.jpg",
+    imgurl: "assets/images/van-dblspike-bb-ll.jpg",
     selected: false,
     disabled: false,
     matcat: "set-a",
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
   },
   {
-    index: 68,
+    index: 65,
     site_cat: "vanilla-ab",
     type: "vanilla",
     set_name: "Midnight Tears",
@@ -1105,7 +1105,7 @@ export const data = [
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
   },
   {
-    index: 69,
+    index: 66,
     site_cat: "vanilla-ab",
     type: "vanilla",
     set_name: "Midnight Tears",
@@ -1122,7 +1122,7 @@ export const data = [
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
   },
   {
-    index: 70,
+    index: 67,
     site_cat: "vanilla-ab",
     type: "vanilla",
     set_name: "Midnight Tears",
@@ -1130,7 +1130,7 @@ export const data = [
     name: "Curved Barbell",
     pt_bone: "Helix Upper (R)",
     bone: "piercing_helix_a_r",
-    location: "nose",
+    location: "ears",
     nodeid: "eec50709-cbc4-4186-825b-3021d6921ff5",
     imgurl: "assets/images/van-horseshoe.jpg",
     selected: false,
@@ -1139,7 +1139,7 @@ export const data = [
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
   },
   {
-    index: 71,
+    index: 68,
     site_cat: "vanilla-ab",
     type: "vanilla",
     set_name: "Silvergold Gala",
@@ -1156,7 +1156,7 @@ export const data = [
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
   },
   {
-    index: 72,
+    index: 69,
     site_cat: "vanilla-ab",
     type: "vanilla",
     set_name: "Silvergold Gala",
@@ -1164,7 +1164,7 @@ export const data = [
     name: "Vanilla Flat Ring",
     pt_bone: "Nostril (R)",
     bone: "piercing_nostril_a_r",
-    location: "brows",
+    location: "nose",
     nodeid: "4a903b20-bf4a-4246-b134-3b8e5367ba07",
     imgurl: "assets/images/van-flat-ring-nose.jpg",
     selected: false,
@@ -1173,7 +1173,7 @@ export const data = [
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
   },
   {
-    index: 73,
+    index: 70,
     site_cat: "vanilla-ab",
     type: "vanilla",
     set_name: "Silvergold Gala",
@@ -1190,7 +1190,7 @@ export const data = [
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
   },
   {
-    index: 74,
+    index: 71,
     site_cat: "vanilla-ab",
     type: "vanilla",
     set_name: "Silvergold Gala",
@@ -1207,7 +1207,41 @@ export const data = [
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
   },
   {
-    index: 77,
+    index: 72,
+    site_cat: "vanilla-ab",
+    type: "vanilla",
+    set_name: "Silvergold Gala",
+    color: "silver",
+    name: "Tusk Cuff",
+    pt_bone: "Helix Upper (R)",
+    bone: "piercing_helix_a_r",
+    location: "ears",
+    nodeid: "e9cdfcd5-3e91-436a-b532-c8fae22136d0",
+    imgurl: "assets/images/van-tusk-cuff-u.jpg",
+    selected: false,
+    disabled: false,
+    matcat: "set-a",
+    matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
+  },
+  {
+    index: 73,
+    site_cat: "vanilla-ab",
+    type: "vanilla",
+    set_name: "Silvergold Gala",
+    color: "silver",
+    name: "Tusk Cuff",
+    pt_bone: "Helix Lower (R)",
+    bone: "piercing_helix_b_r",
+    location: "ears",
+    nodeid: "da6968d9-5721-43a7-ac2a-282db7faf575",
+    imgurl: "assets/images/van-tusk-cuff-l.jpg",
+    selected: false,
+    disabled: false,
+    matcat: "set-a",
+    matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
+  },
+  {
+    index: 74,
     site_cat: "vanilla-ab",
     type: "vanilla",
     set_name: "Silvergold Gala",
@@ -1224,7 +1258,7 @@ export const data = [
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
   },
   {
-    index: 78,
+    index: 75,
     site_cat: "vanilla-ab",
     type: "vanilla",
     set_name: "Darkmoons",
@@ -1241,7 +1275,7 @@ export const data = [
     matid: "fc211abc-b97d-b3d8-5241-cd2055f43ed7",
   },
   {
-    index: 79,
+    index: 76,
     site_cat: "vanilla-ab",
     type: "vanilla",
     set_name: "Darkmoons",
@@ -1258,7 +1292,7 @@ export const data = [
     matid: "fc211abc-b97d-b3d8-5241-cd2055f43ed8",
   },
   {
-    index: 80,
+    index: 77,
     site_cat: "vanilla-ab",
     type: "vanilla",
     set_name: "Darkmoons",
@@ -1275,7 +1309,7 @@ export const data = [
     matid: "fc211abc-b97d-b3d8-5241-cd2055f43ed9",
   },
   {
-    index: 81,
+    index: 78,
     site_cat: "vanilla-ab",
     type: "vanilla",
     set_name: "Darkmoons",
@@ -1292,7 +1326,7 @@ export const data = [
     matid: "fc211abc-b97d-b3d8-5241-cd2055f43ed10",
   },
   {
-    index: 82,
+    index: 79,
     site_cat: "vanilla-ab",
     type: "vanilla",
     set_name: "Darkmoons",
@@ -1309,7 +1343,7 @@ export const data = [
     matid: "fc211abc-b97d-b3d8-5241-cd2055f43ed11",
   },
   {
-    index: 83,
+    index: 80,
     site_cat: "vanilla-ab",
     type: "vanilla",
     set_name: "Chultan Serpents",
@@ -1326,7 +1360,7 @@ export const data = [
     matid: "fc211abc-b97d-b3d8-5241-cd2055f43ed12",
   },
   {
-    index: 84,
+    index: 81,
     site_cat: "vanilla-ab",
     type: "vanilla",
     set_name: "Chultan Serpents",
@@ -1343,7 +1377,7 @@ export const data = [
     matid: "fc211abc-b97d-b3d8-5241-cd2055f43ed13",
   },
   {
-    index: 85,
+    index: 82,
     site_cat: "vanilla-ab",
     type: "vanilla",
     set_name: "Crimsonhilt Dirks",
@@ -1360,7 +1394,7 @@ export const data = [
     matid: "fc211abc-b97d-b3d8-5241-cd2055f43ed14",
   },
   {
-    index: 86,
+    index: 83,
     site_cat: "vanilla-ab",
     type: "vanilla",
     set_name: "Crimsonhilt Dirks",
@@ -1377,41 +1411,7 @@ export const data = [
     matid: "fc211abc-b97d-b3d8-5241-cd2055f43ed15",
   },
   {
-    index: 87,
-    site_cat: "vanilla-ab",
-    type: "vanilla",
-    set_name: "Crimsonhilt Dirks",
-    color: "silver",
-    name: "Tusk Cuff",
-    pt_bone: "Helix Upper (R)",
-    bone: "piercing_helix_a_r",
-    location: "ears",
-    nodeid: "c2797414-c4c8-4898-92b0-0c7a09ac3bda",
-    imgurl: "assets/images/van-tusk-cuff-u.jpg",
-    selected: false,
-    disabled: false,
-    matcat: "set-b",
-    matid: "fc211abc-b97d-b3d8-5241-cd2055f43ed16",
-  },
-  {
-    index: 88,
-    site_cat: "vanilla-ab",
-    type: "vanilla",
-    set_name: "Crimsonhilt Dirks",
-    color: "silver",
-    name: "Tusk Cuff",
-    pt_bone: "Helix Lower (R)",
-    bone: "piercing_helix_b_r",
-    location: "ears",
-    nodeid: "573f4b09-308a-45af-b18e-6f8668af0ea2",
-    imgurl: "assets/images/van-tusk-cuff-l.jpg",
-    selected: false,
-    disabled: false,
-    matcat: "set-b",
-    matid: "fc211abc-b97d-b3d8-5241-cd2055f43ed17",
-  },
-  {
-    index: 89,
+    index: 84,
     site_cat: "vanilla-ab",
     type: "vanilla",
     set_name: "Barovia Fangs",
@@ -1428,7 +1428,7 @@ export const data = [
     matid: "fc211abc-b97d-b3d8-5241-cd2055f43ed18",
   },
   {
-    index: 90,
+    index: 85,
     site_cat: "vanilla-ab",
     type: "vanilla",
     set_name: "Barovia Fangs",
@@ -1445,7 +1445,7 @@ export const data = [
     matid: "fc211abc-b97d-b3d8-5241-cd2055f43ed19",
   },
   {
-    index: 91,
+    index: 86,
     site_cat: "vanilla-ab",
     type: "vanilla",
     set_name: "Barovia Fangs",
@@ -1462,7 +1462,7 @@ export const data = [
     matid: "fc211abc-b97d-b3d8-5241-cd2055f43ed20",
   },
   {
-    index: 92,
+    index: 87,
     site_cat: "vanilla-ab",
     type: "vanilla",
     set_name: "Barovia Fangs",
@@ -1479,7 +1479,7 @@ export const data = [
     matid: "fc211abc-b97d-b3d8-5241-cd2055f43ed21",
   },
   {
-    index: 93,
+    index: 88,
     site_cat: "vanilla-ab",
     type: "vanilla",
     set_name: "Barovia Fangs",
@@ -1496,7 +1496,7 @@ export const data = [
     matid: "fc211abc-b97d-b3d8-5241-cd2055f43ed22",
   },
   {
-    index: 94,
+    index: 89,
     site_cat: "vanilla-ab",
     type: "vanilla",
     set_name: "Barovia Fangs",
@@ -1513,7 +1513,7 @@ export const data = [
     matid: "fc211abc-b97d-b3d8-5241-cd2055f43ed23",
   },
   {
-    index: 95,
+    index: 90,
     site_cat: "vanilla-ab",
     type: "vanilla",
     set_name: "Barovia Fangs",
@@ -1530,7 +1530,7 @@ export const data = [
     matid: "fc211abc-b97d-b3d8-5241-cd2055f43ed24",
   },
   {
-    index: 96,
+    index: 91,
     site_cat: "vanilla-ab",
     type: "vanilla",
     set_name: "Minotaur Ring",
@@ -1547,7 +1547,7 @@ export const data = [
     matid: "fc211abc-b97d-b3d8-5241-cd2055f43ed25",
   },
   {
-    index: 97,
+    index: 92,
     site_cat: "vanilla-ab",
     type: "vanilla",
     set_name: "Easy Breezy",
@@ -1564,7 +1564,7 @@ export const data = [
     matid: "fc211abc-b97d-b3d8-5241-cd2055f43ed26",
   },
   {
-    index: 98,
+    index: 93,
     site_cat: "vanilla-ab",
     type: "vanilla",
     set_name: "Easy Breezy",
@@ -1581,7 +1581,7 @@ export const data = [
     matid: "fc211abc-b97d-b3d8-5241-cd2055f43ed27",
   },
   {
-    index: 99,
+    index: 94,
     site_cat: "vanilla-ab",
     type: "vanilla",
     set_name: "Archfey Swirls",
@@ -1598,7 +1598,7 @@ export const data = [
     matid: "fc211abc-b97d-b3d8-5241-cd2055f43ed28",
   },
   {
-    index: 100,
+    index: 95,
     site_cat: "vanilla-ab",
     type: "vanilla",
     set_name: "Archfey Swirls",
@@ -1615,7 +1615,7 @@ export const data = [
     matid: "fc211abc-b97d-b3d8-5241-cd2055f43ed29",
   },
   {
-    index: 101,
+    index: 96,
     site_cat: "vanilla-ab",
     type: "vanilla",
     set_name: "Commoner Ring",
@@ -1632,7 +1632,7 @@ export const data = [
     matid: "fc211abc-b97d-b3d8-5241-cd2055f43ed30",
   },
   {
-    index: 102,
+    index: 97,
     site_cat: "vanilla-ab",
     type: "vanilla",
     set_name: "Bard Rings",
@@ -1649,7 +1649,7 @@ export const data = [
     matid: "fc211abc-b97d-b3d8-5241-cd2055f43ed31",
   },
   {
-    index: 103,
+    index: 98,
     site_cat: "vanilla-ab",
     type: "vanilla",
     set_name: "Bard Rings",
@@ -1666,7 +1666,7 @@ export const data = [
     matid: "fc211abc-b97d-b3d8-5241-cd2055f43ed32",
   },
   {
-    index: 104,
+    index: 99,
     site_cat: "vanilla-ab",
     type: "vanilla",
     set_name: "Bard Rings",
@@ -1683,7 +1683,7 @@ export const data = [
     matid: "fc211abc-b97d-b3d8-5241-cd2055f43ed33",
   },
   {
-    index: 105,
+    index: 100,
     site_cat: "vanilla-ab",
     type: "vanilla",
     set_name: "Bard Rings",
@@ -1700,7 +1700,7 @@ export const data = [
     matid: "fc211abc-b97d-b3d8-5241-cd2055f43ed34",
   },
   {
-    index: 106,
+    index: 101,
     site_cat: "vanilla-ab",
     type: "vanilla",
     set_name: "Bard Rings",
@@ -1717,7 +1717,7 @@ export const data = [
     matid: "fc211abc-b97d-b3d8-5241-cd2055f43ed35",
   },
   {
-    index: 107,
+    index: 102,
     site_cat: "vanilla-ab",
     type: "vanilla",
     set_name: "Bard Rings",
@@ -1734,7 +1734,7 @@ export const data = [
     matid: "fc211abc-b97d-b3d8-5241-cd2055f43ed36",
   },
   {
-    index: 108,
+    index: 103,
     site_cat: "vanilla-ab",
     type: "vanilla",
     set_name: "Bard Rings",
@@ -1751,7 +1751,7 @@ export const data = [
     matid: "fc211abc-b97d-b3d8-5241-cd2055f43ed37",
   },
   {
-    index: 109,
+    index: 104,
     site_cat: "vanilla-ab",
     type: "vanilla",
     set_name: "Bard Rings",
@@ -1768,7 +1768,7 @@ export const data = [
     matid: "fc211abc-b97d-b3d8-5241-cd2055f43ed38",
   },
   {
-    index: 110,
+    index: 105,
     site_cat: "isp_silver",
     type: "mod",
     set_name: "Indoct's Subtler Piercings",
@@ -1785,7 +1785,7 @@ export const data = [
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
   },
   {
-    index: 111,
+    index: 106,
     site_cat: "isp_silver",
     type: "mod",
     set_name: "Indoct's Subtler Piercings",
@@ -1802,7 +1802,7 @@ export const data = [
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
   },
   {
-    index: 112,
+    index: 107,
     site_cat: "isp_silver",
     type: "mod",
     set_name: "Indoct's Subtler Piercings",
@@ -1819,7 +1819,7 @@ export const data = [
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
   },
   {
-    index: 113,
+    index: 108,
     site_cat: "isp_silver",
     type: "mod",
     set_name: "Indoct's Subtler Piercings",
@@ -1836,7 +1836,7 @@ export const data = [
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
   },
   {
-    index: 114,
+    index: 109,
     site_cat: "isp_silver",
     type: "mod",
     set_name: "Indoct's Subtler Piercings",
@@ -1853,7 +1853,7 @@ export const data = [
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
   },
   {
-    index: 115,
+    index: 110,
     site_cat: "isp_silver",
     type: "mod",
     set_name: "Indoct's Subtler Piercings",
@@ -1870,7 +1870,7 @@ export const data = [
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
   },
   {
-    index: 116,
+    index: 111,
     site_cat: "isp_silver",
     type: "mod",
     set_name: "Indoct's Subtler Piercings",
@@ -1887,7 +1887,7 @@ export const data = [
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
   },
   {
-    index: 117,
+    index: 112,
     site_cat: "isp_silver",
     type: "mod",
     set_name: "Indoct's Subtler Piercings",
@@ -1904,7 +1904,7 @@ export const data = [
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
   },
   {
-    index: 118,
+    index: 113,
     site_cat: "isp_silver",
     type: "mod",
     set_name: "Indoct's Subtler Piercings",
@@ -1921,7 +1921,7 @@ export const data = [
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
   },
   {
-    index: 119,
+    index: 114,
     site_cat: "isp_silver",
     type: "mod",
     set_name: "Indoct's Subtler Piercings",
@@ -1938,7 +1938,7 @@ export const data = [
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
   },
   {
-    index: 120,
+    index: 115,
     site_cat: "isp_silver",
     type: "mod",
     set_name: "Indoct's Subtler Piercings",
@@ -1955,7 +1955,7 @@ export const data = [
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
   },
   {
-    index: 121,
+    index: 116,
     site_cat: "isp_silver",
     type: "mod",
     set_name: "Indoct's Subtler Piercings",
@@ -1972,7 +1972,7 @@ export const data = [
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
   },
   {
-    index: 122,
+    index: 117,
     site_cat: "isp_silver",
     type: "mod",
     set_name: "Indoct's Subtler Piercings",
@@ -1989,7 +1989,7 @@ export const data = [
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
   },
   {
-    index: 123,
+    index: 118,
     site_cat: "isp_silver",
     type: "mod",
     set_name: "Indoct's Subtler Piercings",
@@ -2006,7 +2006,7 @@ export const data = [
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
   },
   {
-    index: 124,
+    index: 119,
     site_cat: "isp_silver",
     type: "mod",
     set_name: "Indoct's Subtler Piercings",
@@ -2023,7 +2023,7 @@ export const data = [
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
   },
   {
-    index: 125,
+    index: 120,
     site_cat: "isp_silver",
     type: "mod",
     set_name: "Indoct's Subtler Piercings",
@@ -2040,7 +2040,7 @@ export const data = [
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
   },
   {
-    index: 126,
+    index: 121,
     site_cat: "isp_silver",
     type: "mod",
     set_name: "Indoct's Subtler Piercings",
@@ -2057,7 +2057,7 @@ export const data = [
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
   },
   {
-    index: 127,
+    index: 122,
     site_cat: "isp_silver",
     type: "mod",
     set_name: "Indoct's Subtler Piercings",
@@ -2074,7 +2074,7 @@ export const data = [
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
   },
   {
-    index: 128,
+    index: 123,
     site_cat: "isp_silver",
     type: "mod",
     set_name: "Indoct's Subtler Piercings",
@@ -2091,7 +2091,7 @@ export const data = [
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
   },
   {
-    index: 129,
+    index: 124,
     site_cat: "isp_silver",
     type: "mod",
     set_name: "Indoct's Subtler Piercings",
@@ -2108,7 +2108,7 @@ export const data = [
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
   },
   {
-    index: 130,
+    index: 125,
     site_cat: "isp_gold",
     type: "mod",
     set_name: "Indoct's Subtler Piercings",
@@ -2125,7 +2125,7 @@ export const data = [
     matid: "4ecf0e10-d34a-42dd-ba88-85627ec8655c",
   },
   {
-    index: 131,
+    index: 126,
     site_cat: "isp_gold",
     type: "mod",
     set_name: "Indoct's Subtler Piercings",
@@ -2142,7 +2142,7 @@ export const data = [
     matid: "4ecf0e10-d34a-42dd-ba88-85627ec8655c",
   },
   {
-    index: 132,
+    index: 127,
     site_cat: "isp_gold",
     type: "mod",
     set_name: "Indoct's Subtler Piercings",
@@ -2159,7 +2159,7 @@ export const data = [
     matid: "4ecf0e10-d34a-42dd-ba88-85627ec8655c",
   },
   {
-    index: 133,
+    index: 128,
     site_cat: "isp_gold",
     type: "mod",
     set_name: "Indoct's Subtler Piercings",
@@ -2176,7 +2176,7 @@ export const data = [
     matid: "4ecf0e10-d34a-42dd-ba88-85627ec8655c",
   },
   {
-    index: 134,
+    index: 129,
     site_cat: "isp_gold",
     type: "mod",
     set_name: "Indoct's Subtler Piercings",
@@ -2193,12 +2193,12 @@ export const data = [
     matid: "4ecf0e10-d34a-42dd-ba88-85627ec8655c",
   },
   {
-    index: 135,
+    index: 130,
     site_cat: "isp_gold",
     type: "mod",
     set_name: "Indoct's Subtler Piercings",
     color: "gold",
-    name: "Disc Stud - Green Gem",
+    name: "Green Disc Stud",
     pt_bone: "Lobe Lower (L)",
     bone: "piercing_lobe_a_l",
     location: "ears",
@@ -2210,12 +2210,12 @@ export const data = [
     matid: "4ecf0e10-d34a-42dd-ba88-85627ec8655c",
   },
   {
-    index: 136,
+    index: 131,
     site_cat: "isp_gold",
     type: "mod",
     set_name: "Indoct's Subtler Piercings",
     color: "gold",
-    name: "Disc Stud - Green Gem",
+    name: "Green Disc Stud",
     pt_bone: "Lobe Lower (R)",
     bone: "piercing_lobe_a_r",
     location: "ears",
@@ -2227,7 +2227,7 @@ export const data = [
     matid: "4ecf0e10-d34a-42dd-ba88-85627ec8655c",
   },
   {
-    index: 137,
+    index: 132,
     site_cat: "isp_gold",
     type: "mod",
     set_name: "Indoct's Subtler Piercings",
@@ -2244,7 +2244,7 @@ export const data = [
     matid: "4ecf0e10-d34a-42dd-ba88-85627ec8655c",
   },
   {
-    index: 138,
+    index: 133,
     site_cat: "isp_gold",
     type: "mod",
     set_name: "Indoct's Subtler Piercings",
@@ -2261,7 +2261,7 @@ export const data = [
     matid: "4ecf0e10-d34a-42dd-ba88-85627ec8655c",
   },
   {
-    index: 139,
+    index: 134,
     site_cat: "isp_gold",
     type: "mod",
     set_name: "Indoct's Subtler Piercings",
@@ -2278,7 +2278,7 @@ export const data = [
     matid: "4ecf0e10-d34a-42dd-ba88-85627ec8655c",
   },
   {
-    index: 140,
+    index: 135,
     site_cat: "isp_gold",
     type: "mod",
     set_name: "Indoct's Subtler Piercings",
@@ -2295,7 +2295,7 @@ export const data = [
     matid: "4ecf0e10-d34a-42dd-ba88-85627ec8655c",
   },
   {
-    index: 141,
+    index: 136,
     site_cat: "isp_gold",
     type: "mod",
     set_name: "Indoct's Subtler Piercings",
@@ -2312,7 +2312,7 @@ export const data = [
     matid: "4ecf0e10-d34a-42dd-ba88-85627ec8655c",
   },
   {
-    index: 142,
+    index: 137,
     site_cat: "isp_gold",
     type: "mod",
     set_name: "Indoct's Subtler Piercings",
@@ -2329,7 +2329,7 @@ export const data = [
     matid: "4ecf0e10-d34a-42dd-ba88-85627ec8655c",
   },
   {
-    index: 143,
+    index: 138,
     site_cat: "isp_gold",
     type: "mod",
     set_name: "Indoct's Subtler Piercings",
@@ -2346,7 +2346,7 @@ export const data = [
     matid: "4ecf0e10-d34a-42dd-ba88-85627ec8655c",
   },
   {
-    index: 144,
+    index: 139,
     site_cat: "isp_gold",
     type: "mod",
     set_name: "Indoct's Subtler Piercings",
@@ -2363,7 +2363,7 @@ export const data = [
     matid: "4ecf0e10-d34a-42dd-ba88-85627ec8655c",
   },
   {
-    index: 145,
+    index: 140,
     site_cat: "isp_gold",
     type: "mod",
     set_name: "Indoct's Subtler Piercings",
@@ -2380,7 +2380,7 @@ export const data = [
     matid: "4ecf0e10-d34a-42dd-ba88-85627ec8655c",
   },
   {
-    index: 146,
+    index: 141,
     site_cat: "isp_gold",
     type: "mod",
     set_name: "Indoct's Subtler Piercings",
@@ -2397,7 +2397,7 @@ export const data = [
     matid: "4ecf0e10-d34a-42dd-ba88-85627ec8655c",
   },
   {
-    index: 147,
+    index: 142,
     site_cat: "isp_gold",
     type: "mod",
     set_name: "Indoct's Subtler Piercings",
@@ -2414,7 +2414,7 @@ export const data = [
     matid: "4ecf0e10-d34a-42dd-ba88-85627ec8655c",
   },
   {
-    index: 148,
+    index: 143,
     site_cat: "isp_gold",
     type: "mod",
     set_name: "Indoct's Subtler Piercings",
@@ -2431,7 +2431,7 @@ export const data = [
     matid: "4ecf0e10-d34a-42dd-ba88-85627ec8655c",
   },
   {
-    index: 149,
+    index: 144,
     site_cat: "isp_gold",
     type: "mod",
     set_name: "Indoct's Subtler Piercings",

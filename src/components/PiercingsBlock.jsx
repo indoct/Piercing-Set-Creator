@@ -34,44 +34,46 @@ export default function Piercing(props) {
         : "indicator lips-ind";
 
     return (
-      <Col key={prc.nodeid} lg={2} className="prc-col">
-        {prc.type === "mod" && <span className="set-name">{prc.set_name}</span>}
-        <button
-          type="button"
-          id={prc.index}
-          className={`${contClass} ${prc.selected ? "selected" : ""}`}
-          onClick={(e) => handleBtns(e, nodeId, nodeLoca)}
-          disabled={prc.disabled}
-        >
-          <div className="img-dummy">
-            <img
-              src={prc.imgurl}
-              className={
-                (prc.bone === "piercing_lobe_a_l" ||
-                  prc.bone === "piercing_brow_a_l" ||
-                  prc.bone === "piercing_lobe_b_l" ||
-                  prc.bone === "piercing_tragus_a_l" ||
-                  prc.bone === "beard_upper_lip1_l" ||
-                  prc.bone === "piercing_brow_b_l") &&
-                "flipped"
-              }
-            />
-            {/* <span
+      !prc.disabled && (
+        <Col key={prc.nodeid} lg={2} className="prc-col">
+          {prc.type === "mod" && <span className="set-name">{prc.set_name}</span>}
+          <button
+            type="button"
+            id={prc.index}
+            className={`${contClass} ${prc.selected ? "selected" : ""}`}
+            onClick={(e) => handleBtns(e, nodeId, nodeLoca)}
+            disabled={prc.disabled}
+          >
+            <div className="img-dummy">
+              <img
+                src={prc.imgurl}
+                className={
+                  (prc.bone === "piercing_lobe_a_l" ||
+                    prc.bone === "piercing_brow_a_l" ||
+                    prc.bone === "piercing_lobe_b_l" ||
+                    prc.bone === "piercing_tragus_a_l" ||
+                    prc.bone === "beard_upper_lip1_l" ||
+                    prc.bone === "piercing_brow_b_l") &&
+                  "flipped"
+                }
+              />
+              {/* <span
               className={
                 prc.color === "silver" ? "silver color-tag" : "gold color-tag"
               }
             >
               {prc.color.charAt(0)}
             </span> */}
-          </div>
-          <ul className={`prc-stats config-cont ${prc.location}`}>
-            <li className="prc-name">{prc.name}</li>
-            <li className="location">{prc.pt_bone}</li>
-            {/* <div className={locaInd}></div> */}
-            {/* {prc.type === "mod" && <li className="set-name">{prc.set_name}</li>} */}
-          </ul>
-        </button>
-      </Col>
+            </div>
+            <ul className={`prc-stats config-cont ${prc.location}`}>
+              <li className="prc-name">{prc.name}</li>
+              <li className="location">{prc.pt_bone}</li>
+              {/* <div className={locaInd}></div> */}
+              {/* {prc.type === "mod" && <li className="set-name">{prc.set_name}</li>} */}
+            </ul>
+          </button>
+        </Col>
+      )
     );
   });
 
