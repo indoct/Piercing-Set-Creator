@@ -11,8 +11,14 @@ export default function Header(props) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const { type, location, piercings, handleFilterChange, confirmDelete } =
-    props;
+  const {
+    type,
+    location,
+    piercings,
+    handleFilterChange,
+    confirmDelete,
+    handleGenBtn,
+  } = props;
 
   const empty = piercings.filter((prc) => prc.selected).length === 0;
 
@@ -32,7 +38,12 @@ export default function Header(props) {
             <Button variant="primary" onClick={handleShow} disabled={empty}>
               Current Set Config
             </Button>
-            <SetModal show={show} onClose={handleClose} piercings={piercings} />
+            <SetModal
+              show={show}
+              onClose={handleClose}
+              generateNodes={handleGenBtn}
+              piercings={piercings}
+            />
             <Button
               variant="secondary"
               onClick={confirmDelete}

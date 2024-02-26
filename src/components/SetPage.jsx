@@ -1,7 +1,15 @@
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import { useLocation } from "react-router-dom";
 
-export default function SetPage() {
+export default function SetPage({ state, replace }) {
+  const location = useLocation();
+  const { prcsConfig } = location.state ?? {};
+  // console.log(piercings);
+  console.log(location.state);
+  // const { name, age } = state;
+
+  // console.log(state);
   // const { show, onClose, piercings } = props;
 
   // const displayConfig = piercings.map((prc) => {
@@ -30,5 +38,5 @@ export default function SetPage() {
   //     );
   // });
 
-  return <h1>SetPage</h1>;
+  return <h1>SetPage h1</h1>;
 }

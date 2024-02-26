@@ -2,7 +2,7 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
 export default function SetModal(props) {
-  const { show, onClose, piercings } = props;
+  const { show, onClose, piercings, generateNodes } = props;
 
   const displayConfig = piercings.map((prc) => {
     const setClasses =
@@ -41,7 +41,13 @@ export default function SetModal(props) {
           <Button variant="secondary" onClick={onClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={onClose}>
+          <Button
+            variant="primary"
+            onClick={() => {
+              generateNodes();
+              onClose();
+            }}
+          >
             Generate Piercing Nodes Code
           </Button>
         </Modal.Footer>

@@ -1,8 +1,11 @@
+import { useState } from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-export default function Piercing(props) {
-  const { piercings, type, location, handleBtns } = props;
+export default function PiercingsBlock(props) {
+  const { piercings, type, location, handleBtns, sessionOver } = props;
+
+  console.log(sessionOver);
 
   const displayedPiercings =
     type && !location
@@ -15,6 +18,11 @@ export default function Piercing(props) {
       ? piercings.filter((prc) => prc.location === location)
       : piercings;
 
+  const configElements = piercings.map((prc) => {
+    if (prc.selected) {
+      return <p key={prc.nodeid}>{prc.nodeid}</p>;
+    }
+  });
   const prcElements = displayedPiercings.map((prc) => {
     const contClass =
       prc.site_cat === "vanilla-ab"
@@ -72,7 +80,7 @@ export default function Piercing(props) {
           </h5>
         </Col>
       </Row>
-      <Row className="mt-2">{prcElements}</Row>
+      <Row className="mt-2">{sessionOver ? configElements : prcElements}</Row>
     </>
   );
 }

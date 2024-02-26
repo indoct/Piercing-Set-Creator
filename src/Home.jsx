@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, Link, useNavigate } from "react-router-dom";
 import { data, config } from "./data";
 import ThemeProvider from "react-bootstrap/ThemeProvider";
 import "./App.css";
@@ -7,7 +7,6 @@ import Container from "react-bootstrap/Container";
 import PiercingsBlock from "./components/PiercingsBlock";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Header from "./components/Header";
-import SetPage from "./components/SetPage";
 
 export default function Home() {
   const [piercings, setPiercings] = useState(data);
@@ -15,6 +14,9 @@ export default function Home() {
   const [searchParams, setSearchParams] = useSearchParams();
   const typeFilter = searchParams.get("type");
   const locaFilter = searchParams.get("location");
+  const [sessionOver, setSessionOver] = useState(false);
+
+  // console.log(JSON.stringify(config) === JSON.stringify(prcsConfig));
 
   function selectDisableBtns(e, nodeId, nodeLoca) {
     setPiercings((prevPrcs) =>
@@ -77,25 +79,33 @@ export default function Home() {
     }
   }
 
+  function handleGenBtn() {
+    // piercings.filter((prc) => {
+    //   if (prc.selected) console.log(prc);
+    // });
+    setSessionOver((prevState) => !prevState);
+  }
+
   return (
     <ThemeProvider
       breakpoints={["xxxl", "xxl", "xl", "lg", "md", "sm", "xs", "xxs"]}
       minBreakpoint="xxs"
     >
       <Container>
-        <SetPage />
         <Header
           type={typeFilter}
           location={locaFilter}
           piercings={piercings}
           handleFilterChange={handleFilterChange}
           confirmDelete={confirmDelete}
+          handleGenBtn={handleGenBtn}
         />
         <PiercingsBlock
           piercings={piercings}
           type={typeFilter}
           location={locaFilter}
           handleBtns={selectDisableBtns}
+          sessionOver={sessionOver}
         />
       </Container>
     </ThemeProvider>
