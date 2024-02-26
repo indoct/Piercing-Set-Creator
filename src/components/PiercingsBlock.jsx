@@ -1,8 +1,11 @@
-import { useState } from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
-import CodeBlock from "react-copy-code";
+import { PrismLight as SyntaxHighlighter } from "react-syntax-highlighter";
+import cshtml from "react-syntax-highlighter/dist/esm/languages/prism/cshtml";
+import { duotoneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
+
+SyntaxHighlighter.registerLanguage("cshtml", cshtml);
 
 export default function PiercingsBlock(props) {
   const { piercings, type, location, handleBtns, sessionOver, confirmDelete } =
@@ -19,24 +22,32 @@ export default function PiercingsBlock(props) {
       ? piercings.filter((prc) => prc.location === location)
       : piercings;
 
-  const configElements = piercings.map((prc) => {
+  const selected = piercings.filter((prc) => prc.selected);
+
+  const configElements = selected.map((prc) => {
     const pt_name = prc.name.includes("Vanilla")
       ? prc.name
       : `[Van] ${prc.name}`;
     if (prc.selected) {
       // prettier-ignore
       return (
-        <CodeBlock>
-          <code key={prc.nodeid}>
-            {/* {`
+          `\                        
                         <node id="VisualUUIDs"> <!-- ${pt_name} (${prc.color}) - ${prc.pt_bone} --> 
                             <attribute id="Object" type="guid" value="${prc.nodeid}"/>
-                        </node>`} */}
-          </code>
-        </CodeBlock>
+                        </node>`
       );
+    } else {
+      return "";
     }
   });
+
+  function formatString() {
+    const codeString = configElements.join("");
+    return codeString
+      .split(/\r?\n/)
+      .filter((line) => line.trim() !== "")
+      .join("\n");
+  }
 
   const prcElements = displayedPiercings.map((prc) => {
     const contClass =
@@ -118,7 +129,9 @@ export default function PiercingsBlock(props) {
               in Down By The River server on Discord and ask for help if you're
               concerned.
             </p>
-            <pre>{configElements}</pre>
+            <SyntaxHighlighter language="cshtml" style={duotoneDark}>
+              {formatString()}
+            </SyntaxHighlighter>
             <Button onClick={confirmDelete}>Clear Set</Button>
           </Col>
         ) : (
