@@ -1,9 +1,20 @@
+:root {
+  --isc-dark: #221d21;
+  --isc-light: #ded9e2;
+  --isc-coral: #ef8354;
+  --isc-blue: #70c1b3;
+  --isc-iris: #b47eb3;
+  --isc-gold: #d2bf55;
+
+  background-color: var(--isc-dark);
+}
+
 html {
   scrollbar-gutter: stable;
 }
 
 body {
-  background-color: #181617 !important;
+  background-color: var(--isc-dark) !important;
   padding-right: 0 !important;
 }
 
@@ -11,7 +22,7 @@ body {
   max-width: 1340px;
   margin: 0 auto;
   padding: 2rem;
-  background-color: #181617;
+  background-color: var(--isc-dark);
   color: #f7f4f3;
 }
 
@@ -57,7 +68,7 @@ header a {
   font-size: 1.4rem;
   text-decoration: none;
   font-weight: 600;
-  color: #edddd4;
+  color: var(--isc-light);
 }
 
 header button:first-child {
@@ -69,7 +80,7 @@ header button:first-child {
 }
 
 #set-config .modal-content {
-  background-color: #181617;
+  background-color: var(--isc-dark);
 }
 
 .filters {
@@ -101,50 +112,50 @@ header button:first-child {
 }
 
 .ears.selected {
-  background-color: #9475c4;
-  border: 1px solid #9475c4;
+  background-color: var(--isc-iris);
+  border: 1px solid var(--isc-iris);
 }
 
 .filter-btns .ears:hover {
-  color: #181617;
-  background-color: #9475c4;
-  border: 1px solid #9475c4;
+  color: var(--isc-dark);
+  background-color: var(--isc-iris);
+  border: 1px solid var(--isc-iris);
   transition: all 0.3s;
 }
 
 .nose.selected {
-  background-color: #10b160;
-  border: 1px solid #10b160;
+  background-color: var(--isc-blue);
+  border: 1px solid var(--isc-blue);
 }
 
 .filter-btns .nose:hover {
-  color: #181617;
-  background-color: #10b160;
-  border: 1px solid #10b160;
+  color: var(--isc-dark);
+  background-color: var(--isc-blue);
+  border: 1px solid var(--isc-blue);
   transition: all 0.3s;
 }
 
 .brows.selected {
-  background-color: #13addb;
-  border: 1px solid #13addb;
+  background-color: var(--isc-coral);
+  border: 1px solid var(--isc-coral);
 }
 
 .filter-btns .brows:hover {
-  color: #181617;
-  background-color: #13addb;
-  border: 1px solid #13addb;
+  color: var(--isc-dark);
+  background-color: var(--isc-coral);
+  border: 1px solid var(--isc-coral);
   transition: all 0.3s;
 }
 
 .lips.selected {
-  background-color: #ff5555;
-  border: 1px solid #ff5555;
+  background-color: var(--isc-gold);
+  border: 1px solid var(--isc-gold);
 }
 
 .filter-btns .lips:hover {
-  color: #181617;
-  background-color: #ff5555;
-  border: 1px solid #ff5555;
+  color: var(--isc-dark);
+  background-color: var(--isc-gold);
+  border: 1px solid var(--isc-gold);
   transition: all 0.3s;
 }
 
@@ -153,18 +164,18 @@ header button:first-child {
   color: #000;
 }
 .vanilla.selected {
-  background-color: #edddd4;
-  border: 1px solid #edddd4;
+  background-color: var(--isc-light);
+  border: 1px solid var(--isc-light);
 }
 
 .mod-btn.selected {
-  background-color: #edddd4;
-  border: 1px solid #edddd4;
+  background-color: var(--isc-light);
+  border: 1px solid var(--isc-light);
 }
 
 .all-piercings.selected {
-  background-color: #edddd4;
-  border: 1px solid #edddd4;
+  background-color: var(--isc-light);
+  border: 1px solid var(--isc-light);
 }
 
 .gold-btn.selected {
@@ -187,7 +198,7 @@ header button:first-child {
 .filter-btns button.clear-btn {
   border-radius: 5px;
   background-color: hsl(330 4% 70% / 1);
-  color: #181617;
+  color: var(--isc-dark);
   font-weight: 600;
   margin-left: 10px;
 }
@@ -292,15 +303,29 @@ label.selected {
 }
 
 .gold-gr {
-  background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+  background: linear-gradient(
+    to right,
+    #bf953f,
+    #fcf6ba,
+    #b38728,
+    #fbf5b7,
+    #aa771c
+  );
 }
 
 .silver-gr {
-  background: linear-gradient(to right, #a8a9ad, #dfdfdf, #949494, #dfdfdf, #999999);
+  background: linear-gradient(
+    to right,
+    #a8a9ad,
+    #dfdfdf,
+    #949494,
+    #dfdfdf,
+    #999999
+  );
 }
 
 .warning {
-  color: #ff5555;
+  color: var(--isc-gold);
   padding-top: 1em;
 }
 
@@ -408,38 +433,38 @@ label.selected {
 }
 
 .ears .gen-loca {
-  color: #9475c4;
+  color: var(--isc-iris);
 }
 
 .nose .gen-loca {
-  color: #10b160;
+  color: var(--isc-blue);
 }
 
 .brows .gen-loca {
-  color: #13addb;
+  color: var(--isc-coral);
 }
 
 .lips .gen-loca {
-  color: #ff5555;
+  color: var(--isc-gold);
 }
 
 .config-cont.ears {
-  border-left: 4px solid #9475c4;
+  border-left: 4px solid var(--isc-iris);
   padding-left: 15px;
 }
 
 .config-cont.nose {
-  border-left: 4px solid #10b160;
+  border-left: 4px solid var(--isc-blue);
   padding-left: 15px;
 }
 
 .config-cont.brows {
-  border-left: 4px solid #13addb;
+  border-left: 4px solid var(--isc-coral);
   padding-left: 15px;
 }
 
 .config-cont.lips {
-  border-left: 4px solid #ff5555;
+  border-left: 4px solid var(--isc-gold);
   padding-left: 15px;
 }
 
@@ -510,31 +535,31 @@ label.selected {
   top: -20px;
 }
 .ears-ind {
-  background-color: #9475c4;
+  background-color: var(--isc-iris);
 }
 
 .nose-ind {
-  background-color: #10b160;
+  background-color: var(--isc-blue);
 }
 
 .brows-ind {
-  background-color: #13addb;
+  background-color: var(--isc-coral);
 }
 
 .lips-ind {
-  background-color: #ff5555;
+  background-color: var(--isc-gold);
 }
 
 /* .barbarian {
-  border-bottom: 2px solid #10b160;
+  border-bottom: 2px solid var(--isc-blue);
 }
 
 .vanilla-ab {
-  border-bottom: 2px solid #9475c4;
+  border-bottom: 2px solid var(--isc-iris);
 }
 
 .ortheus {
-  border-bottom: 2px solid #13addb;
+  border-bottom: 2px solid var(--isc-coral);
 }
 
 .mod {
