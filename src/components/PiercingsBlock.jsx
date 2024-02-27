@@ -170,7 +170,7 @@ export default function PiercingsBlock(props) {
               </SyntaxHighlighter>
             </Col>
           </Row>
-          <Row className="mt-3 flex-row">
+          <Row className="mt-2 flex-row">
             <Col lg={4}>
               <Button
                 id="copy-btn"

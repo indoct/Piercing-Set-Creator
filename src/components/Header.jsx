@@ -59,7 +59,7 @@ export default function Header(props) {
         </Row>
       </header>
       {!sessionOver && (
-        <Row>
+        <Row className="my-3">
           <Col lg={6}>
             <div className="filter-btns">
               <span>Type:</span>
