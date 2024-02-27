@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { useSearchParams, Link, useNavigate } from "react-router-dom";
-import { data, config } from "./data";
+import { useSearchParams } from "react-router-dom";
+import data from "./data";
 import ThemeProvider from "react-bootstrap/ThemeProvider";
 import "./App.css";
 import Container from "react-bootstrap/Container";
@@ -10,7 +10,6 @@ import Header from "./components/Header";
 
 export default function Home() {
   const [piercings, setPiercings] = useState(data);
-  const [prcsConfig, setPrcsConfig] = useState(config);
   const [searchParams, setSearchParams] = useSearchParams();
   const typeFilter = searchParams.get("type");
   const locaFilter = searchParams.get("location");
@@ -32,29 +31,7 @@ export default function Home() {
           : prc;
       })
     );
-    // addPrcToConfig(nodeId, nodeLoca);
   }
-
-  // function addPrcToConfig(nodeId, nodeLoca) {
-  //   setPrcsConfig((prevPrcs) => {
-  //     if (prevPrcs[nodeLoca].length === 0 || prevPrcs[nodeLoca] !== nodeId) {
-  //       return {
-  //         ...prevPrcs,
-  //         [nodeLoca]: nodeId,
-  //       };
-  //     } else if (
-  //       prevPrcs[nodeLoca].length > 0 &&
-  //       prevPrcs[nodeLoca] === nodeId
-  //     ) {
-  //       return {
-  //         ...prevPrcs,
-  //         [nodeLoca]: "",
-  //       };
-  //     } else {
-  //       return { ...prevPrcs };
-  //     }
-  //   });
-  // }
 
   function handleFilterChange(key, value) {
     setSearchParams((prevParams) => {
@@ -69,11 +46,10 @@ export default function Home() {
 
   function confirmDelete() {
     let result = confirm(
-      "Are you sure you want to delete your set? \n \nPressing OK will clear your configuration."
+      "Are you sure you want to delete your set? \n \nPressing OK will clear your set configuration."
     );
     if (result) {
       setPiercings(data);
-      setPrcsConfig(config);
       setSessionOver(false);
     }
   }
