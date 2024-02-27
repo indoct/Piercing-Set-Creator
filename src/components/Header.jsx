@@ -5,6 +5,7 @@ import SetModal from "../components/SetModal";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { Tooltip } from "react-tooltip";
+import { ViewList, Trash } from "react-bootstrap-icons";
 
 export default function Header(props) {
   const [show, setShow] = useState(false);
@@ -17,7 +18,8 @@ export default function Header(props) {
     piercings,
     handleFilterChange,
     confirmDelete,
-    handleGenBtn,
+    toggleSessionOver,
+    sessionOver,
   } = props;
 
   const empty = piercings.filter((prc) => prc.selected).length === 0;
@@ -26,7 +28,7 @@ export default function Header(props) {
     <>
       <header>
         <Row>
-          <Col lg={8}>
+          <Col lg={8} className="align-self-center">
             <Link className="site-logo" to="/">
               Indoct's BG3 Piercing Set Creator
             </Link>
@@ -36,12 +38,13 @@ export default function Header(props) {
             className="d-flex flex-row justify-content-md-end mb-2 align-items-center"
           >
             <Button variant="primary" onClick={handleShow} disabled={empty}>
-              Current Set Config
+              <ViewList /> View Current Set
             </Button>
             <SetModal
               show={show}
               onClose={handleClose}
-              generateNodes={handleGenBtn}
+              sessionOver={sessionOver}
+              generateNodes={toggleSessionOver}
               piercings={piercings}
             />
             <Button
@@ -49,93 +52,101 @@ export default function Header(props) {
               onClick={confirmDelete}
               disabled={empty}
             >
-              Clear Set
+              <Trash /> Clear Set
             </Button>
           </Col>
         </Row>
       </header>
-      <Row>
-        <Col lg={6}>
-          <div className="filter-btns">
-            <span>Type:</span>
-            <button
-              onClick={() => {
-                handleFilterChange("type", null);
-              }}
-              className={`all-piercings ${!type ? "selected" : ""}`}
-            >
-              Show All
-            </button>
-            <button
-              onClick={() => handleFilterChange("type", "mod")}
-              className={`mod-btn ${type === "mod" ? "selected" : ""}`}
-            >
-              Mod Only
-            </button>
-            <button
-              onClick={() => {
-                handleFilterChange("type", "vanilla");
-              }}
-              className={`vanilla ${type === "vanilla" ? "selected" : ""}`}
-              disabled={location === "lips"}
-              data-tooltip-id="my-tooltip"
-              data-tooltip-content="There are no vanilla piercings in the lip slot, change/clear the location filter to enable this filter"
-              data-tooltip-place="bottom"
-            >
-              Vanilla
-            </button>
-          </div>
-        </Col>
-        <Col lg={6}>
-          <div className="filter-btns">
-            <span>Location:</span>
-            <button
-              onClick={() => {
-                handleFilterChange("location", "ears");
-              }}
-              className={`filter ears ${location === "ears" ? "selected" : ""}`}
-            >
-              Ears
-            </button>
-            <button
-              onClick={() => handleFilterChange("location", "nose")}
-              className={`filter nose ${location === "nose" ? "selected" : ""}`}
-            >
-              Nose
-            </button>
-            <button
-              onClick={() => {
-                handleFilterChange("location", "brows");
-              }}
-              className={`filter brows ${
-                location === "brows" ? "selected" : ""
-              }`}
-            >
-              Brows
-            </button>
-            <button
-              onClick={() => {
-                handleFilterChange("location", "lips");
-                if (type === "vanilla") handleFilterChange("type", null);
-              }}
-              className={`filter lips ${location === "lips" ? "selected" : ""}`}
-            >
-              Lips
-            </button>
-            {location && (
+      {!sessionOver && (
+        <Row>
+          <Col lg={6}>
+            <div className="filter-btns">
+              <span>Type:</span>
               <button
                 onClick={() => {
-                  handleFilterChange("location", null);
+                  handleFilterChange("type", null);
                 }}
-                className="clear-btn"
+                className={`all-piercings ${!type ? "selected" : ""}`}
               >
-                Clear Filter
+                Show All
               </button>
-            )}
-          </div>
-          {location === "lips" && <Tooltip id="my-tooltip" />}
-        </Col>
-      </Row>
+              <button
+                onClick={() => handleFilterChange("type", "mod")}
+                className={`mod-btn ${type === "mod" ? "selected" : ""}`}
+              >
+                Mod Only
+              </button>
+              <button
+                onClick={() => {
+                  handleFilterChange("type", "vanilla");
+                }}
+                className={`vanilla ${type === "vanilla" ? "selected" : ""}`}
+                disabled={location === "lips"}
+                data-tooltip-id="my-tooltip"
+                data-tooltip-content="There are no vanilla piercings in the lip slot, change/clear the location filter to enable this filter"
+                data-tooltip-place="bottom"
+              >
+                Vanilla
+              </button>
+            </div>
+          </Col>
+          <Col lg={6}>
+            <div className="filter-btns">
+              <span>Location:</span>
+              <button
+                onClick={() => {
+                  handleFilterChange("location", "ears");
+                }}
+                className={`filter ears ${
+                  location === "ears" ? "selected" : ""
+                }`}
+              >
+                Ears
+              </button>
+              <button
+                onClick={() => handleFilterChange("location", "nose")}
+                className={`filter nose ${
+                  location === "nose" ? "selected" : ""
+                }`}
+              >
+                Nose
+              </button>
+              <button
+                onClick={() => {
+                  handleFilterChange("location", "brows");
+                }}
+                className={`filter brows ${
+                  location === "brows" ? "selected" : ""
+                }`}
+              >
+                Brows
+              </button>
+              <button
+                onClick={() => {
+                  handleFilterChange("location", "lips");
+                  if (type === "vanilla") handleFilterChange("type", null);
+                }}
+                className={`filter lips ${
+                  location === "lips" ? "selected" : ""
+                }`}
+              >
+                Lips
+              </button>
+              {location && (
+                <button
+                  onClick={() => {
+                    handleFilterChange("location", null);
+                  }}
+                  className="clear-btn"
+                >
+                  Clear Filter
+                </button>
+              )}
+            </div>
+            {location === "lips" && <Tooltip id="my-tooltip" />}
+          </Col>
+        </Row>
+      )}
     </>
   );
 }

@@ -4,12 +4,20 @@ import Button from "react-bootstrap/Button";
 import { PrismLight as SyntaxHighlighter } from "react-syntax-highlighter";
 import cshtml from "react-syntax-highlighter/dist/esm/languages/prism/cshtml";
 import { duotoneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { ArrowLeft, Trash } from "react-bootstrap-icons";
 
 SyntaxHighlighter.registerLanguage("cshtml", cshtml);
 
 export default function PiercingsBlock(props) {
-  const { piercings, type, location, handleBtns, sessionOver, confirmDelete } =
-    props;
+  const {
+    piercings,
+    type,
+    location,
+    handleBtns,
+    sessionOver,
+    confirmDelete,
+    toggleSessionOver,
+  } = props;
 
   const displayedPiercings =
     type && !location
@@ -108,36 +116,53 @@ export default function PiercingsBlock(props) {
           </h5>
         </Col>
       </Row>
-      <Row className="mt-2">
-        {sessionOver ? (
-          <Col>
-            <p className="output-intro">
-              Please be very careful when placing these nodes into your file.{" "}
-              <span className="warning">
-                By creating your own replacer file with this creator, YOU ARE
-                MODDING YOUR GAME!
-              </span>
-              I can't stress this enough. A slight error (e.g. not closing a
-              node, a typo, or missing a quotation mark) can break your game. It
-              may just be that your 'Body Art' tab disappears - but I can't say
-              what the result will be. If that happens after placing this file
-              in your Data folder, you know that your code is corrupted. Either
-              check it and find out where the mistake is, or delete the file
-              entirely. <strong>Always</strong> delete the last thing you
-              changed before deleting your game or doing anything drastic - in
-              this case, that's this file. :) You may find me or another modder
-              in Down By The River server on Discord and ask for help if you're
-              concerned.
-            </p>
-            <SyntaxHighlighter language="cshtml" style={duotoneDark}>
-              {formatString()}
-            </SyntaxHighlighter>
-            <Button onClick={confirmDelete}>Clear Set</Button>
-          </Col>
-        ) : (
-          prcElements
-        )}
-      </Row>
+      {sessionOver ? (
+        <>
+          <Row className="mt-2">
+            <Col lg={8}>
+              <p className="output-intro">
+                Please be very careful when placing these nodes into your file.{" "}
+                <span className="warning">
+                  By creating your own replacer file and placing it in the
+                  game's Data folder, YOU ARE MODDING YOUR GAME!&nbsp;
+                </span>
+                I can't stress this enough. A slight error (e.g. not closing a
+                node, a typo, or missing a quotation mark) may break something.
+                It might just be that your 'Body Art' tab disappears, it might
+                be something else. If that happens after placing this file in
+                your Data folder, you know that your code is corrupted. Either
+                find and fix the mistake, or delete the file entirely. <br />
+                <br />
+                <strong>Always</strong> delete the last thing you changed before
+                deleting your game or doing anything drastic - in this case,
+                that's this file. :) Feel free to find me or another modder in
+                Down By The River server on Discord and ask for help if you're
+                concerned.
+              </p>
+            </Col>
+          </Row>
+          <Row>
+            <Col lg={8}>
+              <SyntaxHighlighter language="cshtml" style={duotoneDark}>
+                {formatString()}
+              </SyntaxHighlighter>
+            </Col>
+          </Row>
+          <Row className="mt-4">
+            <Col className="d-flex gap-2">
+              <Button id="back-btn" onClick={toggleSessionOver}>
+                <ArrowLeft />
+                Back (Continue Editing)
+              </Button>
+              <Button onClick={confirmDelete} variant="secondary">
+                <Trash /> Clear Set
+              </Button>
+            </Col>
+          </Row>
+        </>
+      ) : (
+        <Row className="mt-2">{prcElements}</Row>
+      )}
     </>
   );
 }

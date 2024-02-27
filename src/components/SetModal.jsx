@@ -1,8 +1,9 @@
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import { CodeSlash, XCircle } from "react-bootstrap-icons";
 
 export default function SetModal(props) {
-  const { show, onClose, piercings, generateNodes } = props;
+  const { show, onClose, piercings, generateNodes, sessionOver } = props;
 
   const displayConfig = piercings.map((prc) => {
     const setClasses =
@@ -30,26 +31,34 @@ export default function SetModal(props) {
       );
   });
 
+  console.log(sessionOver);
+
   return (
     <>
-      <Modal show={show} onHide={onClose} id="set-config">
+      <Modal show={show} onHide={onClose} id="set-config" size="md">
         <Modal.Header closeButton>
           <Modal.Title>Current Piercing Set Config</Modal.Title>
         </Modal.Header>
         <Modal.Body>{displayConfig}</Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={onClose}>
-            Close
-          </Button>
+        <Modal.Footer className="d-flex justify-content-between">
           <Button
-            variant="primary"
-            onClick={() => {
-              generateNodes();
-              onClose();
-            }}
+            variant="secondary"
+            className="btn-secondary"
+            onClick={onClose}
           >
-            Generate Piercing Nodes Code
+            <XCircle /> Close
           </Button>
+          {!sessionOver && (
+            <Button
+              variant="primary"
+              onClick={() => {
+                generateNodes();
+                onClose();
+              }}
+            >
+              Generate Piercing Nodes Code <CodeSlash size={20} />
+            </Button>
+          )}
         </Modal.Footer>
       </Modal>
     </>

@@ -78,7 +78,7 @@ export default function Home() {
     }
   }
 
-  function handleGenBtn() {
+  function toggleSessionOver() {
     // piercings.filter((prc) => {
     //   if (prc.selected) console.log(prc);
     // });
@@ -97,7 +97,8 @@ export default function Home() {
           piercings={piercings}
           handleFilterChange={handleFilterChange}
           confirmDelete={confirmDelete}
-          handleGenBtn={handleGenBtn}
+          toggleSessionOver={toggleSessionOver}
+          sessionOver={sessionOver}
         />
         <PiercingsBlock
           piercings={piercings}
@@ -106,6 +107,7 @@ export default function Home() {
           handleBtns={selectDisableBtns}
           sessionOver={sessionOver}
           confirmDelete={confirmDelete}
+          toggleSessionOver={toggleSessionOver}
         />
       </Container>
     </ThemeProvider>

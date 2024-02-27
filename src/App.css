@@ -5,6 +5,7 @@
   --isc-blue: #70c1b3;
   --isc-iris: #b47eb3;
   --isc-gold: #d2bf55;
+  --isc-btn-pri: #06bcc1;
 
   background-color: var(--isc-dark);
 }
@@ -50,6 +51,30 @@ a,
   font-family: "IBM Plex Sans", sans-serif;
 }
 
+button.btn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  font-size: 1.1rem;
+}
+
+button.btn-primary,
+button.btn.btn-primary:active {
+  background-color: #c1df1f;
+  color: var(--isc-dark);
+  font-weight: 600;
+  border-color: #c1df1f;
+  transition: all 0.3s;
+}
+
+button.btn-primary:hover {
+  background-color: #c2df1fbe;
+  border-color: #c1df1f;
+  color: var(--isc-dark);
+}
+
 p,
 span,
 ul,
@@ -69,7 +94,8 @@ header {
 }
 
 header a {
-  font-size: 1.4rem;
+  align-self: center;
+  font-size: 1.6rem;
   text-decoration: none;
   font-weight: 600;
   color: var(--isc-light);
@@ -227,7 +253,7 @@ pre {
   background-color: #3a3638;
   padding-bottom: 2em;
   padding-top: 1em;
-  line-height: 1.5;
+  line-height: 1.6 !important;
 }
 
 /* .settings-box label {
