@@ -1,10 +1,11 @@
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import { Fragment, useState } from "react";
 import Button from "react-bootstrap/Button";
 import { PrismLight as SyntaxHighlighter } from "react-syntax-highlighter";
 import cshtml from "react-syntax-highlighter/dist/esm/languages/prism/cshtml";
 import { duotoneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
-import { ArrowLeft, Trash } from "react-bootstrap-icons";
+import { ArrowLeft, Check2Circle, Copy, Trash } from "react-bootstrap-icons";
 
 SyntaxHighlighter.registerLanguage("cshtml", cshtml);
 
@@ -18,6 +19,8 @@ export default function PiercingsBlock(props) {
     confirmDelete,
     toggleSessionOver,
   } = props;
+
+  const [copyBtnPressed, setCopyBtnPressed] = useState(false);
 
   const displayedPiercings =
     type && !location
@@ -101,11 +104,28 @@ export default function PiercingsBlock(props) {
     );
   });
 
+  async function copyToClipboard(e) {
+    const codeToCopy = formatString();
+    // const success = (
+    //   <Fragment>
+    //     <Check2Circle /> Copied to Clipboard!
+    //   </Fragment>
+    // );
+    await navigator.clipboard.writeText(codeToCopy);
+  }
+
+  function handleCopyBtn() {
+    setCopyBtnPressed(true);
+    setTimeout(() => {
+      setCopyBtnPressed(false);
+    }, 2000);
+  }
+
   return (
     <>
       <Row className="mt-4 title-row">
         <Col>
-          <h5>
+          <h5 className="prc-block-h">
             {sessionOver
               ? "CharacterCreationAccessorySets Nodes:"
               : type === "vanilla"
@@ -121,23 +141,25 @@ export default function PiercingsBlock(props) {
           <Row className="mt-2">
             <Col lg={8}>
               <p className="output-intro">
-                Please be very careful when placing these nodes into your file.{" "}
                 <span className="warning">
-                  By creating your own replacer file and placing it in the
-                  game's Data folder, YOU ARE MODDING YOUR GAME!&nbsp;
+                  By creating your own replacer sets to put in the game's Data
+                  folder, YOU ARE MODDING YOUR GAME!&nbsp;
                 </span>
-                I can't stress this enough. A slight error (e.g. not closing a
-                node, a typo, or missing a quotation mark) may break something.
-                It might just be that your 'Body Art' tab disappears, it might
-                be something else. If that happens after placing this file in
-                your Data folder, you know that your code is corrupted. Either
-                find and fix the mistake, or delete the file entirely. <br />
                 <br />
-                <strong>Always</strong> delete the last thing you changed before
-                deleting your game or doing anything drastic - in this case,
-                that's this file. :) Feel free to find me or another modder in
-                Down By The River server on Discord and ask for help if you're
-                concerned.
+                <strong>
+                  There are risks involved with modding, and by using this
+                  generator you're agreeing to take those risks.
+                </strong>
+                <br />
+                A slight error (e.g. not closing a node, a typo, or missing a
+                quotation mark) may break something. It might just be that your
+                'Body Art' tab disappears, it might be something else. If it
+                happens after placing the file in your Data folder, you know
+                that your code is corrupted. You can either find & fix the
+                mistake, or delete the lsx file. <br />
+                <br />
+                Feel free to find me or another modder in Down By The River
+                server on Discord and ask for help.
               </p>
             </Col>
           </Row>
@@ -148,11 +170,34 @@ export default function PiercingsBlock(props) {
               </SyntaxHighlighter>
             </Col>
           </Row>
-          <Row className="mt-4">
-            <Col className="d-flex gap-2">
-              <Button id="back-btn" onClick={toggleSessionOver}>
+          <Row className="mt-3 flex-row">
+            <Col lg={4}>
+              <Button
+                id="copy-btn"
+                onClick={(e) => {
+                  handleCopyBtn();
+                  copyToClipboard(e);
+                }}
+              >
+                {!copyBtnPressed ? (
+                  <>
+                    <Copy /> Copy Code to Clipboard
+                  </>
+                ) : (
+                  <Fragment>
+                    <Check2Circle /> Copied to Clipboard!
+                  </Fragment>
+                )}
+              </Button>
+            </Col>
+            <Col className="d-flex gap-2 justify-content-end" lg={4}>
+              <Button
+                id="back-btn"
+                onClick={(e) => toggleSessionOver(e)}
+                variant="secondary"
+              >
                 <ArrowLeft />
-                Back (Continue Editing)
+                Continue Editing
               </Button>
               <Button onClick={confirmDelete} variant="secondary">
                 <Trash /> Clear Set

@@ -31,8 +31,6 @@ export default function SetModal(props) {
       );
   });
 
-  console.log(sessionOver);
-
   return (
     <>
       <Modal show={show} onHide={onClose} id="set-config" size="md">
@@ -50,9 +48,10 @@ export default function SetModal(props) {
           </Button>
           {!sessionOver && (
             <Button
+              id="generate-btn"
               variant="primary"
-              onClick={() => {
-                generateNodes();
+              onClick={(e) => {
+                generateNodes(e);
                 onClose();
               }}
             >

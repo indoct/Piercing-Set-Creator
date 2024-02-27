@@ -48,6 +48,7 @@ export default function Header(props) {
               piercings={piercings}
             />
             <Button
+              id="hr-clear-btn"
               variant="secondary"
               onClick={confirmDelete}
               disabled={empty}

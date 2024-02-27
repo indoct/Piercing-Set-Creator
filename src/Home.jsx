@@ -32,29 +32,29 @@ export default function Home() {
           : prc;
       })
     );
-    addPrcToConfig(nodeId, nodeLoca);
+    // addPrcToConfig(nodeId, nodeLoca);
   }
 
-  function addPrcToConfig(nodeId, nodeLoca) {
-    setPrcsConfig((prevPrcs) => {
-      if (prevPrcs[nodeLoca].length === 0 || prevPrcs[nodeLoca] !== nodeId) {
-        return {
-          ...prevPrcs,
-          [nodeLoca]: nodeId,
-        };
-      } else if (
-        prevPrcs[nodeLoca].length > 0 &&
-        prevPrcs[nodeLoca] === nodeId
-      ) {
-        return {
-          ...prevPrcs,
-          [nodeLoca]: "",
-        };
-      } else {
-        return { ...prevPrcs };
-      }
-    });
-  }
+  // function addPrcToConfig(nodeId, nodeLoca) {
+  //   setPrcsConfig((prevPrcs) => {
+  //     if (prevPrcs[nodeLoca].length === 0 || prevPrcs[nodeLoca] !== nodeId) {
+  //       return {
+  //         ...prevPrcs,
+  //         [nodeLoca]: nodeId,
+  //       };
+  //     } else if (
+  //       prevPrcs[nodeLoca].length > 0 &&
+  //       prevPrcs[nodeLoca] === nodeId
+  //     ) {
+  //       return {
+  //         ...prevPrcs,
+  //         [nodeLoca]: "",
+  //       };
+  //     } else {
+  //       return { ...prevPrcs };
+  //     }
+  //   });
+  // }
 
   function handleFilterChange(key, value) {
     setSearchParams((prevParams) => {
@@ -74,15 +74,14 @@ export default function Home() {
     if (result) {
       setPiercings(data);
       setPrcsConfig(config);
-      setSessionOver((prevState) => !prevState);
+      setSessionOver(false);
     }
   }
 
-  function toggleSessionOver() {
-    // piercings.filter((prc) => {
-    //   if (prc.selected) console.log(prc);
-    // });
-    setSessionOver((prevState) => !prevState);
+  function toggleSessionOver(e) {
+    console.log(e.target.id);
+    if (e.target.id === "back-btn") setSessionOver(false);
+    if (e.target.id === "generate-btn") setSessionOver(true);
   }
 
   return (

@@ -1,11 +1,12 @@
 :root {
   --isc-dark: #221d21;
-  --isc-light: #ded9e2;
+  --isc-light: #f1efea;
   --isc-coral: #ef8354;
   --isc-blue: #70c1b3;
   --isc-iris: #b47eb3;
   --isc-gold: #d2bf55;
-  --isc-btn-pri: #06bcc1;
+  --isc-btn-pri: #c1df1f;
+  --isc-btn-dis: #c2df1fbe;
 
   background-color: var(--isc-dark);
 }
@@ -24,7 +25,7 @@ body {
   margin: 0 auto;
   padding: 2rem;
   background-color: var(--isc-dark);
-  color: #f7f4f3;
+  color: var(--isc-light);
 }
 
 .row > * {
@@ -57,26 +58,36 @@ button.btn {
   align-items: center;
   gap: 8px;
   padding: 10px 18px;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
 }
 
 button.btn-primary,
 button.btn.btn-primary:active {
-  background-color: #c1df1f;
+  background-color: var(--isc-btn-pri);
   color: var(--isc-dark);
   font-weight: 600;
-  border-color: #c1df1f;
+  border-color: var(--isc-btn-pri);
   transition: all 0.3s;
 }
 
 button.btn-primary:hover {
-  background-color: #c2df1fbe;
-  border-color: #c1df1f;
+  background-color: var(--isc-btn-dis);
+  border-color: var(--isc-btn-pri);
   color: var(--isc-dark);
 }
 
+button.btn-primary:disabled {
+  background-color: var(--isc-btn-dis);
+  border: 1px solid var(--isc-btn-dis);
+  color: var(--isc-dark);
+}
+
+#copy-btn {
+  padding: 16px 22px;
+  font-size: 1.1rem;
+}
+
 p,
-span,
 ul,
 li,
 form,
@@ -87,10 +98,13 @@ label {
 
 .output-intro {
   line-height: 1.4;
+  font-size: 1.07rem;
+  margin-bottom: 0.6rem;
 }
 
 header {
   padding-bottom: 0.7em;
+  border-bottom: 1px solid hsl(312 8% 20% / 1);
 }
 
 header a {
@@ -105,6 +119,10 @@ header button:first-child {
   margin-right: 10px;
 }
 
+.prc-block-h {
+  text-underline-offset: 3px;
+  text-decoration: underline;
+}
 .title-row p {
   font-size: 0.9rem;
 }
@@ -246,19 +264,18 @@ fieldset:last-child {
 }
 
 .warning-txt {
-  font-size: 0.92rem;
+  font-size: 1rem;
 }
 
 pre {
   background-color: #3a3638;
   padding-bottom: 2em;
   padding-top: 1em;
-  line-height: 1.6 !important;
 }
 
-/* .settings-box label {
-  padding: 1rem;
-} */
+span.token {
+  font-size: 1rem;
+}
 
 .settings-box .options {
   display: flex;
@@ -362,8 +379,7 @@ label.selected {
 }
 
 .warning {
-  color: var(--isc-gold);
-  padding-top: 1em;
+  color: #ea8690;
 }
 
 .other-gr {
