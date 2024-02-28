@@ -21,6 +21,7 @@ export default function PiercingsBlock(props) {
   } = props;
 
   const [copyBtnPressed, setCopyBtnPressed] = useState(false);
+  const [containsMod, setContainsMod] = useState(false);
 
   const displayedPiercings =
     type && !location
@@ -36,20 +37,24 @@ export default function PiercingsBlock(props) {
   const selected = piercings.filter((prc) => prc.selected);
 
   const configElements = selected.map((prc) => {
-    const pt_name = prc.name.includes("Vanilla")
-      ? prc.name
-      : `[Van] ${prc.name}`;
-    if (prc.selected) {
-      // prettier-ignore
-      return (
+    const author =
+      prc.site_cat === "isp_silver" || prc.site_cat === "isp_gold"
+        ? "Indoct"
+        : "";
+    console.log(author);
+    const pt_name =
+      prc.name.includes("Vanilla") && prc.type === "vanilla"
+        ? prc.name
+        : !prc.name.includes("Vanilla") && prc.type === "mod"
+        ? `[Mod: ${author}] ${prc.name}`
+        : `[Van] ${prc.name}`;
+    // prettier-ignore
+    return (
           `\                        
                         <node id="VisualUUIDs"> <!-- ${pt_name} (${prc.color}) - ${prc.pt_bone} --> 
                             <attribute id="Object" type="guid" value="${prc.nodeid}"/>
                         </node>`
       );
-    } else {
-      return "";
-    }
   });
 
   function formatString() {
@@ -106,11 +111,6 @@ export default function PiercingsBlock(props) {
 
   async function copyToClipboard(e) {
     const codeToCopy = formatString();
-    // const success = (
-    //   <Fragment>
-    //     <Check2Circle /> Copied to Clipboard!
-    //   </Fragment>
-    // );
     await navigator.clipboard.writeText(codeToCopy);
   }
 
