@@ -1,11 +1,12 @@
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import { PrismLight as SyntaxHighlighter } from "react-syntax-highlighter";
 import cshtml from "react-syntax-highlighter/dist/esm/languages/prism/cshtml";
 import { duotoneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { ArrowLeft, Check2Circle, Copy, Trash } from "react-bootstrap-icons";
+import { nanoid } from "nanoid";
 
 SyntaxHighlighter.registerLanguage("cshtml", cshtml);
 
@@ -21,7 +22,7 @@ export default function PiercingsBlock(props) {
   } = props;
 
   const [copyBtnPressed, setCopyBtnPressed] = useState(false);
-  const [containsMod, setContainsMod] = useState(false);
+  const [uniqueMods, setUniqueMods] = useState({});
 
   const displayedPiercings =
     type && !location
@@ -35,19 +36,22 @@ export default function PiercingsBlock(props) {
       : piercings;
 
   const selected = piercings.filter((prc) => prc.selected);
+  const containsMod = piercings.filter(
+    (prc) => prc.selected && prc.type === "mod"
+  );
 
   const configElements = selected.map((prc) => {
     const author =
       prc.site_cat === "isp_silver" || prc.site_cat === "isp_gold"
         ? "Indoct"
         : "";
-    console.log(author);
     const pt_name =
       prc.name.includes("Vanilla") && prc.type === "vanilla"
         ? prc.name
         : !prc.name.includes("Vanilla") && prc.type === "mod"
         ? `[Mod: ${author}] ${prc.name}`
         : `[Van] ${prc.name}`;
+
     // prettier-ignore
     return (
           `\                        
@@ -109,6 +113,28 @@ export default function PiercingsBlock(props) {
     );
   });
 
+  const generateModEls = () => {
+    const modMap = new Map();
+    containsMod.map((obj) => modMap.set(obj.set_name, obj));
+
+    const filteredData = [];
+    modMap.forEach((value) => {
+      filteredData.push(value);
+    });
+
+    const modElements = filteredData.map((mod) => {
+      return (
+        <li key={nanoid()}>
+          <a href={mod.modurl} target="_blank">
+            {mod.set_name}
+          </a>
+        </li>
+      );
+    });
+
+    return modElements;
+  };
+
   async function copyToClipboard(e) {
     const codeToCopy = formatString();
     await navigator.clipboard.writeText(codeToCopy);
@@ -120,6 +146,10 @@ export default function PiercingsBlock(props) {
       setCopyBtnPressed(false);
     }, 2000);
   }
+
+  // useEffect(() => {
+  //   console.log(containsMod);
+  // }, []);
 
   return (
     <>
@@ -150,14 +180,8 @@ export default function PiercingsBlock(props) {
                   There are risks involved with modding, and by using this
                   generator you're agreeing to take those risks.
                 </strong>
-                <br />
-                A slight error (e.g. not closing a node, a typo, or missing a
-                quotation mark) may break something. It might just be that your
-                'Body Art' tab disappears, it might be something else. If it
-                happens after placing the file in your Data folder, you know
-                that your code is corrupted. You can either find & fix the
-                mistake, or delete the lsx file. <br />
-                <br />
+              </p>
+              <p className="output-intro">
                 Feel free to find me or another modder in Down By The River
                 server on Discord and ask for help.
               </p>
@@ -168,6 +192,16 @@ export default function PiercingsBlock(props) {
               <SyntaxHighlighter language="cshtml" style={duotoneDark}>
                 {formatString()}
               </SyntaxHighlighter>
+            </Col>
+            <Col lg={3}>
+              <div className="mod-warning">
+                <p className="output-intro">
+                  You have {containsMod.length} mod piercings in your set. You
+                  MUST download & install the below mods or the piercings will
+                  not show in your game!
+                </p>
+                <ul className="mod-list">{generateModEls()}</ul>
+              </div>
             </Col>
           </Row>
           <Row className="mt-2 flex-row">

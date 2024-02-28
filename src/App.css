@@ -119,6 +119,17 @@ header button:first-child {
   margin-right: 10px;
 }
 
+.mod-warning {
+  padding: 1em;
+  border: 1px solid #3a3638;
+  margin-top: 0.5em;
+}
+
+.mod-list li {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
 .prc-block-h {
   text-underline-offset: 3px;
   text-decoration: underline;

@@ -15,6 +15,7 @@ export default [
     disabled: false,
     matcat: "set-a",
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
+    modurl: "",
   },
   {
     index: 2,
@@ -32,6 +33,7 @@ export default [
     disabled: false,
     matcat: "set-a",
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
+    modurl: "",
   },
   {
     index: 3,
@@ -49,6 +51,7 @@ export default [
     disabled: false,
     matcat: "set-a",
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
+    modurl: "",
   },
   {
     index: 4,
@@ -66,6 +69,7 @@ export default [
     disabled: false,
     matcat: "set-a",
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
+    modurl: "",
   },
   {
     index: 5,
@@ -83,6 +87,7 @@ export default [
     disabled: false,
     matcat: "set-a",
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
+    modurl: "",
   },
   {
     index: 6,
@@ -100,6 +105,7 @@ export default [
     disabled: false,
     matcat: "set-a",
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
+    modurl: "",
   },
   {
     index: 7,
@@ -117,6 +123,7 @@ export default [
     disabled: false,
     matcat: "set-a",
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
+    modurl: "",
   },
   {
     index: 8,
@@ -134,6 +141,7 @@ export default [
     disabled: false,
     matcat: "set-a",
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
+    modurl: "",
   },
   {
     index: 9,
@@ -151,6 +159,7 @@ export default [
     disabled: false,
     matcat: "set-a",
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
+    modurl: "",
   },
   {
     index: 10,
@@ -168,6 +177,7 @@ export default [
     disabled: false,
     matcat: "set-a",
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
+    modurl: "",
   },
   {
     index: 11,
@@ -185,6 +195,7 @@ export default [
     disabled: false,
     matcat: "set-a",
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
+    modurl: "",
   },
   {
     index: 12,
@@ -202,6 +213,7 @@ export default [
     disabled: false,
     matcat: "set-a",
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
+    modurl: "",
   },
   {
     index: 13,
@@ -219,6 +231,7 @@ export default [
     disabled: false,
     matcat: "set-a",
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
+    modurl: "",
   },
   {
     index: 14,
@@ -236,6 +249,7 @@ export default [
     disabled: false,
     matcat: "set-a",
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
+    modurl: "",
   },
   {
     index: 15,
@@ -253,6 +267,7 @@ export default [
     disabled: false,
     matcat: "set-a",
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
+    modurl: "",
   },
   {
     index: 16,
@@ -270,6 +285,7 @@ export default [
     disabled: false,
     matcat: "set-a",
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
+    modurl: "",
   },
   {
     index: 17,
@@ -287,6 +303,7 @@ export default [
     disabled: false,
     matcat: "set-a",
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
+    modurl: "",
   },
   {
     index: 18,
@@ -304,6 +321,7 @@ export default [
     disabled: false,
     matcat: "set-a",
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
+    modurl: "",
   },
   {
     index: 19,
@@ -321,6 +339,7 @@ export default [
     disabled: false,
     matcat: "set-a",
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
+    modurl: "",
   },
   {
     index: 20,
@@ -338,6 +357,7 @@ export default [
     disabled: false,
     matcat: "set-a",
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
+    modurl: "",
   },
   {
     index: 21,
@@ -355,6 +375,7 @@ export default [
     disabled: false,
     matcat: "set-a",
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
+    modurl: "",
   },
   {
     index: 22,
@@ -372,6 +393,7 @@ export default [
     disabled: false,
     matcat: "set-a",
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
+    modurl: "",
   },
   {
     index: 23,
@@ -389,6 +411,7 @@ export default [
     disabled: false,
     matcat: "set-a",
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
+    modurl: "",
   },
   {
     index: 24,
@@ -406,6 +429,7 @@ export default [
     disabled: false,
     matcat: "set-a",
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
+    modurl: "",
   },
   {
     index: 25,
@@ -423,6 +447,7 @@ export default [
     disabled: false,
     matcat: "set-a",
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
+    modurl: "",
   },
   {
     index: 26,
@@ -440,6 +465,7 @@ export default [
     disabled: false,
     matcat: "set-a",
     matid: "fc211abc-b97d-b3d8-5241-cd2055f43ed7",
+    modurl: "",
   },
   {
     index: 27,
@@ -457,6 +483,7 @@ export default [
     disabled: false,
     matcat: "set-a",
     matid: "fc211abc-b97d-b3d8-5241-cd2055f43ed8",
+    modurl: "",
   },
   {
     index: 28,
@@ -474,6 +501,7 @@ export default [
     disabled: false,
     matcat: "set-a",
     matid: "fc211abc-b97d-b3d8-5241-cd2055f43ed9",
+    modurl: "",
   },
   {
     index: 29,
@@ -491,6 +519,7 @@ export default [
     disabled: false,
     matcat: "set-b",
     matid: "fc211abc-b97d-b3d8-5241-cd2055f43ed10",
+    modurl: "",
   },
   {
     index: 30,
@@ -508,6 +537,7 @@ export default [
     disabled: false,
     matcat: "set-b",
     matid: "fc211abc-b97d-b3d8-5241-cd2055f43ed11",
+    modurl: "",
   },
   {
     index: 31,
@@ -525,6 +555,7 @@ export default [
     disabled: false,
     matcat: "set-b",
     matid: "fc211abc-b97d-b3d8-5241-cd2055f43ed12",
+    modurl: "",
   },
   {
     index: 32,
@@ -542,6 +573,7 @@ export default [
     disabled: false,
     matcat: "set-b",
     matid: "fc211abc-b97d-b3d8-5241-cd2055f43ed13",
+    modurl: "",
   },
   {
     index: 33,
@@ -559,6 +591,7 @@ export default [
     disabled: false,
     matcat: "set-b",
     matid: "fc211abc-b97d-b3d8-5241-cd2055f43ed14",
+    modurl: "",
   },
   {
     index: 34,
@@ -576,6 +609,7 @@ export default [
     disabled: false,
     matcat: "set-b",
     matid: "fc211abc-b97d-b3d8-5241-cd2055f43ed15",
+    modurl: "",
   },
   {
     index: 35,
@@ -593,6 +627,7 @@ export default [
     disabled: false,
     matcat: "set-b",
     matid: "fc211abc-b97d-b3d8-5241-cd2055f43ed18",
+    modurl: "",
   },
   {
     index: 36,
@@ -610,6 +645,7 @@ export default [
     disabled: false,
     matcat: "set-b",
     matid: "fc211abc-b97d-b3d8-5241-cd2055f43ed19",
+    modurl: "",
   },
   {
     index: 37,
@@ -627,6 +663,7 @@ export default [
     disabled: false,
     matcat: "set-b",
     matid: "fc211abc-b97d-b3d8-5241-cd2055f43ed20",
+    modurl: "",
   },
   {
     index: 38,
@@ -644,6 +681,7 @@ export default [
     disabled: false,
     matcat: "set-b",
     matid: "fc211abc-b97d-b3d8-5241-cd2055f43ed21",
+    modurl: "",
   },
   {
     index: 39,
@@ -661,6 +699,7 @@ export default [
     disabled: false,
     matcat: "set-b",
     matid: "fc211abc-b97d-b3d8-5241-cd2055f43ed22",
+    modurl: "",
   },
   {
     index: 40,
@@ -678,6 +717,7 @@ export default [
     disabled: false,
     matcat: "set-b",
     matid: "fc211abc-b97d-b3d8-5241-cd2055f43ed23",
+    modurl: "",
   },
   {
     index: 41,
@@ -695,6 +735,7 @@ export default [
     disabled: false,
     matcat: "set-b",
     matid: "fc211abc-b97d-b3d8-5241-cd2055f43ed24",
+    modurl: "",
   },
   {
     index: 42,
@@ -712,6 +753,7 @@ export default [
     disabled: false,
     matcat: "set-b",
     matid: "fc211abc-b97d-b3d8-5241-cd2055f43ed25",
+    modurl: "",
   },
   {
     index: 43,
@@ -729,6 +771,7 @@ export default [
     disabled: false,
     matcat: "set-b",
     matid: "fc211abc-b97d-b3d8-5241-cd2055f43ed26",
+    modurl: "",
   },
   {
     index: 44,
@@ -746,6 +789,7 @@ export default [
     disabled: false,
     matcat: "set-b",
     matid: "fc211abc-b97d-b3d8-5241-cd2055f43ed27",
+    modurl: "",
   },
   {
     index: 45,
@@ -763,6 +807,7 @@ export default [
     disabled: false,
     matcat: "set-b",
     matid: "fc211abc-b97d-b3d8-5241-cd2055f43ed28",
+    modurl: "",
   },
   {
     index: 46,
@@ -780,6 +825,7 @@ export default [
     disabled: false,
     matcat: "set-b",
     matid: "fc211abc-b97d-b3d8-5241-cd2055f43ed29",
+    modurl: "",
   },
   {
     index: 47,
@@ -797,6 +843,7 @@ export default [
     disabled: false,
     matcat: "set-b",
     matid: "fc211abc-b97d-b3d8-5241-cd2055f43ed30",
+    modurl: "",
   },
   {
     index: 48,
@@ -814,6 +861,7 @@ export default [
     disabled: false,
     matcat: "set-b",
     matid: "fc211abc-b97d-b3d8-5241-cd2055f43ed31",
+    modurl: "",
   },
   {
     index: 49,
@@ -831,6 +879,7 @@ export default [
     disabled: false,
     matcat: "set-b",
     matid: "fc211abc-b97d-b3d8-5241-cd2055f43ed32",
+    modurl: "",
   },
   {
     index: 50,
@@ -848,6 +897,7 @@ export default [
     disabled: false,
     matcat: "set-b",
     matid: "fc211abc-b97d-b3d8-5241-cd2055f43ed33",
+    modurl: "",
   },
   {
     index: 51,
@@ -865,6 +915,7 @@ export default [
     disabled: false,
     matcat: "set-b",
     matid: "fc211abc-b97d-b3d8-5241-cd2055f43ed34",
+    modurl: "",
   },
   {
     index: 52,
@@ -882,6 +933,7 @@ export default [
     disabled: false,
     matcat: "set-b",
     matid: "fc211abc-b97d-b3d8-5241-cd2055f43ed35",
+    modurl: "",
   },
   {
     index: 53,
@@ -899,6 +951,7 @@ export default [
     disabled: false,
     matcat: "set-b",
     matid: "fc211abc-b97d-b3d8-5241-cd2055f43ed36",
+    modurl: "",
   },
   {
     index: 54,
@@ -916,6 +969,7 @@ export default [
     disabled: false,
     matcat: "set-b",
     matid: "fc211abc-b97d-b3d8-5241-cd2055f43ed37",
+    modurl: "",
   },
   {
     index: 55,
@@ -933,6 +987,7 @@ export default [
     disabled: false,
     matcat: "set-b",
     matid: "fc211abc-b97d-b3d8-5241-cd2055f43ed38",
+    modurl: "",
   },
   {
     index: 56,
@@ -950,6 +1005,7 @@ export default [
     disabled: false,
     matcat: "barb-bear",
     matid: "95004272-96ad-9967-9bb3-6b556d3bcbed",
+    modurl: "",
   },
   {
     index: 57,
@@ -967,6 +1023,7 @@ export default [
     disabled: false,
     matcat: "barb-bear",
     matid: "95004272-96ad-9967-9bb3-6b556d3bcbed",
+    modurl: "",
   },
   {
     index: 58,
@@ -984,6 +1041,7 @@ export default [
     disabled: false,
     matcat: "barb-bear",
     matid: "95004272-96ad-9967-9bb3-6b556d3bcbed",
+    modurl: "",
   },
   {
     index: 59,
@@ -1001,6 +1059,7 @@ export default [
     disabled: false,
     matcat: "barb-bear",
     matid: "95004272-96ad-9967-9bb3-6b556d3bcbed",
+    modurl: "",
   },
   {
     index: 60,
@@ -1018,6 +1077,7 @@ export default [
     disabled: false,
     matcat: "barb-bear",
     matid: "95004272-96ad-9967-9bb3-6b556d3bcbed",
+    modurl: "",
   },
   {
     index: 61,
@@ -1035,6 +1095,7 @@ export default [
     disabled: false,
     matcat: "barb-bear",
     matid: "95004272-96ad-9967-9bb3-6b556d3bcbed",
+    modurl: "",
   },
   {
     index: 62,
@@ -1052,6 +1113,7 @@ export default [
     disabled: false,
     matcat: "barb-bear",
     matid: "95004272-96ad-9967-9bb3-6b556d3bcbed",
+    modurl: "",
   },
   {
     index: 63,
@@ -1069,6 +1131,7 @@ export default [
     disabled: false,
     matcat: "barb-bear",
     matid: "95004272-96ad-9967-9bb3-6b556d3bcbed",
+    modurl: "",
   },
   {
     index: 64,
@@ -1086,6 +1149,7 @@ export default [
     disabled: false,
     matcat: "barb-bear",
     matid: "95004272-96ad-9967-9bb3-6b556d3bcbed",
+    modurl: "",
   },
   {
     index: 65,
@@ -1103,6 +1167,7 @@ export default [
     disabled: false,
     matcat: "barb-bear",
     matid: "95004272-96ad-9967-9bb3-6b556d3bcbed",
+    modurl: "",
   },
   {
     index: 66,
@@ -1120,6 +1185,7 @@ export default [
     disabled: false,
     matcat: "barb-bear",
     matid: "95004272-96ad-9967-9bb3-6b556d3bcbed",
+    modurl: "",
   },
   {
     index: 67,
@@ -1137,6 +1203,7 @@ export default [
     disabled: false,
     matcat: "barb-bear",
     matid: "95004272-96ad-9967-9bb3-6b556d3bcbed",
+    modurl: "",
   },
   {
     index: 68,
@@ -1154,6 +1221,7 @@ export default [
     disabled: false,
     matcat: "barb-bear",
     matid: "95004272-96ad-9967-9bb3-6b556d3bcbed",
+    modurl: "",
   },
   {
     index: 69,
@@ -1171,6 +1239,7 @@ export default [
     disabled: false,
     matcat: "barb-eagle",
     matid: "bd069145-fbc8-3fbc-befc-a3de9ea32205",
+    modurl: "",
   },
   {
     index: 70,
@@ -1188,6 +1257,7 @@ export default [
     disabled: false,
     matcat: "barb-eagle",
     matid: "bd069145-fbc8-3fbc-befc-a3de9ea32206",
+    modurl: "",
   },
   {
     index: 71,
@@ -1205,6 +1275,7 @@ export default [
     disabled: false,
     matcat: "barb-eagle",
     matid: "bd069145-fbc8-3fbc-befc-a3de9ea32207",
+    modurl: "",
   },
   {
     index: 72,
@@ -1222,6 +1293,7 @@ export default [
     disabled: false,
     matcat: "barb-eagle",
     matid: "bd069145-fbc8-3fbc-befc-a3de9ea32208",
+    modurl: "",
   },
   {
     index: 73,
@@ -1239,6 +1311,7 @@ export default [
     disabled: false,
     matcat: "barb-eagle",
     matid: "bd069145-fbc8-3fbc-befc-a3de9ea32209",
+    modurl: "",
   },
   {
     index: 74,
@@ -1256,6 +1329,7 @@ export default [
     disabled: false,
     matcat: "barb-eagle",
     matid: "bd069145-fbc8-3fbc-befc-a3de9ea32210",
+    modurl: "",
   },
   {
     index: 75,
@@ -1273,6 +1347,7 @@ export default [
     disabled: false,
     matcat: "barb-eagle",
     matid: "bd069145-fbc8-3fbc-befc-a3de9ea32211",
+    modurl: "",
   },
   {
     index: 76,
@@ -1290,6 +1365,7 @@ export default [
     disabled: false,
     matcat: "barb-eagle",
     matid: "bd069145-fbc8-3fbc-befc-a3de9ea32212",
+    modurl: "",
   },
   {
     index: 77,
@@ -1307,6 +1383,7 @@ export default [
     disabled: false,
     matcat: "barb-wolf",
     matid: "e6818c29-219c-9d87-f927-d19c4ae18624",
+    modurl: "",
   },
   {
     index: 78,
@@ -1324,6 +1401,7 @@ export default [
     disabled: false,
     matcat: "barb-wolf",
     matid: "e6818c29-219c-9d87-f927-d19c4ae18628",
+    modurl: "",
   },
   {
     index: 79,
@@ -1341,6 +1419,7 @@ export default [
     disabled: false,
     matcat: "barb-wolf",
     matid: "e6818c29-219c-9d87-f927-d19c4ae18625",
+    modurl: "",
   },
   {
     index: 80,
@@ -1358,6 +1437,7 @@ export default [
     disabled: false,
     matcat: "barb-wolf",
     matid: "e6818c29-219c-9d87-f927-d19c4ae18626",
+    modurl: "",
   },
   {
     index: 81,
@@ -1375,6 +1455,7 @@ export default [
     disabled: false,
     matcat: "barb-wolf",
     matid: "e6818c29-219c-9d87-f927-d19c4ae18627",
+    modurl: "",
   },
   {
     index: 82,
@@ -1392,6 +1473,7 @@ export default [
     disabled: false,
     matcat: "barb-wolf",
     matid: "e6818c29-219c-9d87-f927-d19c4ae18629",
+    modurl: "",
   },
   {
     index: 83,
@@ -1409,6 +1491,7 @@ export default [
     disabled: false,
     matcat: "barb-wolf",
     matid: "e6818c29-219c-9d87-f927-d19c4ae18630",
+    modurl: "",
   },
   {
     index: 84,
@@ -1426,6 +1509,7 @@ export default [
     disabled: false,
     matcat: "barb-wolf",
     matid: "e6818c29-219c-9d87-f927-d19c4ae18631",
+    modurl: "",
   },
   {
     index: 85,
@@ -1443,6 +1527,7 @@ export default [
     disabled: false,
     matcat: "barb-wolf",
     matid: "e6818c29-219c-9d87-f927-d19c4ae18632",
+    modurl: "",
   },
   {
     index: 86,
@@ -1460,6 +1545,7 @@ export default [
     disabled: false,
     matcat: "barb-wolf",
     matid: "e6818c29-219c-9d87-f927-d19c4ae18633",
+    modurl: "",
   },
   {
     index: 87,
@@ -1477,6 +1563,7 @@ export default [
     disabled: false,
     matcat: "barb-wolf",
     matid: "e6818c29-219c-9d87-f927-d19c4ae18634",
+    modurl: "",
   },
   {
     index: 88,
@@ -1494,6 +1581,7 @@ export default [
     disabled: false,
     matcat: "barb-tiger",
     matid: "b2ebb4dd-dd10-479c-0692-1aa21568fd84",
+    modurl: "",
   },
   {
     index: 89,
@@ -1511,6 +1599,7 @@ export default [
     disabled: false,
     matcat: "barb-tiger",
     matid: "b2ebb4dd-dd10-479c-0692-1aa21568fd85",
+    modurl: "",
   },
   {
     index: 90,
@@ -1528,6 +1617,7 @@ export default [
     disabled: false,
     matcat: "barb-tiger",
     matid: "b2ebb4dd-dd10-479c-0692-1aa21568fd86",
+    modurl: "",
   },
   {
     index: 91,
@@ -1545,6 +1635,7 @@ export default [
     disabled: false,
     matcat: "barb-tiger",
     matid: "b2ebb4dd-dd10-479c-0692-1aa21568fd87",
+    modurl: "",
   },
   {
     index: 92,
@@ -1562,6 +1653,7 @@ export default [
     disabled: false,
     matcat: "barb-tiger",
     matid: "b2ebb4dd-dd10-479c-0692-1aa21568fd88",
+    modurl: "",
   },
   {
     index: 93,
@@ -1579,6 +1671,7 @@ export default [
     disabled: false,
     matcat: "barb-tiger",
     matid: "b2ebb4dd-dd10-479c-0692-1aa21568fd89",
+    modurl: "",
   },
   {
     index: 94,
@@ -1596,6 +1689,7 @@ export default [
     disabled: false,
     matcat: "barb-tiger",
     matid: "b2ebb4dd-dd10-479c-0692-1aa21568fd90",
+    modurl: "",
   },
   {
     index: 95,
@@ -1613,6 +1707,7 @@ export default [
     disabled: false,
     matcat: "barb-tiger",
     matid: "b2ebb4dd-dd10-479c-0692-1aa21568fd91",
+    modurl: "",
   },
   {
     index: 96,
@@ -1630,6 +1725,7 @@ export default [
     disabled: false,
     matcat: "barb-elk",
     matid: "bd069145-fbc8-3fbc-befc-a3de9ea32205",
+    modurl: "",
   },
   {
     index: 97,
@@ -1647,6 +1743,7 @@ export default [
     disabled: false,
     matcat: "barb-elk",
     matid: "bd069145-fbc8-3fbc-befc-a3de9ea32206",
+    modurl: "",
   },
   {
     index: 98,
@@ -1664,6 +1761,7 @@ export default [
     disabled: false,
     matcat: "barb-elk",
     matid: "bd069145-fbc8-3fbc-befc-a3de9ea32207",
+    modurl: "",
   },
   {
     index: 99,
@@ -1681,6 +1779,7 @@ export default [
     disabled: false,
     matcat: "barb-elk",
     matid: "bd069145-fbc8-3fbc-befc-a3de9ea32208",
+    modurl: "",
   },
   {
     index: 100,
@@ -1698,6 +1797,7 @@ export default [
     disabled: false,
     matcat: "barb-elk",
     matid: "bd069145-fbc8-3fbc-befc-a3de9ea32209",
+    modurl: "",
   },
   {
     index: 101,
@@ -1715,6 +1815,7 @@ export default [
     disabled: false,
     matcat: "barb-elk",
     matid: "bd069145-fbc8-3fbc-befc-a3de9ea32210",
+    modurl: "",
   },
   {
     index: 102,
@@ -1732,6 +1833,7 @@ export default [
     disabled: false,
     matcat: "barb-elk",
     matid: "bd069145-fbc8-3fbc-befc-a3de9ea32211",
+    modurl: "",
   },
   {
     index: 103,
@@ -1749,6 +1851,7 @@ export default [
     disabled: false,
     matcat: "barb-elk",
     matid: "bd069145-fbc8-3fbc-befc-a3de9ea32212",
+    modurl: "",
   },
   {
     index: 104,
@@ -1766,6 +1869,7 @@ export default [
     disabled: false,
     matcat: "barb-elk",
     matid: "bd069145-fbc8-3fbc-befc-a3de9ea32213",
+    modurl: "",
   },
   {
     index: 105,
@@ -1783,6 +1887,7 @@ export default [
     disabled: false,
     matcat: "set-a",
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
+    modurl: "https://www.nexusmods.com/baldursgate3/mods/5907",
   },
   {
     index: 106,
@@ -1800,6 +1905,7 @@ export default [
     disabled: false,
     matcat: "set-a",
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
+    modurl: "https://www.nexusmods.com/baldursgate3/mods/5907",
   },
   {
     index: 107,
@@ -1817,6 +1923,7 @@ export default [
     disabled: false,
     matcat: "set-a",
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
+    modurl: "https://www.nexusmods.com/baldursgate3/mods/5907",
   },
   {
     index: 108,
@@ -1834,6 +1941,7 @@ export default [
     disabled: false,
     matcat: "set-a",
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
+    modurl: "https://www.nexusmods.com/baldursgate3/mods/5907",
   },
   {
     index: 109,
@@ -1851,6 +1959,7 @@ export default [
     disabled: false,
     matcat: "set-a",
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
+    modurl: "https://www.nexusmods.com/baldursgate3/mods/5907",
   },
   {
     index: 110,
@@ -1868,6 +1977,7 @@ export default [
     disabled: false,
     matcat: "set-a",
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
+    modurl: "https://www.nexusmods.com/baldursgate3/mods/5907",
   },
   {
     index: 111,
@@ -1885,6 +1995,7 @@ export default [
     disabled: false,
     matcat: "set-a",
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
+    modurl: "https://www.nexusmods.com/baldursgate3/mods/5907",
   },
   {
     index: 112,
@@ -1902,6 +2013,7 @@ export default [
     disabled: false,
     matcat: "set-a",
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
+    modurl: "https://www.nexusmods.com/baldursgate3/mods/5907",
   },
   {
     index: 113,
@@ -1919,6 +2031,7 @@ export default [
     disabled: false,
     matcat: "set-a",
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
+    modurl: "https://www.nexusmods.com/baldursgate3/mods/5907",
   },
   {
     index: 114,
@@ -1936,6 +2049,7 @@ export default [
     disabled: false,
     matcat: "set-a",
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
+    modurl: "https://www.nexusmods.com/baldursgate3/mods/5907",
   },
   {
     index: 115,
@@ -1953,6 +2067,7 @@ export default [
     disabled: false,
     matcat: "set-a",
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
+    modurl: "https://www.nexusmods.com/baldursgate3/mods/5907",
   },
   {
     index: 116,
@@ -1970,6 +2085,7 @@ export default [
     disabled: false,
     matcat: "set-a",
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
+    modurl: "https://www.nexusmods.com/baldursgate3/mods/5907",
   },
   {
     index: 117,
@@ -1987,6 +2103,7 @@ export default [
     disabled: false,
     matcat: "set-a",
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
+    modurl: "https://www.nexusmods.com/baldursgate3/mods/5907",
   },
   {
     index: 118,
@@ -2004,6 +2121,7 @@ export default [
     disabled: false,
     matcat: "set-a",
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
+    modurl: "https://www.nexusmods.com/baldursgate3/mods/5907",
   },
   {
     index: 119,
@@ -2021,6 +2139,7 @@ export default [
     disabled: false,
     matcat: "set-a",
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
+    modurl: "https://www.nexusmods.com/baldursgate3/mods/5907",
   },
   {
     index: 120,
@@ -2038,6 +2157,7 @@ export default [
     disabled: false,
     matcat: "set-a",
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
+    modurl: "https://www.nexusmods.com/baldursgate3/mods/5907",
   },
   {
     index: 121,
@@ -2055,6 +2175,7 @@ export default [
     disabled: false,
     matcat: "set-a",
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
+    modurl: "https://www.nexusmods.com/baldursgate3/mods/5907",
   },
   {
     index: 122,
@@ -2072,6 +2193,7 @@ export default [
     disabled: false,
     matcat: "set-a",
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
+    modurl: "https://www.nexusmods.com/baldursgate3/mods/5907",
   },
   {
     index: 123,
@@ -2089,6 +2211,7 @@ export default [
     disabled: false,
     matcat: "set-a",
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
+    modurl: "https://www.nexusmods.com/baldursgate3/mods/5907",
   },
   {
     index: 124,
@@ -2106,6 +2229,7 @@ export default [
     disabled: false,
     matcat: "set-a",
     matid: "ff3eeaa1-454f-2053-8bbc-be7832c420dd",
+    modurl: "https://www.nexusmods.com/baldursgate3/mods/5907",
   },
   {
     index: 125,
@@ -2123,6 +2247,7 @@ export default [
     disabled: false,
     matcat: "isp-gold",
     matid: "4ecf0e10-d34a-42dd-ba88-85627ec8655c",
+    modurl: "https://www.nexusmods.com/baldursgate3/mods/5907",
   },
   {
     index: 126,
@@ -2140,6 +2265,7 @@ export default [
     disabled: false,
     matcat: "isp-gold",
     matid: "4ecf0e10-d34a-42dd-ba88-85627ec8655c",
+    modurl: "https://www.nexusmods.com/baldursgate3/mods/5907",
   },
   {
     index: 127,
@@ -2157,6 +2283,7 @@ export default [
     disabled: false,
     matcat: "isp-gold",
     matid: "4ecf0e10-d34a-42dd-ba88-85627ec8655c",
+    modurl: "https://www.nexusmods.com/baldursgate3/mods/5907",
   },
   {
     index: 128,
@@ -2174,6 +2301,7 @@ export default [
     disabled: false,
     matcat: "isp-gold",
     matid: "4ecf0e10-d34a-42dd-ba88-85627ec8655c",
+    modurl: "https://www.nexusmods.com/baldursgate3/mods/5907",
   },
   {
     index: 129,
@@ -2191,6 +2319,7 @@ export default [
     disabled: false,
     matcat: "isp-gold",
     matid: "4ecf0e10-d34a-42dd-ba88-85627ec8655c",
+    modurl: "https://www.nexusmods.com/baldursgate3/mods/5907",
   },
   {
     index: 130,
@@ -2208,6 +2337,7 @@ export default [
     disabled: false,
     matcat: "isp-gold",
     matid: "4ecf0e10-d34a-42dd-ba88-85627ec8655c",
+    modurl: "https://www.nexusmods.com/baldursgate3/mods/5907",
   },
   {
     index: 131,
@@ -2225,6 +2355,7 @@ export default [
     disabled: false,
     matcat: "isp-gold",
     matid: "4ecf0e10-d34a-42dd-ba88-85627ec8655c",
+    modurl: "https://www.nexusmods.com/baldursgate3/mods/5907",
   },
   {
     index: 132,
@@ -2242,6 +2373,7 @@ export default [
     disabled: false,
     matcat: "isp-gold",
     matid: "4ecf0e10-d34a-42dd-ba88-85627ec8655c",
+    modurl: "https://www.nexusmods.com/baldursgate3/mods/5907",
   },
   {
     index: 133,
@@ -2259,6 +2391,7 @@ export default [
     disabled: false,
     matcat: "isp-gold",
     matid: "4ecf0e10-d34a-42dd-ba88-85627ec8655c",
+    modurl: "https://www.nexusmods.com/baldursgate3/mods/5907",
   },
   {
     index: 134,
@@ -2276,6 +2409,7 @@ export default [
     disabled: false,
     matcat: "isp-gold",
     matid: "4ecf0e10-d34a-42dd-ba88-85627ec8655c",
+    modurl: "https://www.nexusmods.com/baldursgate3/mods/5907",
   },
   {
     index: 135,
@@ -2293,6 +2427,7 @@ export default [
     disabled: false,
     matcat: "isp-gold",
     matid: "4ecf0e10-d34a-42dd-ba88-85627ec8655c",
+    modurl: "https://www.nexusmods.com/baldursgate3/mods/5907",
   },
   {
     index: 136,
@@ -2310,6 +2445,7 @@ export default [
     disabled: false,
     matcat: "isp-gold",
     matid: "4ecf0e10-d34a-42dd-ba88-85627ec8655c",
+    modurl: "https://www.nexusmods.com/baldursgate3/mods/5907",
   },
   {
     index: 137,
@@ -2327,6 +2463,7 @@ export default [
     disabled: false,
     matcat: "isp-gold",
     matid: "4ecf0e10-d34a-42dd-ba88-85627ec8655c",
+    modurl: "https://www.nexusmods.com/baldursgate3/mods/5907",
   },
   {
     index: 138,
@@ -2344,6 +2481,7 @@ export default [
     disabled: false,
     matcat: "isp-gold",
     matid: "4ecf0e10-d34a-42dd-ba88-85627ec8655c",
+    modurl: "https://www.nexusmods.com/baldursgate3/mods/5907",
   },
   {
     index: 139,
@@ -2361,6 +2499,7 @@ export default [
     disabled: false,
     matcat: "isp-gold",
     matid: "4ecf0e10-d34a-42dd-ba88-85627ec8655c",
+    modurl: "https://www.nexusmods.com/baldursgate3/mods/5907",
   },
   {
     index: 140,
@@ -2378,6 +2517,7 @@ export default [
     disabled: false,
     matcat: "isp-gold",
     matid: "4ecf0e10-d34a-42dd-ba88-85627ec8655c",
+    modurl: "https://www.nexusmods.com/baldursgate3/mods/5907",
   },
   {
     index: 141,
@@ -2395,6 +2535,7 @@ export default [
     disabled: false,
     matcat: "isp-gold",
     matid: "4ecf0e10-d34a-42dd-ba88-85627ec8655c",
+    modurl: "https://www.nexusmods.com/baldursgate3/mods/5907",
   },
   {
     index: 142,
@@ -2412,6 +2553,7 @@ export default [
     disabled: false,
     matcat: "isp-gold",
     matid: "4ecf0e10-d34a-42dd-ba88-85627ec8655c",
+    modurl: "https://www.nexusmods.com/baldursgate3/mods/5907",
   },
   {
     index: 143,
@@ -2429,6 +2571,7 @@ export default [
     disabled: false,
     matcat: "isp-gold",
     matid: "4ecf0e10-d34a-42dd-ba88-85627ec8655c",
+    modurl: "https://www.nexusmods.com/baldursgate3/mods/5907",
   },
   {
     index: 144,
@@ -2446,5 +2589,366 @@ export default [
     disabled: false,
     matcat: "isp-gold",
     matid: "4ecf0e10-d34a-42dd-ba88-85627ec8655c",
+    modurl: "https://www.nexusmods.com/baldursgate3/mods/5907",
+  },
+  {
+    index: 145,
+    site_cat: "p4_blooming",
+    type: "mod",
+    set_name: "P4 Blooming Circlets & Piercings",
+    color: "red",
+    name: "Red Rose",
+    pt_bone: "Lobe Lower (L)",
+    bone: "piercing_lobe_a_l",
+    location: "ears",
+    nodeid: "8d8bb67b-f151-4487-9a40-277e760d32c7",
+    imgurl: "assets/images/p4/red-rose-lobe.jpg",
+    selected: false,
+    disabled: false,
+    matcat: "red",
+    matid: "16b841c0-4f14-4c7a-86c1-7228d0dc6679",
+    modurl: "https://www.nexusmods.com/baldursgate3/mods/6745",
+  },
+  {
+    index: 146,
+    site_cat: "p4_blooming",
+    type: "mod",
+    set_name: "P4 Blooming Circlets & Piercings",
+    color: "red",
+    name: "Red Rose",
+    pt_bone: "Nostril (R)",
+    bone: "piercing_nostril_a_r",
+    location: "nose",
+    nodeid: "f1dc4000-1fd3-4b0e-aadf-ef9f804d043f",
+    imgurl: "assets/images/p4/red-rose-nose.jpg",
+    selected: false,
+    disabled: false,
+    matcat: "red",
+    matid: "16b841c0-4f14-4c7a-86c1-7228d0dc6680",
+    modurl: "https://www.nexusmods.com/baldursgate3/mods/6745",
+  },
+  {
+    index: 147,
+    site_cat: "p4_blooming",
+    type: "mod",
+    set_name: "P4 Blooming Circlets & Piercings",
+    color: "red",
+    name: "Red Rose",
+    pt_bone: "Lobe Lower (R)",
+    bone: "piercing_lobe_a_r",
+    location: "ears",
+    nodeid: "3e8b94e5-3658-4180-8090-956239ea39af",
+    imgurl: "assets/images/p4/red-rose-lobe.jpg",
+    selected: false,
+    disabled: false,
+    matcat: "red",
+    matid: "16b841c0-4f14-4c7a-86c1-7228d0dc6681",
+    modurl: "https://www.nexusmods.com/baldursgate3/mods/6745",
+  },
+  {
+    index: 148,
+    site_cat: "p4_blooming",
+    type: "mod",
+    set_name: "P4 Blooming Circlets & Piercings",
+    color: "red",
+    name: "Red Rose",
+    pt_bone: "Nostril (L)",
+    bone: "piercing_nostril_a_l",
+    location: "nose",
+    nodeid: "ab82b76d-5b87-4bca-bc92-38580f8eba78",
+    imgurl: "assets/images/p4/red-rose-nose.jpg",
+    selected: false,
+    disabled: false,
+    matcat: "red",
+    matid: "16b841c0-4f14-4c7a-86c1-7228d0dc6682",
+    modurl: "https://www.nexusmods.com/baldursgate3/mods/6745",
+  },
+  {
+    index: 149,
+    site_cat: "p4_blooming",
+    type: "mod",
+    set_name: "P4 Blooming Circlets & Piercings",
+    color: "blue",
+    name: "Blue Rose",
+    pt_bone: "Lobe Lower (L)",
+    bone: "piercing_lobe_a_l",
+    location: "ears",
+    nodeid: "7889119c-8bf8-4998-bfd1-e76ef5d38c2f",
+    imgurl: "assets/images/p4/blue-rose-lobe.jpg",
+    selected: false,
+    disabled: false,
+    matcat: "blue",
+    matid: "1cced016-a1b4-4eeb-8101-a49c19f4476f",
+    modurl: "https://www.nexusmods.com/baldursgate3/mods/6745",
+  },
+  {
+    index: 150,
+    site_cat: "p4_blooming",
+    type: "mod",
+    set_name: "P4 Blooming Circlets & Piercings",
+    color: "blue",
+    name: "Blue Rose",
+    pt_bone: "Nostril (R)",
+    bone: "piercing_nostril_a_r",
+    location: "nose",
+    nodeid: "2845eb00-7f45-499a-b5c5-acd0970d76eb",
+    imgurl: "assets/images/p4/blue-rose-nose.jpg",
+    selected: false,
+    disabled: false,
+    matcat: "blue",
+    matid: "1cced016-a1b4-4eeb-8101-a49c19f4476f",
+    modurl: "https://www.nexusmods.com/baldursgate3/mods/6745",
+  },
+  {
+    index: 151,
+    site_cat: "p4_blooming",
+    type: "mod",
+    set_name: "P4 Blooming Circlets & Piercings",
+    color: "blue",
+    name: "Blue Rose",
+    pt_bone: "Lobe Lower (R)",
+    bone: "piercing_lobe_a_r",
+    location: "ears",
+    nodeid: "6bf8fba1-6d6d-46ca-aaff-0cf648d8fcc9",
+    imgurl: "assets/images/p4/blue-rose-lobe.jpg",
+    selected: false,
+    disabled: false,
+    matcat: "blue",
+    matid: "1cced016-a1b4-4eeb-8101-a49c19f4476f",
+    modurl: "https://www.nexusmods.com/baldursgate3/mods/6745",
+  },
+  {
+    index: 152,
+    site_cat: "p4_blooming",
+    type: "mod",
+    set_name: "P4 Blooming Circlets & Piercings",
+    color: "blue",
+    name: "Blue Rose",
+    pt_bone: "Nostril (L)",
+    bone: "piercing_nostril_a_l",
+    location: "nose",
+    nodeid: "a5085edb-038d-41e2-ac5f-087b66904e8a",
+    imgurl: "assets/images/p4/blue-rose-nose.jpg",
+    selected: false,
+    disabled: false,
+    matcat: "blue",
+    matid: "1cced016-a1b4-4eeb-8101-a49c19f4476f",
+    modurl: "https://www.nexusmods.com/baldursgate3/mods/6745",
+  },
+  {
+    index: 153,
+    site_cat: "p4_blooming",
+    type: "mod",
+    set_name: "P4 Blooming Circlets & Piercings",
+    color: "black",
+    name: "Black Rose",
+    pt_bone: "Lobe Lower (L)",
+    bone: "piercing_lobe_a_l",
+    location: "ears",
+    nodeid: "77354eba-4251-47c4-8c90-9f386855cb10",
+    imgurl: "assets/images/p4/black-rose-lobe.jpg",
+    selected: false,
+    disabled: false,
+    matcat: "black",
+    matid: "4b00a1d8-f75f-4c12-9202-edd2be005d2c",
+    modurl: "https://www.nexusmods.com/baldursgate3/mods/6745",
+  },
+  {
+    index: 154,
+    site_cat: "p4_blooming",
+    type: "mod",
+    set_name: "P4 Blooming Circlets & Piercings",
+    color: "black",
+    name: "Black Rose",
+    pt_bone: "Nostril (R)",
+    bone: "piercing_nostril_a_r",
+    location: "nose",
+    nodeid: "4bf013be-e639-465b-8604-b5a577ec7c35",
+    imgurl: "assets/images/p4/black-rose-nose.jpg",
+    selected: false,
+    disabled: false,
+    matcat: "black",
+    matid: "4b00a1d8-f75f-4c12-9202-edd2be005d2c",
+    modurl: "https://www.nexusmods.com/baldursgate3/mods/6745",
+  },
+  {
+    index: 155,
+    site_cat: "p4_blooming",
+    type: "mod",
+    set_name: "P4 Blooming Circlets & Piercings",
+    color: "black",
+    name: "Black Rose",
+    pt_bone: "Lobe Lower (R)",
+    bone: "piercing_lobe_a_r",
+    location: "ears",
+    nodeid: "a854be72-e960-4142-a6c1-047673261a26",
+    imgurl: "assets/images/p4/black-rose-lobe.jpg",
+    selected: false,
+    disabled: false,
+    matcat: "black",
+    matid: "4b00a1d8-f75f-4c12-9202-edd2be005d2c",
+    modurl: "https://www.nexusmods.com/baldursgate3/mods/6745",
+  },
+  {
+    index: 156,
+    site_cat: "p4_blooming",
+    type: "mod",
+    set_name: "P4 Blooming Circlets & Piercings",
+    color: "black",
+    name: "Black Rose",
+    pt_bone: "Nostril (L)",
+    bone: "piercing_nostril_a_l",
+    location: "nose",
+    nodeid: "096add26-c9a5-48d9-ac73-56e5dcb8024b",
+    imgurl: "assets/images/p4/black-rose-nose.jpg",
+    selected: false,
+    disabled: false,
+    matcat: "black",
+    matid: "4b00a1d8-f75f-4c12-9202-edd2be005d2c",
+    modurl: "https://www.nexusmods.com/baldursgate3/mods/6745",
+  },
+  {
+    index: 157,
+    site_cat: "p4_blooming",
+    type: "mod",
+    set_name: "P4 Blooming Circlets & Piercings",
+    color: "pink",
+    name: "Pink Rose",
+    pt_bone: "Lobe Lower (L)",
+    bone: "piercing_lobe_a_l",
+    location: "ears",
+    nodeid: "52de76e3-2a8f-43c4-9971-b0cae0ebce51",
+    imgurl: "assets/images/p4/pink-rose-lobe.jpg",
+    selected: false,
+    disabled: false,
+    matcat: "pink",
+    matid: "bece73c6-fca9-455b-9324-be61ede6d08b",
+    modurl: "https://www.nexusmods.com/baldursgate3/mods/6745",
+  },
+  {
+    index: 158,
+    site_cat: "p4_blooming",
+    type: "mod",
+    set_name: "P4 Blooming Circlets & Piercings",
+    color: "pink",
+    name: "Pink Rose",
+    pt_bone: "Nostril (R)",
+    bone: "piercing_nostril_a_r",
+    location: "nose",
+    nodeid: "93d9b113-f237-48d7-9598-59790eccbb56",
+    imgurl: "assets/images/p4/pink-rose-nose.jpg",
+    selected: false,
+    disabled: false,
+    matcat: "pink",
+    matid: "bece73c6-fca9-455b-9324-be61ede6d08b",
+    modurl: "https://www.nexusmods.com/baldursgate3/mods/6745",
+  },
+  {
+    index: 159,
+    site_cat: "p4_blooming",
+    type: "mod",
+    set_name: "P4 Blooming Circlets & Piercings",
+    color: "pink",
+    name: "Pink Rose",
+    pt_bone: "Lobe Lower (R)",
+    bone: "piercing_lobe_a_r",
+    location: "ears",
+    nodeid: "cf8e0f80-cf9b-410e-954a-bdc832f02f70",
+    imgurl: "assets/images/p4/pink-rose-lobe.jpg",
+    selected: false,
+    disabled: false,
+    matcat: "pink",
+    matid: "bece73c6-fca9-455b-9324-be61ede6d08b",
+    modurl: "https://www.nexusmods.com/baldursgate3/mods/6745",
+  },
+  {
+    index: 160,
+    site_cat: "p4_blooming",
+    type: "mod",
+    set_name: "P4 Blooming Circlets & Piercings",
+    color: "pink",
+    name: "Pink Rose",
+    pt_bone: "Nostril (L)",
+    bone: "piercing_nostril_a_l",
+    location: "nose",
+    nodeid: "9794e98d-17a0-45fc-ae90-5d9527286965",
+    imgurl: "assets/images/p4/pink-rose-nose.jpg",
+    selected: false,
+    disabled: false,
+    matcat: "pink",
+    matid: "bece73c6-fca9-455b-9324-be61ede6d08b",
+    modurl: "https://www.nexusmods.com/baldursgate3/mods/6745",
+  },
+  {
+    index: 161,
+    site_cat: "p4_blooming",
+    type: "mod",
+    set_name: "P4 Blooming Circlets & Piercings",
+    color: "yellow",
+    name: "Yellow Rose",
+    pt_bone: "Lobe Lower (L)",
+    bone: "piercing_lobe_a_l",
+    location: "ears",
+    nodeid: "3c1d99d2-8936-467a-b8e6-7c426124ad28",
+    imgurl: "assets/images/p4/yellow-rose-lobe.jpg",
+    selected: false,
+    disabled: false,
+    matcat: "yellow",
+    matid: "30eef831-d6d5-46dc-83a2-2f309ad234ed",
+    modurl: "https://www.nexusmods.com/baldursgate3/mods/6745",
+  },
+  {
+    index: 162,
+    site_cat: "p4_blooming",
+    type: "mod",
+    set_name: "P4 Blooming Circlets & Piercings",
+    color: "yellow",
+    name: "Yellow Rose",
+    pt_bone: "Nostril (R)",
+    bone: "piercing_nostril_a_r",
+    location: "nose",
+    nodeid: "3fbbbfe5-5422-44f2-925a-d042f216e9a4",
+    imgurl: "assets/images/p4/yellow-rose-nose.jpg",
+    selected: false,
+    disabled: false,
+    matcat: "yellow",
+    matid: "30eef831-d6d5-46dc-83a2-2f309ad234ed",
+    modurl: "https://www.nexusmods.com/baldursgate3/mods/6745",
+  },
+  {
+    index: 163,
+    site_cat: "p4_blooming",
+    type: "mod",
+    set_name: "P4 Blooming Circlets & Piercings",
+    color: "yellow",
+    name: "Yellow Rose",
+    pt_bone: "Lobe Lower (R)",
+    bone: "piercing_lobe_a_r",
+    location: "ears",
+    nodeid: "f8dd096f-e330-42e1-b817-45a00637e90b",
+    imgurl: "assets/images/p4/yellow-rose-lobe.jpg",
+    selected: false,
+    disabled: false,
+    matcat: "yellow",
+    matid: "30eef831-d6d5-46dc-83a2-2f309ad234ed",
+    modurl: "https://www.nexusmods.com/baldursgate3/mods/6745",
+  },
+  {
+    index: 164,
+    site_cat: "p4_blooming",
+    type: "mod",
+    set_name: "P4 Blooming Circlets & Piercings",
+    color: "yellow",
+    name: "Yellow Rose",
+    pt_bone: "Nostril (L)",
+    bone: "piercing_nostril_a_l",
+    location: "nose",
+    nodeid: "c5ddac1e-e3f4-4c88-adf3-87f1664b4be5",
+    imgurl: "assets/images/p4/yellow-rose-nose.jpg",
+    selected: false,
+    disabled: false,
+    matcat: "yellow",
+    matid: "30eef831-d6d5-46dc-83a2-2f309ad234ed",
+    modurl: "https://www.nexusmods.com/baldursgate3/mods/6745",
   },
 ];
