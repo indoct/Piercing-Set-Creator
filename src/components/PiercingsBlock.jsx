@@ -153,7 +153,7 @@ export default function PiercingsBlock(props) {
 
   return (
     <>
-      <Row className="mt-4 title-row">
+      <Row className="mt-3 title-row">
         <Col>
           <h5 className="prc-block-h">
             {sessionOver
@@ -193,12 +193,12 @@ export default function PiercingsBlock(props) {
                 {formatString()}
               </SyntaxHighlighter>
             </Col>
-            <Col lg={3}>
+            <Col lg={4}>
               <div className="mod-warning">
-                <p className="output-intro">
+                <p>
                   You have {containsMod.length} mod piercings in your set. You
                   MUST download & install the below mods or the piercings will
-                  not show in your game!
+                  not show in your game! (Opens in new window)
                 </p>
                 <ul className="mod-list">{generateModEls()}</ul>
               </div>
