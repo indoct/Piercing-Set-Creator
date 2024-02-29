@@ -20,6 +20,7 @@ Any piercings from Mods require you to download and install the mod in question 
 
 ## Included Mods
 
+- [Indoct's Subtler Piercings](https://www.nexusmods.com/baldursgate3/mods/5907?tab=files) by me
 - [P4 Blooming Circlets and Piercings](https://www.nexusmods.com/baldursgate3/mods/6745) by Padme4000
 - [Ghouls Custom Piercings](https://www.nexusmods.com/baldursgate3/mods/5317) by ghouls0rules
 
