@@ -5,13 +5,22 @@ import SetModal from "../components/SetModal";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { Tooltip } from "react-tooltip";
-import { ViewList, Trash, PlusCircleFill } from "react-bootstrap-icons";
+import {
+  ViewList,
+  Trash,
+  PlusCircleFill,
+  XCircleFill,
+  XCircle,
+  PlusCircle,
+} from "react-bootstrap-icons";
+import { Animate } from "react-simple-animate";
 
 export default function Header(props) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [filtersOpen, setFiltersOpen] = useState(false);
+  const [play, setPlay] = useState();
 
   const {
     type,
@@ -24,12 +33,6 @@ export default function Header(props) {
   } = props;
 
   const empty = piercings.filter((prc) => prc.selected).length === 0;
-
-  function toggleFilterExpand() {
-    setFiltersOpen((prevState) => !prevState);
-  }
-
-  console.log(filtersOpen);
 
   return (
     <>
@@ -66,7 +69,7 @@ export default function Header(props) {
         </Row>
       </header>
       {!sessionOver && (
-        <Row className="my-3">
+        <Row className="mt-3 mb-1">
           <Col lg={6}>
             <div className="filter-btns">
               <span>Type:</span>
@@ -96,8 +99,19 @@ export default function Header(props) {
               >
                 Vanilla
               </button>
-              <button onClick={toggleFilterExpand}>
-                Expand Mod Filters <PlusCircleFill />
+              <button
+                onClick={() => {
+                  setPlay(!play);
+                  setFiltersOpen((prevState) => !prevState);
+                }}
+                className="toggle"
+              >
+                {filtersOpen ? "Hide" : "Show"} Mod Filters{" "}
+                {!filtersOpen ? (
+                  <PlusCircle size="18" />
+                ) : (
+                  <XCircle size="18" />
+                )}
               </button>
             </div>
           </Col>
@@ -158,13 +172,51 @@ export default function Header(props) {
           </Col>
         </Row>
       )}
-      {filtersOpen && (
+      <Animate
+        play={play}
+        start={{
+          transform: "translateY(0px)",
+          visibility: "hidden",
+          opacity: "0",
+          height: "0",
+        }}
+        end={{
+          transform: "translateY(6px)",
+          visibility: "visible",
+          height: "45px",
+        }}
+      >
         <Row>
-          <div className="mod-filters">
-            <p>Filters go here</p>
-          </div>
+          <Col>
+            <div className="mod-filters">
+              <form id="check-filters">
+                <fieldset>
+                  <input
+                    id="p4-blooming"
+                    type="checkbox"
+                    name="p4-blooming"
+                    // onChange={handleChange}
+                    // checked={checked}
+                  />
+                  <label htmlFor="p4-blooming">
+                    P4 Blooming Circlets & Piercings
+                  </label>
+                  <input
+                    id="isp-silver"
+                    type="checkbox"
+                    name="isp-silver"
+                    // onChange={handleChange}
+                    // checked={checked}
+                  />
+                  <label htmlFor="isp-silver">
+                    Indoct's Subtler Piercings (Silver)
+                  </label>
+                </fieldset>
+              </form>
+            </div>
+          </Col>
         </Row>
-      )}
+      </Animate>
     </>
   );
 }
