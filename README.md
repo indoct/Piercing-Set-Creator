@@ -23,4 +23,4 @@ Any piercings from Mods require you to download and install the mod in question 
 - [P4 Blooming Circlets and Piercings](https://www.nexusmods.com/baldursgate3/mods/6745) by Padme4000
 - [Ghouls Custom Piercings](https://www.nexusmods.com/baldursgate3/mods/5317) by ghouls0rules
 
-Please get in touch with me in [Down By The River](discord.gg/downbytheriver) on Discord for any questions or if you'd like to add your mod to the app.
+Please get in touch with me in [Down By The River](https://discord.gg/downbytheriver) on Discord for any questions or if you'd like to add your mod to the app.
