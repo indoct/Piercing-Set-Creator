@@ -22,7 +22,6 @@ export default function PiercingsBlock(props) {
   } = props;
 
   const [copyBtnPressed, setCopyBtnPressed] = useState(false);
-  const [uniqueMods, setUniqueMods] = useState({});
 
   const displayedPiercings =
     type && !location
@@ -146,10 +145,6 @@ export default function PiercingsBlock(props) {
       setCopyBtnPressed(false);
     }, 2000);
   }
-
-  // useEffect(() => {
-  //   console.log(containsMod);
-  // }, []);
 
   return (
     <>

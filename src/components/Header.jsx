@@ -5,12 +5,13 @@ import SetModal from "../components/SetModal";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { Tooltip } from "react-tooltip";
-import { ViewList, Trash } from "react-bootstrap-icons";
+import { ViewList, Trash, PlusCircleFill } from "react-bootstrap-icons";
 
 export default function Header(props) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const [filtersOpen, setFiltersOpen] = useState(false);
 
   const {
     type,
@@ -23,6 +24,12 @@ export default function Header(props) {
   } = props;
 
   const empty = piercings.filter((prc) => prc.selected).length === 0;
+
+  function toggleFilterExpand() {
+    setFiltersOpen((prevState) => !prevState);
+  }
+
+  console.log(filtersOpen);
 
   return (
     <>
@@ -89,6 +96,9 @@ export default function Header(props) {
               >
                 Vanilla
               </button>
+              <button onClick={toggleFilterExpand}>
+                Expand Mod Filters <PlusCircleFill />
+              </button>
             </div>
           </Col>
           <Col lg={6}>
@@ -146,6 +156,13 @@ export default function Header(props) {
             </div>
             {location === "lips" && <Tooltip id="my-tooltip" />}
           </Col>
+        </Row>
+      )}
+      {filtersOpen && (
+        <Row>
+          <div className="mod-filters">
+            <p>Filters go here</p>
+          </div>
         </Row>
       )}
     </>
