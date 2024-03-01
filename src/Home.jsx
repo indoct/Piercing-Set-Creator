@@ -34,7 +34,7 @@ export default function Home() {
     );
   }
 
-  console.log(typeFilter, modFilter, locaFilter);
+  console.log(typeFilter, modFilter, locaFilter, modFilter.length);
 
   function handleFilterChange(key, value) {
     console.log(value);
@@ -62,7 +62,6 @@ export default function Home() {
   }
 
   function toggleSessionOver(e) {
-    console.log(e.target.id);
     if (e.target.id === "back-btn") setSessionOver(false);
     if (e.target.id === "generate-btn") setSessionOver(true);
   }

@@ -25,14 +25,23 @@ export default function PiercingsBlock(props) {
   const [copyBtnPressed, setCopyBtnPressed] = useState(false);
   console.log(modname.length);
 
-  function displayModPrcs(modArr) {
-    for (const mod of modArr) {
-      return (displayed = piercings.filter((prc) => prc.site_cat === mod));
+  function filterByMod(modArr) {
+    if (location) {
+      const locaFirst = piercings.filter((prc) => prc.location === location);
+      return locaFirst.filter((obj) => modArr.includes(obj.site_cat));
+    } else {
+      return piercings.filter((obj) => modArr.includes(obj.site_cat));
     }
   }
 
   const displayedPiercings =
-    type && !location
+    modname.length === 1 && location
+      ? piercings.filter(
+          (prc) => prc.site_cat === modname[0] && prc.location === location
+        )
+      : modname.length > 1
+      ? filterByMod(modname)
+      : type && !location
       ? piercings.filter((prc) => prc.type === type)
       : type && location
       ? piercings.filter(
@@ -40,10 +49,6 @@ export default function PiercingsBlock(props) {
         )
       : location && !type
       ? piercings.filter((prc) => prc.location === location)
-      : modname.length === 1
-      ? piercings.filter((prc) => prc.site_cat === modname[0])
-      : modname.length > 1
-      ? displayModPrcs(modname)
       : piercings;
 
   const selected = piercings.filter((prc) => prc.selected);
