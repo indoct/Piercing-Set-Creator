@@ -34,20 +34,25 @@ export default function Home() {
     );
   }
 
-  console.log(typeFilter, modFilter, locaFilter, modFilter.length);
+  // console.log(typeFilter, modFilter, locaFilter, modFilter.length);
 
   function handleFilterChange(key, value) {
-    console.log(value);
-    console.log(key);
     setSearchParams((prevParams) => {
+      const newParams = { ...Object.fromEntries(prevParams) };
       if (value === null) {
-        prevParams.delete(key);
-      } else if (key === "modname") {
-        prevParams.append(key, value);
+        delete newParams[key];
+      } else if (key === "type" || key === "location") {
+        newParams[key] = value;
+      } else if (key === "modname" && modFilter.length === 0) {
+        newParams[key] = new Array(value);
       } else {
-        prevParams.set(key, value);
+        if (modFilter.includes(value)) {
+          newParams[key] = modFilter.filter((modname) => modname !== value);
+        } else {
+          newParams[key] = [...modFilter, value];
+        }
       }
-      return prevParams;
+      return newParams;
     });
   }
 

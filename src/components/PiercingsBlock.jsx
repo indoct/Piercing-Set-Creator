@@ -23,7 +23,7 @@ export default function PiercingsBlock(props) {
   } = props;
 
   const [copyBtnPressed, setCopyBtnPressed] = useState(false);
-  console.log(modname.length);
+  // console.log(type, location, modname.includes("isp_silver"));
 
   function filterByMod(modArr) {
     if (location) {

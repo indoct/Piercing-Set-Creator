@@ -184,40 +184,70 @@ export default function Header(props) {
         <Row>
           <Col>
             <div className="mod-filters">
-              <form id="check-filters">
+              <button
+                onClick={() => {
+                  handleFilterChange("modname", "isp_gold");
+                }}
+                className={`mod ${
+                  modname.includes("isp_gold") ? "selected" : ""
+                }`}
+              >
+                Indoct's Subtler Piercings (Gold)
+              </button>
+              <button
+                onClick={() => {
+                  handleFilterChange("modname", "isp_silver");
+                }}
+                className={`mod ${
+                  modname.includes("isp_silver") ? "selected" : ""
+                }`}
+              >
+                Indoct's Subtler Piercings (Silver)
+              </button>
+              <button
+                onClick={() => {
+                  handleFilterChange("modname", "p4_blooming");
+                }}
+                className={`mod ${
+                  modname.includes("p4_blooming") ? "selected" : ""
+                }`}
+              >
+                P4 Blooming Circlets & Piercings
+              </button>
+              {/* <form id="check-filters">
                 <fieldset>
                   <input
-                    id="isp-gold"
+                    id="isp_gold"
                     type="checkbox"
-                    name="isp-gold"
-                    // onChange={handleChange}
+                    name="isp_gold"
+                    onChange={handleFilterChange}
                     // checked={checked}
                   />
-                  <label htmlFor="isp-gold">
+                  <label htmlFor="isp_gold">
                     Indoct's Subtler Piercings (Gold)
                   </label>
                   <input
-                    id="isp-silver"
+                    id="isp_silver"
                     type="checkbox"
-                    name="isp-silver"
+                    name="isp_silver"
                     // onChange={handleChange}
                     // checked={checked}
                   />
-                  <label htmlFor="isp-silver">
+                  <label htmlFor="isp_silver">
                     Indoct's Subtler Piercings (Silver)
                   </label>
                   <input
-                    id="p4-blooming"
+                    id="p4_blooming"
                     type="checkbox"
-                    name="p4-blooming"
+                    name="p4_blooming"
                     // onChange={handleChange}
                     // checked={checked}
                   />
-                  <label htmlFor="p4-blooming">
+                  <label htmlFor="p4_blooming">
                     P4 Blooming Circlets & Piercings
                   </label>
                 </fieldset>
-              </form>
+              </form> */}
             </div>
           </Col>
         </Row>

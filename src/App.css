@@ -202,6 +202,11 @@ header button:first-child {
   line-height: 1.5;
 }
 
+.mod-filters button.selected {
+  background: white;
+  color: black;
+}
+
 fieldset {
   display: flex;
 }
