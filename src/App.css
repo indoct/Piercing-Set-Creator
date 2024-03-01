@@ -488,10 +488,11 @@ label.selected {
   font-size: 12px !important;
   text-transform: uppercase;
   line-height: 1.1 !important;
-  letter-spacing: 0.4px;
   padding-bottom: 4px;
   display: block;
   color: #9c9698;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .block-title {

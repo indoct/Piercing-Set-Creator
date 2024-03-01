@@ -5,14 +5,7 @@ import SetModal from "../components/SetModal";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { Tooltip } from "react-tooltip";
-import {
-  ViewList,
-  Trash,
-  PlusCircleFill,
-  XCircleFill,
-  XCircle,
-  PlusCircle,
-} from "react-bootstrap-icons";
+import { ViewList, Trash, XCircle, PlusCircle } from "react-bootstrap-icons";
 import { Animate } from "react-simple-animate";
 
 export default function Header(props) {
@@ -25,6 +18,7 @@ export default function Header(props) {
   const {
     type,
     location,
+    modname,
     piercings,
     handleFilterChange,
     confirmDelete,
@@ -105,6 +99,7 @@ export default function Header(props) {
                   setFiltersOpen((prevState) => !prevState);
                 }}
                 className="toggle"
+                disabled={type !== "mod"}
               >
                 {filtersOpen ? "Hide" : "Show"} Mod Filters{" "}
                 {!filtersOpen ? (
@@ -192,14 +187,14 @@ export default function Header(props) {
               <form id="check-filters">
                 <fieldset>
                   <input
-                    id="p4-blooming"
+                    id="isp-gold"
                     type="checkbox"
-                    name="p4-blooming"
+                    name="isp-gold"
                     // onChange={handleChange}
                     // checked={checked}
                   />
-                  <label htmlFor="p4-blooming">
-                    P4 Blooming Circlets & Piercings
+                  <label htmlFor="isp-gold">
+                    Indoct's Subtler Piercings (Gold)
                   </label>
                   <input
                     id="isp-silver"
@@ -210,6 +205,16 @@ export default function Header(props) {
                   />
                   <label htmlFor="isp-silver">
                     Indoct's Subtler Piercings (Silver)
+                  </label>
+                  <input
+                    id="p4-blooming"
+                    type="checkbox"
+                    name="p4-blooming"
+                    // onChange={handleChange}
+                    // checked={checked}
+                  />
+                  <label htmlFor="p4-blooming">
+                    P4 Blooming Circlets & Piercings
                   </label>
                 </fieldset>
               </form>

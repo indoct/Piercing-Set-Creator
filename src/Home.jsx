@@ -13,6 +13,7 @@ export default function Home() {
   const [searchParams, setSearchParams] = useSearchParams();
   const typeFilter = searchParams.get("type");
   const locaFilter = searchParams.get("location");
+  const modFilter = searchParams.getAll("modname");
   const [sessionOver, setSessionOver] = useState(false);
 
   function selectDisableBtns(e, nodeId, nodeLoca) {
@@ -33,10 +34,16 @@ export default function Home() {
     );
   }
 
+  console.log(typeFilter, modFilter, locaFilter);
+
   function handleFilterChange(key, value) {
+    console.log(value);
+    console.log(key);
     setSearchParams((prevParams) => {
       if (value === null) {
         prevParams.delete(key);
+      } else if (key === "modname") {
+        prevParams.append(key, value);
       } else {
         prevParams.set(key, value);
       }
@@ -69,6 +76,7 @@ export default function Home() {
         <Header
           type={typeFilter}
           location={locaFilter}
+          modname={modFilter}
           piercings={piercings}
           handleFilterChange={handleFilterChange}
           confirmDelete={confirmDelete}
@@ -79,6 +87,7 @@ export default function Home() {
           piercings={piercings}
           type={typeFilter}
           location={locaFilter}
+          modname={modFilter}
           handleBtns={selectDisableBtns}
           sessionOver={sessionOver}
           confirmDelete={confirmDelete}
