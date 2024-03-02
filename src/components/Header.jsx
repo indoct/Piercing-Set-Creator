@@ -111,6 +111,7 @@ export default function Header(props) {
                   if (type === "vanilla") handleFilterChange("type", null);
                 }}
                 className={`filter lips ${location === "lips" ? "selected" : ""}`}
+                disabled={type === "vanilla"}
               >
                 Lips
               </button>

@@ -74,50 +74,11 @@ export default function PiercingsBlock(props) {
   const displayedPiercings =
     mods.length > 0 && type !== "vanilla"
       ? filterByMod(mods)
-      : mods.length > 0 && type === "vanilla"
+      : mods.length > 0 && type === "vanilla" && !location
       ? piercings.filter((prc) => prc.type === "vanilla")
+      : mods.length > 0 && type === "vanilla" && location
+      ? piercings.filter((prc) => prc.type === "vanilla" && prc.location === location)
       : filterNoMods();
-  /*
-SHOW ALL / > 0 MODS
-piercings all || site_cat.includes(mod)
-
-SHOW ALL / 0 MOD
-type !== mod
-
-SHOW ALL / > 0 MODS / LOCATION
-piercings all || site_cat.includes(mod) || location = location
-
-MOD ONLY / > 0 MODS
-filter by type || site_cat.includes(mod)
-
-MOD ONLY / 0 MODS
-return empty string
-
-MOD ONLY / > 0 MODS / LOCATION
-type !== vanilla || site_cat.includes(mod) || location = location
-
-VANILLA / N/A
-return only type = vanilla
-
-VANILLA / N/A / LOCATION
-type = vanilla, location = location
-*/
-  // const displayedPiercings =
-  //   mods.length === 1 && location
-  //     ? piercings.filter((prc) => prc.site_cat === mods[0] && prc.location === location)
-  //     : mods.length === 1 && !location && !type
-  //     ? piercings.filter((prc) => prc.type === "vanilla" || prc.site_cat === mods[0])
-  //     : mods.length === 0 && !location && !type
-  //     ? piercings.filter((prc) => prc.type !== "mod")
-  //     : mods.length > 1
-  //     ? filterByMod(mods)
-  //     : type && !location
-  //     ? piercings.filter((prc) => prc.type === type)
-  //     : type && location
-  //     ? piercings.filter((prc) => prc.type === type && prc.location === location)
-  //     : location && !type
-  //     ? piercings.filter((prc) => prc.location === location)
-  //     : piercings;
 
   const selected = piercings.filter((prc) => prc.selected);
   const containsMod = piercings.filter((prc) => prc.selected && prc.type === "mod");

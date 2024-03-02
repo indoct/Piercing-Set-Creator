@@ -226,7 +226,7 @@ fieldset label:hover {
   border: 1px solid var(--isc-iris);
 }
 
-.filter-btns .ears:hover {
+.filter-btns .ears:hover:not([disabled]) {
   color: var(--isc-dark);
   background-color: var(--isc-iris);
   border: 1px solid var(--isc-iris);
@@ -238,7 +238,7 @@ fieldset label:hover {
   border: 1px solid var(--isc-blue);
 }
 
-.filter-btns .nose:hover {
+.filter-btns .nose:hover:not([disabled]) {
   color: var(--isc-dark);
   background-color: var(--isc-blue);
   border: 1px solid var(--isc-blue);
@@ -250,7 +250,7 @@ fieldset label:hover {
   border: 1px solid var(--isc-coral);
 }
 
-.filter-btns .brows:hover {
+.filter-btns .brows:hover:not([disabled]) {
   color: var(--isc-dark);
   background-color: var(--isc-coral);
   border: 1px solid var(--isc-coral);
@@ -262,7 +262,7 @@ fieldset label:hover {
   border: 1px solid var(--isc-gold);
 }
 
-.filter-btns .lips:hover {
+.filter-btns .lips:hover:not([disabled]) {
   color: var(--isc-dark);
   background-color: var(--isc-gold);
   border: 1px solid var(--isc-gold);
@@ -418,25 +418,11 @@ label.selected {
 }
 
 .gold-gr {
-  background: linear-gradient(
-    to right,
-    #bf953f,
-    #fcf6ba,
-    #b38728,
-    #fbf5b7,
-    #aa771c
-  );
+  background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
 }
 
 .silver-gr {
-  background: linear-gradient(
-    to right,
-    #a8a9ad,
-    #dfdfdf,
-    #949494,
-    #dfdfdf,
-    #999999
-  );
+  background: linear-gradient(to right, #a8a9ad, #dfdfdf, #949494, #dfdfdf, #999999);
 }
 
 .warning {
