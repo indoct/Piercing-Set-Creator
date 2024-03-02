@@ -11,8 +11,10 @@ import Header from "./components/Header";
 export default function Home() {
   const [piercings, setPiercings] = useState(data);
   const [searchParams, setSearchParams] = useSearchParams();
+  const [mods, setMods] = useState(["isp_silver", "isp_gold", "p4_blooming"]);
   const typeFilter = searchParams.get("type");
   const locaFilter = searchParams.get("location");
+  // const modFilter = searchParams.getAll("modname");
   const [sessionOver, setSessionOver] = useState(false);
 
   function selectDisableBtns(e, nodeId, nodeLoca) {
@@ -35,19 +37,27 @@ export default function Home() {
 
   function handleFilterChange(key, value) {
     setSearchParams((prevParams) => {
+      const newParams = { ...Object.fromEntries(prevParams) };
       if (value === null) {
-        prevParams.delete(key);
-      } else {
-        prevParams.set(key, value);
+        delete newParams[key];
+      } else if (key === "type" || key === "location") {
+        newParams[key] = value;
       }
-      return prevParams;
+      // else if (key === "modname" && modFilter.length === 0) {
+      //   newParams[key] = new Array(value);
+      // } else {
+      //   if (modFilter.includes(value)) {
+      //     newParams[key] = modFilter.filter((modname) => modname !== value);
+      //   } else {
+      //     newParams[key] = [...modFilter, value];
+      //   }
+      // }
+      return newParams;
     });
   }
 
   function confirmDelete() {
-    let result = confirm(
-      "Are you sure you want to delete your set? \n \nPressing OK will clear your set configuration."
-    );
+    let result = confirm("Are you sure you want to delete your set? \n \nPressing OK will clear your set configuration.");
     if (result) {
       setPiercings(data);
       setSessionOver(false);
@@ -55,22 +65,26 @@ export default function Home() {
   }
 
   function toggleSessionOver(e) {
-    console.log(e.target.id);
     if (e.target.id === "back-btn") setSessionOver(false);
     if (e.target.id === "generate-btn") setSessionOver(true);
   }
 
+  function handleModsChange(modname) {
+    setMods((prevMods) => {
+      return prevMods.includes(modname) ? mods.filter((mod) => mod !== modname) : [...mods, modname];
+    });
+  }
+
   return (
-    <ThemeProvider
-      breakpoints={["xxxl", "xxl", "xl", "lg", "md", "sm", "xs", "xxs"]}
-      minBreakpoint="xxs"
-    >
+    <ThemeProvider breakpoints={["xxxl", "xxl", "xl", "lg", "md", "sm", "xs", "xxs"]} minBreakpoint="xxs">
       <Container>
         <Header
           type={typeFilter}
           location={locaFilter}
+          mods={mods}
           piercings={piercings}
           handleFilterChange={handleFilterChange}
+          handleModsChange={handleModsChange}
           confirmDelete={confirmDelete}
           toggleSessionOver={toggleSessionOver}
           sessionOver={sessionOver}
@@ -79,6 +93,7 @@ export default function Home() {
           piercings={piercings}
           type={typeFilter}
           location={locaFilter}
+          mods={mods}
           handleBtns={selectDisableBtns}
           sessionOver={sessionOver}
           confirmDelete={confirmDelete}
