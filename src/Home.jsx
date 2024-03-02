@@ -75,7 +75,6 @@ export default function Home() {
     });
   }
 
-  console.log(mods);
   return (
     <ThemeProvider breakpoints={["xxxl", "xxl", "xl", "lg", "md", "sm", "xs", "xxs"]} minBreakpoint="xxs">
       <Container>

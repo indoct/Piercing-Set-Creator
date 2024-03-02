@@ -16,52 +16,37 @@ export default function PiercingsBlock(props) {
   const [copyBtnPressed, setCopyBtnPressed] = useState(false);
 
   function filterByMod(modArr) {
-    console.log("running filterByMod");
     if (location && type) {
-      console.log("inside filterByMod function, filtering by loca and type");
       const mainFilters = piercings.filter((prc) => prc.location === location && prc.type === type);
       return mainFilters.filter((obj) => modArr.includes(obj.site_cat));
     } else if (location && !type && mods.length === 3) {
-      console.log("inside filterByMod function, filtering by loca and NO type and all mods");
       return piercings.filter((prc) => prc.location === location);
     } else if (location && !type && mods.length !== 3) {
-      console.log("inside filterByMod function, filtering by loca and NO type and filtered mods");
       const locaFirst = piercings.filter((prc) => prc.location === location && prc.type !== "mod");
-      console.log(locaFirst);
       const selectedMods = piercings.filter((obj) => modArr.includes(obj.site_cat) && obj.location === location);
-      console.log(selectedMods);
       return selectedMods.concat(locaFirst);
     } else if (!location && type & (mods.length !== 3)) {
-      console.log("inside filterByMod function, filtering by NO loca and type and mods < 3");
       const typeFirst = piercings.filter((prc) => prc.type === type);
       return typeFirst.filter((obj) => modArr.includes(obj.site_cat));
     } else if (!location && !type && mods.length === 3) {
-      console.log("inside filterByMod function, filtering by NO loca and NO type (show all)");
       return piercings;
     } else if (!location && !type) {
-      console.log("inside filterByMod function, filtering by NO loca and NO type (show all)");
       const selectedMods = piercings.filter((obj) => modArr.includes(obj.site_cat));
       const noMods = piercings.filter((prc) => prc.type !== "mod");
       return noMods.concat(selectedMods);
     } else {
-      console.log("inside filterByMod function, only showing mods inside mods array");
       return piercings.filter((obj) => modArr.includes(obj.site_cat));
     }
   }
 
   function filterNoMods() {
-    console.log("running filterNoMods");
     if (type && location) {
-      console.log("inside filterNoMods function, filtering by loca and type");
       return piercings.filter((prc) => prc.type === type && prc.location === location);
     } else if (location && !type) {
-      console.log("inside filterNoMods function, filtering by loca and NO type");
       return piercings.filter((prc) => prc.location === location);
     } else if (type !== "mod" && !location) {
-      console.log("inside filterNoMods function, filtering by NO loca and type = mod");
       return piercings.filter((prc) => prc.type === type);
     } else if (type === "mod") {
-      console.log("inside filterNoMods function, filtering by type === mod / no piercings");
       return (
         <Col>
           <p>There are no piercings with these filters.</p>
@@ -70,7 +55,6 @@ export default function PiercingsBlock(props) {
     } else return piercings;
   }
 
-  console.log(type);
   const displayedPiercings =
     mods.length > 0 && type !== "vanilla"
       ? filterByMod(mods)
