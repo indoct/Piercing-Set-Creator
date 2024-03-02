@@ -207,20 +207,6 @@ header button:first-child {
   color: black;
 }
 
-fieldset {
-  display: flex;
-}
-
-fieldset label {
-  padding-left: 10px;
-  padding-right: 16px;
-  margin-right: 16px;
-  border-right: 1px solid #3a3638;
-}
-
-fieldset label:hover {
-  cursor: pointer;
-}
 .ears.selected {
   background-color: var(--isc-iris);
   border: 1px solid var(--isc-iris);
@@ -313,10 +299,6 @@ fieldset label:hover {
   margin-left: 10px;
 }
 
-/* fieldset input[type="checkbox"] {
-  padding-right: 10px;
-} */
-
 .settings-box h4 {
   padding-top: 0;
 }
@@ -391,12 +373,6 @@ legend {
 .settings-box input[type="checkbox"]:checked + label {
   background-color: #3a3638 !important;
 }
-
-/* .settings-box input[type="radio"] {
-  opacity: 0;
-  position: fixed;
-  width: 0;
-} */
 
 .color {
   display: flex;
@@ -650,22 +626,6 @@ label.selected {
 .lips-ind {
   background-color: var(--isc-gold);
 }
-
-/* .barbarian {
-  border-bottom: 2px solid var(--isc-blue);
-}
-
-.vanilla-ab {
-  border-bottom: 2px solid var(--isc-iris);
-}
-
-.ortheus {
-  border-bottom: 2px solid var(--isc-coral);
-}
-
-.mod {
-  border-bottom: 2px solid #f7762c;
-} */
 
 .img-dummy {
   display: block;

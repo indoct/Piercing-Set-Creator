@@ -14,7 +14,6 @@ export default function Home() {
   const [mods, setMods] = useState(["isp_silver", "isp_gold", "p4_blooming"]);
   const typeFilter = searchParams.get("type");
   const locaFilter = searchParams.get("location");
-  // const modFilter = searchParams.getAll("modname");
   const [sessionOver, setSessionOver] = useState(false);
 
   function selectDisableBtns(e, nodeId, nodeLoca) {
@@ -43,15 +42,6 @@ export default function Home() {
       } else if (key === "type" || key === "location") {
         newParams[key] = value;
       }
-      // else if (key === "modname" && modFilter.length === 0) {
-      //   newParams[key] = new Array(value);
-      // } else {
-      //   if (modFilter.includes(value)) {
-      //     newParams[key] = modFilter.filter((modname) => modname !== value);
-      //   } else {
-      //     newParams[key] = [...modFilter, value];
-      //   }
-      // }
       return newParams;
     });
   }

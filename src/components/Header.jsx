@@ -141,7 +141,7 @@ export default function Header(props) {
         end={{
           transform: "translateY(6px)",
           visibility: "visible",
-          height: "45px",
+          height: "60px",
         }}
       >
         <Row>
