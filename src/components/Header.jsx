@@ -15,16 +15,7 @@ export default function Header(props) {
   const [filtersOpen, setFiltersOpen] = useState(false);
   const [play, setPlay] = useState();
 
-  const {
-    type,
-    location,
-    modname,
-    piercings,
-    handleFilterChange,
-    confirmDelete,
-    toggleSessionOver,
-    sessionOver,
-  } = props;
+  const { type, location, mods, piercings, handleFilterChange, handleModsChange, confirmDelete, toggleSessionOver, sessionOver } = props;
 
   const empty = piercings.filter((prc) => prc.selected).length === 0;
 
@@ -37,26 +28,12 @@ export default function Header(props) {
               Indoct's BG3 Piercing Set Creator
             </Link>
           </Col>
-          <Col
-            lg={4}
-            className="d-flex flex-row justify-content-md-end mb-2 align-items-center"
-          >
+          <Col lg={4} className="d-flex flex-row justify-content-md-end mb-2 align-items-center">
             <Button variant="primary" onClick={handleShow} disabled={empty}>
               <ViewList /> View Current Set
             </Button>
-            <SetModal
-              show={show}
-              onClose={handleClose}
-              sessionOver={sessionOver}
-              generateNodes={toggleSessionOver}
-              piercings={piercings}
-            />
-            <Button
-              id="hr-clear-btn"
-              variant="secondary"
-              onClick={confirmDelete}
-              disabled={empty}
-            >
+            <SetModal show={show} onClose={handleClose} sessionOver={sessionOver} generateNodes={toggleSessionOver} piercings={piercings} />
+            <Button id="hr-clear-btn" variant="secondary" onClick={confirmDelete} disabled={empty}>
               <Trash /> Clear Set
             </Button>
           </Col>
@@ -75,15 +52,16 @@ export default function Header(props) {
               >
                 Show All
               </button>
-              <button
-                onClick={() => handleFilterChange("type", "mod")}
-                className={`mod-btn ${type === "mod" ? "selected" : ""}`}
-              >
+              <button onClick={() => handleFilterChange("type", "mod")} className={`mod-btn ${type === "mod" ? "selected" : ""}`}>
                 Mod Only
               </button>
               <button
                 onClick={() => {
                   handleFilterChange("type", "vanilla");
+                  if (filtersOpen) {
+                    setFiltersOpen((prevState) => !prevState);
+                    setPlay(!play);
+                  }
                 }}
                 className={`vanilla ${type === "vanilla" ? "selected" : ""}`}
                 disabled={location === "lips"}
@@ -99,14 +77,9 @@ export default function Header(props) {
                   setFiltersOpen((prevState) => !prevState);
                 }}
                 className="toggle"
-                disabled={type !== "mod"}
+                disabled={type === "vanilla"}
               >
-                {filtersOpen ? "Hide" : "Show"} Mod Filters{" "}
-                {!filtersOpen ? (
-                  <PlusCircle size="18" />
-                ) : (
-                  <XCircle size="18" />
-                )}
+                {filtersOpen ? "Hide" : "Show"} Mod Filters {!filtersOpen ? <PlusCircle size="18" /> : <XCircle size="18" />}
               </button>
             </div>
           </Col>
@@ -117,27 +90,18 @@ export default function Header(props) {
                 onClick={() => {
                   handleFilterChange("location", "ears");
                 }}
-                className={`filter ears ${
-                  location === "ears" ? "selected" : ""
-                }`}
+                className={`filter ears ${location === "ears" ? "selected" : ""}`}
               >
                 Ears
               </button>
-              <button
-                onClick={() => handleFilterChange("location", "nose")}
-                className={`filter nose ${
-                  location === "nose" ? "selected" : ""
-                }`}
-              >
+              <button onClick={() => handleFilterChange("location", "nose")} className={`filter nose ${location === "nose" ? "selected" : ""}`}>
                 Nose
               </button>
               <button
                 onClick={() => {
                   handleFilterChange("location", "brows");
                 }}
-                className={`filter brows ${
-                  location === "brows" ? "selected" : ""
-                }`}
+                className={`filter brows ${location === "brows" ? "selected" : ""}`}
               >
                 Brows
               </button>
@@ -146,9 +110,7 @@ export default function Header(props) {
                   handleFilterChange("location", "lips");
                   if (type === "vanilla") handleFilterChange("type", null);
                 }}
-                className={`filter lips ${
-                  location === "lips" ? "selected" : ""
-                }`}
+                className={`filter lips ${location === "lips" ? "selected" : ""}`}
               >
                 Lips
               </button>
@@ -186,31 +148,25 @@ export default function Header(props) {
             <div className="mod-filters">
               <button
                 onClick={() => {
-                  handleFilterChange("modname", "isp_gold");
+                  handleModsChange("isp_gold");
                 }}
-                className={`mod ${
-                  modname.includes("isp_gold") ? "selected" : ""
-                }`}
+                className={`mod ${mods.includes("isp_gold") ? "selected" : ""}`}
               >
                 Indoct's Subtler Piercings (Gold)
               </button>
               <button
                 onClick={() => {
-                  handleFilterChange("modname", "isp_silver");
+                  handleModsChange("isp_silver");
                 }}
-                className={`mod ${
-                  modname.includes("isp_silver") ? "selected" : ""
-                }`}
+                className={`mod ${mods.includes("isp_silver") ? "selected" : ""}`}
               >
                 Indoct's Subtler Piercings (Silver)
               </button>
               <button
                 onClick={() => {
-                  handleFilterChange("modname", "p4_blooming");
+                  handleModsChange("p4_blooming");
                 }}
-                className={`mod ${
-                  modname.includes("p4_blooming") ? "selected" : ""
-                }`}
+                className={`mod ${mods.includes("p4_blooming") ? "selected" : ""}`}
               >
                 P4 Blooming Circlets & Piercings
               </button>
