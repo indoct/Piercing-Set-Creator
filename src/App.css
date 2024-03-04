@@ -47,6 +47,7 @@ form,
 label,
 button.btn,
 .filter-btns button,
+.mod-filters button,
 a,
 .modal-content {
   font-family: "IBM Plex Sans", sans-serif;
@@ -194,7 +195,10 @@ header button:first-child {
 .mod-filters {
   border: 1px solid #403b3e;
   border-radius: 6px;
-  padding: 12px 15px;
+  padding: 10px 14px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
 }
 
 .mod-filters p {
@@ -202,9 +206,29 @@ header button:first-child {
   line-height: 1.5;
 }
 
+.mod-filters button {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  padding: 5px 10px;
+  border: 2px solid #403b3e;
+  border-radius: 5px;
+  background-color: #403b3e;
+  transition: all 0.4s;
+}
+
+.mod-filters input[type="checkbox"] {
+  accent-color: var(--isc-light);
+  color: #403b3e;
+  height: 1rem;
+  width: 1rem;
+}
+
 .mod-filters button.selected {
-  background: white;
-  color: black;
+  background-color: transparent;
+  transition: all 0.4s;
+  border: 2px solid #f1efea85;
 }
 
 .ears.selected {
@@ -394,11 +418,25 @@ label.selected {
 }
 
 .gold-gr {
-  background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+  background: linear-gradient(
+    to right,
+    #bf953f,
+    #fcf6ba,
+    #b38728,
+    #fbf5b7,
+    #aa771c
+  );
 }
 
 .silver-gr {
-  background: linear-gradient(to right, #a8a9ad, #dfdfdf, #949494, #dfdfdf, #999999);
+  background: linear-gradient(
+    to right,
+    #a8a9ad,
+    #dfdfdf,
+    #949494,
+    #dfdfdf,
+    #999999
+  );
 }
 
 .warning {

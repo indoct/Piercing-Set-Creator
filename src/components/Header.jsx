@@ -15,7 +15,17 @@ export default function Header(props) {
   const [filtersOpen, setFiltersOpen] = useState(false);
   const [play, setPlay] = useState();
 
-  const { type, location, mods, piercings, handleFilterChange, handleModsChange, confirmDelete, toggleSessionOver, sessionOver } = props;
+  const {
+    type,
+    location,
+    mods,
+    piercings,
+    handleFilterChange,
+    handleModsChange,
+    confirmDelete,
+    toggleSessionOver,
+    sessionOver,
+  } = props;
 
   const empty = piercings.filter((prc) => prc.selected).length === 0;
 
@@ -28,12 +38,26 @@ export default function Header(props) {
               Indoct's BG3 Piercing Set Creator
             </Link>
           </Col>
-          <Col lg={4} className="d-flex flex-row justify-content-md-end mb-2 align-items-center">
+          <Col
+            lg={4}
+            className="d-flex flex-row justify-content-md-end mb-2 align-items-center"
+          >
             <Button variant="primary" onClick={handleShow} disabled={empty}>
               <ViewList /> View Current Set
             </Button>
-            <SetModal show={show} onClose={handleClose} sessionOver={sessionOver} generateNodes={toggleSessionOver} piercings={piercings} />
-            <Button id="hr-clear-btn" variant="secondary" onClick={confirmDelete} disabled={empty}>
+            <SetModal
+              show={show}
+              onClose={handleClose}
+              sessionOver={sessionOver}
+              generateNodes={toggleSessionOver}
+              piercings={piercings}
+            />
+            <Button
+              id="hr-clear-btn"
+              variant="secondary"
+              onClick={confirmDelete}
+              disabled={empty}
+            >
               <Trash /> Clear Set
             </Button>
           </Col>
@@ -52,7 +76,10 @@ export default function Header(props) {
               >
                 Show All
               </button>
-              <button onClick={() => handleFilterChange("type", "mod")} className={`mod-btn ${type === "mod" ? "selected" : ""}`}>
+              <button
+                onClick={() => handleFilterChange("type", "mod")}
+                className={`mod-btn ${type === "mod" ? "selected" : ""}`}
+              >
                 Mod Only
               </button>
               <button
@@ -67,7 +94,7 @@ export default function Header(props) {
                 disabled={location === "lips"}
                 data-tooltip-id="my-tooltip"
                 data-tooltip-content="There are no vanilla piercings in the lip slot, change/clear the location filter to enable this filter"
-                data-tooltip-place="bottom"
+                data-tooltip-place="top"
               >
                 Vanilla
               </button>
@@ -79,7 +106,12 @@ export default function Header(props) {
                 className="toggle"
                 disabled={type === "vanilla"}
               >
-                {filtersOpen ? "Hide" : "Show"} Mod Filters {!filtersOpen ? <PlusCircle size="18" /> : <XCircle size="18" />}
+                {filtersOpen ? "Hide" : "Show"} Mod Filters{" "}
+                {!filtersOpen ? (
+                  <PlusCircle size="18" />
+                ) : (
+                  <XCircle size="18" />
+                )}
               </button>
             </div>
           </Col>
@@ -90,18 +122,27 @@ export default function Header(props) {
                 onClick={() => {
                   handleFilterChange("location", "ears");
                 }}
-                className={`filter ears ${location === "ears" ? "selected" : ""}`}
+                className={`filter ears ${
+                  location === "ears" ? "selected" : ""
+                }`}
               >
                 Ears
               </button>
-              <button onClick={() => handleFilterChange("location", "nose")} className={`filter nose ${location === "nose" ? "selected" : ""}`}>
+              <button
+                onClick={() => handleFilterChange("location", "nose")}
+                className={`filter nose ${
+                  location === "nose" ? "selected" : ""
+                }`}
+              >
                 Nose
               </button>
               <button
                 onClick={() => {
                   handleFilterChange("location", "brows");
                 }}
-                className={`filter brows ${location === "brows" ? "selected" : ""}`}
+                className={`filter brows ${
+                  location === "brows" ? "selected" : ""
+                }`}
               >
                 Brows
               </button>
@@ -110,7 +151,9 @@ export default function Header(props) {
                   handleFilterChange("location", "lips");
                   if (type === "vanilla") handleFilterChange("type", null);
                 }}
-                className={`filter lips ${location === "lips" ? "selected" : ""}`}
+                className={`filter lips ${
+                  location === "lips" ? "selected" : ""
+                }`}
                 disabled={type === "vanilla"}
               >
                 Lips
@@ -153,58 +196,47 @@ export default function Header(props) {
                 }}
                 className={`mod ${mods.includes("isp_gold") ? "selected" : ""}`}
               >
+                <input
+                  type="checkbox"
+                  checked={mods.includes("isp_gold")}
+                  readOnly
+                />
                 Indoct's Subtler Piercings (Gold)
               </button>
               <button
                 onClick={() => {
                   handleModsChange("isp_silver");
                 }}
-                className={`mod ${mods.includes("isp_silver") ? "selected" : ""}`}
+                className={`mod ${
+                  mods.includes("isp_silver") ? "selected" : ""
+                }`}
               >
+                <input
+                  type="checkbox"
+                  checked={mods.includes("isp_silver")}
+                  readOnly
+                />
                 Indoct's Subtler Piercings (Silver)
               </button>
               <button
                 onClick={() => {
                   handleModsChange("p4_blooming");
                 }}
-                className={`mod ${mods.includes("p4_blooming") ? "selected" : ""}`}
+                disabled={location === "lips"}
+                className={`mod ${
+                  mods.includes("p4_blooming") && location !== "lips"
+                    ? "selected"
+                    : ""
+                }`}
               >
+                <input
+                  type="checkbox"
+                  checked={mods.includes("p4_blooming") && location !== "lips"}
+                  disabled={location === "lips"}
+                  readOnly
+                />
                 P4 Blooming Circlets & Piercings
               </button>
-              {/* <form id="check-filters">
-                <fieldset>
-                  <input
-                    id="isp_gold"
-                    type="checkbox"
-                    name="isp_gold"
-                    onChange={handleFilterChange}
-                    // checked={checked}
-                  />
-                  <label htmlFor="isp_gold">
-                    Indoct's Subtler Piercings (Gold)
-                  </label>
-                  <input
-                    id="isp_silver"
-                    type="checkbox"
-                    name="isp_silver"
-                    // onChange={handleChange}
-                    // checked={checked}
-                  />
-                  <label htmlFor="isp_silver">
-                    Indoct's Subtler Piercings (Silver)
-                  </label>
-                  <input
-                    id="p4_blooming"
-                    type="checkbox"
-                    name="p4_blooming"
-                    // onChange={handleChange}
-                    // checked={checked}
-                  />
-                  <label htmlFor="p4_blooming">
-                    P4 Blooming Circlets & Piercings
-                  </label>
-                </fieldset>
-              </form> */}
             </div>
           </Col>
         </Row>

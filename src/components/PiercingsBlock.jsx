@@ -11,19 +11,36 @@ import { nanoid } from "nanoid";
 SyntaxHighlighter.registerLanguage("cshtml", cshtml);
 
 export default function PiercingsBlock(props) {
-  const { piercings, type, location, mods, handleBtns, sessionOver, confirmDelete, toggleSessionOver } = props;
+  const {
+    piercings,
+    type,
+    location,
+    mods,
+    handleBtns,
+    sessionOver,
+    confirmDelete,
+    toggleSessionOver,
+  } = props;
 
   const [copyBtnPressed, setCopyBtnPressed] = useState(false);
 
   function filterByMod(modArr) {
     if (location && type) {
-      const mainFilters = piercings.filter((prc) => prc.location === location && prc.type === type);
+      const mainFilters = piercings.filter(
+        (prc) => prc.location === location && prc.type === type
+      );
       return mainFilters.filter((obj) => modArr.includes(obj.site_cat));
     } else if (location && !type && mods.length === 3) {
       return piercings.filter((prc) => prc.location === location);
     } else if (location && !type && mods.length !== 3) {
-      const locaFirst = piercings.filter((prc) => prc.location === location && prc.type !== "mod");
-      const selectedMods = piercings.filter((obj) => modArr.includes(obj.site_cat) && obj.location === location);
+      const locaFirst = piercings.filter(
+        (prc) => prc.location === location && prc.type !== "mod"
+      );
+      const selectedMods = piercings.filter(
+        (obj) => modArr.includes(obj.site_cat) && obj.location === location
+      );
+      console.log("inside loca / !type");
+      console.log(selectedMods.length);
       return selectedMods.concat(locaFirst);
     } else if (!location && type & (mods.length !== 3)) {
       const typeFirst = piercings.filter((prc) => prc.type === type);
@@ -31,7 +48,9 @@ export default function PiercingsBlock(props) {
     } else if (!location && !type && mods.length === 3) {
       return piercings;
     } else if (!location && !type) {
-      const selectedMods = piercings.filter((obj) => modArr.includes(obj.site_cat));
+      const selectedMods = piercings.filter((obj) =>
+        modArr.includes(obj.site_cat)
+      );
       const noMods = piercings.filter((prc) => prc.type !== "mod");
       return noMods.concat(selectedMods);
     } else {
@@ -41,7 +60,9 @@ export default function PiercingsBlock(props) {
 
   function filterNoMods() {
     if (type && location) {
-      return piercings.filter((prc) => prc.type === type && prc.location === location);
+      return piercings.filter(
+        (prc) => prc.type === type && prc.location === location
+      );
     } else if (location && !type) {
       return piercings.filter((prc) => prc.location === location);
     } else if (type !== "mod" && !location) {
@@ -61,14 +82,21 @@ export default function PiercingsBlock(props) {
       : mods.length > 0 && type === "vanilla" && !location
       ? piercings.filter((prc) => prc.type === "vanilla")
       : mods.length > 0 && type === "vanilla" && location
-      ? piercings.filter((prc) => prc.type === "vanilla" && prc.location === location)
+      ? piercings.filter(
+          (prc) => prc.type === "vanilla" && prc.location === location
+        )
       : filterNoMods();
 
   const selected = piercings.filter((prc) => prc.selected);
-  const containsMod = piercings.filter((prc) => prc.selected && prc.type === "mod");
+  const containsMod = piercings.filter(
+    (prc) => prc.selected && prc.type === "mod"
+  );
 
   const configElements = selected.map((prc) => {
-    const author = prc.site_cat === "isp_silver" || prc.site_cat === "isp_gold" ? "Indoct" : "";
+    const author =
+      prc.site_cat === "isp_silver" || prc.site_cat === "isp_gold"
+        ? "Indoct"
+        : "";
     const pt_name =
       prc.name.includes("Vanilla") && prc.type === "vanilla"
         ? prc.name
@@ -100,7 +128,9 @@ export default function PiercingsBlock(props) {
 
         return (
           <Col key={prc.nodeid} lg={2} className="prc-col">
-            {prc.type === "mod" && <span className="set-name">{prc.set_name}</span>}
+            {prc.type === "mod" && (
+              <span className="set-name">{prc.set_name}</span>
+            )}
             <button
               type="button"
               id={prc.index}
@@ -172,7 +202,13 @@ export default function PiercingsBlock(props) {
       <Row className="mt-3 title-row">
         <Col>
           <h5 className="prc-block-h">
-            {sessionOver ? "CharacterCreationAccessorySets Nodes:" : type === "vanilla" ? "Vanilla Sets" : type === "mod" ? "Mod Piercings" : "All Piercings"}
+            {sessionOver
+              ? "CharacterCreationAccessorySets Nodes:"
+              : type === "vanilla"
+              ? "Vanilla Sets"
+              : type === "mod"
+              ? "Mod Piercings"
+              : "All Piercings"}
           </h5>
         </Col>
       </Row>
@@ -181,11 +217,20 @@ export default function PiercingsBlock(props) {
           <Row className="mt-2">
             <Col lg={8}>
               <p className="output-intro">
-                <span className="warning">By creating your own replacer sets to put in the game's Data folder, YOU ARE MODDING YOUR GAME!&nbsp;</span>
+                <span className="warning">
+                  By creating your own replacer sets to put in the game's Data
+                  folder, YOU ARE MODDING YOUR GAME!&nbsp;
+                </span>
                 <br />
-                <strong>There are risks involved with modding, and by using this generator you're agreeing to take those risks.</strong>
+                <strong>
+                  There are risks involved with modding, and by using this
+                  generator you're agreeing to take those risks.
+                </strong>
               </p>
-              <p className="output-intro">Feel free to find me or another modder in Down By The River server on Discord and ask for help.</p>
+              <p className="output-intro">
+                Feel free to find me or another modder in Down By The River
+                server on Discord and ask for help.
+              </p>
             </Col>
           </Row>
           <Row>
@@ -198,8 +243,9 @@ export default function PiercingsBlock(props) {
               <Col lg={4}>
                 <div className="mod-warning">
                   <p>
-                    You have {containsMod.length} mod piercings in your set. You MUST download & install the below mods or the piercings will not show in your
-                    game! (Opens in new window)
+                    You have {containsMod.length} mod piercings in your set. You
+                    MUST download & install the below mods or the piercings will
+                    not show in your game! (Opens in new window)
                   </p>
                   <ul className="mod-list">{generateModEls()}</ul>
                 </div>
@@ -227,7 +273,11 @@ export default function PiercingsBlock(props) {
               </Button>
             </Col>
             <Col className="d-flex gap-2 justify-content-end" lg={4}>
-              <Button id="back-btn" onClick={(e) => toggleSessionOver(e)} variant="secondary">
+              <Button
+                id="back-btn"
+                onClick={(e) => toggleSessionOver(e)}
+                variant="secondary"
+              >
                 <ArrowLeft />
                 Continue Editing
               </Button>
