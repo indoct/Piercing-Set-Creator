@@ -132,7 +132,8 @@ header a {
   color: var(--isc-light);
 }
 
-header button:first-child {
+header button:first-child,
+#instructions-btn {
   margin-right: 10px;
 }
 
@@ -160,7 +161,8 @@ header button:first-child {
   font-size: 0.9rem;
 }
 
-#set-config .modal-content {
+#set-config .modal-content,
+#instructions .modal-content {
   background-color: var(--isc-dark);
 }
 
@@ -588,6 +590,27 @@ label.selected {
 
 .config-mod {
   color: #d9d57f;
+}
+
+/* Instructions Modal */
+#instructions .modal-body p {
+  font-size: 1.04rem;
+  line-height: 1.4;
+}
+
+#instructions h5 {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+#instructions ol {
+  padding-top: 10px;
+}
+
+#instructions ol li {
+  font-size: 1.04rem;
+  line-height: 1.3;
+  padding-bottom: 6px;
 }
 
 .prc-container {

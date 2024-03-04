@@ -6,13 +6,19 @@ import SetModal from "../components/SetModal";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { Tooltip } from "react-tooltip";
-import { ViewList, Trash, XCircle, PlusCircle } from "react-bootstrap-icons";
+import {
+  ViewList,
+  Trash,
+  XCircle,
+  PlusCircle,
+  InfoCircle,
+} from "react-bootstrap-icons";
 import { Animate } from "react-simple-animate";
+import InstructionsModal from "./InstructionsModal";
 
 export default function Header() {
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const [showSet, setShowSet] = useState(false);
+  const [showInstructions, setShowInstructions] = useState(false);
   const [filtersOpen, setFiltersOpen] = useState(false);
   const [play, setPlay] = useState();
 
@@ -28,30 +34,49 @@ export default function Header() {
     handleModsChange,
   } = useAppContext();
 
+  function handleCloseModal(modal) {
+    return modal === "set" ? setShowSet(false) : setShowInstructions(false);
+  }
+
   const empty = piercings.filter((prc) => prc.selected).length === 0;
 
   return (
     <>
       <header>
         <Row>
-          <Col lg={8} className="align-self-center">
+          <Col lg={6} className="align-self-center">
             <Link className="site-logo" to="/">
               Indoct's BG3 Piercing Set Creator
             </Link>
           </Col>
           <Col
-            lg={4}
+            lg={6}
             className="d-flex flex-row justify-content-md-end mb-2 align-items-center"
           >
-            <Button variant="primary" onClick={handleShow} disabled={empty}>
+            <Button
+              variant="primary"
+              onClick={() => setShowSet(true)}
+              disabled={empty}
+            >
               <ViewList /> View Current Set
             </Button>
             <SetModal
-              show={show}
-              onClose={handleClose}
+              show={showSet}
+              onClose={() => handleCloseModal("set")}
               sessionOver={sessionOver}
               generateNodes={toggleSessionOver}
               piercings={piercings}
+            />
+            <Button
+              id="instructions-btn"
+              variant="secondary"
+              onClick={() => setShowInstructions(true)}
+            >
+              <InfoCircle /> Instructions
+            </Button>
+            <InstructionsModal
+              show={showInstructions}
+              onClose={() => handleCloseModal("instructions")}
             />
             <Button
               id="hr-clear-btn"
