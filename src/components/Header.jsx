@@ -237,6 +237,21 @@ export default function Header(props) {
                 />
                 P4 Blooming Circlets & Piercings
               </button>
+              <button
+                onClick={() => {
+                  handleModsChange("ghouls_customs");
+                }}
+                className={`mod ${
+                  mods.includes("ghouls_customs") ? "selected" : ""
+                }`}
+              >
+                <input
+                  type="checkbox"
+                  checked={mods.includes("ghouls_customs")}
+                  readOnly
+                />
+                Ghouls Custom Piercings
+              </button>
             </div>
           </Col>
         </Row>

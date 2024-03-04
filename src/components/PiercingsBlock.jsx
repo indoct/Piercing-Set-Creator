@@ -30,9 +30,9 @@ export default function PiercingsBlock(props) {
         (prc) => prc.location === location && prc.type === type
       );
       return mainFilters.filter((obj) => modArr.includes(obj.site_cat));
-    } else if (location && !type && mods.length === 3) {
+    } else if (location && !type && mods.length === 4) {
       return piercings.filter((prc) => prc.location === location);
-    } else if (location && !type && mods.length !== 3) {
+    } else if (location && !type && mods.length !== 4) {
       const locaFirst = piercings.filter(
         (prc) => prc.location === location && prc.type !== "mod"
       );
@@ -42,10 +42,10 @@ export default function PiercingsBlock(props) {
       console.log("inside loca / !type");
       console.log(selectedMods.length);
       return selectedMods.concat(locaFirst);
-    } else if (!location && type & (mods.length !== 3)) {
+    } else if (!location && type & (mods.length !== 4)) {
       const typeFirst = piercings.filter((prc) => prc.type === type);
       return typeFirst.filter((obj) => modArr.includes(obj.site_cat));
-    } else if (!location && !type && mods.length === 3) {
+    } else if (!location && !type && mods.length === 4) {
       return piercings;
     } else if (!location && !type) {
       const selectedMods = piercings.filter((obj) =>
@@ -95,13 +95,15 @@ export default function PiercingsBlock(props) {
   const configElements = selected.map((prc) => {
     const author =
       prc.site_cat === "isp_silver" || prc.site_cat === "isp_gold"
-        ? "Indoct"
-        : "";
+        ? "Indoct's Subtler Piercings"
+        : prc.site_cat === "p4_blooming"
+        ? "P4 Blooming Circlets"
+        : "Ghouls Custom Piercings";
     const pt_name =
       prc.name.includes("Vanilla") && prc.type === "vanilla"
         ? prc.name
         : !prc.name.includes("Vanilla") && prc.type === "mod"
-        ? `[Mod: ${author}] ${prc.name}`
+        ? `[${author}] ${prc.name}`
         : `[Van] ${prc.name}`;
 
     // prettier-ignore

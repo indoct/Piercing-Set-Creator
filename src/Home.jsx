@@ -11,7 +11,12 @@ import Header from "./components/Header";
 export default function Home() {
   const [piercings, setPiercings] = useState(data);
   const [searchParams, setSearchParams] = useSearchParams();
-  const [mods, setMods] = useState(["isp_silver", "isp_gold", "p4_blooming"]);
+  const [mods, setMods] = useState([
+    "isp_silver",
+    "isp_gold",
+    "p4_blooming",
+    "ghouls_customs",
+  ]);
   const typeFilter = searchParams.get("type");
   const locaFilter = searchParams.get("location");
   const [sessionOver, setSessionOver] = useState(false);
@@ -47,7 +52,9 @@ export default function Home() {
   }
 
   function confirmDelete() {
-    let result = confirm("Are you sure you want to delete your set? \n \nPressing OK will clear your set configuration.");
+    let result = confirm(
+      "Are you sure you want to delete your set? \n \nPressing OK will clear your set configuration."
+    );
     if (result) {
       setPiercings(data);
       setSessionOver(false);
@@ -61,12 +68,17 @@ export default function Home() {
 
   function handleModsChange(modname) {
     setMods((prevMods) => {
-      return prevMods.includes(modname) ? mods.filter((mod) => mod !== modname) : [...mods, modname];
+      return prevMods.includes(modname)
+        ? mods.filter((mod) => mod !== modname)
+        : [...mods, modname];
     });
   }
 
   return (
-    <ThemeProvider breakpoints={["xxxl", "xxl", "xl", "lg", "md", "sm", "xs", "xxs"]} minBreakpoint="xxs">
+    <ThemeProvider
+      breakpoints={["xxxl", "xxl", "xl", "lg", "md", "sm", "xs", "xxs"]}
+      minBreakpoint="xxs"
+    >
       <Container>
         <Header
           type={typeFilter}
