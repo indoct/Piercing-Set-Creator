@@ -40,7 +40,6 @@ export default function PiercingsBlock() {
       const selectedMods = piercings.filter(
         (obj) => modArr.includes(obj.site_cat) && obj.location === location
       );
-      console.log(selectedMods.length);
       return selectedMods.concat(locaFirst);
     } else if (!location && type & (mods.length !== 4)) {
       const typeFirst = piercings.filter((prc) => prc.type === type);

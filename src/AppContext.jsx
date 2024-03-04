@@ -27,10 +27,10 @@ export const AppProvider = ({ children }) => {
     confirmDelete,
     toggleSessionOver,
     handleModsChange,
-    selectDisableBtns,
+    handleBtns,
   };
 
-  function selectDisableBtns(e, nodeId, nodeLoca) {
+  function handleBtns(e, nodeId, nodeLoca) {
     setPiercings((prevPrcs) =>
       prevPrcs.map((prc) => {
         return nodeId === prc.nodeid
@@ -67,6 +67,7 @@ export const AppProvider = ({ children }) => {
     if (result) {
       setPiercings(data);
       setSessionOver(false);
+      setMods(["isp_silver", "isp_gold", "p4_blooming", "ghouls_customs"]);
     }
   }
 
