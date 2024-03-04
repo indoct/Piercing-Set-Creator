@@ -1,3 +1,4 @@
+import { useAppContext } from "../AppContext";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
@@ -8,7 +9,7 @@ import { Tooltip } from "react-tooltip";
 import { ViewList, Trash, XCircle, PlusCircle } from "react-bootstrap-icons";
 import { Animate } from "react-simple-animate";
 
-export default function Header(props) {
+export default function Header() {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -21,11 +22,11 @@ export default function Header(props) {
     mods,
     piercings,
     handleFilterChange,
-    handleModsChange,
     confirmDelete,
     toggleSessionOver,
     sessionOver,
-  } = props;
+    handleModsChange,
+  } = useAppContext();
 
   const empty = piercings.filter((prc) => prc.selected).length === 0;
 

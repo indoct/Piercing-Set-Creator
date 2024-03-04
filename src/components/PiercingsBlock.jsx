@@ -1,3 +1,4 @@
+import { useAppContext } from "../AppContext";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { Fragment, useState } from "react";
@@ -10,7 +11,7 @@ import { nanoid } from "nanoid";
 
 SyntaxHighlighter.registerLanguage("cshtml", cshtml);
 
-export default function PiercingsBlock(props) {
+export default function PiercingsBlock() {
   const {
     piercings,
     type,
@@ -20,7 +21,7 @@ export default function PiercingsBlock(props) {
     sessionOver,
     confirmDelete,
     toggleSessionOver,
-  } = props;
+  } = useAppContext();
 
   const [copyBtnPressed, setCopyBtnPressed] = useState(false);
 
@@ -39,7 +40,6 @@ export default function PiercingsBlock(props) {
       const selectedMods = piercings.filter(
         (obj) => modArr.includes(obj.site_cat) && obj.location === location
       );
-      console.log("inside loca / !type");
       console.log(selectedMods.length);
       return selectedMods.concat(locaFirst);
     } else if (!location && type & (mods.length !== 4)) {
@@ -70,7 +70,10 @@ export default function PiercingsBlock(props) {
     } else if (type === "mod") {
       return (
         <Col>
-          <p>There are no piercings with these filters.</p>
+          <p>
+            There are no piercings with these filters.{" "}
+            {mods.length === 0 && "You have no mods selected in Mod Filters."}
+          </p>
         </Col>
       );
     } else return piercings;
