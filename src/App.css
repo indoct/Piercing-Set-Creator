@@ -203,10 +203,9 @@ header button:first-child,
 
 .mod-filters {
   border-radius: 6px;
-  padding: 10px 14px;
   display: flex;
   flex-direction: row;
-  gap: 10px;
+  gap: 8px;
 }
 
 .mod-filters p {
@@ -224,13 +223,12 @@ header button:first-child,
   border-radius: 5px;
   background-color: #403b3e;
   transition: all 0.4s;
+  font-size: 0.95rem;
 }
 
 .mod-filters input[type="checkbox"] {
   accent-color: var(--isc-light);
   color: #403b3e;
-  height: 1rem;
-  width: 1rem;
 }
 
 .mod-filters button.selected {

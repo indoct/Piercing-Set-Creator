@@ -38,6 +38,8 @@ export default function Header() {
     return modal === "set" ? setShowSet(false) : setShowInstructions(false);
   }
 
+  console.log(play);
+
   const empty = piercings.filter((prc) => prc.selected).length === 0;
 
   return (
@@ -66,6 +68,9 @@ export default function Header() {
               sessionOver={sessionOver}
               generateNodes={toggleSessionOver}
               piercings={piercings}
+              togglePlay={() => {
+                if (play) setPlay(!play);
+              }}
             />
             <Button
               id="instructions-btn"
@@ -210,7 +215,7 @@ export default function Header() {
         end={{
           transform: "translateY(6px)",
           visibility: "visible",
-          height: "60px",
+          height: "45px",
         }}
       >
         <Row>
@@ -277,6 +282,19 @@ export default function Header() {
                   readOnly
                 />
                 Ghouls Custom Piercings
+              </button>
+              <button
+                onClick={() => {
+                  handleModsChange("LV_E_V1");
+                }}
+                className={`mod ${mods.includes("LV_E_V1") ? "selected" : ""}`}
+              >
+                <input
+                  type="checkbox"
+                  checked={mods.includes("LV_E_V1")}
+                  readOnly
+                />
+                LVDNRs Earrings V1
               </button>
             </div>
           </Col>

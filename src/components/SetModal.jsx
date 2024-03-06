@@ -3,7 +3,8 @@ import Modal from "react-bootstrap/Modal";
 import { CodeSlash, XCircle } from "react-bootstrap-icons";
 
 export default function SetModal(props) {
-  const { show, onClose, piercings, generateNodes, sessionOver } = props;
+  const { show, onClose, piercings, generateNodes, sessionOver, togglePlay } =
+    props;
 
   const displayConfig = piercings.map((prc) => {
     const setClasses =
@@ -52,6 +53,7 @@ export default function SetModal(props) {
               variant="primary"
               onClick={(e) => {
                 generateNodes(e);
+                togglePlay();
                 onClose();
               }}
             >

@@ -32,11 +32,12 @@ export default function NodeCode() {
         : !prc.name.includes("Vanilla") && prc.type === "mod"
         ? `[${author}] ${prc.name}`
         : `[Van] ${prc.name}`;
+    const color = prc.site_cat === "isp_gold" ? "" : `(${prc.color})`;
 
     // prettier-ignore
     return (
           `\                        
-                        <node id="VisualUUIDs"> <!-- ${pt_name} (${prc.color}) - ${prc.pt_bone} --> 
+                        <node id="VisualUUIDs"> <!-- ${pt_name} ${color} - ${prc.pt_bone} --> 
                             <attribute id="Object" type="guid" value="${prc.nodeid}"/>
                         </node>`
       );
@@ -86,8 +87,11 @@ export default function NodeCode() {
 
   return (
     <>
-      <Row className="mt-2">
+      <Row className="mt-4">
         <Col lg={8}>
+          <h5 className="prc-block-h mb-3">
+            CharacterCreationAccessorySets Nodes:
+          </h5>
           <p className="output-intro">
             <span className="warning">
               By creating your own replacer sets to put in the game's Data

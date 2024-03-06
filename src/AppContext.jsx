@@ -12,6 +12,7 @@ export const AppProvider = ({ children }) => {
     "isp_gold",
     "p4_blooming",
     "ghouls_customs",
+    "LV_E_V1",
   ]);
   const type = searchParams.get("type");
   const location = searchParams.get("location");

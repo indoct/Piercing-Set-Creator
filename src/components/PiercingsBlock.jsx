@@ -96,6 +96,8 @@ export default function PiercingsBlock() {
                     prc.bone === "piercing_lobe_b_l" ||
                     prc.bone === "piercing_tragus_a_l" ||
                     prc.bone === "beard_upper_lip1_l" ||
+                    (prc.bone === "lowerlip_08" &&
+                      prc.site_cat === "ghouls_customs") ||
                     prc.bone === "piercing_brow_b_l"
                       ? "flipped"
                       : undefined
@@ -117,9 +119,7 @@ export default function PiercingsBlock() {
       <Row className="mt-3 title-row">
         <Col>
           <h5 className="prc-block-h">
-            {sessionOver
-              ? "CharacterCreationAccessorySets Nodes:"
-              : type === "vanilla"
+            {type === "vanilla"
               ? "Vanilla Sets"
               : type === "mod"
               ? "Mod Piercings"
