@@ -104,6 +104,13 @@ button.btn-primary:disabled {
   font-size: 1.1rem;
 }
 
+.loading {
+  color: var(--isc-btn-pri);
+  padding-top: 2rem;
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
 p,
 ul,
 li,

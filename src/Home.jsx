@@ -1,10 +1,13 @@
-import { AppProvider } from "./AppContext";
+import { lazy, Suspense } from "react";
+import { AppProvider, useAppContext } from "./AppContext";
 import ThemeProvider from "react-bootstrap/ThemeProvider";
 import "./App.css";
 import Container from "react-bootstrap/Container";
 import PiercingsBlock from "./components/PiercingsBlock";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Header from "./components/Header";
+
+const NodeCode = lazy(() => import("./components/NodeCode"));
 
 export default function Home() {
   return (
@@ -15,9 +18,23 @@ export default function Home() {
       >
         <Container>
           <Header />
-          <PiercingsBlock />
+          <Content />
         </Container>
       </ThemeProvider>
     </AppProvider>
   );
 }
+
+const Content = () => {
+  const { sessionOver } = useAppContext();
+
+  return (
+    <Suspense
+      fallback={
+        <div className="loading">Generating Nodes - Please Wait...</div>
+      }
+    >
+      {sessionOver ? <NodeCode /> : <PiercingsBlock />}
+    </Suspense>
+  );
+};
