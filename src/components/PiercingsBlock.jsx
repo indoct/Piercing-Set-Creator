@@ -9,9 +9,8 @@ import { duotoneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { ArrowLeft, Check2Circle, Copy, Trash } from "react-bootstrap-icons";
 import { nanoid } from "nanoid";
 
-SyntaxHighlighter.registerLanguage("cshtml", cshtml);
-
 export default function PiercingsBlock() {
+  // SyntaxHighlighter.registerLanguage("cshtml", cshtml);
   const {
     piercings,
     type,
@@ -218,7 +217,8 @@ export default function PiercingsBlock() {
       </Row>
       {sessionOver ? (
         <>
-          <Row className="mt-2">
+          <p>Hello</p>
+          {/* <Row className="mt-2">
             <Col lg={8}>
               <p className="output-intro">
                 <span className="warning">
@@ -289,7 +289,7 @@ export default function PiercingsBlock() {
                 <Trash /> Clear Set
               </Button>
             </Col>
-          </Row>
+          </Row> */}
         </>
       ) : (
         <Row className="mt-2">{prcElements}</Row>
