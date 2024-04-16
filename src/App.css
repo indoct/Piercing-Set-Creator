@@ -513,6 +513,11 @@ label.selected {
 }
 
 /* Config Modal */
+
+.modal-backdrop {
+  --bs-backdrop-opacity: 0.85 !important;
+}
+
 #set-config .modal-header {
   padding: 10px 1em;
   border-bottom: none;
