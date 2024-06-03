@@ -4,7 +4,6 @@ import ThemeProvider from "react-bootstrap/ThemeProvider";
 import "./App.css";
 import Container from "react-bootstrap/Container";
 import PiercingsBlock from "./components/PiercingsBlock";
-import "bootstrap/dist/css/bootstrap.min.css";
 import Header from "./components/Header";
 
 const NodeCode = lazy(() => import("./components/NodeCode"));
@@ -16,7 +15,7 @@ export default function Home() {
         breakpoints={["xxxl", "xxl", "xl", "lg", "md", "sm", "xs", "xxs"]}
         minBreakpoint="xxs"
       >
-        <Container>
+        <Container fluid>
           <Header />
           <Content />
         </Container>

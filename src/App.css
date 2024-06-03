@@ -23,7 +23,6 @@ body {
 #root {
   max-width: 1340px;
   margin: 0 auto;
-  padding: 2rem;
   background-color: var(--isc-dark);
   color: var(--isc-light);
 }
@@ -126,17 +125,21 @@ label {
   margin-bottom: 0.6rem;
 }
 
-header {
-  padding-bottom: 0.5em;
-  border-bottom: 1px solid hsl(312 8% 20% / 1);
-}
-
 header a {
   align-self: center;
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   text-decoration: none;
   font-weight: 600;
   color: var(--isc-light);
+  line-height: 1.3;
+}
+
+header button:first-child::after {
+  content: "View Set";
+}
+
+#instructions-btn::after {
+  content: "Instructions";
 }
 
 header button:first-child,
@@ -184,6 +187,7 @@ header button:first-child,
   padding: 8px 16px;
   background-color: #403b3e;
   border-radius: 8px;
+  flex-wrap: wrap;
 }
 
 .filters span {
@@ -711,4 +715,31 @@ label.selected {
 .flipped {
   -webkit-transform: scaleX(-1);
   transform: scaleX(-1);
+}
+
+@media screen and (min-width: 576px) {
+  #root {
+    padding: 2rem;
+  }
+  header {
+    padding-bottom: 0.5em;
+    border-bottom: 1px solid hsl(312 8% 20% / 1);
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .toggle {
+    display: none;
+  }
+  header button:first-child,
+  #instructions-btn {
+    margin-right: 7px;
+  }
+  #instructions-btn::after {
+    content: "How To";
+  }
+
+  header button:first-child::after {
+    content: "View Set";
+  }
 }

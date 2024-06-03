@@ -76,7 +76,7 @@ export default function PiercingsBlock() {
         const nodeLoca = prc.bone;
 
         return (
-          <Col key={prc.nodeid} lg={2} className="prc-col">
+          <Col key={prc.nodeid} className="prc-col">
             {prc.type === "mod" && (
               <span className="set-name">{prc.set_name}</span>
             )}
@@ -127,7 +127,9 @@ export default function PiercingsBlock() {
           </h5>
         </Col>
       </Row>
-      <Row className="mt-2">{prcElements}</Row>
+      <Row className="mt-2 row-cols-2" sm="4" md="5" lg="6">
+        {prcElements}
+      </Row>
     </>
   );
 }

@@ -45,8 +45,8 @@ export default function Header() {
   return (
     <>
       <header>
-        <Row>
-          <Col lg={6} className="align-self-center">
+        <Row className="mt-3">
+          <Col lg={6} className="align-self-center mb-3 mb-sm-0">
             <Link className="site-logo" to="/">
               Indoct's BG3 Piercing Set Creator
             </Link>
@@ -60,7 +60,7 @@ export default function Header() {
               onClick={() => setShowSet(true)}
               disabled={empty}
             >
-              <ViewList /> View Current Set
+              <ViewList />
             </Button>
             <SetModal
               show={showSet}
@@ -77,7 +77,7 @@ export default function Header() {
               variant="secondary"
               onClick={() => setShowInstructions(true)}
             >
-              <InfoCircle /> Instructions
+              <InfoCircle />
             </Button>
             <InstructionsModal
               show={showInstructions}
@@ -95,9 +95,9 @@ export default function Header() {
         </Row>
       </header>
       {!sessionOver && (
-        <Row className="mt-3 mb-1">
+        <Row className="mt-2 mb-1">
           <Col lg={6}>
-            <div className="filter-btns">
+            <div className="filter-btns mb-1 mb-sm-0">
               <span>Type:</span>
               <button
                 onClick={() => {
