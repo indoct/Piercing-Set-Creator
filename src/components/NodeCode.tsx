@@ -21,19 +21,19 @@ export default function NodeCode(): JSX.Element {
   );
 
   const configElements: string[] = selected.map((prc) => {
-    const author =
+    const author: string =
       prc.site_cat === "isp_silver" || prc.site_cat === "isp_gold"
         ? "Indoct's Subtler Piercings"
         : prc.site_cat === "p4_blooming"
         ? "P4 Blooming Circlets"
         : "Ghouls Custom Piercings";
-    const pt_name =
+    const pt_name: string =
       prc.name.includes("Vanilla") && prc.type === "vanilla"
         ? prc.name
         : !prc.name.includes("Vanilla") && prc.type === "mod"
         ? `[${author}] ${prc.name}`
         : `[Van] ${prc.name}`;
-    const color = prc.site_cat === "isp_gold" ? "" : `(${prc.color})`;
+    const color: string = prc.site_cat === "isp_gold" ? "" : `(${prc.color})`;
 
     // prettier-ignore
     return (

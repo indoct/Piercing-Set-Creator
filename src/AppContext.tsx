@@ -68,7 +68,9 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
 
   function handleFilterChange(key: string, value: string | null): void {
     setSearchParams((prevParams) => {
-      const newParams = { ...Object.fromEntries(prevParams) };
+      const newParams: { [x: string]: string } = {
+        ...Object.fromEntries(prevParams),
+      };
       if (value === null) {
         delete newParams[key];
       } else if (key === "type" || key === "location") {

@@ -8,30 +8,32 @@ export default function PiercingsBlock(): JSX.Element {
 
   function filterByMod(modArr: string[]): Piercing[] {
     if (location && type) {
-      const mainFilters = piercings.filter(
+      const mainFilters: Piercing[] = piercings.filter(
         (prc) => prc.location === location && prc.type === type
       );
       return mainFilters.filter((obj) => modArr.includes(obj.site_cat));
     } else if (location && !type && mods.length === 4) {
       return piercings.filter((prc) => prc.location === location);
     } else if (location && !type && mods.length !== 4) {
-      const locaFirst = piercings.filter(
+      const locaFirst: Piercing[] = piercings.filter(
         (prc) => prc.location === location && prc.type !== "mod"
       );
-      const selectedMods = piercings.filter(
+      const selectedMods: Piercing[] = piercings.filter(
         (obj) => modArr.includes(obj.site_cat) && obj.location === location
       );
       return selectedMods.concat(locaFirst);
     } else if (!location && type && mods.length !== 4) {
-      const typeFirst = piercings.filter((prc) => prc.type === type);
+      const typeFirst: Piercing[] = piercings.filter(
+        (prc) => prc.type === type
+      );
       return typeFirst.filter((obj) => modArr.includes(obj.site_cat));
     } else if (!location && !type && mods.length === 4) {
       return piercings;
     } else if (!location && !type) {
-      const selectedMods = piercings.filter((obj) =>
+      const selectedMods: Piercing[] = piercings.filter((obj) =>
         modArr.includes(obj.site_cat)
       );
-      const noMods = piercings.filter((prc) => prc.type !== "mod");
+      const noMods: Piercing[] = piercings.filter((prc) => prc.type !== "mod");
       return noMods.concat(selectedMods);
     } else {
       return piercings.filter((obj) => modArr.includes(obj.site_cat));
@@ -74,8 +76,8 @@ export default function PiercingsBlock(): JSX.Element {
     displayedPiercings
   )
     ? displayedPiercings.map((prc) => {
-        const nodeId = prc.nodeid;
-        const nodeLoca = prc.bone;
+        const nodeId: string = prc.nodeid;
+        const nodeLoca: string = prc.bone;
 
         return (
           <Col key={prc.nodeid} className="prc-col">

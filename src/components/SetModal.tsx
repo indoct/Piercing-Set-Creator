@@ -13,11 +13,11 @@ const SetModal: React.FC<SetModalProps> = ({
 }) => {
   const displayConfig: JSX.Element[] = piercings
     .map((prc) => {
-      const setClasses =
+      const setClasses: string =
         prc.type === "mod"
           ? "config-mod config-set"
           : "config-set config-vanilla";
-      const setName =
+      const setName: string =
         prc.type === "vanilla"
           ? `Vanilla : ${prc.set_name}`
           : `MOD : ${prc.set_name}`;
