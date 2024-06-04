@@ -45,7 +45,7 @@ export default function NodeCode(): JSX.Element {
   });
 
   function formatString(): string {
-    const codeString = configElements.join("");
+    const codeString: string = configElements.join("");
     return codeString
       .split(/\r?\n/)
       .filter((line) => line.trim() !== "")
@@ -53,11 +53,11 @@ export default function NodeCode(): JSX.Element {
   }
 
   async function copyToClipboard(): Promise<void> {
-    const codeToCopy = formatString();
+    const codeToCopy: string = formatString();
     await navigator.clipboard.writeText(codeToCopy);
   }
 
-  function handleCopyBtn() {
+  function handleCopyBtn(): void {
     setCopyBtnPressed(true);
     setTimeout(() => {
       setCopyBtnPressed(false);

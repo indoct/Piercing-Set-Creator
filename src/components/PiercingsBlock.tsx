@@ -6,7 +6,7 @@ import { Piercing } from "../interfaces";
 export default function PiercingsBlock(): JSX.Element {
   const { piercings, type, location, mods, handleBtns } = useAppContext();
 
-  function filterByMod(modArr: string[]) {
+  function filterByMod(modArr: string[]): Piercing[] {
     if (location && type) {
       const mainFilters = piercings.filter(
         (prc) => prc.location === location && prc.type === type
@@ -38,7 +38,7 @@ export default function PiercingsBlock(): JSX.Element {
     }
   }
 
-  function filterNoMods() {
+  function filterNoMods(): Piercing[] | JSX.Element {
     if (type && location) {
       return piercings.filter(
         (prc) => prc.type === type && prc.location === location

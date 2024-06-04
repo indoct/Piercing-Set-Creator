@@ -38,7 +38,7 @@ export default function Header(): JSX.Element {
     return modal === "set" ? setShowSet(false) : setShowInstructions(false);
   }
 
-  const empty = piercings.filter((prc) => prc.selected).length === 0;
+  const empty: boolean = piercings.filter((prc) => prc.selected).length === 0;
 
   return (
     <>

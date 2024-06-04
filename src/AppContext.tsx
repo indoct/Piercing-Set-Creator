@@ -21,16 +21,19 @@ const AppContext = createContext<ContextValues>(defaultContextValues);
 export const AppProvider = ({ children }: { children: React.ReactNode }) => {
   const [piercings, setPiercings] = useState<Piercing[]>(data);
   const [searchParams, setSearchParams] = useSearchParams();
-  const [mods, setMods] = useState([
+  const [mods, setMods] = useState<string[]>([
     "isp_silver",
     "isp_gold",
     "p4_blooming",
     "ghouls_customs",
     "LV_E_V1",
   ]);
-  const type = searchParams.get("type");
-  const location = searchParams.get("location");
-  const [sessionOver, setSessionOver] = useState(false);
+  const type: string | null = searchParams.get("type");
+  const location: string | null = searchParams.get("location");
+  const [sessionOver, setSessionOver]: [
+    boolean,
+    React.Dispatch<React.SetStateAction<boolean>>
+  ] = useState(false);
 
   const contextValues: ContextValues = {
     type,
@@ -45,7 +48,7 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
     handleBtns,
   };
 
-  function handleBtns(nodeId: string, nodeLoca: string) {
+  function handleBtns(nodeId: string, nodeLoca: string): void {
     setPiercings((prevPrcs) =>
       prevPrcs.map((prc) => {
         return nodeId === prc.nodeid
@@ -63,7 +66,7 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
     );
   }
 
-  function handleFilterChange(key: string, value: string) {
+  function handleFilterChange(key: string, value: string | null): void {
     setSearchParams((prevParams) => {
       const newParams = { ...Object.fromEntries(prevParams) };
       if (value === null) {
@@ -75,7 +78,7 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
     });
   }
 
-  function confirmDelete() {
+  function confirmDelete(): void {
     let result = confirm(
       "Are you sure you want to delete your set? \n \nPressing OK will clear your set configuration."
     );
@@ -88,13 +91,13 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
 
   function toggleSessionOver(
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ) {
+  ): void {
     if ((e.target as HTMLInputElement).id === "back-btn") setSessionOver(false);
     if ((e.target as HTMLInputElement).id === "generate-btn")
       setSessionOver(true);
   }
 
-  function handleModsChange(modname: string) {
+  function handleModsChange(modname: string): void {
     setMods((prevMods) => {
       return prevMods.includes(modname)
         ? mods.filter((mod) => mod !== modname)
