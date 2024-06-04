@@ -1,12 +1,12 @@
 import { useAppContext } from "../AppContext";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import { Piercing } from "../interfaces";
 
-export default function PiercingsBlock() {
-  const { piercings, type, location, mods, handleBtns, sessionOver } =
-    useAppContext();
+export default function PiercingsBlock(): JSX.Element {
+  const { piercings, type, location, mods, handleBtns } = useAppContext();
 
-  function filterByMod(modArr) {
+  function filterByMod(modArr: string[]) {
     if (location && type) {
       const mainFilters = piercings.filter(
         (prc) => prc.location === location && prc.type === type
@@ -22,7 +22,7 @@ export default function PiercingsBlock() {
         (obj) => modArr.includes(obj.site_cat) && obj.location === location
       );
       return selectedMods.concat(locaFirst);
-    } else if (!location && type & (mods.length !== 4)) {
+    } else if (!location && type && mods.length !== 4) {
       const typeFirst = piercings.filter((prc) => prc.type === type);
       return typeFirst.filter((obj) => modArr.includes(obj.site_cat));
     } else if (!location && !type && mods.length === 4) {
@@ -59,7 +59,7 @@ export default function PiercingsBlock() {
     } else return piercings;
   }
 
-  const displayedPiercings =
+  const displayedPiercings: Piercing[] | JSX.Element =
     mods.length > 0 && type !== "vanilla"
       ? filterByMod(mods)
       : mods.length > 0 && type === "vanilla" && !location
@@ -70,7 +70,9 @@ export default function PiercingsBlock() {
         )
       : filterNoMods();
 
-  const prcElements = Array.isArray(displayedPiercings)
+  const prcElements: JSX.Element | JSX.Element[] = Array.isArray(
+    displayedPiercings
+  )
     ? displayedPiercings.map((prc) => {
         const nodeId = prc.nodeid;
         const nodeLoca = prc.bone;
@@ -82,7 +84,7 @@ export default function PiercingsBlock() {
             )}
             <button
               type="button"
-              id={prc.index}
+              id={prc.index.toString()}
               className={`prc-container ${prc.selected ? "selected" : ""}`}
               onClick={() => handleBtns(nodeId, nodeLoca)}
               disabled={prc.disabled}
