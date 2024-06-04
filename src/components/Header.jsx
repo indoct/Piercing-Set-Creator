@@ -2,7 +2,7 @@ import { useAppContext } from "../AppContext";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
-import SetModal from "../components/SetModal";
+import SetModal from "./SetModal";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { Tooltip } from "react-tooltip";
