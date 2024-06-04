@@ -4,7 +4,7 @@ export interface ContextValues {
   mods: string[];
   piercings: Array<Piercing>;
   sessionOver: boolean;
-  handleFilterChange: (key: string, value: string) => void;
+  handleFilterChange: (key: string, value: string | null) => void;
   confirmDelete: () => void;
   toggleSessionOver: (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>

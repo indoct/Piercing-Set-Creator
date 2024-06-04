@@ -16,11 +16,11 @@ import {
 import { Animate } from "react-simple-animate";
 import InstructionsModal from "./InstructionsModal";
 
-export default function Header() {
-  const [showSet, setShowSet] = useState(false);
-  const [showInstructions, setShowInstructions] = useState(false);
-  const [filtersOpen, setFiltersOpen] = useState(false);
-  const [play, setPlay] = useState();
+export default function Header(): JSX.Element {
+  const [showSet, setShowSet] = useState<boolean>(false);
+  const [showInstructions, setShowInstructions] = useState<boolean>(false);
+  const [filtersOpen, setFiltersOpen] = useState<boolean>(false);
+  const [play, setPlay] = useState<boolean>(false);
 
   const {
     type,
@@ -34,12 +34,11 @@ export default function Header() {
     handleModsChange,
   } = useAppContext();
 
-  function handleCloseModal(modal) {
+  function handleCloseModal(modal: string): void {
     return modal === "set" ? setShowSet(false) : setShowInstructions(false);
   }
 
   const empty = piercings.filter((prc) => prc.selected).length === 0;
-  console.log(sessionOver);
 
   return (
     <>

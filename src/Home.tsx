@@ -9,7 +9,7 @@ import Header from "./components/Header";
 
 const NodeCode = lazy(() => import("./components/NodeCode"));
 
-export default function Home() {
+export default function Home(): JSX.Element {
   return (
     <AppProvider>
       <ThemeProvider
@@ -25,7 +25,7 @@ export default function Home() {
   );
 }
 
-const Content = () => {
+const Content: FC = () => {
   const { sessionOver } = useAppContext();
 
   return (
