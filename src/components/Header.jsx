@@ -39,6 +39,7 @@ export default function Header() {
   }
 
   const empty = piercings.filter((prc) => prc.selected).length === 0;
+  console.log(sessionOver);
 
   return (
     <>

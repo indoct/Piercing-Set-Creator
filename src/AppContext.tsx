@@ -89,9 +89,8 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
   function toggleSessionOver(
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) {
-    if ((e.target as HTMLInputElement).value === "back-btn")
-      setSessionOver(false);
-    if ((e.target as HTMLInputElement).value === "generate-btn")
+    if ((e.target as HTMLInputElement).id === "back-btn") setSessionOver(false);
+    if ((e.target as HTMLInputElement).id === "generate-btn")
       setSessionOver(true);
   }
 

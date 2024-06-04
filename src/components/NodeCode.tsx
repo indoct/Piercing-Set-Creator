@@ -3,23 +3,24 @@ import { useState } from "react";
 import { Row, Col } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import { PrismLight as SyntaxHighlighter } from "react-syntax-highlighter";
-import cshtml from "react-syntax-highlighter/dist/esm/languages/prism/cshtml";
+import markup from "react-syntax-highlighter/dist/esm/languages/prism/markup";
 import { duotoneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { ArrowLeft, Check2Circle, Copy, Trash } from "react-bootstrap-icons";
 import { nanoid } from "nanoid";
+import { Piercing } from "../interfaces";
 
-export default function NodeCode() {
-  SyntaxHighlighter.registerLanguage("cshtml", cshtml);
+export default function NodeCode(): JSX.Element {
+  SyntaxHighlighter.registerLanguage("markup", markup);
   const { piercings, confirmDelete, toggleSessionOver } = useAppContext();
 
-  const [copyBtnPressed, setCopyBtnPressed] = useState(false);
+  const [copyBtnPressed, setCopyBtnPressed] = useState<boolean>(false);
 
-  const selected = piercings.filter((prc) => prc.selected);
-  const containsMod = piercings.filter(
+  const selected: Piercing[] = piercings.filter((prc) => prc.selected);
+  const containsMod: Piercing[] = piercings.filter(
     (prc) => prc.selected && prc.type === "mod"
   );
 
-  const configElements = selected.map((prc) => {
+  const configElements: string[] = selected.map((prc) => {
     const author =
       prc.site_cat === "isp_silver" || prc.site_cat === "isp_gold"
         ? "Indoct's Subtler Piercings"
@@ -43,7 +44,7 @@ export default function NodeCode() {
       );
   });
 
-  function formatString() {
+  function formatString(): string {
     const codeString = configElements.join("");
     return codeString
       .split(/\r?\n/)
@@ -51,7 +52,7 @@ export default function NodeCode() {
       .join("\n");
   }
 
-  async function copyToClipboard(e) {
+  async function copyToClipboard(): Promise<void> {
     const codeToCopy = formatString();
     await navigator.clipboard.writeText(codeToCopy);
   }
@@ -63,16 +64,19 @@ export default function NodeCode() {
     }, 2000);
   }
 
-  const generateModEls = () => {
-    const modMap = new Map();
-    containsMod.map((obj) => modMap.set(obj.set_name, obj));
+  const generateModEls = (): JSX.Element[] => {
+    // const modMap = new Map<string, Piercing>();
+    // containsMod.map((obj) => modMap.set(obj.set_name, obj));
 
-    const filteredData = [];
-    modMap.forEach((value) => {
-      filteredData.push(value);
-    });
+    // const filteredData: Piercing[] = [];
+    // modMap.forEach((value) => {
+    //   filteredData.push(value);
+    // });
+    const filteredData: Piercing[] = Array.from(
+      new Map(containsMod.map((obj) => [obj.set_name, obj])).values()
+    );
 
-    const modElements = filteredData.map((mod) => {
+    const modElements: JSX.Element[] = filteredData.map((mod) => {
       return (
         <li key={nanoid()}>
           <a href={mod.modurl} target="_blank">
@@ -111,7 +115,7 @@ export default function NodeCode() {
       </Row>
       <Row>
         <Col lg={8}>
-          <SyntaxHighlighter language="cshtml" style={duotoneDark}>
+          <SyntaxHighlighter language="markup" style={duotoneDark}>
             {formatString()}
           </SyntaxHighlighter>
         </Col>
@@ -132,9 +136,9 @@ export default function NodeCode() {
         <Col lg={4}>
           <Button
             id="copy-btn"
-            onClick={(e) => {
+            onClick={() => {
               handleCopyBtn();
-              copyToClipboard(e);
+              copyToClipboard();
             }}
           >
             {!copyBtnPressed ? (
