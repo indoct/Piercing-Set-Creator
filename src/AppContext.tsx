@@ -1,11 +1,25 @@
 import React, { createContext, useContext, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import data from "./data";
+import { Piercing, ContextValues } from "././interfaces";
 
-const AppContext = createContext();
+const defaultContextValues: ContextValues = {
+  type: "",
+  location: "",
+  mods: [],
+  piercings: [],
+  sessionOver: false,
+  handleFilterChange: () => {},
+  confirmDelete: () => {},
+  toggleSessionOver: () => {},
+  handleModsChange: () => {},
+  handleBtns: () => {},
+};
 
-export const AppProvider = ({ children }) => {
-  const [piercings, setPiercings] = useState(data);
+const AppContext = createContext<ContextValues>(defaultContextValues);
+
+export const AppProvider = ({ children }: { children: React.ReactNode }) => {
+  const [piercings, setPiercings] = useState<Piercing[]>(data);
   const [searchParams, setSearchParams] = useSearchParams();
   const [mods, setMods] = useState([
     "isp_silver",
@@ -18,7 +32,7 @@ export const AppProvider = ({ children }) => {
   const location = searchParams.get("location");
   const [sessionOver, setSessionOver] = useState(false);
 
-  const contextValues = {
+  const contextValues: ContextValues = {
     type,
     location,
     mods,
@@ -31,7 +45,7 @@ export const AppProvider = ({ children }) => {
     handleBtns,
   };
 
-  function handleBtns(e, nodeId, nodeLoca) {
+  function handleBtns(nodeId: string, nodeLoca: string) {
     setPiercings((prevPrcs) =>
       prevPrcs.map((prc) => {
         return nodeId === prc.nodeid
@@ -49,7 +63,7 @@ export const AppProvider = ({ children }) => {
     );
   }
 
-  function handleFilterChange(key, value) {
+  function handleFilterChange(key: string, value: string) {
     setSearchParams((prevParams) => {
       const newParams = { ...Object.fromEntries(prevParams) };
       if (value === null) {
@@ -72,12 +86,16 @@ export const AppProvider = ({ children }) => {
     }
   }
 
-  function toggleSessionOver(e) {
-    if (e.target.id === "back-btn") setSessionOver(false);
-    if (e.target.id === "generate-btn") setSessionOver(true);
+  function toggleSessionOver(
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) {
+    if ((e.target as HTMLInputElement).value === "back-btn")
+      setSessionOver(false);
+    if ((e.target as HTMLInputElement).value === "generate-btn")
+      setSessionOver(true);
   }
 
-  function handleModsChange(modname) {
+  function handleModsChange(modname: string) {
     setMods((prevMods) => {
       return prevMods.includes(modname)
         ? mods.filter((mod) => mod !== modname)
@@ -90,6 +108,12 @@ export const AppProvider = ({ children }) => {
   );
 };
 
-export const useAppContext = () => {
-  return useContext(AppContext);
+export const useAppContext = (): ContextValues => {
+  const context = useContext(AppContext);
+
+  if (!context) {
+    throw new Error("useAppContext must be used within an AppContextProvider");
+  }
+
+  return context;
 };

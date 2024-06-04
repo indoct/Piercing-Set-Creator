@@ -84,7 +84,7 @@ export default function PiercingsBlock() {
               type="button"
               id={prc.index}
               className={`prc-container ${prc.selected ? "selected" : ""}`}
-              onClick={(e) => handleBtns(e, nodeId, nodeLoca)}
+              onClick={() => handleBtns(nodeId, nodeLoca)}
               disabled={prc.disabled}
             >
               <div className="img-dummy">

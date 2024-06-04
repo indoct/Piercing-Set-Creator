@@ -1,4 +1,6 @@
-export default [
+import { Piercing } from "./interfaces";
+
+const data: Piercing[] = [
   {
     index: 1,
     site_cat: "vanilla-ab",
@@ -5148,3 +5150,5 @@ export default [
     modurl: "https://www.nexusmods.com/baldursgate3/mods/7425",
   },
 ];
+
+export default data;
