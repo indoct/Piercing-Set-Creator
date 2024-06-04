@@ -1,5 +1,6 @@
 import { lazy, Suspense } from "react";
 import { AppProvider, useAppContext } from "./AppContext";
+import "bootstrap/dist/css/bootstrap.min.css";
 import ThemeProvider from "react-bootstrap/ThemeProvider";
 import "./App.css";
 import Container from "react-bootstrap/Container";

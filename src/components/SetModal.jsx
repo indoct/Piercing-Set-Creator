@@ -33,35 +33,29 @@ export default function SetModal(props) {
   });
 
   return (
-    <>
-      <Modal show={show} onHide={onClose} id="set-config" size="md">
-        <Modal.Header closeButton>
-          <Modal.Title>Current Piercing Set Config</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>{displayConfig}</Modal.Body>
-        <Modal.Footer className="d-flex justify-content-between">
+    <Modal show={show} onHide={onClose} id="set-config" size="lg">
+      <Modal.Header closeButton>
+        <Modal.Title>Current Piercing Set Config</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>{displayConfig}</Modal.Body>
+      <Modal.Footer className="d-flex justify-content-between">
+        <Button variant="secondary" className="btn-secondary" onClick={onClose}>
+          <XCircle /> Close
+        </Button>
+        {!sessionOver && (
           <Button
-            variant="secondary"
-            className="btn-secondary"
-            onClick={onClose}
+            id="generate-btn"
+            variant="primary"
+            onClick={(e) => {
+              generateNodes(e);
+              togglePlay();
+              onClose();
+            }}
           >
-            <XCircle /> Close
+            Generate Piercing Nodes Code <CodeSlash size={20} />
           </Button>
-          {!sessionOver && (
-            <Button
-              id="generate-btn"
-              variant="primary"
-              onClick={(e) => {
-                generateNodes(e);
-                togglePlay();
-                onClose();
-              }}
-            >
-              Generate Piercing Nodes Code <CodeSlash size={20} />
-            </Button>
-          )}
-        </Modal.Footer>
-      </Modal>
-    </>
+        )}
+      </Modal.Footer>
+    </Modal>
   );
 }

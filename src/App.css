@@ -517,6 +517,9 @@ label.selected {
 }
 
 /* Config Modal */
+.fade.modal.show {
+  max-width: 100vw;
+}
 
 .modal-backdrop {
   --bs-backdrop-opacity: 0.85 !important;
@@ -717,6 +720,11 @@ label.selected {
   transform: scaleX(-1);
 }
 
+/* Node Code */
+.nc-btns-cont {
+  justify-content: flex-end;
+}
+
 @media screen and (min-width: 576px) {
   #root {
     padding: 2rem;
@@ -738,7 +746,9 @@ label.selected {
   #instructions-btn::after {
     content: "How To";
   }
-
+  .nc-btns-cont {
+    justify-content: flex-start;
+  }
   header button:first-child::after {
     content: "View Set";
   }

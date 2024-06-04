@@ -148,7 +148,7 @@ export default function NodeCode() {
             )}
           </Button>
         </Col>
-        <Col className="d-flex gap-2 justify-content-end" lg={4}>
+        <Col className="d-flex gap-2 mt-2 mt-sm-0 nc-btns-cont" lg={4}>
           <Button
             id="back-btn"
             onClick={(e) => toggleSessionOver(e)}

@@ -38,8 +38,6 @@ export default function Header() {
     return modal === "set" ? setShowSet(false) : setShowInstructions(false);
   }
 
-  console.log(play);
-
   const empty = piercings.filter((prc) => prc.selected).length === 0;
 
   return (
