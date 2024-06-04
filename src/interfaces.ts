@@ -32,9 +32,12 @@ export interface Piercing {
   modurl: string;
 }
 
-export interface SetModalProps {
-  show: boolean;
+export interface ModalProps {
   onClose: () => void;
+  show: boolean;
+}
+
+export interface SetModalProps extends ModalProps {
   piercings: Array<Piercing>;
   generateNodes: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   sessionOver: boolean;

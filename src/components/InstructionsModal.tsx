@@ -1,10 +1,9 @@
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { XCircle } from "react-bootstrap-icons";
+import { ModalProps } from "../interfaces";
 
-export default function InstructionsModal(props) {
-  const { onClose, show } = props;
-
+const InstructionsModal: React.FC<ModalProps> = ({ onClose, show }) => {
   return (
     <>
       <Modal show={show} onHide={onClose} id="instructions" size="lg">
@@ -13,8 +12,8 @@ export default function InstructionsModal(props) {
         </Modal.Header>
         <Modal.Body>
           <p className="warning">
-            This web app is for larger devices only. As it's a modding tool, it
-            will not display well on mobile.
+            This web app is for larger devices only. As it's a PC modding tool,
+            it might not display well on mobile.
           </p>
           <h5>Steps:</h5>
           <ol>
@@ -80,4 +79,6 @@ export default function InstructionsModal(props) {
       </Modal>
     </>
   );
-}
+};
+
+export default InstructionsModal;
