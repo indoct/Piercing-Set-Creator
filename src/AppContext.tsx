@@ -1,34 +1,14 @@
 import React, { createContext, useContext, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import data from "./data";
-import { Piercing, ContextValues } from "././interfaces";
+import { Piercing, ContextValues, ModList } from "./types";
 
-// const defaultContextValues: ContextValues = {
-//   type: "",
-//   location: "",
-//   mods: [],
-//   piercings: [],
-//   sessionOver: false,
-//   handleFilterChange: () => {},
-//   confirmDelete: () => {},
-//   toggleSessionOver: () => {},
-//   handleModsChange: () => {},
-//   handleBtns: () => {},
-// };
-
-// const AppContext = createContext<ContextValues>(defaultContextValues);
 const AppContext = createContext<ContextValues | undefined>(undefined);
 
 export const AppProvider = ({ children }: { children: React.ReactNode }) => {
   const [piercings, setPiercings] = useState<Piercing[]>(data);
   const [searchParams, setSearchParams] = useSearchParams();
-  const [mods, setMods] = useState<string[]>([
-    "isp_silver",
-    "isp_gold",
-    "p4_blooming",
-    "ghouls_customs",
-    "LV_E_V1",
-  ]);
+  const [mods, setMods] = useState<string[]>(ModList);
   const type: string | null = searchParams.get("type");
   const location: string | null = searchParams.get("location");
   const [sessionOver, setSessionOver]: [
@@ -42,6 +22,7 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
     mods,
     piercings,
     sessionOver,
+    setMods,
     handleFilterChange,
     confirmDelete,
     toggleSessionOver,
@@ -88,7 +69,7 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
     if (result) {
       setPiercings(data);
       setSessionOver(false);
-      setMods(["isp_silver", "isp_gold", "p4_blooming", "ghouls_customs"]);
+      setMods(ModList);
     }
   }
 

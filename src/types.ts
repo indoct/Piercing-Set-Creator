@@ -4,6 +4,7 @@ export interface ContextValues {
   mods: string[];
   piercings: Array<Piercing>;
   sessionOver: boolean;
+  setMods: React.Dispatch<React.SetStateAction<string[]>>;
   handleFilterChange: (key: string, value: string | null) => void;
   confirmDelete: () => void;
   toggleSessionOver: (
@@ -43,3 +44,11 @@ export interface SetModalProps extends ModalProps {
   sessionOver: boolean;
   togglePlay: () => void;
 }
+
+export const ModList: string[] = [
+  "isp_silver",
+  "isp_gold",
+  "p4_blooming",
+  "ghouls_customs",
+  "LV_E_V1",
+];

@@ -1,7 +1,7 @@
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { XCircle } from "react-bootstrap-icons";
-import { ModalProps } from "../interfaces";
+import { ModalProps } from "../types";
 
 const InstructionsModal: React.FC<ModalProps> = ({ onClose, show }) => {
   return (

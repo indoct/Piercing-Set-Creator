@@ -15,6 +15,7 @@ import {
 } from "react-bootstrap-icons";
 import { Animate } from "react-simple-animate";
 import InstructionsModal from "./InstructionsModal";
+import { ModList } from "../types";
 
 export default function Header(): JSX.Element {
   const [showSet, setShowSet] = useState<boolean>(false);
@@ -27,6 +28,7 @@ export default function Header(): JSX.Element {
     location,
     mods,
     piercings,
+    setMods,
     handleFilterChange,
     confirmDelete,
     toggleSessionOver,
@@ -99,6 +101,7 @@ export default function Header(): JSX.Element {
               <span>Type:</span>
               <button
                 onClick={() => {
+                  setMods(ModList);
                   handleFilterChange("type", null);
                 }}
                 className={`all-piercings ${!type ? "selected" : ""}`}

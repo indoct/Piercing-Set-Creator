@@ -1,4 +1,4 @@
-import { Piercing } from "./interfaces";
+import { Piercing } from "./types";
 
 const data: Piercing[] = [
   {

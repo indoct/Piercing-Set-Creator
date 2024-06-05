@@ -1,7 +1,7 @@
 import { useAppContext } from "../AppContext";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { Piercing } from "../interfaces";
+import { Piercing } from "../types";
 
 export default function PiercingsBlock(): JSX.Element {
   const { piercings, type, location, mods, handleBtns } = useAppContext();
@@ -72,13 +72,28 @@ export default function PiercingsBlock(): JSX.Element {
         )
       : filterNoMods();
 
+  const srcToWebp = (src: string): string => {
+    return src.replace(".jpg", ".webp");
+  };
+
+  const imgClass = (bone: string, category: string): string | undefined => {
+    return bone === "piercing_lobe_a_l" ||
+      bone === "piercing_brow_a_l" ||
+      bone === "piercing_lobe_b_l" ||
+      bone === "piercing_tragus_a_l" ||
+      bone === "beard_upper_lip1_l" ||
+      (bone === "lowerlip_08" && category === "ghouls_customs") ||
+      bone === "piercing_brow_b_l"
+      ? "flipped"
+      : undefined;
+  };
+
   const prcElements: JSX.Element | JSX.Element[] = Array.isArray(
     displayedPiercings
   )
     ? displayedPiercings.map((prc) => {
         const nodeId: string = prc.nodeid;
         const nodeLoca: string = prc.bone;
-
         return (
           <Col key={prc.nodeid} className="prc-col">
             {prc.type === "mod" && (
@@ -92,22 +107,17 @@ export default function PiercingsBlock(): JSX.Element {
               disabled={prc.disabled}
             >
               <div className="img-cont">
-                <img
-                  src={prc.imgurl}
-                  alt={`${prc.name} - ${prc.pt_bone}`}
-                  className={
-                    prc.bone === "piercing_lobe_a_l" ||
-                    prc.bone === "piercing_brow_a_l" ||
-                    prc.bone === "piercing_lobe_b_l" ||
-                    prc.bone === "piercing_tragus_a_l" ||
-                    prc.bone === "beard_upper_lip1_l" ||
-                    (prc.bone === "lowerlip_08" &&
-                      prc.site_cat === "ghouls_customs") ||
-                    prc.bone === "piercing_brow_b_l"
-                      ? "flipped"
-                      : undefined
-                  }
-                />
+                <picture>
+                  <source
+                    srcSet={srcToWebp(prc.imgurl)}
+                    className={imgClass(prc.bone, prc.site_cat)}
+                  />
+                  <img
+                    src={prc.imgurl}
+                    alt={`${prc.name} - ${prc.pt_bone}`}
+                    className={imgClass(prc.bone, prc.site_cat)}
+                  />
+                </picture>
               </div>
               <ul className={`prc-stats config-cont ${prc.location}`}>
                 <li className="prc-name">{prc.name}</li>

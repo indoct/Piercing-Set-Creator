@@ -7,7 +7,7 @@ import markup from "react-syntax-highlighter/dist/esm/languages/prism/markup";
 import { duotoneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { ArrowLeft, Check2Circle, Copy, Trash } from "react-bootstrap-icons";
 import { nanoid } from "nanoid";
-import { Piercing } from "../interfaces";
+import { Piercing } from "../types";
 
 export default function NodeCode(): JSX.Element {
   SyntaxHighlighter.registerLanguage("markup", markup);

@@ -1,7 +1,7 @@
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { CodeSlash, XCircle } from "react-bootstrap-icons";
-import { SetModalProps } from "../interfaces";
+import { SetModalProps } from "../types";
 
 const SetModal: React.FC<SetModalProps> = ({
   show,
