@@ -91,9 +91,10 @@ export default function PiercingsBlock(): JSX.Element {
               onClick={() => handleBtns(nodeId, nodeLoca)}
               disabled={prc.disabled}
             >
-              <div className="img-dummy">
+              <div className="img-cont">
                 <img
                   src={prc.imgurl}
+                  alt={`${prc.name} - ${prc.pt_bone}`}
                   className={
                     prc.bone === "piercing_lobe_a_l" ||
                     prc.bone === "piercing_brow_a_l" ||

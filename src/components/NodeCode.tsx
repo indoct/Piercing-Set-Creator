@@ -65,13 +65,6 @@ export default function NodeCode(): JSX.Element {
   }
 
   const generateModEls = (): JSX.Element[] => {
-    // const modMap = new Map<string, Piercing>();
-    // containsMod.map((obj) => modMap.set(obj.set_name, obj));
-
-    // const filteredData: Piercing[] = [];
-    // modMap.forEach((value) => {
-    //   filteredData.push(value);
-    // });
     const filteredData: Piercing[] = Array.from(
       new Map(containsMod.map((obj) => [obj.set_name, obj])).values()
     );

@@ -9,6 +9,11 @@
   --isc-btn-dis: #c2df1fbe;
 
   background-color: var(--isc-dark);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 html {
@@ -704,13 +709,13 @@ label.selected {
   background-color: var(--isc-gold);
 }
 
-.img-dummy {
+.img-cont {
   display: block;
   width: 100%;
   text-align: right;
 }
 
-.img-dummy img {
+.img-cont img {
   max-width: 100%;
   border-radius: 8px 8px 0 0;
 }
