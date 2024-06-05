@@ -57,6 +57,19 @@ a,
   font-family: "IBM Plex Sans", sans-serif;
 }
 
+a {
+  color: var(--isc-btn-pri);
+  text-decoration-line: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 2px;
+  text-decoration-color: var(--isc-btn-dis);
+  transition: text-decoration-color 0.4s;
+}
+
+a:hover {
+  text-decoration-color: transparent;
+}
+
 .mod-list a {
   color: var(--isc-btn-pri);
 }
@@ -728,6 +741,16 @@ label.selected {
 /* Node Code */
 .nc-btns-cont {
   justify-content: flex-end;
+}
+
+/* Fallback Error */
+.fallback pre {
+  padding: 1rem;
+}
+
+.fallback pre,
+.fallback p {
+  font-size: 1.06rem;
 }
 
 @media screen and (min-width: 576px) {

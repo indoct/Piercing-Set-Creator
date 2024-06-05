@@ -3,20 +3,21 @@ import { useSearchParams } from "react-router-dom";
 import data from "./data";
 import { Piercing, ContextValues } from "././interfaces";
 
-const defaultContextValues: ContextValues = {
-  type: "",
-  location: "",
-  mods: [],
-  piercings: [],
-  sessionOver: false,
-  handleFilterChange: () => {},
-  confirmDelete: () => {},
-  toggleSessionOver: () => {},
-  handleModsChange: () => {},
-  handleBtns: () => {},
-};
+// const defaultContextValues: ContextValues = {
+//   type: "",
+//   location: "",
+//   mods: [],
+//   piercings: [],
+//   sessionOver: false,
+//   handleFilterChange: () => {},
+//   confirmDelete: () => {},
+//   toggleSessionOver: () => {},
+//   handleModsChange: () => {},
+//   handleBtns: () => {},
+// };
 
-const AppContext = createContext<ContextValues>(defaultContextValues);
+// const AppContext = createContext<ContextValues>(defaultContextValues);
+const AppContext = createContext<ContextValues | undefined>(undefined);
 
 export const AppProvider = ({ children }: { children: React.ReactNode }) => {
   const [piercings, setPiercings] = useState<Piercing[]>(data);
@@ -116,7 +117,9 @@ export const useAppContext = (): ContextValues => {
   const context = useContext(AppContext);
 
   if (!context) {
-    throw new Error("useAppContext must be used within an AppContextProvider");
+    throw new Error(
+      "context returned undefined. Check it is being used within its Context Provider."
+    );
   }
 
   return context;
