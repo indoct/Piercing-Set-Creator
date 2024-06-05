@@ -59,6 +59,7 @@ export default function Header(): JSX.Element {
               variant="primary"
               onClick={() => setShowSet(true)}
               disabled={empty}
+              aria-label="Show Current Set Modal"
             >
               <ViewList />
             </Button>
@@ -76,6 +77,7 @@ export default function Header(): JSX.Element {
               id="instructions-btn"
               variant="secondary"
               onClick={() => setShowInstructions(true)}
+              aria-label="Show Instructions Modal"
             >
               <InfoCircle />
             </Button>
@@ -88,6 +90,7 @@ export default function Header(): JSX.Element {
               variant="secondary"
               onClick={confirmDelete}
               disabled={empty}
+              aria-label="Clear Current Set"
             >
               <Trash /> Clear Set
             </Button>
