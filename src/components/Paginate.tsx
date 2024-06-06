@@ -34,7 +34,9 @@ const Paginate: React.FC<PaginateProps> = (props) => {
   let lastPage = paginationRange[paginationRange.length - 1];
   return (
     <ul
-      className={classnames("pagination-container", { [className]: className })}
+      className={classnames("pagination-container", {
+        [className!]: className,
+      })}
     >
       <li
         className={classnames("pagination-item", {
@@ -45,16 +47,16 @@ const Paginate: React.FC<PaginateProps> = (props) => {
         <div className="arrow left" />
       </li>
       {paginationRange.map((pageNumber) => {
-        if (pageNumber === dots) {
-          return <li className="pagination-item dots">&#8230;</li>;
-        }
-
-        return (
+        return pageNumber === dots ? (
+          <li className="pagination-item dots">&#8230;</li>
+        ) : (
           <li
             className={classnames("pagination-item", {
               selected: pageNumber === currentPage,
             })}
-            onClick={() => onPageChange(pageNumber)}
+            onClick={() => {
+              if (typeof pageNumber === "number") onPageChange(pageNumber);
+            }}
           >
             {pageNumber}
           </li>
