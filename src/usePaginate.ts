@@ -13,10 +13,9 @@ export const usePaginate = ({
   itemsPerPage,
   siblingCount = 1,
   currentPage,
-}: UsePaginateProps): number[] => {
-  const paginationRange: (string | number)[] | undefined = useMemo(() => {
+}: UsePaginateProps): (string | number)[] => {
+  const paginationRange: (string | number)[] = useMemo(() => {
     const totalPageCount: number = Math.ceil(totalCount / itemsPerPage);
-
     const totalPageNumbers: number = siblingCount + 5;
 
     if (totalPageNumbers >= totalPageCount) {
@@ -55,6 +54,8 @@ export const usePaginate = ({
       let middleRange: number[] = range(leftSiblingIndex, rightSiblingIndex);
       return [firstPageIndex, dots, ...middleRange, dots, lastPageIndex];
     }
+
+    return [];
   }, [totalCount, itemsPerPage, siblingCount, currentPage]);
 
   return paginationRange;
