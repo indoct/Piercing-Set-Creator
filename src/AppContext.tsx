@@ -1,5 +1,5 @@
-import React, { createContext, useContext, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import React, { createContext, useContext, useState, useEffect } from "react";
+import { useSearchParams, useParams, useLocation } from "react-router-dom";
 import data from "./data";
 import { Piercing, ContextValues, ModList } from "./types";
 
@@ -11,15 +11,23 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
   const [mods, setMods] = useState<string[]>(ModList);
   const type: string | null = searchParams.get("type");
   const location: string | null = searchParams.get("location");
+  // const { currentPage } = useParams<{ currentPage: string }>();
+  // const page: string | null = searchParams.get("page");
+  const { pageNumber } = useParams<{ pageNumber: string }>();
+  const useLocaObj = useLocation();
   const [sessionOver, setSessionOver]: [
     boolean,
     React.Dispatch<React.SetStateAction<boolean>>
   ] = useState(false);
 
+  // const currentPage: number | null =
+  //   typeof page === "string" ? parseInt(page, 10) : null;
+
   const contextValues: ContextValues = {
     type,
     location,
     mods,
+    // currentPage,
     piercings,
     sessionOver,
     setMods,

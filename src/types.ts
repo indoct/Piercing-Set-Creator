@@ -2,6 +2,7 @@ export interface ContextValues {
   type: string | null;
   location: string | null;
   mods: string[];
+  // currentPage: number | null;
   piercings: Array<Piercing>;
   sessionOver: boolean;
   setMods: React.Dispatch<React.SetStateAction<string[]>>;
@@ -44,15 +45,6 @@ export interface SetModalProps extends ModalProps {
   sessionOver: boolean;
   togglePlay: () => void;
 }
-
-// export interface PaginateProps {
-//   onPageChange: () => void;
-//   totalCount: number;
-//   siblingCount: number;
-//   currentPage: number;
-//   itemsPerPage: number;
-//   className: string;
-// }
 
 export interface UsePaginateProps {
   totalCount: number;

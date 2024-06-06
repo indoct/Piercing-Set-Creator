@@ -45,7 +45,7 @@ export default function Header(): JSX.Element {
   return (
     <>
       <header>
-        <Row className="mt-3">
+        <Row className="mt-3 mt-md-0">
           <Col lg={6} className="align-self-center mb-3 mb-sm-0">
             <Link className="site-logo" to="/">
               Indoct's BG3 Piercing Set Creator

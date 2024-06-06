@@ -47,7 +47,7 @@ const Paginate: React.FC<PaginateProps> = (props) => {
       >
         <div className="arrow left" />
       </li>
-      {paginationRange.map((pageNumber) => {
+      {paginationRange.map((pageNumber, ind) => {
         return pageNumber === dots ? (
           <li className="pagination-item dots">&#8230;</li>
         ) : (
@@ -58,6 +58,7 @@ const Paginate: React.FC<PaginateProps> = (props) => {
             onClick={() => {
               if (typeof pageNumber === "number") onPageChange(pageNumber);
             }}
+            key={ind}
           >
             {pageNumber}
           </li>

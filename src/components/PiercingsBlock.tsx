@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useMemo } from "react";
 import { useAppContext } from "../AppContext";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -8,13 +8,14 @@ import Paginate from "./Paginate";
 let itemsPerPage: number = 54;
 
 export default function PiercingsBlock(): JSX.Element {
-  const [currentPage, setCurrentPage] = useState(1);
   const { piercings, type, location, mods, handleBtns } = useAppContext();
-  const currentPiercings = useMemo(() => {
-    const firstPageIndex = (currentPage - 1) * itemsPerPage;
-    const lastPageIndex = firstPageIndex + itemsPerPage;
-    return piercings.slice(firstPageIndex, lastPageIndex);
-  }, [currentPage]);
+
+  // const currentPiercings = useMemo(() => {
+  //   const pageCalc: number = currentPage === null ? 1 : currentPage;
+  //   const firstPageIndex = (pageCalc - 1) * itemsPerPage;
+  //   const lastPageIndex = firstPageIndex + itemsPerPage;
+  //   return piercings.slice(firstPageIndex, lastPageIndex);
+  // }, [currentPage]);
 
   function filterByMod(modArr: string[]): Piercing[] {
     if (location && type) {
@@ -101,7 +102,7 @@ export default function PiercingsBlock(): JSX.Element {
   const prcElements: JSX.Element | JSX.Element[] = Array.isArray(
     displayedPiercings
   )
-    ? currentPiercings.map((prc) => {
+    ? displayedPiercings.map((prc) => {
         const nodeId: string = prc.nodeid;
         const nodeLoca: string = prc.bone;
         return (
@@ -154,13 +155,13 @@ export default function PiercingsBlock(): JSX.Element {
       </Row>
       <Row className="mt-2 row-cols-2" sm="4" md="5" lg="6">
         {prcElements}
-        <Paginate
+        {/* <Paginate
           className="pagination-bar"
           currentPage={currentPage}
           totalCount={piercings.length}
           itemsPerPage={itemsPerPage}
           onPageChange={(page) => setCurrentPage(page)}
-        />
+        /> */}
       </Row>
     </>
   );
