@@ -45,6 +45,31 @@ export interface SetModalProps extends ModalProps {
   togglePlay: () => void;
 }
 
+// export interface PaginateProps {
+//   onPageChange: () => void;
+//   totalCount: number;
+//   siblingCount: number;
+//   currentPage: number;
+//   itemsPerPage: number;
+//   className: string;
+// }
+
+export interface UsePaginateProps {
+  totalCount: number;
+  itemsPerPage: number;
+  siblingCount?: number;
+  currentPage: number;
+}
+
+export interface PaginateProps {
+  onPageChange: (page: number) => void;
+  totalCount: number;
+  siblingCount?: number;
+  currentPage: number;
+  itemsPerPage: number;
+  className?: string;
+}
+
 export const ModList: string[] = [
   "isp_silver",
   "isp_gold",

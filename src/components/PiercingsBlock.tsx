@@ -1,9 +1,12 @@
+import { useState } from "react";
 import { useAppContext } from "../AppContext";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { Piercing } from "../types";
 
 export default function PiercingsBlock(): JSX.Element {
+  const [currentPage, setCurrentPage] = useState(1);
+
   const { piercings, type, location, mods, handleBtns } = useAppContext();
 
   function filterByMod(modArr: string[]): Piercing[] {
