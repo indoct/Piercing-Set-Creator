@@ -1,6 +1,7 @@
 import classnames from "classnames";
 import { usePaginate, dots } from "../usePaginate";
 import { PaginateProps } from "../types";
+import "../pagination.css";
 
 const Paginate: React.FC<PaginateProps> = (props) => {
   const {

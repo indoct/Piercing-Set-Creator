@@ -5,12 +5,12 @@ import Col from "react-bootstrap/Col";
 import { Piercing } from "../types";
 import Paginate from "./Paginate";
 
-let itemsPerPage: number = 50;
+let itemsPerPage: number = 54;
 
 export default function PiercingsBlock(): JSX.Element {
   const [currentPage, setCurrentPage] = useState(1);
   const { piercings, type, location, mods, handleBtns } = useAppContext();
-  const currentTableData = useMemo(() => {
+  const currentPiercings = useMemo(() => {
     const firstPageIndex = (currentPage - 1) * itemsPerPage;
     const lastPageIndex = firstPageIndex + itemsPerPage;
     return piercings.slice(firstPageIndex, lastPageIndex);
@@ -101,7 +101,7 @@ export default function PiercingsBlock(): JSX.Element {
   const prcElements: JSX.Element | JSX.Element[] = Array.isArray(
     displayedPiercings
   )
-    ? displayedPiercings.map((prc) => {
+    ? currentPiercings.map((prc) => {
         const nodeId: string = prc.nodeid;
         const nodeLoca: string = prc.bone;
         return (
