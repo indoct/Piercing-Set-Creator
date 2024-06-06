@@ -11,10 +11,10 @@ export default function PiercingsBlock(): JSX.Element {
   const { piercings, type, location, mods, handleBtns } = useAppContext();
 
   // const currentPiercings = useMemo(() => {
-  //   const pageCalc: number = currentPage === null ? 1 : currentPage;
-  //   const firstPageIndex = (pageCalc - 1) * itemsPerPage;
+  //   // const pageCalc: number = currentPage === null ? 1 : currentPage;
+  //   const firstPageIndex = (currentPage - 1) * itemsPerPage;
   //   const lastPageIndex = firstPageIndex + itemsPerPage;
-  //   return piercings.slice(firstPageIndex, lastPageIndex);
+  //   return displayedPiercings.slice(firstPageIndex, lastPageIndex);
   // }, [currentPage]);
 
   function filterByMod(modArr: string[]): Piercing[] {

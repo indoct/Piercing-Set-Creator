@@ -7,7 +7,7 @@ function App(): JSX.Element {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Navigate to="/1" />} />
-        <Route path="/:pageNumber" element={<Home />} />
+        <Route path="/:pageStr" element={<Home />} />
       </Routes>
     </BrowserRouter>
   );

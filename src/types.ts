@@ -2,7 +2,7 @@ export interface ContextValues {
   type: string | null;
   location: string | null;
   mods: string[];
-  // currentPage: number | null;
+  currentPage: number | null;
   piercings: Array<Piercing>;
   sessionOver: boolean;
   setMods: React.Dispatch<React.SetStateAction<string[]>>;
