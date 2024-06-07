@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { useAppContext } from "../AppContext";
 import { useParams } from "react-router-dom";
 import Row from "react-bootstrap/Row";
@@ -6,81 +6,99 @@ import Col from "react-bootstrap/Col";
 import { Piercing } from "../types";
 import Paginate from "./Paginate";
 
-let itemsPerPage: number = 54;
+let itemsPerPage: number = 50;
 
 export default function PiercingsBlock(): JSX.Element {
-  const { piercings, type, location, mods, handleBtns } = useAppContext();
+  const {
+    piercings,
+    type,
+    location,
+    mods,
+    typeFilter,
+    locationFilter,
+    handleBtns,
+  } = useAppContext();
   const { pageNumber } = useParams<{ pageNumber: string }>();
 
   function strToNum(page: string | undefined): number {
     return page === undefined ? 1 : parseInt(page);
   }
 
-  function filterByMod(modArr: string[]): Piercing[] {
-    if (location && type) {
-      const mainFilters: Piercing[] = piercings.filter(
-        (prc) => prc.location === location && prc.type === type
-      );
-      return mainFilters.filter((obj) => modArr.includes(obj.site_cat));
-    } else if (location && !type && mods.length === 4) {
-      return piercings.filter((prc) => prc.location === location);
-    } else if (location && !type && mods.length !== 4) {
-      const locaFirst: Piercing[] = piercings.filter(
-        (prc) => prc.location === location && prc.type !== "mod"
-      );
-      const selectedMods: Piercing[] = piercings.filter(
-        (obj) => modArr.includes(obj.site_cat) && obj.location === location
-      );
-      return selectedMods.concat(locaFirst);
-    } else if (!location && type && mods.length !== 4) {
-      const typeFirst: Piercing[] = piercings.filter(
-        (prc) => prc.type === type
-      );
-      return typeFirst.filter((obj) => modArr.includes(obj.site_cat));
-    } else if (!location && !type && mods.length === 4) {
-      return piercings;
-    } else if (!location && !type) {
-      const selectedMods: Piercing[] = piercings.filter((obj) =>
-        modArr.includes(obj.site_cat)
-      );
-      const noMods: Piercing[] = piercings.filter((prc) => prc.type !== "mod");
-      return noMods.concat(selectedMods);
-    } else {
-      return piercings.filter((obj) => modArr.includes(obj.site_cat));
-    }
-  }
+  const displayedPiercings = useMemo(() => {
+    return piercings.filter((piercing) => {
+      const matchesType = typeFilter ? piercing.type === typeFilter : true;
+      const matchesLocation = locationFilter
+        ? piercing.location === locationFilter
+        : true;
+      return matchesType && matchesLocation;
+    });
+  }, [piercings, typeFilter, locationFilter]);
 
-  function filterNoMods(): Piercing[] | JSX.Element {
-    if (type && location) {
-      return piercings.filter(
-        (prc) => prc.type === type && prc.location === location
-      );
-    } else if (location && !type) {
-      return piercings.filter((prc) => prc.location === location);
-    } else if (type !== "mod" && !location) {
-      return piercings.filter((prc) => prc.type === type);
-    } else if (type === "mod") {
-      return (
-        <Col>
-          <p>
-            There are no piercings with these filters.{" "}
-            {mods.length === 0 && "You have no mods selected in Mod Filters."}
-          </p>
-        </Col>
-      );
-    } else return piercings;
-  }
+  // function filterByMod(modArr: string[]): Piercing[] {
+  //   if (location && type) {
+  //     const mainFilters: Piercing[] = piercings.filter(
+  //       (prc) => prc.location === location && prc.type === type
+  //     );
+  //     return mainFilters.filter((obj) => modArr.includes(obj.site_cat));
+  //   } else if (location && !type && mods.length === 4) {
+  //     return piercings.filter((prc) => prc.location === location);
+  //   } else if (location && !type && mods.length !== 4) {
+  //     const locaFirst: Piercing[] = piercings.filter(
+  //       (prc) => prc.location === location && prc.type !== "mod"
+  //     );
+  //     const selectedMods: Piercing[] = piercings.filter(
+  //       (obj) => modArr.includes(obj.site_cat) && obj.location === location
+  //     );
+  //     return selectedMods.concat(locaFirst);
+  //   } else if (!location && type && mods.length !== 4) {
+  //     const typeFirst: Piercing[] = piercings.filter(
+  //       (prc) => prc.type === type
+  //     );
+  //     return typeFirst.filter((obj) => modArr.includes(obj.site_cat));
+  //   } else if (!location && !type && mods.length === 4) {
+  //     return piercings;
+  //   } else if (!location && !type) {
+  //     const selectedMods: Piercing[] = piercings.filter((obj) =>
+  //       modArr.includes(obj.site_cat)
+  //     );
+  //     const noMods: Piercing[] = piercings.filter((prc) => prc.type !== "mod");
+  //     return noMods.concat(selectedMods);
+  //   } else {
+  //     return piercings.filter((obj) => modArr.includes(obj.site_cat));
+  //   }
+  // }
 
-  const displayedPiercings: Piercing[] | JSX.Element =
-    mods.length > 0 && type !== "vanilla"
-      ? filterByMod(mods)
-      : mods.length > 0 && type === "vanilla" && !location
-      ? piercings.filter((prc) => prc.type === "vanilla")
-      : mods.length > 0 && type === "vanilla" && location
-      ? piercings.filter(
-          (prc) => prc.type === "vanilla" && prc.location === location
-        )
-      : filterNoMods();
+  // function filterNoMods(): Piercing[] | JSX.Element {
+  //   if (type && location) {
+  //     return piercings.filter(
+  //       (prc) => prc.type === type && prc.location === location
+  //     );
+  //   } else if (location && !type) {
+  //     return piercings.filter((prc) => prc.location === location);
+  //   } else if (type !== "mod" && !location) {
+  //     return piercings.filter((prc) => prc.type === type);
+  //   } else if (type === "mod") {
+  //     return (
+  //       <Col>
+  //         <p>
+  //           There are no piercings with these filters.{" "}
+  //           {mods.length === 0 && "You have no mods selected in Mod Filters."}
+  //         </p>
+  //       </Col>
+  //     );
+  //   } else return piercings;
+  // }
+
+  // const displayedPiercings: Piercing[] | JSX.Element =
+  //   mods.length > 0 && type !== "vanilla"
+  //     ? filterByMod(mods)
+  //     : mods.length > 0 && type === "vanilla" && !location
+  //     ? piercings.filter((prc) => prc.type === "vanilla")
+  //     : mods.length > 0 && type === "vanilla" && location
+  //     ? piercings.filter(
+  //         (prc) => prc.type === "vanilla" && prc.location === location
+  //       )
+  //     : filterNoMods();
 
   const srcToWebp = (src: string): string => {
     return src.replace(".jpg", ".webp");

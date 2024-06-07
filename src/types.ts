@@ -2,7 +2,8 @@ export interface ContextValues {
   type: string | null;
   location: string | null;
   mods: string[];
-  // currentPage: number;
+  typeFilter: string;
+  locationFilter: string;
   piercings: Array<Piercing>;
   sessionOver: boolean;
   setMods: React.Dispatch<React.SetStateAction<string[]>>;
