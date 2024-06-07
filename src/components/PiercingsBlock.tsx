@@ -1,6 +1,5 @@
-import { useMemo, useEffect } from "react";
+import { useMemo } from "react";
 import { useAppContext } from "../AppContext";
-import { useParams } from "react-router-dom";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { Piercing } from "../types";
