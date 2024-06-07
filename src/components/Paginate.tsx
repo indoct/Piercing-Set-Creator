@@ -1,4 +1,5 @@
 import classnames from "classnames";
+import { useNavigate } from "react-router-dom";
 import { usePaginate, dots } from "../usePaginate";
 import { PaginateProps } from "../types";
 import "../pagination.css";
@@ -13,6 +14,8 @@ const Paginate: React.FC<PaginateProps> = (props) => {
     className,
   } = props;
 
+  const navigate = useNavigate();
+
   const paginationRange = usePaginate({
     currentPage,
     totalCount,
@@ -25,11 +28,15 @@ const Paginate: React.FC<PaginateProps> = (props) => {
   }
 
   const onNext = () => {
-    onPageChange(currentPage + 1);
+    const nextPage = currentPage + 1;
+    navigate(`/${nextPage}`);
+    onPageChange(nextPage);
   };
 
   const onPrevious = () => {
-    onPageChange(currentPage - 1);
+    const prevPage = currentPage - 1;
+    navigate(`/${prevPage}`);
+    onPageChange(prevPage);
   };
 
   let lastPage = paginationRange[paginationRange.length - 1];
@@ -56,7 +63,10 @@ const Paginate: React.FC<PaginateProps> = (props) => {
               selected: pageNumber === currentPage,
             })}
             onClick={() => {
-              if (typeof pageNumber === "number") onPageChange(pageNumber);
+              if (typeof pageNumber === "number") {
+                navigate(`/${pageNumber}`);
+                onPageChange(pageNumber);
+              }
             }}
             key={ind}
           >

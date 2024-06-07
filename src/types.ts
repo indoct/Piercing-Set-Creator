@@ -2,7 +2,7 @@ export interface ContextValues {
   type: string | null;
   location: string | null;
   mods: string[];
-  currentPage: number | null;
+  // currentPage: number;
   piercings: Array<Piercing>;
   sessionOver: boolean;
   setMods: React.Dispatch<React.SetStateAction<string[]>>;
@@ -53,12 +53,8 @@ export interface UsePaginateProps {
   currentPage: number;
 }
 
-export interface PaginateProps {
+export interface PaginateProps extends UsePaginateProps {
   onPageChange: (page: number) => void;
-  totalCount: number;
-  siblingCount?: number;
-  currentPage: number;
-  itemsPerPage: number;
   className?: string;
 }
 

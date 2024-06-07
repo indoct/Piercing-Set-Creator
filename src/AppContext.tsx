@@ -12,24 +12,23 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
   const type: string | null = searchParams.get("type");
   const location: string | null = searchParams.get("location");
   // const page: string | null = searchParams.get("page");
-  const { pageStr } = useParams<{ pageStr: string }>();
-  const [currentPage, setCurrentPage] = useState<number>(1);
-  // const currentPage: number = pageStr === undefined ? 1 : parseInt(pageStr);
+  // const { pageNumber } = useParams<{ pageNumber: string }>();
+  // const [currentPage, setCurrentPage] = useState<number>(1);
+  // const currentPage: number = pageNumber === undefined ? 1 : parseInt(pageNumber);
   const [sessionOver, setSessionOver]: [
     boolean,
     React.Dispatch<React.SetStateAction<boolean>>
   ] = useState(false);
 
-  useEffect(() => {
-    setCurrentPage(pageStr === undefined ? 1 : parseInt(pageStr));
-    // return currentPage;
-  }, [pageStr]);
+  // useEffect(() => {
+  //   setCurrentPage(pageNumber === undefined ? 1 : parseInt(pageNumber));
+  //   // return currentPage;
+  // }, [pageNumber]);
 
   const contextValues: ContextValues = {
     type,
     location,
     mods,
-    currentPage,
     piercings,
     sessionOver,
     setMods,

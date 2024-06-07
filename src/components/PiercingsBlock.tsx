@@ -1,5 +1,6 @@
 import { useMemo } from "react";
 import { useAppContext } from "../AppContext";
+import { useParams } from "react-router-dom";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { Piercing } from "../types";
@@ -9,13 +10,11 @@ let itemsPerPage: number = 54;
 
 export default function PiercingsBlock(): JSX.Element {
   const { piercings, type, location, mods, handleBtns } = useAppContext();
+  const { pageNumber } = useParams<{ pageNumber: string }>();
 
-  // const currentPiercings = useMemo(() => {
-  //   // const pageCalc: number = currentPage === null ? 1 : currentPage;
-  //   const firstPageIndex = (currentPage - 1) * itemsPerPage;
-  //   const lastPageIndex = firstPageIndex + itemsPerPage;
-  //   return displayedPiercings.slice(firstPageIndex, lastPageIndex);
-  // }, [currentPage]);
+  function strToNum(page: string | undefined): number {
+    return page === undefined ? 1 : parseInt(page);
+  }
 
   function filterByMod(modArr: string[]): Piercing[] {
     if (location && type) {
@@ -140,6 +139,17 @@ export default function PiercingsBlock(): JSX.Element {
       })
     : displayedPiercings;
 
+  const onPageChange = (newPage: number) => {
+    const currentPiercings = useMemo(() => {
+      // const pageCalc: number = currentPage === null ? 1 : currentPage;
+      const firstPageIndex = (strToNum(pageNumber) - 1) * itemsPerPage;
+      const lastPageIndex = firstPageIndex + itemsPerPage;
+      return Array.isArray(displayedPiercings)
+        ? displayedPiercings.slice(firstPageIndex, lastPageIndex)
+        : displayedPiercings;
+    }, [pageNumber]);
+  };
+
   return (
     <>
       <Row className="mt-3 title-row">
@@ -155,13 +165,13 @@ export default function PiercingsBlock(): JSX.Element {
       </Row>
       <Row className="mt-2 row-cols-2" sm="4" md="5" lg="6">
         {prcElements}
-        {/* <Paginate
+        <Paginate
           className="pagination-bar"
-          currentPage={currentPage}
+          currentPage={strToNum(pageNumber)}
           totalCount={piercings.length}
           itemsPerPage={itemsPerPage}
-          onPageChange={(page) => setCurrentPage(page)}
-        /> */}
+          onPageChange={onPageChange}
+        />
       </Row>
     </>
   );
