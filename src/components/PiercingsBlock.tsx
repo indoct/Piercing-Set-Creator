@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo, useEffect, useState } from "react";
 import { useAppContext } from "../AppContext";
 import { useParams } from "react-router-dom";
 import Row from "react-bootstrap/Row";
@@ -6,7 +6,7 @@ import Col from "react-bootstrap/Col";
 import { Piercing } from "../types";
 import Paginate from "./Paginate";
 
-let itemsPerPage: number = 50;
+let itemsPerPage: number = 54;
 
 export default function PiercingsBlock(): JSX.Element {
   const {
@@ -14,25 +14,64 @@ export default function PiercingsBlock(): JSX.Element {
     type,
     location,
     mods,
+    modFilters,
     typeFilter,
     locationFilter,
     handleBtns,
   } = useAppContext();
-  const { pageNumber } = useParams<{ pageNumber: string }>();
+  const { pageParam } = useParams<{ pageParam: string }>();
+  const [pageNumber, setPageNumber] = useState<number>(1);
 
-  function strToNum(page: string | undefined): number {
-    return page === undefined ? 1 : parseInt(page);
-  }
+  console.log(modFilters);
 
-  const displayedPiercings = useMemo(() => {
+  useEffect(() => {
+    const number = pageParam ? parseInt(pageParam, 10) : 1;
+    setPageNumber(number);
+  }, [pageParam]);
+
+  // const filteredPiercings: Piercing[] = useMemo(() => {
+  //   return piercings.filter((piercing) => {
+  //     const matchesType = typeFilter ? piercing.type === typeFilter : true;
+  //     const matchesLocation = locationFilter
+  //       ? piercing.location === locationFilter
+  //       : true;
+  //     console.log(typeFilter);
+  //     const matchesMods =
+  //       typeFilter === "mod"
+  //         ? piercing.set_name
+  //           ? modFilters.includes(piercing.set_name)
+  //           : false
+  //         : typeFilter === "" // Show All option selected
+  //         ? true // Always include piercings when Show All is selected
+  //         : false; // Exclude piercings when Vanilla is selected
+  //     // typeFilter === "mod" ? modFilters.includes(piercing.set_name) : true;
+  //     console.log(matchesType, matchesLocation, matchesMods);
+  //     return matchesType && matchesLocation && matchesMods;
+  //   });
+  // }, [piercings, typeFilter, locationFilter, pageNumber]);
+
+  const filteredPiercings: Piercing[] = useMemo(() => {
     return piercings.filter((piercing) => {
       const matchesType = typeFilter ? piercing.type === typeFilter : true;
       const matchesLocation = locationFilter
         ? piercing.location === locationFilter
         : true;
-      return matchesType && matchesLocation;
+      const matchesMods =
+        typeFilter === "Mod" // If the type filter is "Mod"
+          ? piercing.set_name
+            ? modFilters.includes(piercing.set_name)
+            : false // Include mods if their set name is in modFilters
+          : typeFilter === "Vanilla" // If the type filter is "Vanilla"
+          ? piercing.type === "Vanilla" // Include only vanilla piercings
+          : true; // Include all piercings for other type filters or when no filter is selected
+      return matchesType && matchesLocation && matchesMods;
     });
-  }, [piercings, typeFilter, locationFilter]);
+  }, [piercings, typeFilter, locationFilter, modFilters]);
+  // const paginatedPiercings: Piercing[] = useMemo(() => {
+  //   const firstPageIndex = (pageNumber - 1) * itemsPerPage;
+  //   const lastPageIndex = firstPageIndex + itemsPerPage;
+  //   return filteredPiercings.slice(firstPageIndex, lastPageIndex);
+  // }, [filteredPiercings]);
 
   // function filterByMod(modArr: string[]): Piercing[] {
   //   if (location && type) {
@@ -116,57 +155,104 @@ export default function PiercingsBlock(): JSX.Element {
       : undefined;
   };
 
-  const prcElements: JSX.Element | JSX.Element[] = Array.isArray(
-    displayedPiercings
-  )
-    ? displayedPiercings.map((prc) => {
-        const nodeId: string = prc.nodeid;
-        const nodeLoca: string = prc.bone;
-        return (
-          <Col key={prc.nodeid} className="prc-col">
-            {prc.type === "mod" && (
-              <span className="set-name">{prc.set_name}</span>
-            )}
-            <button
-              type="button"
-              id={prc.index.toString()}
-              className={`prc-container ${prc.selected ? "selected" : ""}`}
-              onClick={() => handleBtns(nodeId, nodeLoca)}
-              disabled={prc.disabled}
-            >
-              <div className="img-cont">
-                <picture>
-                  <source
-                    srcSet={srcToWebp(prc.imgurl)}
-                    className={imgClass(prc.bone, prc.site_cat)}
-                  />
-                  <img
-                    src={prc.imgurl}
-                    alt={`${prc.name} - ${prc.pt_bone}`}
-                    className={imgClass(prc.bone, prc.site_cat)}
-                  />
-                </picture>
-              </div>
-              <ul className={`prc-stats config-cont ${prc.location}`}>
-                <li className="prc-name">{prc.name}</li>
-                <li className="location">{prc.pt_bone}</li>
-              </ul>
-            </button>
-          </Col>
-        );
-      })
-    : displayedPiercings;
+  // const displayedPiercings = useMemo(() => {
+  //   const firstPageIndex = (strToNum(pageNumber) - 1) * itemsPerPage;
+  //   const lastPageIndex = firstPageIndex + itemsPerPage;
+  //   return Array.isArray(filteredPiercings)
+  //     ? filteredPiercings.slice(firstPageIndex, lastPageIndex)
+  //     : filteredPiercings;
+  // }, [pageNumber]);
 
-  const onPageChange = (newPage: number) => {
-    const currentPiercings = useMemo(() => {
-      // const pageCalc: number = currentPage === null ? 1 : currentPage;
-      const firstPageIndex = (strToNum(pageNumber) - 1) * itemsPerPage;
-      const lastPageIndex = firstPageIndex + itemsPerPage;
-      return Array.isArray(displayedPiercings)
-        ? displayedPiercings.slice(firstPageIndex, lastPageIndex)
-        : displayedPiercings;
-    }, [pageNumber]);
-  };
+  // function paginatePiercings() {
+  //   const firstPageIndex = (pageNumber - 1) * itemsPerPage;
+  //   const lastPageIndex = firstPageIndex + itemsPerPage;
+  //   return Array.isArray(filteredPiercings)
+  //     ? filteredPiercings.slice(firstPageIndex, lastPageIndex)
+  //     : filteredPiercings;
+  // }
+  const prcElements: JSX.Element[] = filteredPiercings.map((prc) => {
+    const nodeId: string = prc.nodeid;
+    const nodeLoca: string = prc.bone;
+    return (
+      <Col key={prc.nodeid} className="prc-col">
+        {prc.type === "mod" && <span className="set-name">{prc.set_name}</span>}
+        <button
+          type="button"
+          id={prc.index.toString()}
+          className={`prc-container ${prc.selected ? "selected" : ""}`}
+          onClick={() => handleBtns(nodeId, nodeLoca)}
+          disabled={prc.disabled}
+        >
+          <div className="img-cont">
+            <picture>
+              <source
+                srcSet={srcToWebp(prc.imgurl)}
+                className={imgClass(prc.bone, prc.site_cat)}
+              />
+              <img
+                src={prc.imgurl}
+                alt={`${prc.name} - ${prc.pt_bone}`}
+                className={imgClass(prc.bone, prc.site_cat)}
+              />
+            </picture>
+          </div>
+          <ul className={`prc-stats config-cont ${prc.location}`}>
+            <li className="prc-name">{prc.name}</li>
+            <li className="location">{prc.pt_bone}</li>
+          </ul>
+        </button>
+      </Col>
+    );
+  });
+
+  // const prcElements: JSX.Element | JSX.Element[] = Array.isArray(
+  //   filteredPiercings
+  // )
+  //   ? filteredPiercings.map((prc) => {
+  //       const nodeId: string = prc.nodeid;
+  //       const nodeLoca: string = prc.bone;
+  //       return (
+  //         <Col key={prc.nodeid} className="prc-col">
+  //           {prc.type === "mod" && (
+  //             <span className="set-name">{prc.set_name}</span>
+  //           )}
+  //           <button
+  //             type="button"
+  //             id={prc.index.toString()}
+  //             className={`prc-container ${prc.selected ? "selected" : ""}`}
+  //             onClick={() => handleBtns(nodeId, nodeLoca)}
+  //             disabled={prc.disabled}
+  //           >
+  //             <div className="img-cont">
+  //               <picture>
+  //                 <source
+  //                   srcSet={srcToWebp(prc.imgurl)}
+  //                   className={imgClass(prc.bone, prc.site_cat)}
+  //                 />
+  //                 <img
+  //                   src={prc.imgurl}
+  //                   alt={`${prc.name} - ${prc.pt_bone}`}
+  //                   className={imgClass(prc.bone, prc.site_cat)}
+  //                 />
+  //               </picture>
+  //             </div>
+  //             <ul className={`prc-stats config-cont ${prc.location}`}>
+  //               <li className="prc-name">{prc.name}</li>
+  //               <li className="location">{prc.pt_bone}</li>
+  //             </ul>
+  //           </button>
+  //         </Col>
+  //       );
+  //     })
+  //   : filteredPiercings;
+
+  // const onPageChange = (newPage: number) => {
+  // const firstPageIndex = (strToNum(pageNumber) - 1) * itemsPerPage;
+  // const lastPageIndex = firstPageIndex + itemsPerPage;
+  // return Array.isArray(displayedPiercings)
+  //   ? displayedPiercings.slice(firstPageIndex, lastPageIndex)
+  //   : displayedPiercings;
+  // };
 
   return (
     <>
@@ -185,7 +271,7 @@ export default function PiercingsBlock(): JSX.Element {
         {prcElements}
         <Paginate
           className="pagination-bar"
-          currentPage={strToNum(pageNumber)}
+          currentPage={pageNumber}
           totalCount={piercings.length}
           itemsPerPage={itemsPerPage}
           onPageChange={onPageChange}

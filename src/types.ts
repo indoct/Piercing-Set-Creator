@@ -13,6 +13,8 @@ export interface ContextValues {
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => void;
   handleModsChange: (modname: string) => void;
+  modFilters: string[];
+  handleModFilterChange: (mod: string) => void;
   handleBtns: (nodeId: string, nodeLoca: string) => void;
 }
 

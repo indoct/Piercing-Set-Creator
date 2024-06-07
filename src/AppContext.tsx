@@ -17,6 +17,9 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
   ] = useState(false);
   const [typeFilter, setTypeFilter] = useState<string>("");
   const [locationFilter, setLocationFilter] = useState<string>("");
+  const [modFilters, setModFilters] = useState<string[]>(
+    searchParams.get("mods") ? searchParams.get("mods")!.split(",") : ModList
+  );
 
   const contextValues: ContextValues = {
     type,
@@ -31,6 +34,8 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
     confirmDelete,
     toggleSessionOver,
     handleModsChange,
+    modFilters,
+    handleModFilterChange,
     handleBtns,
   };
 
@@ -70,6 +75,24 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
     }
     if (value && key === "type") setTypeFilter(value);
     if (value && key === "location") setLocationFilter(value);
+  }
+
+  function handleModFilterChange(mod: string): void {
+    setModFilters((prevFilters) => {
+      const newFilters = prevFilters.includes(mod)
+        ? prevFilters.filter((id) => id !== mod)
+        : [...prevFilters, mod];
+
+      setSearchParams((prevParams) => {
+        const newParams: { [key: string]: string } = {
+          ...Object.fromEntries(prevParams),
+        };
+        newParams["mods"] = newFilters.join(",");
+        return new URLSearchParams(newParams);
+      });
+
+      return newFilters;
+    });
   }
 
   function confirmDelete(): void {

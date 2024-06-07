@@ -34,6 +34,8 @@ export default function Header(): JSX.Element {
     toggleSessionOver,
     sessionOver,
     handleModsChange,
+    modFilters,
+    handleModFilterChange,
   } = useAppContext();
 
   function handleCloseModal(modal: string): void {
@@ -224,7 +226,21 @@ export default function Header(): JSX.Element {
       >
         <Row>
           <Col>
-            <div className="mod-filters">
+            {type === "mod" && (
+              <div>
+                {modFilters.map((modId) => (
+                  <label key={modId}>
+                    <input
+                      type="checkbox"
+                      checked={modFilters.includes(modId)}
+                      onChange={() => handleModFilterChange(modId)}
+                    />
+                    Mod {modId}
+                  </label>
+                ))}
+              </div>
+            )}
+            {/* <div className="mod-filters">
               <button
                 onClick={() => {
                   handleModsChange("isp_gold");
@@ -300,7 +316,7 @@ export default function Header(): JSX.Element {
                 />
                 LVDNRs Earrings V1
               </button>
-            </div>
+            </div> */}
           </Col>
         </Row>
       </Animate>
