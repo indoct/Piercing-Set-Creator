@@ -216,7 +216,7 @@ export default function Header(): JSX.Element {
                   }
                 }}
               >
-                Reset Filters
+                Reset All Filters
               </button>
             )}
           </Col>
