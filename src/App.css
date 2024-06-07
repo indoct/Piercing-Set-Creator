@@ -108,14 +108,6 @@ button.btn-primary:disabled {
   color: var(--isc-dark);
 }
 
-.toggle {
-  display: flex;
-  justify-content: space-between;
-  text-align: center;
-  min-width: 175px;
-  align-items: center;
-}
-
 #copy-btn {
   padding: 16px 22px;
   font-size: 1.1rem;
@@ -202,21 +194,30 @@ header button:first-child,
   display: flex;
   flex-direction: row;
   gap: 8px;
-  padding: 8px 16px;
+  padding: 8px 12px;
   background-color: #403b3e;
   border-radius: 8px;
   flex-wrap: wrap;
+}
+
+.filter-btns button {
+  background: transparent;
+  border: 1px solid #837c80;
+  padding: 5px 10px;
+  border-radius: 16px;
 }
 
 .filters span {
   font-size: 1rem;
 }
 
-.filter-btns button {
-  background: transparent;
-  border: 1px solid #837c80;
-  padding: 5px 12px;
-  border-radius: 16px;
+.toggle {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  align-items: center;
+  min-width: 171px;
+  gap: 8px;
 }
 
 .filter {
@@ -343,12 +344,24 @@ header button:first-child,
   font-size: 0.98rem;
 }
 
-.filter-btns button.clear-btn {
+button.clear-btn {
   border-radius: 5px;
-  background-color: hsl(330 4% 70% / 1);
+  background-color: #b6afb3;
   color: var(--isc-dark);
   font-weight: 600;
-  margin-left: 10px;
+  margin-left: 4px;
+  transition: background-color 0.4s;
+}
+
+.clear-btn.btn {
+  font-size: 1rem;
+  margin-left: 0;
+}
+
+button.clear-btn:hover,
+.clear-btn.btn:hover {
+  background-color: var(--isc-btn-pri);
+  color: var(--isc-dark);
 }
 
 .settings-box h4 {

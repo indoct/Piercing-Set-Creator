@@ -1,21 +1,17 @@
 export interface ContextValues {
   type: string | null;
   location: string | null;
-  mods: string[];
-  typeFilter: string;
-  locationFilter: string;
   piercings: Array<Piercing>;
   sessionOver: boolean;
-  setMods: React.Dispatch<React.SetStateAction<string[]>>;
   handleFilterChange: (key: string, value: string | null) => void;
   confirmDelete: () => void;
   toggleSessionOver: (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => void;
-  handleModsChange: (modname: string) => void;
   modFilters: string[];
   handleModFilterChange: (mod: string) => void;
   handleBtns: (nodeId: string, nodeLoca: string) => void;
+  handleClearFilters: () => void;
 }
 
 export interface Piercing {

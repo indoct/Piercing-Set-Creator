@@ -8,35 +8,28 @@ const AppContext = createContext<ContextValues | undefined>(undefined);
 export const AppProvider = ({ children }: { children: React.ReactNode }) => {
   const [piercings, setPiercings] = useState<Piercing[]>(data);
   const [searchParams, setSearchParams] = useSearchParams();
-  const [mods, setMods] = useState<string[]>(ModList);
   const type: string | null = searchParams.get("type");
   const location: string | null = searchParams.get("location");
+  const [modFilters, setModFilters] = useState<string[]>(
+    searchParams.get("mods") ? searchParams.get("mods")!.split(",") : ModList
+  );
   const [sessionOver, setSessionOver]: [
     boolean,
     React.Dispatch<React.SetStateAction<boolean>>
   ] = useState(false);
-  const [typeFilter, setTypeFilter] = useState<string>("");
-  const [locationFilter, setLocationFilter] = useState<string>("");
-  const [modFilters, setModFilters] = useState<string[]>(
-    searchParams.get("mods") ? searchParams.get("mods")!.split(",") : ModList
-  );
-  console.log(modFilters);
+
   const contextValues: ContextValues = {
     type,
     location,
-    mods,
-    typeFilter,
-    locationFilter,
     piercings,
+    modFilters,
     sessionOver,
-    setMods,
     handleFilterChange,
     confirmDelete,
     toggleSessionOver,
-    handleModsChange,
-    modFilters,
     handleModFilterChange,
     handleBtns,
+    handleClearFilters,
   };
 
   function handleBtns(nodeId: string, nodeLoca: string): void {
@@ -69,12 +62,6 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
       }
       return newParams;
     });
-    if (!value) {
-      setTypeFilter("");
-      setLocationFilter("");
-    }
-    if (value && key === "type") setTypeFilter(value);
-    if (value && key === "location") setLocationFilter(value);
   }
 
   function handleModFilterChange(mod: string): void {
@@ -95,6 +82,17 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
     });
   }
 
+  function handleClearFilters(): void {
+    setSearchParams((prevParams) => {
+      const newParams = new URLSearchParams(prevParams.toString());
+      newParams.delete("type");
+      newParams.delete("location");
+      newParams.delete("mods");
+      return newParams;
+    });
+    setModFilters(ModList);
+  }
+
   function confirmDelete(): void {
     let result = confirm(
       "Are you sure you want to delete your set? \n \nPressing OK will clear your set configuration."
@@ -102,7 +100,7 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
     if (result) {
       setPiercings(data);
       setSessionOver(false);
-      setMods(ModList);
+      setModFilters(ModList);
     }
   }
 
@@ -112,14 +110,6 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
     if ((e.target as HTMLInputElement).id === "back-btn") setSessionOver(false);
     if ((e.target as HTMLInputElement).id === "generate-btn")
       setSessionOver(true);
-  }
-
-  function handleModsChange(modname: string): void {
-    setMods((prevMods) => {
-      return prevMods.includes(modname)
-        ? mods.filter((mod) => mod !== modname)
-        : [...mods, modname];
-    });
   }
 
   return (

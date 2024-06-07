@@ -1,120 +1,26 @@
-import { useMemo, useEffect, useState } from "react";
+import { useMemo, useEffect } from "react";
 import { useAppContext } from "../AppContext";
 import { useParams } from "react-router-dom";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { Piercing } from "../types";
-import Paginate from "./Paginate";
-
-let itemsPerPage: number = 54;
 
 export default function PiercingsBlock(): JSX.Element {
-  const {
-    piercings,
-    type,
-    location,
-    mods,
-    modFilters,
-    typeFilter,
-    locationFilter,
-    handleBtns,
-  } = useAppContext();
-  const { pageParam } = useParams<{ pageParam: string }>();
-  const [pageNumber, setPageNumber] = useState<number>(1);
-
-  useEffect(() => {
-    const number = pageParam ? parseInt(pageParam, 10) : 1;
-    setPageNumber(number);
-  }, [pageParam]);
+  const { piercings, type, location, modFilters, handleBtns } = useAppContext();
 
   const filteredPiercings: Piercing[] = useMemo(() => {
     return piercings.filter((piercing) => {
-      const matchesType = typeFilter ? piercing.type === typeFilter : true;
-      const matchesLocation = locationFilter
-        ? piercing.location === locationFilter
-        : true;
-
+      const matchesType = type ? piercing.type === type : true;
+      const matchesLocation = location ? piercing.location === location : true;
       const matchesMods =
         piercing.type === "mod"
           ? modFilters.includes(piercing.site_cat)
-          : typeFilter === "Vanilla"
+          : type === "Vanilla"
           ? piercing.type !== "mod"
           : true;
       return matchesType && matchesLocation && matchesMods;
     });
-  }, [piercings, typeFilter, locationFilter, modFilters]);
-
-  // const paginatedPiercings: Piercing[] = useMemo(() => {
-  //   const firstPageIndex = (pageNumber - 1) * itemsPerPage;
-  //   const lastPageIndex = firstPageIndex + itemsPerPage;
-  //   return filteredPiercings.slice(firstPageIndex, lastPageIndex);
-  // }, [filteredPiercings]);
-
-  // function filterByMod(modArr: string[]): Piercing[] {
-  //   if (location && type) {
-  //     const mainFilters: Piercing[] = piercings.filter(
-  //       (prc) => prc.location === location && prc.type === type
-  //     );
-  //     return mainFilters.filter((obj) => modArr.includes(obj.site_cat));
-  //   } else if (location && !type && mods.length === 4) {
-  //     return piercings.filter((prc) => prc.location === location);
-  //   } else if (location && !type && mods.length !== 4) {
-  //     const locaFirst: Piercing[] = piercings.filter(
-  //       (prc) => prc.location === location && prc.type !== "mod"
-  //     );
-  //     const selectedMods: Piercing[] = piercings.filter(
-  //       (obj) => modArr.includes(obj.site_cat) && obj.location === location
-  //     );
-  //     return selectedMods.concat(locaFirst);
-  //   } else if (!location && type && mods.length !== 4) {
-  //     const typeFirst: Piercing[] = piercings.filter(
-  //       (prc) => prc.type === type
-  //     );
-  //     return typeFirst.filter((obj) => modArr.includes(obj.site_cat));
-  //   } else if (!location && !type && mods.length === 4) {
-  //     return piercings;
-  //   } else if (!location && !type) {
-  //     const selectedMods: Piercing[] = piercings.filter((obj) =>
-  //       modArr.includes(obj.site_cat)
-  //     );
-  //     const noMods: Piercing[] = piercings.filter((prc) => prc.type !== "mod");
-  //     return noMods.concat(selectedMods);
-  //   } else {
-  //     return piercings.filter((obj) => modArr.includes(obj.site_cat));
-  //   }
-  // }
-
-  // function filterNoMods(): Piercing[] | JSX.Element {
-  //   if (type && location) {
-  //     return piercings.filter(
-  //       (prc) => prc.type === type && prc.location === location
-  //     );
-  //   } else if (location && !type) {
-  //     return piercings.filter((prc) => prc.location === location);
-  //   } else if (type !== "mod" && !location) {
-  //     return piercings.filter((prc) => prc.type === type);
-  //   } else if (type === "mod") {
-  //     return (
-  //       <Col>
-  //         <p>
-  //           There are no piercings with these filters.{" "}
-  //           {mods.length === 0 && "You have no mods selected in Mod Filters."}
-  //         </p>
-  //       </Col>
-  //     );
-  //   } else return piercings;
-  // }
-
-  // const displayedPiercings: Piercing[] | JSX.Element =
-  //   mods.length > 0 && type !== "vanilla"
-  //     ? filterByMod(mods)
-  //     : mods.length > 0 && type === "vanilla" && !location
-  //     ? piercings.filter((prc) => prc.type === "vanilla")
-  //     : mods.length > 0 && type === "vanilla" && location
-  //     ? piercings.filter(
-  //         (prc) => prc.type === "vanilla" && prc.location === location
-  //       )
-  //     : filterNoMods();
+  }, [piercings, type, location, modFilters]);
 
   const srcToWebp = (src: string): string => {
     return src.replace(".jpg", ".webp");
@@ -131,22 +37,6 @@ export default function PiercingsBlock(): JSX.Element {
       ? "flipped"
       : undefined;
   };
-
-  // const displayedPiercings = useMemo(() => {
-  //   const firstPageIndex = (strToNum(pageNumber) - 1) * itemsPerPage;
-  //   const lastPageIndex = firstPageIndex + itemsPerPage;
-  //   return Array.isArray(filteredPiercings)
-  //     ? filteredPiercings.slice(firstPageIndex, lastPageIndex)
-  //     : filteredPiercings;
-  // }, [pageNumber]);
-
-  // function paginatePiercings() {
-  //   const firstPageIndex = (pageNumber - 1) * itemsPerPage;
-  //   const lastPageIndex = firstPageIndex + itemsPerPage;
-  //   return Array.isArray(filteredPiercings)
-  //     ? filteredPiercings.slice(firstPageIndex, lastPageIndex)
-  //     : filteredPiercings;
-  // }
 
   const prcElements: JSX.Element | JSX.Element[] = Array.isArray(
     filteredPiercings
@@ -189,14 +79,6 @@ export default function PiercingsBlock(): JSX.Element {
       })
     : filteredPiercings;
 
-  const onPageChange = (newPage: number) => {
-    // const firstPageIndex = (strToNum(pageNumber) - 1) * itemsPerPage;
-    // const lastPageIndex = firstPageIndex + itemsPerPage;
-    // return Array.isArray(displayedPiercings)
-    //   ? displayedPiercings.slice(firstPageIndex, lastPageIndex)
-    //   : displayedPiercings;
-  };
-
   return (
     <>
       <Row className="mt-3 title-row">
@@ -213,13 +95,6 @@ export default function PiercingsBlock(): JSX.Element {
       {filteredPiercings.length > 0 ? (
         <Row className="mt-2 row-cols-2" sm="4" md="5" lg="6">
           {prcElements}
-          {/* <Paginate
-          className="pagination-bar"
-          currentPage={pageNumber}
-          totalCount={piercings.length}
-          itemsPerPage={itemsPerPage}
-          onPageChange={onPageChange}
-        /> */}
         </Row>
       ) : (
         <Row className="mt-2">

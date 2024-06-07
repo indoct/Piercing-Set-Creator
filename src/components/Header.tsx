@@ -15,7 +15,6 @@ import {
 } from "react-bootstrap-icons";
 import { Animate } from "react-simple-animate";
 import InstructionsModal from "./InstructionsModal";
-import { ModList } from "../types";
 
 export default function Header(): JSX.Element {
   const [showSet, setShowSet] = useState<boolean>(false);
@@ -26,16 +25,14 @@ export default function Header(): JSX.Element {
   const {
     type,
     location,
-    mods,
     piercings,
-    setMods,
     handleFilterChange,
     confirmDelete,
     toggleSessionOver,
     sessionOver,
-    handleModsChange,
-    modFilters,
     handleModFilterChange,
+    modFilters,
+    handleClearFilters,
   } = useAppContext();
 
   function handleCloseModal(modal: string): void {
@@ -101,12 +98,11 @@ export default function Header(): JSX.Element {
       </header>
       {!sessionOver && (
         <Row className="mt-2 mb-1">
-          <Col lg={6}>
+          <Col>
             <div className="filter-btns mb-1 mb-sm-0">
               <span>Type:</span>
               <button
                 onClick={() => {
-                  setMods(ModList);
                   handleFilterChange("type", null);
                 }}
                 className={`all-piercings ${!type ? "selected" : ""}`}
@@ -143,16 +139,16 @@ export default function Header(): JSX.Element {
                 className="toggle"
                 disabled={type === "vanilla"}
               >
-                {filtersOpen ? "Hide" : "Show"} Mod Filters{" "}
+                {filtersOpen ? "Hide" : "Show"} Mod Filters
                 {!filtersOpen ? (
-                  <PlusCircle size="18" />
+                  <PlusCircle size="17" />
                 ) : (
-                  <XCircle size="18" />
+                  <XCircle size="17" />
                 )}
               </button>
             </div>
           </Col>
-          <Col lg={6}>
+          <Col>
             <div className="filter-btns">
               <span>Location:</span>
               <button
@@ -202,11 +198,27 @@ export default function Header(): JSX.Element {
                   }}
                   className="clear-btn"
                 >
-                  Clear Filter
+                  Clear
                 </button>
               )}
             </div>
             {location === "lips" && <Tooltip id="my-tooltip" />}
+          </Col>
+          <Col lg={2} className="d-flex align-items-center">
+            {(type || location) && (
+              <button
+                className="clear-btn btn"
+                onClick={() => {
+                  handleClearFilters();
+                  if (filtersOpen) {
+                    setFiltersOpen((prevState) => !prevState);
+                    setPlay(!play);
+                  }
+                }}
+              >
+                Reset Filters
+              </button>
+            )}
           </Col>
         </Row>
       )}
@@ -226,63 +238,53 @@ export default function Header(): JSX.Element {
       >
         <Row>
           <Col>
-            {type === "mod" && (
-              <div>
-                {modFilters.map((modId) => (
-                  <label key={modId}>
-                    <input
-                      type="checkbox"
-                      checked={modFilters.includes(modId)}
-                      onChange={() => handleModFilterChange(modId)}
-                    />
-                    Mod {modId}
-                  </label>
-                ))}
-              </div>
-            )}
-            {/* <div className="mod-filters">
+            <div className="mod-filters">
               <button
                 onClick={() => {
-                  handleModsChange("isp_gold");
+                  handleModFilterChange("isp_gold");
                 }}
-                className={`mod ${mods.includes("isp_gold") ? "selected" : ""}`}
+                className={`mod ${
+                  modFilters.includes("isp_gold") ? "selected" : ""
+                }`}
               >
                 <input
                   type="checkbox"
-                  checked={mods.includes("isp_gold")}
+                  checked={modFilters.includes("isp_gold")}
                   readOnly
                 />
                 Indoct's Subtler Piercings (Gold)
               </button>
               <button
                 onClick={() => {
-                  handleModsChange("isp_silver");
+                  handleModFilterChange("isp_silver");
                 }}
                 className={`mod ${
-                  mods.includes("isp_silver") ? "selected" : ""
+                  modFilters.includes("isp_silver") ? "selected" : ""
                 }`}
               >
                 <input
                   type="checkbox"
-                  checked={mods.includes("isp_silver")}
+                  checked={modFilters.includes("isp_silver")}
                   readOnly
                 />
                 Indoct's Subtler Piercings (Silver)
               </button>
               <button
                 onClick={() => {
-                  handleModsChange("p4_blooming");
+                  handleModFilterChange("p4_blooming");
                 }}
                 disabled={location === "lips"}
                 className={`mod ${
-                  mods.includes("p4_blooming") && location !== "lips"
+                  modFilters.includes("p4_blooming") && location !== "lips"
                     ? "selected"
                     : ""
                 }`}
               >
                 <input
                   type="checkbox"
-                  checked={mods.includes("p4_blooming") && location !== "lips"}
+                  checked={
+                    modFilters.includes("p4_blooming") && location !== "lips"
+                  }
                   disabled={location === "lips"}
                   readOnly
                 />
@@ -290,33 +292,35 @@ export default function Header(): JSX.Element {
               </button>
               <button
                 onClick={() => {
-                  handleModsChange("ghouls_customs");
+                  handleModFilterChange("ghouls_customs");
                 }}
                 className={`mod ${
-                  mods.includes("ghouls_customs") ? "selected" : ""
+                  modFilters.includes("ghouls_customs") ? "selected" : ""
                 }`}
               >
                 <input
                   type="checkbox"
-                  checked={mods.includes("ghouls_customs")}
+                  checked={modFilters.includes("ghouls_customs")}
                   readOnly
                 />
                 Ghouls Custom Piercings
               </button>
               <button
                 onClick={() => {
-                  handleModsChange("LV_E_V1");
+                  handleModFilterChange("LV_E_V1");
                 }}
-                className={`mod ${mods.includes("LV_E_V1") ? "selected" : ""}`}
+                className={`mod ${
+                  modFilters.includes("LV_E_V1") ? "selected" : ""
+                }`}
               >
                 <input
                   type="checkbox"
-                  checked={mods.includes("LV_E_V1")}
+                  checked={modFilters.includes("LV_E_V1")}
                   readOnly
                 />
                 LVDNRs Earrings V1
               </button>
-            </div> */}
+            </div>
           </Col>
         </Row>
       </Animate>
