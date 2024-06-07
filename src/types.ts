@@ -1,17 +1,17 @@
 export interface ContextValues {
   type: string | null;
   location: string | null;
-  mods: string[];
   piercings: Array<Piercing>;
   sessionOver: boolean;
-  setMods: React.Dispatch<React.SetStateAction<string[]>>;
   handleFilterChange: (key: string, value: string | null) => void;
   confirmDelete: () => void;
   toggleSessionOver: (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => void;
-  handleModsChange: (modname: string) => void;
+  modFilters: string[];
+  handleModFilterChange: (mod: string) => void;
   handleBtns: (nodeId: string, nodeLoca: string) => void;
+  handleClearFilters: () => void;
 }
 
 export interface Piercing {
@@ -52,18 +52,14 @@ export interface UsePaginateProps {
   currentPage: number;
 }
 
-export interface PaginateProps {
+export interface PaginateProps extends UsePaginateProps {
   onPageChange: (page: number) => void;
-  totalCount: number;
-  siblingCount?: number;
-  currentPage: number;
-  itemsPerPage: number;
   className?: string;
 }
 
 export const ModList: string[] = [
-  "isp_silver",
   "isp_gold",
+  "isp_silver",
   "p4_blooming",
   "ghouls_customs",
   "LV_E_V1",
