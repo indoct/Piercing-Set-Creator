@@ -62,8 +62,8 @@ export interface PaginateProps extends UsePaginateProps {
 }
 
 export const ModList: string[] = [
-  "isp_silver",
   "isp_gold",
+  "isp_silver",
   "p4_blooming",
   "ghouls_customs",
   "LV_E_V1",

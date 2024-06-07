@@ -22,33 +22,10 @@ export default function PiercingsBlock(): JSX.Element {
   const { pageParam } = useParams<{ pageParam: string }>();
   const [pageNumber, setPageNumber] = useState<number>(1);
 
-  console.log(modFilters);
-
   useEffect(() => {
     const number = pageParam ? parseInt(pageParam, 10) : 1;
     setPageNumber(number);
   }, [pageParam]);
-
-  // const filteredPiercings: Piercing[] = useMemo(() => {
-  //   return piercings.filter((piercing) => {
-  //     const matchesType = typeFilter ? piercing.type === typeFilter : true;
-  //     const matchesLocation = locationFilter
-  //       ? piercing.location === locationFilter
-  //       : true;
-  //     console.log(typeFilter);
-  //     const matchesMods =
-  //       typeFilter === "mod"
-  //         ? piercing.set_name
-  //           ? modFilters.includes(piercing.set_name)
-  //           : false
-  //         : typeFilter === "" // Show All option selected
-  //         ? true // Always include piercings when Show All is selected
-  //         : false; // Exclude piercings when Vanilla is selected
-  //     // typeFilter === "mod" ? modFilters.includes(piercing.set_name) : true;
-  //     console.log(matchesType, matchesLocation, matchesMods);
-  //     return matchesType && matchesLocation && matchesMods;
-  //   });
-  // }, [piercings, typeFilter, locationFilter, pageNumber]);
 
   const filteredPiercings: Piercing[] = useMemo(() => {
     return piercings.filter((piercing) => {
@@ -56,17 +33,17 @@ export default function PiercingsBlock(): JSX.Element {
       const matchesLocation = locationFilter
         ? piercing.location === locationFilter
         : true;
+
       const matchesMods =
-        typeFilter === "Mod" // If the type filter is "Mod"
-          ? piercing.set_name
-            ? modFilters.includes(piercing.set_name)
-            : false // Include mods if their set name is in modFilters
-          : typeFilter === "Vanilla" // If the type filter is "Vanilla"
-          ? piercing.type === "Vanilla" // Include only vanilla piercings
-          : true; // Include all piercings for other type filters or when no filter is selected
+        piercing.type === "mod"
+          ? modFilters.includes(piercing.site_cat)
+          : typeFilter === "Vanilla"
+          ? piercing.type !== "mod"
+          : true;
       return matchesType && matchesLocation && matchesMods;
     });
   }, [piercings, typeFilter, locationFilter, modFilters]);
+
   // const paginatedPiercings: Piercing[] = useMemo(() => {
   //   const firstPageIndex = (pageNumber - 1) * itemsPerPage;
   //   const lastPageIndex = firstPageIndex + itemsPerPage;
@@ -170,89 +147,55 @@ export default function PiercingsBlock(): JSX.Element {
   //     ? filteredPiercings.slice(firstPageIndex, lastPageIndex)
   //     : filteredPiercings;
   // }
-  const prcElements: JSX.Element[] = filteredPiercings.map((prc) => {
-    const nodeId: string = prc.nodeid;
-    const nodeLoca: string = prc.bone;
-    return (
-      <Col key={prc.nodeid} className="prc-col">
-        {prc.type === "mod" && <span className="set-name">{prc.set_name}</span>}
-        <button
-          type="button"
-          id={prc.index.toString()}
-          className={`prc-container ${prc.selected ? "selected" : ""}`}
-          onClick={() => handleBtns(nodeId, nodeLoca)}
-          disabled={prc.disabled}
-        >
-          <div className="img-cont">
-            <picture>
-              <source
-                srcSet={srcToWebp(prc.imgurl)}
-                className={imgClass(prc.bone, prc.site_cat)}
-              />
-              <img
-                src={prc.imgurl}
-                alt={`${prc.name} - ${prc.pt_bone}`}
-                className={imgClass(prc.bone, prc.site_cat)}
-              />
-            </picture>
-          </div>
-          <ul className={`prc-stats config-cont ${prc.location}`}>
-            <li className="prc-name">{prc.name}</li>
-            <li className="location">{prc.pt_bone}</li>
-          </ul>
-        </button>
-      </Col>
-    );
-  });
 
-  // const prcElements: JSX.Element | JSX.Element[] = Array.isArray(
-  //   filteredPiercings
-  // )
-  //   ? filteredPiercings.map((prc) => {
-  //       const nodeId: string = prc.nodeid;
-  //       const nodeLoca: string = prc.bone;
-  //       return (
-  //         <Col key={prc.nodeid} className="prc-col">
-  //           {prc.type === "mod" && (
-  //             <span className="set-name">{prc.set_name}</span>
-  //           )}
-  //           <button
-  //             type="button"
-  //             id={prc.index.toString()}
-  //             className={`prc-container ${prc.selected ? "selected" : ""}`}
-  //             onClick={() => handleBtns(nodeId, nodeLoca)}
-  //             disabled={prc.disabled}
-  //           >
-  //             <div className="img-cont">
-  //               <picture>
-  //                 <source
-  //                   srcSet={srcToWebp(prc.imgurl)}
-  //                   className={imgClass(prc.bone, prc.site_cat)}
-  //                 />
-  //                 <img
-  //                   src={prc.imgurl}
-  //                   alt={`${prc.name} - ${prc.pt_bone}`}
-  //                   className={imgClass(prc.bone, prc.site_cat)}
-  //                 />
-  //               </picture>
-  //             </div>
-  //             <ul className={`prc-stats config-cont ${prc.location}`}>
-  //               <li className="prc-name">{prc.name}</li>
-  //               <li className="location">{prc.pt_bone}</li>
-  //             </ul>
-  //           </button>
-  //         </Col>
-  //       );
-  //     })
-  //   : filteredPiercings;
+  const prcElements: JSX.Element | JSX.Element[] = Array.isArray(
+    filteredPiercings
+  )
+    ? filteredPiercings.map((prc) => {
+        const nodeId: string = prc.nodeid;
+        const nodeLoca: string = prc.bone;
+        return (
+          <Col key={prc.nodeid} className="prc-col">
+            {prc.type === "mod" && (
+              <span className="set-name">{prc.set_name}</span>
+            )}
+            <button
+              type="button"
+              id={prc.index.toString()}
+              className={`prc-container ${prc.selected ? "selected" : ""}`}
+              onClick={() => handleBtns(nodeId, nodeLoca)}
+              disabled={prc.disabled}
+            >
+              <div className="img-cont">
+                <picture>
+                  <source
+                    srcSet={srcToWebp(prc.imgurl)}
+                    className={imgClass(prc.bone, prc.site_cat)}
+                  />
+                  <img
+                    src={prc.imgurl}
+                    alt={`${prc.name} - ${prc.pt_bone}`}
+                    className={imgClass(prc.bone, prc.site_cat)}
+                  />
+                </picture>
+              </div>
+              <ul className={`prc-stats config-cont ${prc.location}`}>
+                <li className="prc-name">{prc.name}</li>
+                <li className="location">{prc.pt_bone}</li>
+              </ul>
+            </button>
+          </Col>
+        );
+      })
+    : filteredPiercings;
 
-  // const onPageChange = (newPage: number) => {
-  // const firstPageIndex = (strToNum(pageNumber) - 1) * itemsPerPage;
-  // const lastPageIndex = firstPageIndex + itemsPerPage;
-  // return Array.isArray(displayedPiercings)
-  //   ? displayedPiercings.slice(firstPageIndex, lastPageIndex)
-  //   : displayedPiercings;
-  // };
+  const onPageChange = (newPage: number) => {
+    // const firstPageIndex = (strToNum(pageNumber) - 1) * itemsPerPage;
+    // const lastPageIndex = firstPageIndex + itemsPerPage;
+    // return Array.isArray(displayedPiercings)
+    //   ? displayedPiercings.slice(firstPageIndex, lastPageIndex)
+    //   : displayedPiercings;
+  };
 
   return (
     <>
@@ -267,16 +210,31 @@ export default function PiercingsBlock(): JSX.Element {
           </h5>
         </Col>
       </Row>
-      <Row className="mt-2 row-cols-2" sm="4" md="5" lg="6">
-        {prcElements}
-        <Paginate
+      {filteredPiercings.length > 0 ? (
+        <Row className="mt-2 row-cols-2" sm="4" md="5" lg="6">
+          {prcElements}
+          {/* <Paginate
           className="pagination-bar"
           currentPage={pageNumber}
           totalCount={piercings.length}
           itemsPerPage={itemsPerPage}
           onPageChange={onPageChange}
-        />
-      </Row>
+        /> */}
+        </Row>
+      ) : (
+        <Row className="mt-2">
+          <Col>
+            <p>
+              <big>
+                {" "}
+                There are no piercings with these filters.{" "}
+                {modFilters.length === 0 &&
+                  "You have no mods selected in Mod Filters."}
+              </big>
+            </p>
+          </Col>
+        </Row>
+      )}
     </>
   );
 }

@@ -20,7 +20,7 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
   const [modFilters, setModFilters] = useState<string[]>(
     searchParams.get("mods") ? searchParams.get("mods")!.split(",") : ModList
   );
-
+  console.log(modFilters);
   const contextValues: ContextValues = {
     type,
     location,
