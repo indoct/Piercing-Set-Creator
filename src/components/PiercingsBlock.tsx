@@ -32,8 +32,6 @@ export default function PiercingsBlock(): JSX.Element {
     if (id !== currentPage) setCurrentPage(id);
   }
 
-  console.log(currentPage);
-
   return (
     <>
       <Row className="mt-3 title-row">
