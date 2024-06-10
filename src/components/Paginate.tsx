@@ -1,11 +1,13 @@
 import { useState, useEffect, useMemo } from "react";
 import { Piercing, PaginateProps } from "../types";
-import { Col } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 
 const Paginate: React.FC<PaginateProps> = ({
   itemsPerPage,
   originalArray,
   currentPage,
+  handleBtns,
+  handlePageChange,
 }) => {
   const [piercingPages, setPiercingPages] = useState<Piercing[][]>([]);
   const [pageNums, setPageNums] = useState<number[]>([]);
@@ -92,20 +94,27 @@ const Paginate: React.FC<PaginateProps> = ({
     setPageNums(pages);
   }, [piercingPages]);
 
-  const pageNumEls: JSX.Element = !piercingPages.length ? (
-    <p>Loading...</p>
-  ) : (
-    <ul>
+  const pageNumEls: JSX.Element = (
+    <ul className="page-nums">
       {pageNums.map((page, ind) => {
-        return <li key={ind}>{page}</li>;
+        return (
+          <li
+            key={ind}
+            className={ind + 1 === currentPage ? "current-page" : ""}
+          >
+            <a href="#">{page}</a>
+          </li>
+        );
       })}
     </ul>
   );
 
   return (
     <>
-      {currentPagePrcs}
-      {pageNumEls}
+      <Row className="mt-2 row-cols-2" sm="4" md="5" lg="6">
+        {currentPagePrcs}
+      </Row>
+      <Row className="mt-3">{pageNumEls}</Row>
     </>
   );
 };

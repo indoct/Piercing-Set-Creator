@@ -45,23 +45,13 @@ export interface SetModalProps extends ModalProps {
   togglePlay: () => void;
 }
 
-// export interface UsePaginateProps {
-//   totalCount: number;
-//   itemsPerPage: number;
-//   siblingCount?: number;
-//   currentPage: number;
-// }
-
 export interface PaginateProps {
   itemsPerPage: number;
   originalArray: Array<Piercing>;
   currentPage: number;
+  handleBtns: (nodeId: string, nodeLoca: string) => void;
+  handlePageChange: (nextPage: number) => void;
 }
-
-// export interface PaginateProps extends UsePaginateProps {
-//   onPageChange: (page: number) => void;
-//   className?: string;
-// }
 
 export const ModList: string[] = [
   "isp_gold",
