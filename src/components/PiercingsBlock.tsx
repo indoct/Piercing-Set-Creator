@@ -21,6 +21,8 @@ export default function PiercingsBlock(): JSX.Element {
     });
   }, [piercings, type, location, modFilters]);
 
+  console.log(filteredPiercings.length);
+
   const srcToWebp = (src: string): string => {
     return src.replace(".jpg", ".webp");
   };
@@ -37,46 +39,42 @@ export default function PiercingsBlock(): JSX.Element {
       : undefined;
   };
 
-  const prcElements: JSX.Element | JSX.Element[] = Array.isArray(
-    filteredPiercings
-  )
-    ? filteredPiercings.map((prc) => {
-        const nodeId: string = prc.nodeid;
-        const nodeLoca: string = prc.bone;
-        return (
-          <Col key={prc.nodeid} className="prc-col">
-            {prc.type === "mod" && (
-              <span className="set-name">{prc.set_name}</span>
-            )}
-            <button
-              type="button"
-              id={prc.index.toString()}
-              className={`prc-container ${prc.selected ? "selected" : ""}`}
-              onClick={() => handleBtns(nodeId, nodeLoca)}
-              disabled={prc.disabled}
-            >
-              <div className="img-cont">
-                <picture>
-                  <source
-                    srcSet={srcToWebp(prc.imgurl)}
-                    className={imgClass(prc.bone, prc.site_cat)}
-                  />
-                  <img
-                    src={prc.imgurl}
-                    alt={`${prc.name} - ${prc.pt_bone}`}
-                    className={imgClass(prc.bone, prc.site_cat)}
-                  />
-                </picture>
-              </div>
-              <ul className={`prc-stats config-cont ${prc.location}`}>
-                <li className="prc-name">{prc.name}</li>
-                <li className="location">{prc.pt_bone}</li>
-              </ul>
-            </button>
-          </Col>
-        );
-      })
-    : filteredPiercings;
+  const prcElements: JSX.Element[] = filteredPiercings.map((prc) => {
+    const nodeId: string = prc.nodeid;
+    const nodeLoca: string = prc.bone;
+    return (
+      <Col key={prc.nodeid} className="prc-col">
+        {prc.type === "mod" && <span className="set-name">{prc.set_name}</span>}
+        <button
+          type="button"
+          id={prc.index.toString()}
+          className={`prc-container ${prc.selected ? "selected" : ""}`}
+          onClick={() => handleBtns(nodeId, nodeLoca)}
+          disabled={prc.disabled}
+        >
+          <div className="img-cont">
+            <picture>
+              <source
+                srcSet={srcToWebp(prc.imgurl)}
+                className={imgClass(prc.bone, prc.site_cat)}
+              />
+              <img
+                src={prc.imgurl}
+                alt={`${prc.name} - ${prc.pt_bone}`}
+                className={imgClass(prc.bone, prc.site_cat)}
+              />
+            </picture>
+          </div>
+          <ul className={`prc-stats config-cont ${prc.location}`}>
+            <li className="prc-name">{prc.name}</li>
+            <li className="location">{prc.pt_bone}</li>
+          </ul>
+        </button>
+      </Col>
+    );
+  });
+
+  console.log(prcElements.length);
 
   return (
     <>
