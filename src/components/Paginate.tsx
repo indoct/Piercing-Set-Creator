@@ -74,6 +74,8 @@ const Paginate: React.FC<PaginateProps> = ({
                 <img
                   src={prc.imgurl}
                   alt={`${prc.name} - ${prc.pt_bone}`}
+                  height="150"
+                  width="254"
                   className={imgClass(prc.bone, prc.site_cat)}
                 />
               </picture>
