@@ -205,20 +205,19 @@ export default function Header(): JSX.Element {
             {location === "lips" && <Tooltip id="my-tooltip" />}
           </Col>
           <Col lg={2} className="d-flex align-items-center">
-            {(type || location) && (
-              <button
-                className="clear-btn btn"
-                onClick={() => {
-                  handleClearFilters();
-                  if (filtersOpen) {
-                    setFiltersOpen((prevState) => !prevState);
-                    setPlay(!play);
-                  }
-                }}
-              >
-                Reset All Filters
-              </button>
-            )}
+            <button
+              className="clear-btn btn"
+              onClick={() => {
+                handleClearFilters();
+                if (filtersOpen) {
+                  setFiltersOpen((prevState) => !prevState);
+                  setPlay(!play);
+                }
+              }}
+              disabled={type === null && location === null}
+            >
+              Reset All Filters
+            </button>
           </Col>
         </Row>
       )}

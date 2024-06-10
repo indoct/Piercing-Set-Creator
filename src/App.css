@@ -372,6 +372,10 @@ button.clear-btn:hover,
   color: var(--isc-dark);
 }
 
+.filter-row .clear-btn:disabled {
+  border: 1px solid #3a3638;
+}
+
 .settings-box h4 {
   padding-top: 0;
 }
