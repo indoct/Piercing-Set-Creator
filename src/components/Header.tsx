@@ -97,7 +97,7 @@ export default function Header(): JSX.Element {
         </Row>
       </header>
       {!sessionOver && (
-        <Row className="mt-2 mb-1">
+        <Row className="mt-2 filter-row mb-1">
           <Col>
             <div className="filter-btns mb-1 mb-sm-0">
               <span>Type:</span>

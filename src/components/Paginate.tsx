@@ -97,12 +97,14 @@ const Paginate: React.FC<PaginateProps> = ({
   const pageNumEls: JSX.Element = (
     <ul className="page-nums">
       {pageNums.map((page, ind) => {
+        const current: boolean = ind + 1 === currentPage;
         return (
-          <li
-            key={ind}
-            className={ind + 1 === currentPage ? "current-page" : ""}
-          >
-            <button id={page.toString()} onClick={handlePageChange}>
+          <li key={ind} className={current ? "current-page" : ""}>
+            <button
+              id={page.toString()}
+              onClick={handlePageChange}
+              disabled={current}
+            >
               {page}
             </button>
           </li>

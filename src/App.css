@@ -186,6 +186,11 @@ header button:first-child,
   background-color: var(--isc-dark);
 }
 
+.filter-row.row > * {
+  padding-right: calc(1em * 0.3) !important;
+  padding-left: calc(1em * 0.3) !important;
+}
+
 .filters {
   gap: 20px;
 }
@@ -193,7 +198,7 @@ header button:first-child,
 .filter-btns {
   display: flex;
   flex-direction: row;
-  gap: 8px;
+  gap: 7px;
   padding: 8px 12px;
   background-color: #403b3e;
   border-radius: 8px;
@@ -205,6 +210,7 @@ header button:first-child,
   border: 1px solid #837c80;
   padding: 5px 10px;
   border-radius: 16px;
+  font-size: 15px;
 }
 
 .filters span {
@@ -216,8 +222,8 @@ header button:first-child,
   justify-content: space-between;
   text-align: center;
   align-items: center;
-  min-width: 171px;
-  gap: 8px;
+  min-width: 162px;
+  gap: 6px;
 }
 
 .filter {
@@ -241,12 +247,14 @@ header button:first-child,
   flex-direction: row;
   gap: 8px;
   align-items: center;
-  padding: 5px 10px;
+  padding: 6px;
   border: 2px solid #403b3e;
   border-radius: 5px;
   background-color: #403b3e;
   transition: all 0.4s;
-  font-size: 0.95rem;
+  font-size: 0.94rem;
+  letter-spacing: 0;
+  line-height: 1.1;
 }
 
 .mod-filters input[type="checkbox"] {
@@ -759,23 +767,30 @@ label.selected {
   justify-content: center;
 }
 
-.page-nums li a {
+.page-nums li button {
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 50%;
   width: 50px;
   height: 50px;
-  background-color: rgb(42, 42, 42);
+  background-color: #393137;
   text-decoration: none;
+  border: 1px solid #3a3638;
+  transition: background-color 0.4s;
 }
 
-.page-nums li a:hover {
-  background-color: rgb(87, 87, 87);
+.page-nums li button:hover {
+  background-color: #564b53;
 }
 
-/* .current-page {
-} */
+.page-nums .current-page button {
+  background-color: var(--isc-dark);
+}
+
+.current-page button:disabled {
+  pointer-events: none;
+}
 
 /* Node Code */
 .nc-btns-cont {
@@ -818,5 +833,11 @@ label.selected {
   }
   header button:first-child::after {
     content: "View Set";
+  }
+}
+
+@media screen and (min-width: 1260px) {
+  #filter-btns button {
+    font-size: 14px !important;
   }
 }
