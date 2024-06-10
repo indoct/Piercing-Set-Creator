@@ -10,6 +10,7 @@ export default function PiercingsBlock(): JSX.Element {
   const [currentPage, setCurrentPage] = useState<number>(1);
 
   const filteredPiercings: Piercing[] = useMemo(() => {
+    if (currentPage !== 1) setCurrentPage(1);
     return piercings.filter((piercing) => {
       const matchesType = type ? piercing.type === type : true;
       const matchesLocation = location ? piercing.location === location : true;
@@ -23,9 +24,15 @@ export default function PiercingsBlock(): JSX.Element {
     });
   }, [piercings, type, location, modFilters]);
 
-  function handlePageChange(nextPage: number) {
-    setCurrentPage(nextPage);
+  function handlePageChange(
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) {
+    const target = e.target as HTMLButtonElement;
+    const id = parseInt(target.id);
+    if (id !== currentPage) setCurrentPage(id);
   }
+
+  console.log(currentPage);
 
   return (
     <>
@@ -46,7 +53,7 @@ export default function PiercingsBlock(): JSX.Element {
           originalArray={filteredPiercings}
           currentPage={currentPage}
           handleBtns={handleBtns}
-          handlePageChange={handlePageChange}
+          handlePageChange={(e) => handlePageChange(e)}
         />
       ) : (
         <Row className="mt-2">

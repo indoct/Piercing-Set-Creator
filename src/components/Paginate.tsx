@@ -102,7 +102,9 @@ const Paginate: React.FC<PaginateProps> = ({
             key={ind}
             className={ind + 1 === currentPage ? "current-page" : ""}
           >
-            <a href="#">{page}</a>
+            <button id={page.toString()} onClick={handlePageChange}>
+              {page}
+            </button>
           </li>
         );
       })}

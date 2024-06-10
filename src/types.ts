@@ -50,7 +50,9 @@ export interface PaginateProps {
   originalArray: Array<Piercing>;
   currentPage: number;
   handleBtns: (nodeId: string, nodeLoca: string) => void;
-  handlePageChange: (nextPage: number) => void;
+  handlePageChange: (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => void;
 }
 
 export const ModList: string[] = [
