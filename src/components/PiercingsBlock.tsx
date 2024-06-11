@@ -8,6 +8,10 @@ import Paginate from "./Paginate";
 export default function PiercingsBlock(): JSX.Element {
   const { piercings, type, location, modFilters, handleBtns } = useAppContext();
   const [currentPage, setCurrentPage] = useState<number>(1);
+  const [pageLength, setPageLength] = useState<number>(54);
+  const [selectedOption, setSelectedOption] = useState<string | number>(
+    pageLength
+  );
 
   const filteredPiercings: Piercing[] = useMemo(() => {
     if (currentPage !== 1) setCurrentPage(1);
@@ -22,7 +26,7 @@ export default function PiercingsBlock(): JSX.Element {
           : true;
       return matchesType && matchesLocation && matchesMods;
     });
-  }, [piercings, type, location, modFilters]);
+  }, [piercings, type, location, modFilters, pageLength]);
 
   function handlePageChange(
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
@@ -31,6 +35,16 @@ export default function PiercingsBlock(): JSX.Element {
     const id = parseInt(target.id);
     if (id !== currentPage) setCurrentPage(id);
   }
+
+  const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const value = event.target.value;
+    setSelectedOption(value);
+    if (value === "All") {
+      setPageLength(filteredPiercings.length);
+    } else {
+      setPageLength(Number(value));
+    }
+  };
 
   return (
     <>
@@ -44,11 +58,24 @@ export default function PiercingsBlock(): JSX.Element {
               : "All Piercings"}
           </h5>
         </Col>
+        <Col className="d-flex justify-content-end align-items-center">
+          <label htmlFor="page-length">per page: </label>
+          <select
+            value={selectedOption}
+            onChange={handleSelectChange}
+            id="page-length"
+          >
+            <option value="30">30</option>
+            <option value="54">54</option>
+            <option value="84">84</option>
+            <option value="All">All ({filteredPiercings.length})</option>
+          </select>
+        </Col>
       </Row>
       {filteredPiercings.length > 0 ? (
         <Paginate
-          itemsPerPage={54}
-          originalArray={filteredPiercings}
+          itemsPerPage={pageLength}
+          filteredPiercings={filteredPiercings}
           currentPage={currentPage}
           handleBtns={handleBtns}
           handlePageChange={(e) => handlePageChange(e)}

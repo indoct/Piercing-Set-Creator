@@ -54,7 +54,8 @@ button.btn,
 .filter-btns button,
 .mod-filters button,
 a,
-.modal-content {
+.modal-content,
+select {
   font-family: "IBM Plex Sans", sans-serif;
 }
 
@@ -379,6 +380,8 @@ button.clear-btn:hover,
 }
 .prc-name {
   font-weight: 600;
+  text-wrap: nowrap;
+  overflow-x: hidden;
 }
 
 .warning-txt {
@@ -441,6 +444,18 @@ span.token {
   padding-bottom: 0.3rem;
   padding-top: 1rem;
   font-size: 1.2rem;
+}
+
+/* pageLength select */
+#page-length {
+  margin-left: 6px;
+}
+
+label[for="page-length"] {
+  font-family: monospace;
+  text-transform: uppercase;
+  font-size: 13px;
+  color: hsl(312 4% 62% / 1);
 }
 
 /* Config Modal */
@@ -649,9 +664,12 @@ span.token {
 .page-nums {
   display: flex;
   list-style-type: none;
-  column-gap: 20px;
+  column-gap: 16px;
+  row-gap: 10px;
   justify-content: center;
   margin-bottom: 0;
+  flex-wrap: wrap;
+  padding-left: 0;
 }
 
 .page-nums li button {

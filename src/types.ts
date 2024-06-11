@@ -47,7 +47,7 @@ export interface SetModalProps extends ModalProps {
 
 export interface PaginateProps {
   itemsPerPage: number;
-  originalArray: Array<Piercing>;
+  filteredPiercings: Array<Piercing>;
   currentPage: number;
   handleBtns: (nodeId: string, nodeLoca: string) => void;
   handlePageChange: (

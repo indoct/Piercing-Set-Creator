@@ -4,7 +4,7 @@ import { Row, Col } from "react-bootstrap";
 
 const Paginate: React.FC<PaginateProps> = ({
   itemsPerPage,
-  originalArray,
+  filteredPiercings,
   currentPage,
   handleBtns,
   handlePageChange,
@@ -21,9 +21,9 @@ const Paginate: React.FC<PaginateProps> = ({
       return result;
     };
 
-    const result = prcPage(originalArray, itemsPerPage);
+    const result = prcPage(filteredPiercings, itemsPerPage);
     setPiercingPages(result);
-  }, [itemsPerPage, originalArray]);
+  }, [itemsPerPage, filteredPiercings]);
 
   const srcToWebp = (src: string): string => {
     return src.replace(".jpg", ".webp");
@@ -97,22 +97,24 @@ const Paginate: React.FC<PaginateProps> = ({
   }, [piercingPages]);
 
   const pageNumEls: JSX.Element = (
-    <ul className="page-nums">
-      {pageNums.map((page, ind) => {
-        const current: boolean = ind + 1 === currentPage;
-        return (
-          <li key={ind} className={current ? "current-page" : ""}>
-            <button
-              id={page.toString()}
-              onClick={handlePageChange}
-              disabled={current}
-            >
-              {page}
-            </button>
-          </li>
-        );
-      })}
-    </ul>
+    <Col>
+      <ul className="page-nums">
+        {pageNums.map((page, ind) => {
+          const current: boolean = ind + 1 === currentPage;
+          return (
+            <li key={ind} className={current ? "current-page" : ""}>
+              <button
+                id={page.toString()}
+                onClick={handlePageChange}
+                disabled={current}
+              >
+                {page}
+              </button>
+            </li>
+          );
+        })}
+      </ul>
+    </Col>
   );
 
   return (
