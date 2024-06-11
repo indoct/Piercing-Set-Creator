@@ -1,5 +1,6 @@
 import ReactDOM from "react-dom/client";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { StrictMode } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./Home";
 
 function App(): JSX.Element {
@@ -13,4 +14,9 @@ function App(): JSX.Element {
 }
 
 const root = document.getElementById("root");
-root && ReactDOM.createRoot(root).render(<App />);
+root &&
+  ReactDOM.createRoot(root).render(
+    <StrictMode>
+      <App />
+    </StrictMode>
+  );
