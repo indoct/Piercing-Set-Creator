@@ -101,7 +101,7 @@ export default function Header(): JSX.Element {
       </header>
       {!sessionOver && (
         <Row className="mt-2 filter-row mb-1">
-          <Col xs={12} lg={6}>
+          <Col xs={12} lg={6} xl={5}>
             <div className="filter-btns mb-1 mb-xl-0">
               <span>Type:</span>
               <button
@@ -155,7 +155,7 @@ export default function Header(): JSX.Element {
               </button>
             </div>
           </Col>
-          <Col lg={6}>
+          <Col lg={6} xl={5}>
             <div className="filter-btns loca-filters">
               <span>Location:</span>
               <button
@@ -223,7 +223,7 @@ export default function Header(): JSX.Element {
           >
             <button
               type="button"
-              className="clear-btn btn"
+              className="clear-btn btn reset"
               onClick={() => {
                 handleClearFilters();
                 if (filtersOpen) {
