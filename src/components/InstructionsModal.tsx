@@ -13,7 +13,7 @@ const InstructionsModal: React.FC<ModalProps> = ({ onClose, show }) => {
         <Modal.Body>
           <p className="warning">
             This web app is for larger devices only. As it's a PC modding tool,
-            it might not display well on mobile.
+            it may not display well mobile.
           </p>
           <h5>Steps:</h5>
           <ol>

@@ -98,7 +98,7 @@ export default function Header(): JSX.Element {
       </header>
       {!sessionOver && (
         <Row className="mt-2 filter-row mb-1">
-          <Col>
+          <Col xs={12}>
             <div className="filter-btns mb-1 mb-sm-0">
               <span>Type:</span>
               <button
@@ -149,7 +149,7 @@ export default function Header(): JSX.Element {
             </div>
           </Col>
           <Col>
-            <div className="filter-btns">
+            <div className="filter-btns loca-filters">
               <span>Location:</span>
               <button
                 onClick={() => {
