@@ -44,17 +44,18 @@ export default function Header(): JSX.Element {
   return (
     <>
       <header>
-        <Row className="mt-3 mt-md-0">
-          <Col lg={6} className="align-self-center mb-3 mb-sm-0">
+        <Row className="mt-3 mt-md-0 mb-2 mb-sm-0 justify-content-between">
+          <Col lg={5} className="align-self-center mb-2 mb-lg-0">
             <Link className="site-logo" to="/">
               Indoct's BG3 Piercing Set Creator
             </Link>
           </Col>
           <Col
             lg={6}
-            className="d-flex flex-row justify-content-md-end mb-2 align-items-center"
+            className="d-flex flex-row justify-content-xl-end align-items-center justify-content-start"
           >
             <Button
+              type="button"
               variant="primary"
               onClick={() => setShowSet(true)}
               disabled={empty}
@@ -73,6 +74,7 @@ export default function Header(): JSX.Element {
               }}
             />
             <Button
+              type="button"
               id="instructions-btn"
               variant="secondary"
               onClick={() => setShowInstructions(true)}
@@ -85,6 +87,7 @@ export default function Header(): JSX.Element {
               onClose={() => handleCloseModal("instructions")}
             />
             <Button
+              type="button"
               id="hr-clear-btn"
               variant="secondary"
               onClick={confirmDelete}
@@ -98,10 +101,11 @@ export default function Header(): JSX.Element {
       </header>
       {!sessionOver && (
         <Row className="mt-2 filter-row mb-1">
-          <Col xs={12}>
-            <div className="filter-btns mb-1 mb-sm-0">
+          <Col xs={12} lg={6}>
+            <div className="filter-btns mb-1 mb-xl-0">
               <span>Type:</span>
               <button
+                type="button"
                 onClick={() => {
                   handleFilterChange("type", null);
                 }}
@@ -110,12 +114,14 @@ export default function Header(): JSX.Element {
                 Show All
               </button>
               <button
+                type="button"
                 onClick={() => handleFilterChange("type", "mod")}
                 className={`mod-btn ${type === "mod" ? "selected" : ""}`}
               >
                 Mod Only
               </button>
               <button
+                type="button"
                 onClick={() => {
                   handleFilterChange("type", "vanilla");
                   if (filtersOpen) {
@@ -132,6 +138,7 @@ export default function Header(): JSX.Element {
                 Vanilla
               </button>
               <button
+                type="button"
                 onClick={() => {
                   setPlay(!play);
                   setFiltersOpen((prevState) => !prevState);
@@ -148,10 +155,11 @@ export default function Header(): JSX.Element {
               </button>
             </div>
           </Col>
-          <Col>
+          <Col lg={6}>
             <div className="filter-btns loca-filters">
               <span>Location:</span>
               <button
+                type="button"
                 onClick={() => {
                   handleFilterChange("location", "ears");
                 }}
@@ -162,6 +170,7 @@ export default function Header(): JSX.Element {
                 Ears
               </button>
               <button
+                type="button"
                 onClick={() => handleFilterChange("location", "nose")}
                 className={`filter nose ${
                   location === "nose" ? "selected" : ""
@@ -170,6 +179,7 @@ export default function Header(): JSX.Element {
                 Nose
               </button>
               <button
+                type="button"
                 onClick={() => {
                   handleFilterChange("location", "brows");
                 }}
@@ -193,10 +203,12 @@ export default function Header(): JSX.Element {
               </button>
               {location && (
                 <button
+                  type="button"
                   onClick={() => {
                     handleFilterChange("location", null);
                   }}
                   className="clear-btn"
+                  aria-label="Clear Location Filters"
                 >
                   Clear
                 </button>
@@ -204,8 +216,13 @@ export default function Header(): JSX.Element {
             </div>
             {location === "lips" && <Tooltip id="my-tooltip" />}
           </Col>
-          <Col lg={2} className="d-flex align-items-center">
+          <Col
+            xs={4}
+            xl={2}
+            className="d-flex align-items-center mt-1 mt-xl-0 justify-content-xl-end"
+          >
             <button
+              type="button"
               className="clear-btn btn"
               onClick={() => {
                 handleClearFilters();
@@ -239,6 +256,7 @@ export default function Header(): JSX.Element {
           <Col>
             <div className="mod-filters">
               <button
+                type="button"
                 onClick={() => {
                   handleModFilterChange("isp_gold");
                 }}
@@ -254,6 +272,7 @@ export default function Header(): JSX.Element {
                 Indoct's Subtler Piercings (Gold)
               </button>
               <button
+                type="button"
                 onClick={() => {
                   handleModFilterChange("isp_silver");
                 }}
@@ -269,6 +288,7 @@ export default function Header(): JSX.Element {
                 Indoct's Subtler Piercings (Silver)
               </button>
               <button
+                type="button"
                 onClick={() => {
                   handleModFilterChange("p4_blooming");
                 }}
@@ -290,6 +310,7 @@ export default function Header(): JSX.Element {
                 P4 Blooming Circlets & Piercings
               </button>
               <button
+                type="button"
                 onClick={() => {
                   handleModFilterChange("ghouls_customs");
                 }}
@@ -305,6 +326,7 @@ export default function Header(): JSX.Element {
                 Ghouls Custom Piercings
               </button>
               <button
+                type="button"
                 onClick={() => {
                   handleModFilterChange("LV_E_V1");
                 }}

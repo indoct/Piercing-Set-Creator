@@ -34,7 +34,7 @@ export default function PiercingsBlock(): JSX.Element {
 
   return (
     <>
-      <Row className="mt-3 title-row">
+      <Row className="mt-2 mt-lg-3 title-row">
         <Col>
           <h5 className="prc-block-h">
             {type === "vanilla"
