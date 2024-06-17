@@ -72,6 +72,7 @@ const InstructionsModal: React.FC<ModalProps> = ({ onClose, show }) => {
             variant="secondary"
             className="btn-secondary"
             onClick={onClose}
+            data-testid="btn-close"
           >
             <XCircle /> Close
           </Button>
