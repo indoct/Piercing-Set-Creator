@@ -188,13 +188,8 @@ test('adds one entry to pagination if the list bleeds over', async () => {
     itemsPerPage={10}
     filteredPiercings={piercings}
     currentPage={1}
-<<<<<<< HEAD
-    handleBtns={() => {}}
-    handlePageChange={() => {}}
-=======
     handleBtns={emptyCb}
     handlePageChange={emptyCb}
->>>>>>> testing
   />);
 
   const buttons = (await screen.findByTestId("pagination")).querySelectorAll('button')
