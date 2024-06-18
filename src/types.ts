@@ -55,6 +55,11 @@ export interface PaginateProps {
   ) => void;
 }
 
+export interface PiercingTileProps {
+  prc: Piercing;
+  handleBtns: (nodeID: string, nodeLocal: string) => void;
+}
+
 export const ModList: string[] = [
   "isp_gold",
   "isp_silver",
