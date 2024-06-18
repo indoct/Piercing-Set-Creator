@@ -119,7 +119,7 @@ const Paginate: React.FC<PaginateProps> = ({
 
   return (
     <>
-      <Row className="mt-2 row-cols-2" sm="4" md="5" lg="6">
+      <Row className="mt-2 row-cols-2" sm="4" md="5" lg="6" data-testid="entries">
         {currentPagePrcs}
       </Row>
       <Row className="mt-3">{pageNumEls}</Row>
