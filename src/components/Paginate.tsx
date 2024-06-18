@@ -98,7 +98,7 @@ const Paginate: React.FC<PaginateProps> = ({
 
   const pageNumEls: JSX.Element = (
     <Col>
-      <ul className="page-nums">
+      <ul className="page-nums" data-testid="pagination">
         {pageNums.map((page, ind) => {
           const current: boolean = ind + 1 === currentPage;
           return (

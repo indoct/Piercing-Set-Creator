@@ -140,7 +140,7 @@ test('calls pagination callback when clicked', async () => {
     handlePageChange={spy}
   />);
 
-  const buttons = await (await screen.findByTestId("pagination")).querySelectorAll('button')
+  const buttons = (await screen.findByTestId("pagination")).querySelectorAll('button')
 
   fireEvent.click(buttons[1])
   await screen.findAllByRole("button")
