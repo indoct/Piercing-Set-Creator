@@ -41,7 +41,7 @@ const SetModal: React.FC<SetModalProps> = ({
     .filter((element): element is JSX.Element => element !== undefined);
 
   return (
-    <Modal show={show} onHide={onClose} id="set-config" size="lg" data-testid="set-modal">
+    <Modal show={show} onHide={onClose} id="set-config" size="lg">
       <Modal.Header closeButton>
         <Modal.Title>Current Piercing Set Config</Modal.Title>
       </Modal.Header>
