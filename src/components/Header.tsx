@@ -266,6 +266,7 @@ export default function Header(): JSX.Element {
               >
                 <input
                   type="checkbox"
+                  name="isp_gold"
                   checked={modFilters.includes("isp_gold")}
                   readOnly
                 />
@@ -282,6 +283,7 @@ export default function Header(): JSX.Element {
               >
                 <input
                   type="checkbox"
+                  name="isp_silver"
                   checked={modFilters.includes("isp_silver")}
                   readOnly
                 />
@@ -301,6 +303,7 @@ export default function Header(): JSX.Element {
               >
                 <input
                   type="checkbox"
+                  name="p4_blooming"
                   checked={
                     modFilters.includes("p4_blooming") && location !== "lips"
                   }
@@ -320,6 +323,7 @@ export default function Header(): JSX.Element {
               >
                 <input
                   type="checkbox"
+                  name="ghouls_customs"
                   checked={modFilters.includes("ghouls_customs")}
                   readOnly
                 />
@@ -336,6 +340,7 @@ export default function Header(): JSX.Element {
               >
                 <input
                   type="checkbox"
+                  name="LV_E_V1"
                   checked={modFilters.includes("LV_E_V1")}
                   readOnly
                 />
