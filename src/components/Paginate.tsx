@@ -82,7 +82,12 @@ const Paginate: React.FC<PaginateProps> = ({
       currentPage < 1 ||
       currentPage > entries.length
 
-  const numPages = Math.floor(filteredPiercings.length / itemsPerPage) + 1;
+  const divideResult = filteredPiercings.length / itemsPerPage
+
+  const numPages = divideResult % 1 === 0
+    ? divideResult
+    : Math.floor(filteredPiercings.length / itemsPerPage) + 1;
+
   const pages = Array.from({ length: numPages }, (_, index) => index + 1);
 
   return (

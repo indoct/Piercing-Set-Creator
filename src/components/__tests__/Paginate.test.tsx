@@ -140,10 +140,29 @@ test('calls pagination callback when clicked', async () => {
     handlePageChange={spy}
   />);
 
-  const buttons = await (await screen.findByTestId("pagination")).querySelectorAll('button')
+  const buttons = (await screen.findByTestId("pagination")).querySelectorAll('button')
 
   fireEvent.click(buttons[1])
   await screen.findAllByRole("button")
 
   expect(spy).toHaveBeenCalled()
+})
+
+test('adds one entry to pagination if the list bleeds over', async () => {
+  const piercings = Array.from(new Array(22)).map((_, idx) => createPiercing({
+    index: idx,
+    nodeid: `nodeid-${idx}`,
+    bone: idx === 0 ? 'piercing_lobe_a_l' : 'not-bone',
+  }))
+
+  render(<Paginate
+    itemsPerPage={10}
+    filteredPiercings={piercings}
+    currentPage={1}
+    handleBtns={() => {}}
+    handlePageChange={() => {}}
+  />);
+
+  const buttons = (await screen.findByTestId("pagination")).querySelectorAll('button')
+  expect(buttons).toHaveLength(3)
 })
