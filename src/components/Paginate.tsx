@@ -1,4 +1,4 @@
-import { Piercing, PaginateProps, PiercingTileProps } from "../types";
+import { PaginateProps, PiercingTileProps } from "../types";
 import { Row, Col } from "react-bootstrap";
 
 const flippedSet: Set<string> = new Set([
