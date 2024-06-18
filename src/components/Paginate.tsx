@@ -1,4 +1,4 @@
-import { Piercing, PaginateProps } from "../types";
+import { Piercing, PaginateProps, PiercingTileProps } from "../types";
 import { Row, Col } from "react-bootstrap";
 
 const flippedSet: Set<string> = new Set([
@@ -7,33 +7,27 @@ const flippedSet: Set<string> = new Set([
   "piercing_lobe_b_l",
   "piercing_tragus_a_l",
   "beard_upper_lip1_l",
-  "piercing_brow_b_l"
-])
+  "piercing_brow_b_l",
+]);
 
-interface PiercingTileProps {
-  prc: Piercing
-  handleBtns: (nodeID: string, nodeLocal: string) => void
-}
-
-function PiercingTile(props: PiercingTileProps) {
-  const { prc, handleBtns } = props
-  const { nodeid: nodeId, bone: nodeLoca } = prc
+const PiercingTile = (props: PiercingTileProps): JSX.Element => {
+  const { prc, handleBtns } = props;
+  const { nodeid: nodeId, bone: nodeLoca } = prc;
 
   const srcToWebp = (src: string): string => {
     return src.replace(".jpg", ".webp");
   };
 
   const imgClass = (bone: string, category: string): string | undefined => {
-    return flippedSet.has(bone) || (bone === "lowerlip_08" && category === "ghouls_customs")
+    return flippedSet.has(bone) ||
+      (bone === "lowerlip_08" && category === "ghouls_customs")
       ? "flipped"
       : undefined;
   };
 
   return (
     <Col className="prc-col">
-      {prc.type === "mod" && (
-        <span className="set-name">{prc.set_name}</span>
-      )}
+      {prc.type === "mod" && <span className="set-name">{prc.set_name}</span>}
       <button
         type="button"
         id={prc.index.toString()}
@@ -64,8 +58,8 @@ function PiercingTile(props: PiercingTileProps) {
         </ul>
       </button>
     </Col>
-  )
-}
+  );
+};
 
 const Paginate: React.FC<PaginateProps> = ({
   itemsPerPage,
@@ -74,30 +68,37 @@ const Paginate: React.FC<PaginateProps> = ({
   handleBtns,
   handlePageChange,
 }) => {
-  const startIdx = (currentPage - 1) * itemsPerPage
-  const endIdx = startIdx + itemsPerPage 
+  const startIdx = (currentPage - 1) * itemsPerPage;
+  const endIdx = startIdx + itemsPerPage;
 
-  const entries = filteredPiercings.slice(startIdx, endIdx)
-  const showLoading = entries.length === 0 ||
-      currentPage < 1 ||
-      currentPage > entries.length
+  const entries = filteredPiercings.slice(startIdx, endIdx);
+  const showLoading =
+    entries.length === 0 || currentPage < 1 || currentPage > entries.length;
 
-  const divideResult = filteredPiercings.length / itemsPerPage
+  const divideResult = filteredPiercings.length / itemsPerPage;
 
-  const numPages = divideResult % 1 === 0
-    ? divideResult
-    : Math.floor(filteredPiercings.length / itemsPerPage) + 1;
+  const numPages =
+    divideResult % 1 === 0 ? divideResult : Math.floor(divideResult) + 1;
 
   const pages = Array.from({ length: numPages }, (_, index) => index + 1);
 
   return (
     <>
-      <Row className="mt-2 row-cols-2" sm="4" md="5" lg="6" role="row" data-testid="entries">
+      <Row
+        className="mt-2 row-cols-2"
+        sm="4"
+        md="5"
+        lg="6"
+        role="row"
+        data-testid="entries"
+      >
         {showLoading ? (
           <p>Loading...</p>
-        ) :
-        entries.map(prc => <PiercingTile key={prc.nodeid} prc={prc} handleBtns={handleBtns} />)
-        }
+        ) : (
+          entries.map((prc) => (
+            <PiercingTile key={prc.nodeid} prc={prc} handleBtns={handleBtns} />
+          ))
+        )}
       </Row>
       <Row className="mt-3">
         <Col>
@@ -105,7 +106,11 @@ const Paginate: React.FC<PaginateProps> = ({
             {pages.map((page, ind) => {
               const current: boolean = ind + 1 === currentPage;
               return (
-                <li key={`pagination-${ind}`} className={current ? "current-page" : ""} role="listitem">
+                <li
+                  key={`pagination-${ind}`}
+                  className={current ? "current-page" : ""}
+                  role="listitem"
+                >
                   <button
                     id={page.toString()}
                     onClick={handlePageChange}
