@@ -1,6 +1,71 @@
-import { useState, useEffect, useMemo } from "react";
 import { Piercing, PaginateProps } from "../types";
 import { Row, Col } from "react-bootstrap";
+
+const flippedSet: Set<string> = new Set([
+  "piercing_lobe_a_l",
+  "piercing_brow_a_l",
+  "piercing_lobe_b_l",
+  "piercing_tragus_a_l",
+  "beard_upper_lip1_l",
+  "piercing_brow_b_l"
+])
+
+interface PiercingTileProps {
+  prc: Piercing
+  handleBtns: (nodeID: string, nodeLocal: string) => void
+}
+
+function PiercingTile(props: PiercingTileProps) {
+  const { prc, handleBtns } = props
+  const { nodeid: nodeId, bone: nodeLoca } = prc
+
+  const srcToWebp = (src: string): string => {
+    return src.replace(".jpg", ".webp");
+  };
+
+  const imgClass = (bone: string, category: string): string | undefined => {
+    return flippedSet.has(bone) || (bone === "lowerlip_08" && category === "ghouls_customs")
+      ? "flipped"
+      : undefined;
+  };
+
+  return (
+    <Col className="prc-col">
+      {prc.type === "mod" && (
+        <span className="set-name">{prc.set_name}</span>
+      )}
+      <button
+        type="button"
+        id={prc.index.toString()}
+        className={`prc-container ${prc.selected ? "selected" : ""}`}
+        onClick={() => handleBtns(nodeId, nodeLoca)}
+        disabled={prc.disabled}
+        role="button"
+      >
+        <div className="img-cont">
+          <picture>
+            <source
+              srcSet={srcToWebp(prc.imgurl)}
+              className={imgClass(prc.bone, prc.site_cat)}
+            />
+            <img
+              src={prc.imgurl}
+              alt={`${prc.name} - ${prc.pt_bone}`}
+              height="150"
+              width="254"
+              role="img"
+              className={imgClass(prc.bone, prc.site_cat)}
+            />
+          </picture>
+        </div>
+        <ul className={`prc-stats config-cont ${prc.location}`}>
+          <li className="prc-name">{prc.name}</li>
+          <li className="location">{prc.pt_bone}</li>
+        </ul>
+      </button>
+    </Col>
+  )
+}
 
 const Paginate: React.FC<PaginateProps> = ({
   itemsPerPage,
@@ -9,120 +74,46 @@ const Paginate: React.FC<PaginateProps> = ({
   handleBtns,
   handlePageChange,
 }) => {
-  const [piercingPages, setPiercingPages] = useState<Piercing[][]>([]);
-  const [pageNums, setPageNums] = useState<number[]>([]);
+  const startIdx = (currentPage - 1) * itemsPerPage
+  const endIdx = startIdx + itemsPerPage 
 
-  useEffect(() => {
-    const prcPage = (array: Piercing[], itemsPerPage: number) => {
-      const result: Piercing[][] = [];
-      for (let i = 0; i < array.length; i += itemsPerPage) {
-        result.push(array.slice(i, i + itemsPerPage));
-      }
-      return result;
-    };
-
-    const result = prcPage(filteredPiercings, itemsPerPage);
-    setPiercingPages(result);
-  }, [itemsPerPage, filteredPiercings]);
-
-  const srcToWebp = (src: string): string => {
-    return src.replace(".jpg", ".webp");
-  };
-
-  const imgClass = (bone: string, category: string): string | undefined => {
-    return bone === "piercing_lobe_a_l" ||
-      bone === "piercing_brow_a_l" ||
-      bone === "piercing_lobe_b_l" ||
-      bone === "piercing_tragus_a_l" ||
-      bone === "beard_upper_lip1_l" ||
-      (bone === "lowerlip_08" && category === "ghouls_customs") ||
-      bone === "piercing_brow_b_l"
-      ? "flipped"
-      : undefined;
-  };
-
-  const currentPagePrcs = useMemo(() => {
-    if (
-      piercingPages.length === 0 ||
+  const entries = filteredPiercings.slice(startIdx, endIdx)
+  const showLoading = entries.length === 0 ||
       currentPage < 1 ||
-      currentPage > piercingPages.length
-    ) {
-      return <p>Loading...</p>;
-    }
+      currentPage > entries.length
 
-    return piercingPages[currentPage - 1].map((prc) => {
-      const nodeId: string = prc.nodeid;
-      const nodeLoca: string = prc.bone;
-      return (
-        <Col key={prc.nodeid} className="prc-col">
-          {prc.type === "mod" && (
-            <span className="set-name">{prc.set_name}</span>
-          )}
-          <button
-            type="button"
-            id={prc.index.toString()}
-            className={`prc-container ${prc.selected ? "selected" : ""}`}
-            onClick={() => handleBtns(nodeId, nodeLoca)}
-            disabled={prc.disabled}
-          >
-            <div className="img-cont">
-              <picture>
-                <source
-                  srcSet={srcToWebp(prc.imgurl)}
-                  className={imgClass(prc.bone, prc.site_cat)}
-                />
-                <img
-                  src={prc.imgurl}
-                  alt={`${prc.name} - ${prc.pt_bone}`}
-                  height="150"
-                  width="254"
-                  className={imgClass(prc.bone, prc.site_cat)}
-                />
-              </picture>
-            </div>
-            <ul className={`prc-stats config-cont ${prc.location}`}>
-              <li className="prc-name">{prc.name}</li>
-              <li className="location">{prc.pt_bone}</li>
-            </ul>
-          </button>
-        </Col>
-      );
-    });
-  }, [piercingPages, currentPage]);
-
-  useEffect(() => {
-    const numPages = piercingPages.length;
-    const pages = Array.from({ length: numPages }, (_, index) => index + 1);
-    setPageNums(pages);
-  }, [piercingPages]);
-
-  const pageNumEls: JSX.Element = (
-    <Col>
-      <ul className="page-nums">
-        {pageNums.map((page, ind) => {
-          const current: boolean = ind + 1 === currentPage;
-          return (
-            <li key={ind} className={current ? "current-page" : ""}>
-              <button
-                id={page.toString()}
-                onClick={handlePageChange}
-                disabled={current}
-              >
-                {page}
-              </button>
-            </li>
-          );
-        })}
-      </ul>
-    </Col>
-  );
+  const numPages = Math.floor(filteredPiercings.length / itemsPerPage) + 1;
+  const pages = Array.from({ length: numPages }, (_, index) => index + 1);
 
   return (
     <>
-      <Row className="mt-2 row-cols-2" sm="4" md="5" lg="6">
-        {currentPagePrcs}
+      <Row className="mt-2 row-cols-2" sm="4" md="5" lg="6" role="row">
+        {showLoading ? (
+          <p>Loading...</p>
+        ) :
+        entries.map(prc => <PiercingTile key={prc.nodeid} prc={prc} handleBtns={handleBtns} />)
+        }
       </Row>
-      <Row className="mt-3">{pageNumEls}</Row>
+      <Row className="mt-3">
+        <Col>
+          <ul className="page-nums" role="list" data-testid="pagination">
+            {pages.map((page, ind) => {
+              const current: boolean = ind + 1 === currentPage;
+              return (
+                <li key={`pagination-${ind}`} className={current ? "current-page" : ""} role="listitem">
+                  <button
+                    id={page.toString()}
+                    onClick={handlePageChange}
+                    disabled={current}
+                  >
+                    {page}
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
+        </Col>
+      </Row>
     </>
   );
 };
