@@ -92,7 +92,7 @@ const Paginate: React.FC<PaginateProps> = ({
 
   return (
     <>
-      <Row className="mt-2 row-cols-2" sm="4" md="5" lg="6" role="row">
+      <Row className="mt-2 row-cols-2" sm="4" md="5" lg="6" role="row" data-testid="entries">
         {showLoading ? (
           <p>Loading...</p>
         ) :
