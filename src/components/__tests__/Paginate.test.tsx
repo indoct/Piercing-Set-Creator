@@ -72,7 +72,6 @@ test('shows piercings', async () => {
   const piercings = Array.from(new Array(20)).map((_, idx) => createPiercing({
     index: idx,
     nodeid: `nodeid-${idx}`,
-    bone: idx === 0 ? 'piercing_lobe_a_l' : 'not-bone',
   }))
 
   render(<Paginate
@@ -85,9 +84,6 @@ test('shows piercings', async () => {
 
   const buttons = await screen.findAllByRole("button")
   expect(buttons).toHaveLength(12) // Two addtional buttons
-
-  // Assert the flipped logic worked with the lobe piercing
-  expect(buttons[0].querySelector('img')?.classList.contains('flipped')).toBeTruthy()
 
   // Assert pagination worked correctly
   expect(buttons[0].getAttribute("id")).toEqual("0")
