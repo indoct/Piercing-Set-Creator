@@ -8,23 +8,22 @@ import PiercingsBlock from "./components/PiercingsBlock";
 import Header from "./components/Header";
 import { ErrorBoundary } from "react-error-boundary";
 import FallbackRender from "./FallbackRender";
+import { store } from "./app/store";
+import { Provider } from "react-redux";
 
 const NodeCode = lazy(() => import("./components/NodeCode"));
 
 export default function Home(): JSX.Element {
   return (
     <ErrorBoundary FallbackComponent={FallbackRender}>
-      <AppProvider>
-        <ThemeProvider
-          breakpoints={["xxxl", "xxl", "xl", "lg", "md", "sm", "xs", "xxs"]}
-          minBreakpoint="xxs"
-        >
+      <Provider store={store}>
+        <ThemeProvider breakpoints={["xxxl", "xxl", "xl", "lg", "md", "sm", "xs", "xxs"]} minBreakpoint="xxs">
           <Container fluid>
             <Header />
             <Content />
           </Container>
         </ThemeProvider>
-      </AppProvider>
+      </Provider>
     </ErrorBoundary>
   );
 }
@@ -32,13 +31,5 @@ export default function Home(): JSX.Element {
 const Content: FC = () => {
   const { sessionOver } = useAppContext();
 
-  return (
-    <Suspense
-      fallback={
-        <div className="loading">Generating Nodes - Please Wait...</div>
-      }
-    >
-      {sessionOver ? <NodeCode /> : <PiercingsBlock />}
-    </Suspense>
-  );
+  return <Suspense fallback={<div className="loading">Generating Nodes - Please Wait...</div>}>{sessionOver ? <NodeCode /> : <PiercingsBlock />}</Suspense>;
 };
