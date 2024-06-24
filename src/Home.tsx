@@ -1,4 +1,6 @@
 import { FC, lazy, Suspense } from "react";
+import { Provider, useSelector, useDispatch } from "react-redux";
+import { RootState } from "./app/store";
 import { AppProvider, useAppContext } from "./AppContext";
 import "bootstrap/dist/css/bootstrap.min.css";
 import ThemeProvider from "react-bootstrap/ThemeProvider";
@@ -9,7 +11,6 @@ import Header from "./components/Header";
 import { ErrorBoundary } from "react-error-boundary";
 import FallbackRender from "./FallbackRender";
 import { store } from "./app/store";
-import { Provider } from "react-redux";
 
 const NodeCode = lazy(() => import("./components/NodeCode"));
 
@@ -29,7 +30,7 @@ export default function Home(): JSX.Element {
 }
 
 const Content: FC = () => {
-  const { sessionOver } = useAppContext();
+  const sessionOver = useSelector((state: RootState) => state.session.sessionOver);
 
   return <Suspense fallback={<div className="loading">Generating Nodes - Please Wait...</div>}>{sessionOver ? <NodeCode /> : <PiercingsBlock />}</Suspense>;
 };
