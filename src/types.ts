@@ -1,17 +1,3 @@
-export interface ContextValues {
-  type: string | null;
-  location: string | null;
-  piercings: Array<Piercing>;
-  sessionOver: boolean;
-  handleFilterChange: (key: string, value: string | null) => void;
-  confirmDelete: () => void;
-  toggleSessionOver: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
-  modFilters: string[];
-  handleModFilterChange: (mod: string) => void;
-  handleBtns: (nodeId: string, nodeLoca: string) => void;
-  handleClearFilters: () => void;
-}
-
 export interface Piercing {
   index: number;
   site_cat: string;
@@ -43,15 +29,13 @@ export interface SetModalProps extends ModalProps {
 
 export interface PaginateProps {
   itemsPerPage: number;
-  filteredPiercings: Array<Piercing>;
+  filteredPiercings: Piercing[];
   currentPage: number;
-  handleBtns: (nodeId: string, nodeLoca: string) => void;
-  handlePageChange: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  handlePageChange: (page: number) => void;
 }
 
 export interface PiercingTileProps {
   prc: Piercing;
-  handleBtns: (nodeID: string, nodeLocal: string) => void;
 }
 
 export const ModList: string[] = ["isp_gold", "isp_silver", "p4_blooming", "ghouls_customs", "LV_E_V1"];

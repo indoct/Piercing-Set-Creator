@@ -1,7 +1,8 @@
 import { PaginateProps, PiercingTileProps } from "../types";
 import { Row, Col } from "react-bootstrap";
 import { RootState } from "../app/store";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { toggleSelected } from "../features/piercings/piercingsSlice";
 
 const flippedSet: Set<string> = new Set([
   "piercing_lobe_a_l",
@@ -13,8 +14,8 @@ const flippedSet: Set<string> = new Set([
 ]);
 
 const PiercingTile = (props: PiercingTileProps): JSX.Element => {
-  const { prc, handleBtns } = props;
-  const { nodeid: nodeId, bone: nodeLoca } = prc;
+  const dispatch = useDispatch();
+  const { prc } = props;
   const selectedIds = useSelector((state: RootState) => state.piercings.selectedIds);
 
   const srcToWebp = (src: string): string => {
@@ -32,7 +33,7 @@ const PiercingTile = (props: PiercingTileProps): JSX.Element => {
         type="button"
         id={prc.index.toString()}
         className={`prc-container ${selectedIds[prc.nodeid] ? "selected" : ""}`}
-        onClick={() => handleBtns(nodeId, nodeLoca)}
+        onClick={() => dispatch(toggleSelected(prc.nodeid))}
         disabled={prc.disabled}
         role="button"
       >
@@ -51,15 +52,20 @@ const PiercingTile = (props: PiercingTileProps): JSX.Element => {
   );
 };
 
-const Paginate: React.FC<PaginateProps> = ({ itemsPerPage, filteredPiercings, currentPage, handleBtns, handlePageChange }) => {
+const Paginate: React.FC<PaginateProps> = ({ itemsPerPage, filteredPiercings, currentPage, handlePageChange }) => {
+  const dispatch = useDispatch();
+
+  const handleToggle = (nodeid: string) => {
+    dispatch(toggleSelected(nodeid));
+  };
+
   const startIdx = (currentPage - 1) * itemsPerPage;
   const endIdx = startIdx + itemsPerPage;
 
   const entries = filteredPiercings.slice(startIdx, endIdx);
-  const showLoading = entries.length === 0 || currentPage < 1 || currentPage > entries.length;
+  const showLoading = entries.length === 0;
 
   const divideResult = filteredPiercings.length / itemsPerPage;
-
   const numPages = divideResult % 1 === 0 ? divideResult : Math.floor(divideResult) + 1;
 
   const pages = Array.from({ length: numPages }, (_, index) => index + 1);
@@ -67,7 +73,7 @@ const Paginate: React.FC<PaginateProps> = ({ itemsPerPage, filteredPiercings, cu
   return (
     <>
       <Row className="mt-2 row-cols-2" sm="4" md="5" lg="6" role="row" data-testid="entries">
-        {showLoading ? <p>Loading...</p> : entries.map((prc) => <PiercingTile key={prc.nodeid} prc={prc} handleBtns={handleBtns} />)}
+        {showLoading ? <p>Loading...</p> : entries.map((prc) => <PiercingTile key={prc.nodeid} prc={prc} />)}
       </Row>
       <Row className="mt-3">
         <Col>
@@ -76,7 +82,7 @@ const Paginate: React.FC<PaginateProps> = ({ itemsPerPage, filteredPiercings, cu
               const current: boolean = ind + 1 === currentPage;
               return (
                 <li key={`pagination-${ind}`} className={current ? "current-page" : ""} role="listitem">
-                  <button id={page.toString()} onClick={handlePageChange} disabled={current}>
+                  <button id={page.toString()} onClick={() => handlePageChange(page)} disabled={current}>
                     {page}
                   </button>
                 </li>

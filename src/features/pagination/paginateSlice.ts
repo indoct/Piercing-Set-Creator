@@ -1,35 +1,28 @@
-import { createSlice } from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
-import { Piercing } from "../../types";
-import data from "../../data";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-interface PiercingsState {
-  data: Piercing[];
-  selectedIds: Record<string, boolean>;
+interface PaginateState {
+  currentPage: number;
+  itemsPerPage: number;
 }
 
-const initialPiercingsState: PiercingsState = {
-  data: data,
-  selectedIds: {},
+const initialState: PaginateState = {
+  currentPage: 1,
+  itemsPerPage: 54,
 };
 
 const paginateSlice = createSlice({
-  name: "pagination",
-  initialState: initialPiercingsState,
+  name: "paginate",
+  initialState,
   reducers: {
-    toggleSelected: (state, action: PayloadAction<string>) => {
-      if (state.selectedIds[action.payload]) {
-        delete state.selectedIds[action.payload];
-      } else {
-        state.selectedIds[action.payload] = true;
-      }
+    setCurrentPage: (state, action: PayloadAction<number>) => {
+      state.currentPage = action.payload;
     },
-    resetPiercings: (state) => {
-      state.data = data;
+    setItemsPerPage: (state, action: PayloadAction<number>) => {
+      state.itemsPerPage = action.payload;
     },
   },
 });
 
-export const { toggleSelected, resetPiercings } = paginateSlice.actions;
+export const { setCurrentPage, setItemsPerPage } = paginateSlice.actions;
 
 export default paginateSlice.reducer;

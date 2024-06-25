@@ -8,27 +8,6 @@ import { RootState } from "../app/store";
 const SetModal: React.FC<SetModalProps> = ({ show, onClose, generateNodes, sessionOver, togglePlay }) => {
   const selectedIds = useSelector((state: RootState) => state.piercings.selectedIds);
   const piercings = useSelector((state: RootState) => state.piercings.data);
-  // const displayConfig: JSX.Element[] = piercings
-  // .map((prc) => {
-  //   const setClasses: string = prc.type === "mod" ? "config-mod config-set" : "config-set config-vanilla";
-  //   const setName: string = prc.type === "vanilla" ? `Vanilla : ${prc.set_name}` : `MOD : ${prc.set_name}`;
-  //   if (selectedIds[prc.nodeid])
-  //     return (
-  //       <div key={prc.index} className={`config-cont  ${prc.location}`}>
-  //         <div className="config-row">
-  //           <span className="gen-loca">{prc.location}</span>
-  //         </div>
-  //         <div className="config-row">
-  //           <span className="config-loca">{prc.pt_bone} </span>:<span className="config-name"> {prc.name}</span>
-  //         </div>
-  //         <div className="config-row">
-  //           <span className={setClasses}>{setName}</span>
-  //         </div>
-  //       </div>
-  //     );
-  //   return undefined;
-  // })
-  // .filter((element): element is JSX.Element => element !== undefined);
 
   const displayConfig: JSX.Element[] = piercings
     .map((prc) => {
