@@ -53,12 +53,6 @@ const PiercingTile = (props: PiercingTileProps): JSX.Element => {
 };
 
 const Paginate: React.FC<PaginateProps> = ({ itemsPerPage, filteredPiercings, currentPage, handlePageChange }) => {
-  const dispatch = useDispatch();
-
-  const handleToggle = (nodeid: string) => {
-    dispatch(toggleSelected(nodeid));
-  };
-
   const startIdx = (currentPage - 1) * itemsPerPage;
   const endIdx = startIdx + itemsPerPage;
 

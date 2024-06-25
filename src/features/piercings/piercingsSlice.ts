@@ -25,7 +25,6 @@ const piercingsSlice = createSlice({
       }
     },
     resetPiercings: (state) => {
-      state.data = data;
       state.selectedIds = {};
     },
   },

@@ -24,9 +24,9 @@ export default function Header(): JSX.Element {
     return modal === "set" ? setShowSet(false) : setShowInstructions(false);
   }
 
-  const handleSessionOver = () => {
+  function handleSessionOver(): void {
     dispatch(setSessionOver(true));
-  };
+  }
 
   function confirmDelete(): void {
     let result = confirm("Are you sure you want to delete your set? \n \nPressing OK will clear your set configuration.");
@@ -52,7 +52,7 @@ export default function Header(): JSX.Element {
             show={showSet}
             onClose={() => handleCloseModal("set")}
             sessionOver={sessionOver}
-            generateNodes={handleSessionOver}
+            generateNodes={() => dispatch(setSessionOver(true))}
             togglePlay={() => {
               if (play) setPlay(!play);
             }}

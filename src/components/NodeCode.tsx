@@ -1,4 +1,4 @@
-import { useAppContext } from "../AppContext";
+// import { useAppContext } from "../AppContext";
 import { useState } from "react";
 import { Row, Col } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
@@ -8,17 +8,22 @@ import { duotoneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { ArrowLeft, Check2Circle, Copy, Trash } from "react-bootstrap-icons";
 import { nanoid } from "nanoid";
 import { Piercing } from "../types";
+import { RootState } from "../app/store";
+import { useDispatch, useSelector } from "react-redux";
+import { resetPiercings } from "../features/piercings/piercingsSlice";
+import { setSessionOver } from "../features/session/sessionSlice";
 
 export default function NodeCode(): JSX.Element {
+  const dispatch = useDispatch();
   SyntaxHighlighter.registerLanguage("markup", markup);
-  const { piercings, confirmDelete, toggleSessionOver } = useAppContext();
+
+  const piercings = useSelector((state: RootState) => state.piercings.data);
+  const selectedIds = useSelector((state: RootState) => state.piercings.selectedIds);
 
   const [copyBtnPressed, setCopyBtnPressed] = useState<boolean>(false);
 
-  const selected: Piercing[] = piercings.filter((prc) => prc.selected);
-  const containsMod: Piercing[] = piercings.filter(
-    (prc) => prc.selected && prc.type === "mod"
-  );
+  const selected: Piercing[] = piercings.filter((prc) => selectedIds[prc.nodeid]);
+  const containsMod: Piercing[] = piercings.filter((prc) => selectedIds[prc.nodeid] && prc.type === "mod");
 
   const configElements: string[] = selected.map((prc) => {
     const author: string =
@@ -65,9 +70,7 @@ export default function NodeCode(): JSX.Element {
   }
 
   const generateModEls = (): JSX.Element[] => {
-    const filteredData: Piercing[] = Array.from(
-      new Map(containsMod.map((obj) => [obj.set_name, obj])).values()
-    );
+    const filteredData: Piercing[] = Array.from(new Map(containsMod.map((obj) => [obj.set_name, obj])).values());
 
     const modElements: JSX.Element[] = filteredData.map((mod) => {
       return (
@@ -86,24 +89,13 @@ export default function NodeCode(): JSX.Element {
     <>
       <Row className="mt-4">
         <Col lg={8}>
-          <h5 className="prc-block-h mb-3">
-            CharacterCreationAccessorySets Nodes:
-          </h5>
+          <h5 className="prc-block-h mb-3">CharacterCreationAccessorySets Nodes:</h5>
           <p className="output-intro">
-            <span className="warning">
-              By creating your own replacer sets to put in the game's Data
-              folder, YOU ARE MODDING YOUR GAME!&nbsp;
-            </span>
+            <span className="warning">By creating your own replacer sets to put in the game's Data folder, YOU ARE MODDING YOUR GAME!&nbsp;</span>
             <br />
-            <strong>
-              There are risks involved with modding, and by using this generator
-              you're agreeing to take those risks.
-            </strong>
+            <strong>There are risks involved with modding, and by using this generator you're agreeing to take those risks.</strong>
           </p>
-          <p className="output-intro">
-            Feel free to find me or another modder in Down By The River server
-            on Discord and ask for help.
-          </p>
+          <p className="output-intro">Feel free to find me or another modder in Down By The River server on Discord and ask for help.</p>
         </Col>
       </Row>
       <Row>
@@ -116,9 +108,8 @@ export default function NodeCode(): JSX.Element {
           <Col lg={4}>
             <div className="mod-warning">
               <p>
-                You have {containsMod.length} mod piercings in your set. You
-                MUST download & install the below mods or the piercings will not
-                show in your game! (Opens in new window)
+                You have {containsMod.length} mod piercings in your set. You MUST download & install the below mods or the piercings will not show in your game!
+                (Opens in new window)
               </p>
               <ul className="mod-list">{generateModEls()}</ul>
             </div>
@@ -146,15 +137,20 @@ export default function NodeCode(): JSX.Element {
           </Button>
         </Col>
         <Col className="d-flex gap-2 mt-2 mt-sm-0 nc-btns-cont" lg={4}>
-          <Button
-            id="back-btn"
-            onClick={(e) => toggleSessionOver(e)}
-            variant="secondary"
-          >
+          <Button id="back-btn" onClick={() => dispatch(setSessionOver(false))} variant="secondary">
             <ArrowLeft />
             Continue Editing
           </Button>
-          <Button onClick={confirmDelete} variant="secondary">
+          <Button
+            onClick={() => {
+              let result = confirm("Are you sure you want to delete your set? \n \nPressing OK will clear your set configuration.");
+              if (result) {
+                dispatch(resetPiercings());
+                dispatch(setSessionOver(false));
+              }
+            }}
+            variant="secondary"
+          >
             <Trash /> Clear Set
           </Button>
         </Col>
