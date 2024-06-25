@@ -1,4 +1,3 @@
-// import { useAppContext } from "../AppContext";
 import { useState, useEffect } from "react";
 import { Row, Col } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
@@ -14,9 +13,8 @@ import { resetPiercings } from "../features/piercings/piercingsSlice";
 import { setSessionOver } from "../features/session/sessionSlice";
 
 export default function NodeCode(): JSX.Element {
-  const dispatch = useDispatch();
   SyntaxHighlighter.registerLanguage("markup", markup);
-
+  const dispatch = useDispatch();
   const piercings = useSelector((state: RootState) => state.piercings.data);
   const selectedIds = useSelector((state: RootState) => state.piercings.selectedIds);
   let timeoutId: NodeJS.Timeout;
