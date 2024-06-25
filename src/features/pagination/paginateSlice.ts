@@ -13,8 +13,8 @@ const initialPiercingsState: PiercingsState = {
   selectedIds: {},
 };
 
-const piercingsSlice = createSlice({
-  name: "piercings",
+const paginateSlice = createSlice({
+  name: "pagination",
   initialState: initialPiercingsState,
   reducers: {
     toggleSelected: (state, action: PayloadAction<string>) => {
@@ -26,11 +26,10 @@ const piercingsSlice = createSlice({
     },
     resetPiercings: (state) => {
       state.data = data;
-      state.selectedIds = {};
     },
   },
 });
 
-export const { toggleSelected, resetPiercings } = piercingsSlice.actions;
+export const { toggleSelected, resetPiercings } = paginateSlice.actions;
 
-export default piercingsSlice.reducer;
+export default paginateSlice.reducer;

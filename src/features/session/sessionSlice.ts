@@ -1,5 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface SessionState {
   sessionOver: boolean;
@@ -13,14 +12,11 @@ const sessionSlice = createSlice({
   name: "session",
   initialState,
   reducers: {
-    toggleSession: (state) => {
-      state.sessionOver = !state.sessionOver;
-    },
     setSessionOver: (state, action: PayloadAction<boolean>) => {
       state.sessionOver = action.payload;
     },
   },
 });
 
-export const { toggleSession, setSessionOver } = sessionSlice.actions;
+export const { setSessionOver } = sessionSlice.actions;
 export default sessionSlice.reducer;

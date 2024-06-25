@@ -1,7 +1,7 @@
 import { FC, lazy, Suspense } from "react";
-import { Provider, useSelector, useDispatch } from "react-redux";
+import { Provider, useSelector } from "react-redux";
 import { RootState } from "./app/store";
-import { AppProvider, useAppContext } from "./AppContext";
+import Filters from "./components/Filters";
 import "bootstrap/dist/css/bootstrap.min.css";
 import ThemeProvider from "react-bootstrap/ThemeProvider";
 import "./App.css";
@@ -21,6 +21,7 @@ export default function Home(): JSX.Element {
         <ThemeProvider breakpoints={["xxxl", "xxl", "xl", "lg", "md", "sm", "xs", "xxs"]} minBreakpoint="xxs">
           <Container fluid>
             <Header />
+            <Filters />
             <Content />
           </Container>
         </ThemeProvider>

@@ -36,7 +36,6 @@ export interface ModalProps {
 }
 
 export interface SetModalProps extends ModalProps {
-  piercings: Array<Piercing>;
   generateNodes: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   sessionOver: boolean;
   togglePlay: () => void;

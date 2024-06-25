@@ -1,5 +1,4 @@
 import { useMemo, useState } from "react";
-import { useAppContext } from "../AppContext";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { Piercing } from "../types";
@@ -9,28 +8,28 @@ import { RootState } from "../app/store";
 import { toggleSelected } from "../features/piercings/piercingsSlice";
 
 export default function PiercingsBlock(): JSX.Element {
-  // const { type, location, modFilters, handleBtns } = useAppContext();
   // const [currentPage, setCurrentPage] = useState<number>(1);
   // const [pageLength, setPageLength] = useState<number>(54);
   // const [selectedOption, setSelectedOption] = useState<string | number>(pageLength);
   const piercings = useSelector((state: RootState) => state.piercings.data);
   const selectedIds = useSelector((state: RootState) => state.piercings.selectedIds);
+  const typeFilter = useSelector((state: RootState) => state.filters.typeFilter);
+  const locaFilter = useSelector((state: RootState) => state.filters.locaFilter);
+  const modFilters = useSelector((state: RootState) => state.filters.modFilters);
   const dispatch = useDispatch();
+
+  const filteredPiercings: Piercing[] = useMemo(() => {
+    return piercings.filter((piercing) => {
+      const matchesType = typeFilter ? piercing.type === typeFilter : true;
+      const matchesLocation = locaFilter ? piercing.location === locaFilter : true;
+      const matchesMods = piercing.type === "mod" ? modFilters.includes(piercing.site_cat) : typeFilter === "Vanilla" ? piercing.type !== "mod" : true;
+      return matchesType && matchesLocation && matchesMods;
+    });
+  }, [piercings, typeFilter, locaFilter, modFilters]);
 
   const handleToggle = (nodeid: string) => {
     dispatch(toggleSelected(nodeid));
   };
-
-  // const filteredPiercings: Piercing[] = useMemo(() => {
-  //   if (currentPage !== 1) setCurrentPage(1);
-  //   return piercings.filter((piercing) => {
-  //     const matchesType = type ? piercing.type === type : true;
-  //     const matchesLocation = location ? piercing.location === location : true;
-  //     const matchesMods = piercing.type === "mod" ? modFilters.includes(piercing.site_cat) : type === "Vanilla" ? piercing.type !== "mod" : true;
-  //     return matchesType && matchesLocation && matchesMods;
-  //   });
-  // }, [piercings, type, location, modFilters, pageLength]);
-
   // function handlePageChange(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
   //   const target = e.target as HTMLButtonElement;
   //   const id = parseInt(target.id);
@@ -46,28 +45,6 @@ export default function PiercingsBlock(): JSX.Element {
   //     setPageLength(Number(value));
   //   }
   // };
-
-  const displayConfig: JSX.Element[] = piercings
-    .map((prc) => {
-      const setClasses: string = prc.type === "mod" ? "config-mod config-set" : "config-set config-vanilla";
-      const setName: string = prc.type === "vanilla" ? `Vanilla : ${prc.set_name}` : `MOD : ${prc.set_name}`;
-      if (selectedIds[prc.nodeid])
-        return (
-          <div key={prc.index} className={`config-cont  ${prc.location}`}>
-            <div className="config-row">
-              <span className="gen-loca">{prc.location}</span>
-            </div>
-            <div className="config-row">
-              <span className="config-loca">{prc.pt_bone} </span>:<span className="config-name"> {prc.name}</span>
-            </div>
-            <div className="config-row">
-              <span className={setClasses}>{setName}</span>
-            </div>
-          </div>
-        );
-      return undefined;
-    })
-    .filter((element): element is JSX.Element => element !== undefined);
 
   return (
     <>
@@ -86,8 +63,8 @@ export default function PiercingsBlock(): JSX.Element {
         </Col>
       </Row> */}
       <Row className="mt-2 row-cols-2" sm="4" md="5" lg="6" role="row">
-        {piercings.map((prc) => (
-          <Col className="prc-col">
+        {filteredPiercings.map((prc) => (
+          <Col className="prc-col" key={prc.nodeid}>
             {prc.type === "mod" && <span className="set-name">{prc.set_name}</span>}
             <button
               type="button"
@@ -119,13 +96,8 @@ export default function PiercingsBlock(): JSX.Element {
               </ul>
             </button>
           </Col>
-          // <div key={piercing.nodeid} id={`piercing-${piercing.index}`}>
-          //   <span>{piercing.name}</span>
-          //   <button onClick={() => handleToggle(piercing.nodeid)}>{selectedIds[piercing.nodeid] ? "Deselect" : "Select"}</button>
-          // </div>
         ))}
       </Row>
-      <Row>{displayConfig}</Row>
       {/* {filteredPiercings.length > 0 ? (
         <Paginate
           itemsPerPage={pageLength}
