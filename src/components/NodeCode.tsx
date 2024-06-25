@@ -1,5 +1,5 @@
 // import { useAppContext } from "../AppContext";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Row, Col } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import { PrismLight as SyntaxHighlighter } from "react-syntax-highlighter";
@@ -19,7 +19,7 @@ export default function NodeCode(): JSX.Element {
 
   const piercings = useSelector((state: RootState) => state.piercings.data);
   const selectedIds = useSelector((state: RootState) => state.piercings.selectedIds);
-
+  let timeoutId: NodeJS.Timeout;
   const [copyBtnPressed, setCopyBtnPressed] = useState<boolean>(false);
 
   const selected: Piercing[] = piercings.filter((prc) => selectedIds[prc.nodeid]);
@@ -62,12 +62,18 @@ export default function NodeCode(): JSX.Element {
     await navigator.clipboard.writeText(codeToCopy);
   }
 
-  function handleCopyBtn(): void {
+  const handleCopyBtn = () => {
     setCopyBtnPressed(true);
-    setTimeout(() => {
+    timeoutId = setTimeout(() => {
       setCopyBtnPressed(false);
     }, 2000);
-  }
+  };
+
+  useEffect(() => {
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, []);
 
   const generateModEls = (): JSX.Element[] => {
     const filteredData: Piercing[] = Array.from(new Map(containsMod.map((obj) => [obj.set_name, obj])).values());
