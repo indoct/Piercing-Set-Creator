@@ -9,15 +9,16 @@ import { RootState } from "../app/store";
 import { toggleSelected } from "../features/piercings/piercingsSlice";
 
 export default function PiercingsBlock(): JSX.Element {
-  const piercings = useSelector((state: RootState) => state.piercings.data);
-  const dispatch = useDispatch();
   // const { type, location, modFilters, handleBtns } = useAppContext();
   // const [currentPage, setCurrentPage] = useState<number>(1);
   // const [pageLength, setPageLength] = useState<number>(54);
   // const [selectedOption, setSelectedOption] = useState<string | number>(pageLength);
+  const piercings = useSelector((state: RootState) => state.piercings.data);
+  const selectedIds = useSelector((state: RootState) => state.piercings.selectedIds);
+  const dispatch = useDispatch();
 
-  const handleToggle = (index: number) => {
-    dispatch(toggleSelected(index));
+  const handleToggle = (nodeid: string) => {
+    dispatch(toggleSelected(nodeid));
   };
 
   // const filteredPiercings: Piercing[] = useMemo(() => {
@@ -46,6 +47,28 @@ export default function PiercingsBlock(): JSX.Element {
   //   }
   // };
 
+  const displayConfig: JSX.Element[] = piercings
+    .map((prc) => {
+      const setClasses: string = prc.type === "mod" ? "config-mod config-set" : "config-set config-vanilla";
+      const setName: string = prc.type === "vanilla" ? `Vanilla : ${prc.set_name}` : `MOD : ${prc.set_name}`;
+      if (selectedIds[prc.nodeid])
+        return (
+          <div key={prc.index} className={`config-cont  ${prc.location}`}>
+            <div className="config-row">
+              <span className="gen-loca">{prc.location}</span>
+            </div>
+            <div className="config-row">
+              <span className="config-loca">{prc.pt_bone} </span>:<span className="config-name"> {prc.name}</span>
+            </div>
+            <div className="config-row">
+              <span className={setClasses}>{setName}</span>
+            </div>
+          </div>
+        );
+      return undefined;
+    })
+    .filter((element): element is JSX.Element => element !== undefined);
+
   return (
     <>
       {/* <Row className="mt-2 mt-lg-3 title-row">
@@ -62,14 +85,47 @@ export default function PiercingsBlock(): JSX.Element {
           </select>
         </Col>
       </Row> */}
-      <Row>
-        {piercings.map((piercing) => (
-          <div key={"prc-" + piercing.index} id={`piercing-${piercing.index}`}>
-            <span>{piercing.name}</span>
-            <button onClick={() => handleToggle(piercing.index)}>{piercing.selected ? "Deselect" : "Select"}</button>
-          </div>
+      <Row className="mt-2 row-cols-2" sm="4" md="5" lg="6" role="row">
+        {piercings.map((prc) => (
+          <Col className="prc-col">
+            {prc.type === "mod" && <span className="set-name">{prc.set_name}</span>}
+            <button
+              type="button"
+              id={prc.index.toString()}
+              className={`prc-container ${selectedIds[prc.nodeid] ? "selected" : ""}`}
+              onClick={() => handleToggle(prc.nodeid)}
+              disabled={prc.disabled}
+              role="button"
+            >
+              <div className="img-cont">
+                <picture>
+                  {/* <source
+                  srcSet={srcToWebp(prc.imgurl)}
+                  className={imgClass(prc.bone, prc.site_cat)}
+                /> */}
+                  <img
+                    src={prc.imgurl}
+                    alt={`${prc.name} - ${prc.pt_bone}`}
+                    height="150"
+                    width="254"
+                    role="img"
+                    // className={imgClass(prc.bone, prc.site_cat)}
+                  />
+                </picture>
+              </div>
+              <ul className={`prc-stats config-cont ${prc.location}`}>
+                <li className="prc-name">{prc.name}</li>
+                <li className="location">{prc.pt_bone}</li>
+              </ul>
+            </button>
+          </Col>
+          // <div key={piercing.nodeid} id={`piercing-${piercing.index}`}>
+          //   <span>{piercing.name}</span>
+          //   <button onClick={() => handleToggle(piercing.nodeid)}>{selectedIds[piercing.nodeid] ? "Deselect" : "Select"}</button>
+          // </div>
         ))}
       </Row>
+      <Row>{displayConfig}</Row>
       {/* {filteredPiercings.length > 0 ? (
         <Paginate
           itemsPerPage={pageLength}

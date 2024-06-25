@@ -5,9 +5,7 @@ export interface ContextValues {
   sessionOver: boolean;
   handleFilterChange: (key: string, value: string | null) => void;
   confirmDelete: () => void;
-  toggleSessionOver: (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ) => void;
+  toggleSessionOver: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   modFilters: string[];
   handleModFilterChange: (mod: string) => void;
   handleBtns: (nodeId: string, nodeLoca: string) => void;
@@ -26,7 +24,6 @@ export interface Piercing {
   location: string;
   nodeid: string;
   imgurl: string;
-  selected: boolean;
   disabled: boolean;
   matcat: string;
   matid: string;
@@ -50,9 +47,7 @@ export interface PaginateProps {
   filteredPiercings: Array<Piercing>;
   currentPage: number;
   handleBtns: (nodeId: string, nodeLoca: string) => void;
-  handlePageChange: (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ) => void;
+  handlePageChange: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 
 export interface PiercingTileProps {
@@ -60,10 +55,4 @@ export interface PiercingTileProps {
   handleBtns: (nodeID: string, nodeLocal: string) => void;
 }
 
-export const ModList: string[] = [
-  "isp_gold",
-  "isp_silver",
-  "p4_blooming",
-  "ghouls_customs",
-  "LV_E_V1",
-];
+export const ModList: string[] = ["isp_gold", "isp_silver", "p4_blooming", "ghouls_customs", "LV_E_V1"];
