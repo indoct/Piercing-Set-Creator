@@ -11,29 +11,28 @@ import { Animate } from "react-simple-animate";
 import { RootState } from "../app/store";
 import { setType, setLocation, setMods, toggleMod } from "../features/filters/filtersSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { ModList } from "../types";
 
 export default function Header(): JSX.Element {
   const [searchParams, setSearchParams] = useSearchParams();
   const [play, setPlay] = useState<boolean>(false);
   const dispatch = useDispatch();
   const sessionOver = useSelector((state: RootState) => state.session.sessionOver);
-
+  const [filtersOpen, setFiltersOpen] = useState<boolean>(false);
   const typeFilter = useSelector((state: RootState) => state.filters.typeFilter);
   const locaFilter = useSelector((state: RootState) => state.filters.locaFilter);
   const modFilters = useSelector((state: RootState) => state.filters.modFilters);
 
-  // Initialize filters from URL search params
   useEffect(() => {
     const typeFilter = searchParams.get("type");
     const locaFilter = searchParams.get("location");
-    const modFilters = searchParams.get("modFilters")?.split(",") || [];
+    const modFilters = searchParams.get("mods")?.split(",") || ModList;
 
     dispatch(setType(typeFilter));
     dispatch(setLocation(locaFilter));
     dispatch(setMods(modFilters));
   }, [searchParams, dispatch]);
 
-  // Update search params and dispatch action for type filter
   const handleFilterChange = (key: string, value: string | null): void => {
     setSearchParams((prevParams) => {
       const newParams: { [x: string]: string } = {
@@ -54,7 +53,6 @@ export default function Header(): JSX.Element {
     }
   };
 
-  // Update search params and dispatch action for mod filters
   const handleModFilterChange = (mod: string): void => {
     dispatch(toggleMod(mod));
 
@@ -67,6 +65,19 @@ export default function Header(): JSX.Element {
       return new URLSearchParams(newParams);
     });
   };
+
+  function handleClearFilters(): void {
+    setSearchParams((prevParams) => {
+      const newParams = new URLSearchParams(prevParams.toString());
+      newParams.delete("type");
+      newParams.delete("location");
+      newParams.delete("mods");
+      return newParams;
+    });
+    dispatch(setType(null));
+    dispatch(setLocation(null));
+    dispatch(setMods(ModList));
+  }
 
   return (
     <>
@@ -122,10 +133,10 @@ export default function Header(): JSX.Element {
                 type="button"
                 onClick={() => {
                   handleFilterChange("type", "vanilla");
-                  // if (filtersOpen) {
-                  //   setFiltersOpen((prevState) => !prevState);
-                  //   setPlay(!play);
-                  // }
+                  if (filtersOpen) {
+                    setFiltersOpen((prevState) => !prevState);
+                    setPlay(!play);
+                  }
                 }}
                 className={`vanilla ${typeFilter === "vanilla" ? "selected" : ""}`}
                 disabled={locaFilter === "lips"}
@@ -135,18 +146,18 @@ export default function Header(): JSX.Element {
               >
                 Vanilla
               </button>
-              {/* <button
+              <button
                 type="button"
-                // onClick={() => {
-                //   setPlay(!play);
-                //   setFiltersOpen((prevState) => !prevState);
-                // }}
+                onClick={() => {
+                  setPlay(!play);
+                  setFiltersOpen((prevState) => !prevState);
+                }}
                 className="toggle"
                 disabled={typeFilter === "vanilla"}
               >
                 {filtersOpen ? "Hide" : "Show"} Mod Filters
                 {!filtersOpen ? <PlusCircle size="17" /> : <XCircle size="17" />}
-              </button> */}
+              </button>
             </div>
           </Col>
           <Col lg={6} xl={5}>
@@ -202,13 +213,13 @@ export default function Header(): JSX.Element {
             <button
               type="button"
               className="clear-btn btn reset"
-              // onClick={() => {
-              //   handleClearFilters();
-              //   if (filtersOpen) {
-              //     setFiltersOpen((prevState) => !prevState);
-              //     setPlay(!play);
-              //   }
-              // }}
+              onClick={() => {
+                handleClearFilters();
+                if (filtersOpen) {
+                  setFiltersOpen((prevState) => !prevState);
+                  setPlay(!play);
+                }
+              }}
               disabled={typeFilter === null && locaFilter === null}
             >
               Reset All Filters
@@ -233,63 +244,20 @@ export default function Header(): JSX.Element {
         <Row>
           <Col>
             <div className="mod-filters">
-              <button
-                type="button"
-                onClick={() => {
-                  handleModFilterChange("isp_gold");
-                }}
-                className={`mod ${modFilters.includes("isp_gold") ? "selected" : ""}`}
-              >
-                <input type="checkbox" name="isp_gold" checked={modFilters.includes("isp_gold")} readOnly />
-                Indoct's Subtler Piercings (Gold)
-              </button>
-              <button
-                type="button"
-                onClick={() => {
-                  handleModFilterChange("isp_silver");
-                }}
-                className={`mod ${modFilters.includes("isp_silver") ? "selected" : ""}`}
-              >
-                <input type="checkbox" name="isp_silver" checked={modFilters.includes("isp_silver")} readOnly />
-                Indoct's Subtler Piercings (Silver)
-              </button>
-              <button
-                type="button"
-                onClick={() => {
-                  handleModFilterChange("p4_blooming");
-                }}
-                disabled={locaFilter === "lips"}
-                className={`mod ${modFilters.includes("p4_blooming") && locaFilter !== "lips" ? "selected" : ""}`}
-              >
-                <input
-                  type="checkbox"
-                  name="p4_blooming"
-                  checked={modFilters.includes("p4_blooming") && locaFilter !== "lips"}
-                  disabled={locaFilter === "lips"}
-                  readOnly
-                />
-                P4 Blooming Circlets & Piercings
-              </button>
-              <button
-                type="button"
-                onClick={() => {
-                  handleModFilterChange("ghouls_customs");
-                }}
-                className={`mod ${modFilters.includes("ghouls_customs") ? "selected" : ""}`}
-              >
-                <input type="checkbox" name="ghouls_customs" checked={modFilters.includes("ghouls_customs")} readOnly />
-                Ghouls Custom Piercings
-              </button>
-              <button
-                type="button"
-                onClick={() => {
-                  handleModFilterChange("LV_E_V1");
-                }}
-                className={`mod ${modFilters.includes("LV_E_V1") ? "selected" : ""}`}
-              >
-                <input type="checkbox" name="LV_E_V1" checked={modFilters.includes("LV_E_V1")} readOnly />
-                LVDNRs Earrings V1
-              </button>
+              {ModList.map((mod) => (
+                <button key={mod} type="button" onClick={() => handleModFilterChange(mod)} className={`mod ${modFilters.includes(mod) ? "selected" : ""}`}>
+                  <input type="checkbox" name={mod} checked={modFilters.includes(mod)} readOnly />
+                  {mod === "isp_gold"
+                    ? "Indoct's Subtler Piercings (Gold)"
+                    : mod === "isp_silver"
+                    ? "Indoct's Subtler Piercings (Gold)"
+                    : mod === "p4_blooming"
+                    ? "P4 Blooming Circlets & Piercings"
+                    : mod === "ghouls_customs"
+                    ? "Ghouls Custom Piercings"
+                    : "LVNDRs earrings v1"}
+                </button>
+              ))}
             </div>
           </Col>
         </Row>

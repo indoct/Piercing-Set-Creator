@@ -4970,7 +4970,7 @@ const data: Piercing[] = [
     modurl: "https://www.nexusmods.com/baldursgate3/mods/5317",
   },
   {
-    index: 165,
+    index: 277,
     site_cat: "LV_E_V1",
     type: "mod",
     set_name: "LVNDRs Earrings V1",
@@ -4988,7 +4988,7 @@ const data: Piercing[] = [
     modurl: "https://www.nexusmods.com/baldursgate3/mods/7425",
   },
   {
-    index: 166,
+    index: 278,
     site_cat: "LV_E_V1",
     type: "mod",
     set_name: "LVNDRs Earrings V1",
@@ -5006,7 +5006,7 @@ const data: Piercing[] = [
     modurl: "https://www.nexusmods.com/baldursgate3/mods/7425",
   },
   {
-    index: 167,
+    index: 279,
     site_cat: "LV_E_V1",
     type: "mod",
     set_name: "LVNDRs Earrings V1",
@@ -5024,7 +5024,7 @@ const data: Piercing[] = [
     modurl: "https://www.nexusmods.com/baldursgate3/mods/7425",
   },
   {
-    index: 168,
+    index: 280,
     site_cat: "LV_E_V1",
     type: "mod",
     set_name: "LVNDRs Earrings V1",
@@ -5042,7 +5042,7 @@ const data: Piercing[] = [
     modurl: "https://www.nexusmods.com/baldursgate3/mods/7425",
   },
   {
-    index: 169,
+    index: 281,
     site_cat: "LV_E_V1",
     type: "mod",
     set_name: "LVNDRs Earrings V1",
@@ -5060,7 +5060,7 @@ const data: Piercing[] = [
     modurl: "https://www.nexusmods.com/baldursgate3/mods/7425",
   },
   {
-    index: 170,
+    index: 282,
     site_cat: "LV_E_V1",
     type: "mod",
     set_name: "LVNDRs Earrings V1",
@@ -5078,7 +5078,7 @@ const data: Piercing[] = [
     modurl: "https://www.nexusmods.com/baldursgate3/mods/7425",
   },
   {
-    index: 171,
+    index: 283,
     site_cat: "LV_E_V1",
     type: "mod",
     set_name: "LVNDRs Earrings V1",
@@ -5096,7 +5096,7 @@ const data: Piercing[] = [
     modurl: "https://www.nexusmods.com/baldursgate3/mods/7425",
   },
   {
-    index: 172,
+    index: 284,
     site_cat: "LV_E_V1",
     type: "mod",
     set_name: "LVNDRs Earrings V1",
@@ -5114,7 +5114,7 @@ const data: Piercing[] = [
     modurl: "https://www.nexusmods.com/baldursgate3/mods/7425",
   },
   {
-    index: 173,
+    index: 285,
     site_cat: "LV_E_V1",
     type: "mod",
     set_name: "LVNDRs Earrings V1",
@@ -5132,7 +5132,7 @@ const data: Piercing[] = [
     modurl: "https://www.nexusmods.com/baldursgate3/mods/7425",
   },
   {
-    index: 174,
+    index: 286,
     site_cat: "LV_E_V1",
     type: "mod",
     set_name: "LVNDRs Earrings V1",

@@ -15,7 +15,6 @@ export default function PiercingsBlock(): JSX.Element {
   // const [currentPage, setCurrentPage] = useState<number>(1);
   // const [pageLength, setPageLength] = useState<number>(54);
   // const [selectedOption, setSelectedOption] = useState<string | number>(pageLength);
-  console.log(piercings);
 
   const handleToggle = (index: number) => {
     dispatch(toggleSelected(index));
@@ -65,7 +64,7 @@ export default function PiercingsBlock(): JSX.Element {
       </Row> */}
       <Row>
         {piercings.map((piercing) => (
-          <div key={piercing.index} id={`piercing-${piercing.index}`}>
+          <div key={"prc-" + piercing.index} id={`piercing-${piercing.index}`}>
             <span>{piercing.name}</span>
             <button onClick={() => handleToggle(piercing.index)}>{piercing.selected ? "Deselect" : "Select"}</button>
           </div>
