@@ -22,7 +22,7 @@ export interface ModalProps {
 }
 
 export interface SetModalProps extends ModalProps {
-  generateNodes: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  generateNodes: () => void;
   sessionOver: boolean;
   togglePlay: () => void;
 }

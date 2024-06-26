@@ -13,9 +13,9 @@ import { ModList } from "../types";
 export default function Filters(): JSX.Element {
   const [searchParams, setSearchParams] = useSearchParams();
   const [play, setPlay] = useState<boolean>(false);
+  const [filtersOpen, setFiltersOpen] = useState<boolean>(false);
   const dispatch = useDispatch();
   const sessionOver = useSelector((state: RootState) => state.session.sessionOver);
-  const [filtersOpen, setFiltersOpen] = useState<boolean>(false);
   const typeFilter = useSelector((state: RootState) => state.filters.typeFilter);
   const locaFilter = useSelector((state: RootState) => state.filters.locaFilter);
   const modFilters = useSelector((state: RootState) => state.filters.modFilters);

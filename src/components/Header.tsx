@@ -24,10 +24,6 @@ export default function Header(): JSX.Element {
     return modal === "set" ? setShowSet(false) : setShowInstructions(false);
   }
 
-  function handleSessionOver(): void {
-    dispatch(setSessionOver(true));
-  }
-
   function confirmDelete(): void {
     let result = confirm("Are you sure you want to delete your set? \n \nPressing OK will clear your set configuration.");
     if (result) {
@@ -69,49 +65,3 @@ export default function Header(): JSX.Element {
     </header>
   );
 }
-
-//     <div>
-//       <div>
-//         <label>Type:</label>
-//         <input type="text" value={filters.typeFilter || ""} onChange={(e) => handleFilterChange("type", e.target.value)} />
-//       </div>
-//       <div>
-//         <label>Location:</label>
-//         <input type="text" value={filters.locaFilter || ""} onChange={(e) => handleFilterChange("location", e.target.value)} />
-//       </div>
-//       <div>
-//         <label>Mods:</label>
-//         {filters.modFilters.map((mod, idx) => (
-//           <button key={idx} onClick={() => handleModFilterChange(mod)}>
-//             {mod}
-//           </button>
-//         ))}
-//       </div>
-//     </div>
-//   );
-// }
-// const [showSet, setShowSet] = useState<boolean>(false);
-// const [showInstructions, setShowInstructions] = useState<boolean>(false);
-// const [filtersOpen, setFiltersOpen] = useState<boolean>(false);
-// const [play, setPlay] = useState<boolean>(false);
-
-// const {
-//   type,
-//   location,
-//   piercings,
-//   handleFilterChange,
-//   confirmDelete,
-//   toggleSessionOver,
-//   sessionOver,
-//   handleModFilterChange,
-//   modFilters,
-//   handleClearFilters,
-// } = useAppContext();
-
-// function handleCloseModal(modal: string): void {
-//   return modal === "set" ? setShowSet(false) : setShowInstructions(false);
-// }
-
-// const empty: boolean = piercings.filter((prc) => prc.selected).length === 0;
-
-// return (

@@ -45,8 +45,8 @@ const SetModal: React.FC<SetModalProps> = ({ show, onClose, generateNodes, sessi
           <Button
             id="generate-btn"
             variant="primary"
-            onClick={(e) => {
-              generateNodes(e);
+            onClick={() => {
+              generateNodes();
               togglePlay();
               onClose();
             }}

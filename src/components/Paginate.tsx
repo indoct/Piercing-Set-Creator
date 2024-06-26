@@ -67,7 +67,7 @@ const Paginate: React.FC<PaginateProps> = ({ itemsPerPage, filteredPiercings, cu
   return (
     <>
       <Row className="mt-2 row-cols-2" sm="4" md="5" lg="6" role="row" data-testid="entries">
-        {showLoading ? <p>Loading...</p> : entries.map((prc) => <PiercingTile key={prc.nodeid} prc={prc} />)}
+        {showLoading ? <p>Loading piercings...</p> : entries.map((prc) => <PiercingTile key={prc.nodeid} prc={prc} />)}
       </Row>
       <Row className="mt-3">
         <Col>
