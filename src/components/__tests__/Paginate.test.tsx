@@ -2,6 +2,9 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import Paginate from '../Paginate';
 import { Piercing } from '../../types';
+import { Provider } from 'react-redux';
+import { RootState, setupStore } from '../../app/store';
+import { PropsWithChildren } from 'react';
 
 const emptyCb = () => {}
 
@@ -18,7 +21,6 @@ function createPiercing(p: Partial<Piercing> | ((p: Piercing) => Piercing) = {})
     location: 'location',
     nodeid: 'nodeid',
     imgurl: 'imgurl',
-    selected: false,
     disabled: false,
     matcat: '',
     matid: '',
@@ -32,12 +34,21 @@ function createPiercing(p: Partial<Piercing> | ((p: Piercing) => Piercing) = {})
   return { ...defaultPiercing, ...p }
 }
 
+function renderWithProvider(ui: React.ReactNode, partialState: Partial<RootState> = {}) {
+  const store = setupStore(partialState)
+
+  function Wrapper({ children }: PropsWithChildren<{}>) {
+    return <Provider store={store}>{children}</Provider>
+  }
+
+  return { store, ...render(ui, { wrapper: Wrapper }) }
+}
+
 test('shows loading paragraph when pages is empty', async () => {
-  render(<Paginate
+  renderWithProvider(<Paginate
     itemsPerPage={10}
     filteredPiercings={[]}
     currentPage={1}
-    handleBtns={emptyCb}
     handlePageChange={emptyCb}
   />);
 
@@ -45,11 +56,10 @@ test('shows loading paragraph when pages is empty', async () => {
 })
 
 test('shows loading paragraph when current page is less than 1', async () => {
-  render(<Paginate
+  renderWithProvider(<Paginate
     itemsPerPage={10}
     filteredPiercings={[createPiercing()]}
     currentPage={-1}
-    handleBtns={emptyCb}
     handlePageChange={emptyCb}
   />);
 
@@ -57,11 +67,10 @@ test('shows loading paragraph when current page is less than 1', async () => {
 })
 
 test('shows loading paragraph when current page is greater than the level of pages', async () => {
-  render(<Paginate
+  renderWithProvider(<Paginate
     itemsPerPage={10}
     filteredPiercings={[createPiercing()]}
     currentPage={2}
-    handleBtns={emptyCb}
     handlePageChange={emptyCb}
   />);
 
@@ -74,11 +83,10 @@ test('shows piercings', async () => {
     nodeid: `nodeid-${idx}`,
   }))
 
-  render(<Paginate
+  renderWithProvider(<Paginate
     itemsPerPage={10}
     filteredPiercings={piercings}
     currentPage={1}
-    handleBtns={emptyCb}
     handlePageChange={emptyCb}
   />);
 
@@ -110,11 +118,10 @@ test.each([
     ...(category ? { site_cat: category, bone } : {}),
   }))
 
-  render(<Paginate
+  renderWithProvider(<Paginate
     itemsPerPage={10}
     filteredPiercings={piercings}
     currentPage={1}
-    handleBtns={emptyCb}
     handlePageChange={emptyCb}
   />);
 
@@ -132,24 +139,24 @@ test('calls callback when piercing is clicked', async () => {
 
   const spy = vi.fn()
 
-  render(<Paginate
+  renderWithProvider(<Paginate
     itemsPerPage={10}
     filteredPiercings={piercings}
     currentPage={1}
-    handleBtns={spy}
     handlePageChange={emptyCb}
   />);
 
-  const buttons = await screen.findAllByRole("button")
+  let buttons = await screen.findAllByRole("button")
   expect(buttons).toHaveLength(12) // Two addtional buttons for pagination
 
   const paginationBtns = (await screen.findByTestId("pagination")).querySelectorAll('button')
   expect(paginationBtns).toHaveLength(2)
 
+  expect(buttons[0].classList.contains('selected')).toBeFalsy()
   fireEvent.click(buttons[0])
   await screen.findAllByRole("button")
 
-  expect(spy).toHaveBeenCalledWith(piercings[0].nodeid, piercings[0].bone)
+  expect(buttons[0].classList.contains('selected')).toBeTruthy()
 })
 
 test('calls pagination callback when clicked', async () => {
@@ -161,11 +168,10 @@ test('calls pagination callback when clicked', async () => {
 
   const spy = vi.fn()
 
-  render(<Paginate
+  renderWithProvider(<Paginate
     itemsPerPage={10}
     filteredPiercings={piercings}
     currentPage={1}
-    handleBtns={emptyCb}
     handlePageChange={spy}
   />);
 
@@ -184,11 +190,10 @@ test('adds one entry to pagination if the list bleeds over', async () => {
     bone: idx === 0 ? 'piercing_lobe_a_l' : 'not-bone',
   }))
 
-  render(<Paginate
+  renderWithProvider(<Paginate
     itemsPerPage={10}
     filteredPiercings={piercings}
     currentPage={1}
-    handleBtns={emptyCb}
     handlePageChange={emptyCb}
   />);
 
