@@ -16,14 +16,19 @@ const flippedSet: Set<string> = new Set([
 const PiercingTile = (props: PiercingTileProps): JSX.Element => {
   const dispatch = useDispatch();
   const { prc } = props;
-  const selectedIds = useSelector((state: RootState) => state.piercings.selectedIds);
+  const selectedIds = useSelector(
+    (state: RootState) => state.piercings.selectedIds
+  );
 
   const srcToWebp = (src: string): string => {
     return src.replace(".jpg", ".webp");
   };
 
   const imgClass = (bone: string, category: string): string | undefined => {
-    return flippedSet.has(bone) || (bone === "lowerlip_08" && category === "ghouls_customs") ? "flipped" : undefined;
+    return flippedSet.has(bone) ||
+      (bone === "lowerlip_08" && category === "ghouls_customs")
+      ? "flipped"
+      : undefined;
   };
 
   return (
@@ -39,8 +44,19 @@ const PiercingTile = (props: PiercingTileProps): JSX.Element => {
       >
         <div className="img-cont">
           <picture>
-            <source srcSet={srcToWebp(prc.imgurl)} className={imgClass(prc.bone, prc.site_cat)} />
-            <img src={prc.imgurl} alt={`${prc.name} - ${prc.pt_bone}`} height="150" width="254" role="img" className={imgClass(prc.bone, prc.site_cat)} />
+            <source
+              srcSet={srcToWebp(prc.imgurl)}
+              className={imgClass(prc.bone, prc.site_cat)}
+              type="image/webp"
+            />
+            <img
+              src={prc.imgurl}
+              alt={`${prc.name} - ${prc.pt_bone}`}
+              height="150"
+              width="254"
+              role="img"
+              className={imgClass(prc.bone, prc.site_cat)}
+            />
           </picture>
         </div>
         <ul className={`prc-stats config-cont ${prc.location}`}>
@@ -52,7 +68,12 @@ const PiercingTile = (props: PiercingTileProps): JSX.Element => {
   );
 };
 
-const Paginate: React.FC<PaginateProps> = ({ itemsPerPage, filteredPiercings, currentPage, handlePageChange }) => {
+const Paginate: React.FC<PaginateProps> = ({
+  itemsPerPage,
+  filteredPiercings,
+  currentPage,
+  handlePageChange,
+}) => {
   const startIdx = (currentPage - 1) * itemsPerPage;
   const endIdx = startIdx + itemsPerPage;
 
@@ -60,14 +81,25 @@ const Paginate: React.FC<PaginateProps> = ({ itemsPerPage, filteredPiercings, cu
   const showLoading = entries.length === 0;
 
   const divideResult = filteredPiercings.length / itemsPerPage;
-  const numPages = divideResult % 1 === 0 ? divideResult : Math.floor(divideResult) + 1;
+  const numPages =
+    divideResult % 1 === 0 ? divideResult : Math.floor(divideResult) + 1;
 
   const pages = Array.from({ length: numPages }, (_, index) => index + 1);
 
   return (
     <>
-      <Row className="mt-2 row-cols-2" sm="4" md="5" lg="6" data-testid="entries">
-        {showLoading ? <p>Loading piercings...</p> : entries.map((prc) => <PiercingTile key={prc.nodeid} prc={prc} />)}
+      <Row
+        className="mt-2 row-cols-2"
+        sm="4"
+        md="5"
+        lg="6"
+        data-testid="entries"
+      >
+        {showLoading ? (
+          <p>Loading piercings...</p>
+        ) : (
+          entries.map((prc) => <PiercingTile key={prc.nodeid} prc={prc} />)
+        )}
       </Row>
       <Row className="mt-3">
         <Col>
@@ -75,8 +107,16 @@ const Paginate: React.FC<PaginateProps> = ({ itemsPerPage, filteredPiercings, cu
             {pages.map((page, ind) => {
               const current: boolean = ind + 1 === currentPage;
               return (
-                <li key={`pagination-${ind}`} className={current ? "current-page" : ""} role="listitem">
-                  <button id={page.toString()} onClick={() => handlePageChange(page)} disabled={current}>
+                <li
+                  key={`pagination-${ind}`}
+                  className={current ? "current-page" : ""}
+                  role="listitem"
+                >
+                  <button
+                    id={page.toString()}
+                    onClick={() => handlePageChange(page)}
+                    disabled={current}
+                  >
                     {page}
                   </button>
                 </li>
