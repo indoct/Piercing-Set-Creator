@@ -19,6 +19,9 @@ const PiercingTile = (props: PiercingTileProps): JSX.Element => {
   const selectedIds = useSelector(
     (state: RootState) => state.piercings.selectedIds
   );
+  const disabledBones = useSelector(
+    (state: RootState) => state.piercings.disabledBones
+  );
 
   const srcToWebp = (src: string): string => {
     return src.replace(".jpg", ".webp");
@@ -39,7 +42,7 @@ const PiercingTile = (props: PiercingTileProps): JSX.Element => {
         id={prc.index.toString()}
         className={`prc-container ${selectedIds[prc.nodeid] ? "selected" : ""}`}
         onClick={() => dispatch(toggleSelected(prc.nodeid))}
-        disabled={prc.disabled}
+        disabled={!!disabledBones[prc.bone] && !selectedIds[prc.nodeid]}
         role="button"
       >
         <div className="img-cont">

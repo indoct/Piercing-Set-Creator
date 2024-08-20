@@ -6,11 +6,13 @@ import data from "../../data";
 interface PiercingsState {
   data: Piercing[];
   selectedIds: Record<string, boolean>;
+  disabledBones: Record<string, boolean>;
 }
 
 const initialPiercingsState: PiercingsState = {
   data: data,
   selectedIds: {},
+  disabledBones: {},
 };
 
 const piercingsSlice = createSlice({
@@ -18,14 +20,34 @@ const piercingsSlice = createSlice({
   initialState: initialPiercingsState,
   reducers: {
     toggleSelected: (state, action: PayloadAction<string>) => {
-      if (state.selectedIds[action.payload]) {
-        delete state.selectedIds[action.payload];
+      const selectedNodeId = action.payload;
+      const selectedPiercing = state.data.find(
+        (p) => p.nodeid === selectedNodeId
+      );
+
+      if (!selectedPiercing) return;
+
+      const selectedBone = selectedPiercing.bone;
+
+      if (state.selectedIds[selectedNodeId]) {
+        delete state.selectedIds[selectedNodeId];
+
+        const isBoneStillSelected = Object.keys(state.selectedIds).some(
+          (nodeId) =>
+            state.data.find((p) => p.nodeid === nodeId)?.bone === selectedBone
+        );
+
+        if (!isBoneStillSelected) {
+          delete state.disabledBones[selectedBone];
+        }
       } else {
-        state.selectedIds[action.payload] = true;
+        state.selectedIds[selectedNodeId] = true;
+        state.disabledBones[selectedBone] = true;
       }
     },
     resetPiercings: (state) => {
       state.selectedIds = {};
+      state.disabledBones = {};
     },
   },
 });
