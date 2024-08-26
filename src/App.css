@@ -115,6 +115,17 @@ button.btn-primary:disabled {
   color: var(--isc-dark);
 }
 
+button.btn-secondary,
+button.btn-secondary:disabled {
+  background-color: #4b444a;
+  border-color: #4b444a;
+}
+
+button.btn-secondary:hover {
+  background-color: #3b353a;
+  border-color: #3b353a;
+}
+
 #copy-btn {
   padding: 16px 22px;
   font-size: 1.1rem;
@@ -202,7 +213,7 @@ header button:first-child,
   flex-direction: row;
   gap: 6px;
   padding: 8px 11px;
-  background-color: #403b3e;
+  background-color: #312b30;
   border-radius: 8px;
   flex-wrap: wrap;
 }

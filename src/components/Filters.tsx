@@ -6,7 +6,12 @@ import { Tooltip } from "react-tooltip";
 import { XCircle, PlusCircle } from "react-bootstrap-icons";
 import { Animate } from "react-simple-animate";
 import { RootState } from "../app/store";
-import { setType, setLocation, setMods, toggleMod } from "../features/filters/filtersSlice";
+import {
+  setType,
+  setLocation,
+  setMods,
+  toggleMod,
+} from "../features/filters/filtersSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { ModList } from "../types";
 
@@ -15,10 +20,18 @@ export default function Filters(): JSX.Element {
   const [play, setPlay] = useState<boolean>(false);
   const [filtersOpen, setFiltersOpen] = useState<boolean>(false);
   const dispatch = useDispatch();
-  const sessionOver = useSelector((state: RootState) => state.session.sessionOver);
-  const typeFilter = useSelector((state: RootState) => state.filters.typeFilter);
-  const locaFilter = useSelector((state: RootState) => state.filters.locaFilter);
-  const modFilters = useSelector((state: RootState) => state.filters.modFilters);
+  const sessionOver = useSelector(
+    (state: RootState) => state.session.sessionOver
+  );
+  const typeFilter = useSelector(
+    (state: RootState) => state.filters.typeFilter
+  );
+  const locaFilter = useSelector(
+    (state: RootState) => state.filters.locaFilter
+  );
+  const modFilters = useSelector(
+    (state: RootState) => state.filters.modFilters
+  );
 
   useEffect(() => {
     const typeFilter = searchParams.get("type");
@@ -57,7 +70,9 @@ export default function Filters(): JSX.Element {
       const newParams: { [key: string]: string } = {
         ...Object.fromEntries(prevParams),
       };
-      const newFilters = modFilters.includes(mod) ? modFilters.filter((id) => id !== mod) : [...modFilters, mod];
+      const newFilters = modFilters.includes(mod)
+        ? modFilters.filter((id) => id !== mod)
+        : [...modFilters, mod];
       newParams["mods"] = newFilters.join(",");
       return new URLSearchParams(newParams);
     });
@@ -92,7 +107,11 @@ export default function Filters(): JSX.Element {
               >
                 Show All
               </button>
-              <button type="button" onClick={() => handleFilterChange("type", "mod")} className={`mod-btn ${typeFilter === "mod" ? "selected" : ""}`}>
+              <button
+                type="button"
+                onClick={() => handleFilterChange("type", "mod")}
+                className={`mod-btn ${typeFilter === "mod" ? "selected" : ""}`}
+              >
                 Mod Only
               </button>
               <button
@@ -104,7 +123,9 @@ export default function Filters(): JSX.Element {
                     setPlay(!play);
                   }
                 }}
-                className={`vanilla ${typeFilter === "vanilla" ? "selected" : ""}`}
+                className={`vanilla ${
+                  typeFilter === "vanilla" ? "selected" : ""
+                }`}
                 disabled={locaFilter === "lips"}
                 data-tooltip-id="my-tooltip"
                 data-tooltip-content="There are no vanilla piercings in the lip slot, change/clear the location filter to enable this filter"
@@ -122,7 +143,11 @@ export default function Filters(): JSX.Element {
                 disabled={typeFilter === "vanilla"}
               >
                 {filtersOpen ? "Hide" : "Show"} Mod Filters
-                {!filtersOpen ? <PlusCircle size="17" /> : <XCircle size="17" />}
+                {!filtersOpen ? (
+                  <PlusCircle size="17" />
+                ) : (
+                  <XCircle size="17" />
+                )}
               </button>
             </div>
           </Col>
@@ -134,11 +159,19 @@ export default function Filters(): JSX.Element {
                 onClick={() => {
                   handleFilterChange("location", "ears");
                 }}
-                className={`filter ears ${locaFilter === "ears" ? "selected" : ""}`}
+                className={`filter ears ${
+                  locaFilter === "ears" ? "selected" : ""
+                }`}
               >
                 Ears
               </button>
-              <button type="button" onClick={() => handleFilterChange("location", "nose")} className={`filter nose ${locaFilter === "nose" ? "selected" : ""}`}>
+              <button
+                type="button"
+                onClick={() => handleFilterChange("location", "nose")}
+                className={`filter nose ${
+                  locaFilter === "nose" ? "selected" : ""
+                }`}
+              >
                 Nose
               </button>
               <button
@@ -146,16 +179,21 @@ export default function Filters(): JSX.Element {
                 onClick={() => {
                   handleFilterChange("location", "brows");
                 }}
-                className={`filter brows ${locaFilter === "brows" ? "selected" : ""}`}
+                className={`filter brows ${
+                  locaFilter === "brows" ? "selected" : ""
+                }`}
               >
                 Brows
               </button>
               <button
                 onClick={() => {
                   handleFilterChange("location", "lips");
-                  if (typeFilter === "vanilla") handleFilterChange("type", null);
+                  if (typeFilter === "vanilla")
+                    handleFilterChange("type", null);
                 }}
-                className={`filter lips ${locaFilter === "lips" ? "selected" : ""}`}
+                className={`filter lips ${
+                  locaFilter === "lips" ? "selected" : ""
+                }`}
                 disabled={typeFilter === "vanilla"}
               >
                 Lips
@@ -175,7 +213,11 @@ export default function Filters(): JSX.Element {
             </div>
             {locaFilter === "lips" && <Tooltip id="my-tooltip" />}
           </Col>
-          <Col xs={4} xl={2} className="d-flex align-items-center mt-1 mt-xl-0 justify-content-xl-end">
+          <Col
+            xs={4}
+            xl={2}
+            className="d-flex align-items-center mt-2 mt-xl-0 justify-content-xl-end"
+          >
             <button
               type="button"
               className="clear-btn btn reset"
@@ -211,8 +253,20 @@ export default function Filters(): JSX.Element {
           <Col>
             <div className="mod-filters">
               {ModList.map((mod) => (
-                <button key={mod} type="button" onClick={() => handleModFilterChange(mod)} className={`mod ${modFilters.includes(mod) ? "selected" : ""}`}>
-                  <input type="checkbox" name={mod} checked={modFilters.includes(mod)} readOnly />
+                <button
+                  key={mod}
+                  type="button"
+                  onClick={() => handleModFilterChange(mod)}
+                  className={`mod ${
+                    modFilters.includes(mod) ? "selected" : ""
+                  }`}
+                >
+                  <input
+                    type="checkbox"
+                    name={mod}
+                    checked={modFilters.includes(mod)}
+                    readOnly
+                  />
                   {mod === "isp_gold"
                     ? "Indoct's Subtler Piercings (Gold)"
                     : mod === "isp_silver"
