@@ -121,9 +121,16 @@ button.btn-secondary:disabled {
   border-color: #4b444a;
 }
 
-button.btn-secondary:hover {
+button.btn-secondary:hover,
+#instructions-btn:active,
+#hr-clear-btn:active {
   background-color: #3b353a;
   border-color: #3b353a;
+}
+
+select {
+  background-color: #3b353a;
+  border-color: #5b525a;
 }
 
 #copy-btn {
